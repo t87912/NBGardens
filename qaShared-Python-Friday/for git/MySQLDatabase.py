@@ -22,6 +22,11 @@ from UserStories.userStory12 import userStory12
 from UserStories.userStory13 import userStory13
 from UserStories.userStory14 import userStory14
 from UserStories.userStory16 import userStory16
+
+from MongoDatabase import MongoDatabase
+
+# TODO:
+# rename local userStoryX to runUserStoryX etc
             
 class MySQLDatabase(object):
     """ Database: Holds the database object used for querying, also holds the

@@ -19,7 +19,6 @@ def userStory14(db, GUI, startDate, endDate, employeeID):
             employeeID = input("Please enter the employee ID: ")  
     
         sqlParse = queries[14] % (startDate, endDate, employeeID)
-          
         sql = sqlParse
         results = query(db, sql)
         
@@ -27,21 +26,26 @@ def userStory14(db, GUI, startDate, endDate, employeeID):
         totals = []        
         for r in range(0, len(results)):
             dates.append(results[r][1])
-            totals.append(results[r][2])
+            totals.append(results[r][2])      
         
-        # dates ratings product
-        print ("Plotting the data...")
-        plt.plot_date(dates, totals, "#993A54")
-        plt.legend(loc=1)
-        plt.xlabel('Date (YYYY-MM-DD)')
-        plt.xticks(rotation=45)
-        plt.ylabel('Number of Sales')
-        plt.title('Amount of sales made by a particular salesperson over a period of time')
-        plt.grid(True)
-        #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory14.png")
-        plt.savefig("graph.png")
-        plt.show()     
-        
+        if (len(results) == 0):
+            print ("There is no sales data available for this employee for the specified timeframe.")
+            if (GUI):
+                results = ["There is no sales data available for this employee for the specified timeframe."]
+        else:
+            # dates ratings product
+            print ("Plotting the data...")
+            plt.plot_date(dates, totals, "#993A54")
+            plt.legend(loc=1)
+            plt.xlabel('Date (YYYY-MM-DD)')
+            plt.xticks(rotation=45)
+            plt.ylabel('Number of Sales')
+            plt.title('Amount of sales made by a particular salesperson over a period of time')
+            plt.grid(True)
+            #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory14.png")
+            plt.savefig("graph.png")
+            plt.show()
+
         # If GUI return the data
         if (GUI):
             return [results]

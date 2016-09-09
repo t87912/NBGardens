@@ -19,6 +19,8 @@ from UserStories.userStory10 import userStory10
 from UserStories.userStory11 import userStory11
 from UserStories.userStory15 import userStory15
 
+import MySQLDatabase
+
 #MONGODB_URI = 'mongodb://master:pa$$w0rd@ds019766.mlab.com:19766/nbgardens'
 #conn = MongoClient(MONGODB_URI)
 #db = conn.get_default_database() 
@@ -145,6 +147,11 @@ class MongoDatabase(object):
 
     def userStory7(self, GUI, customerID):
         """ useCase7:  """
+        #print ("Doing things")
+        #from MySQLDatabase import MySQLDatabase
+        #query = "SELECT * FROM Product"
+        #toPrint = MySQLDatabase.customQuery(True, query)
+        #print (toPrint)
         if (GUI):
             return userStory7(MongoQueries, True, customerID)
         else:
