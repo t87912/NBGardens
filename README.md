@@ -73,9 +73,9 @@ In an effort of good version control the project makes use of git technology and
 </p> <br />
 
 
-**Publish to the repository** - Laymen: update the repository of any local changes so that a shared version is generated on Github. It is crucial to include the '-b' which specifies the branch for effectively control 'pushes'. Your branch maybe 'python', 'gui', 'master origin' - please only use the branch you've been allocated to.
+**Publish to the repository** - Laymen: update the repository of any local changes so that a shared version is generated on Github. It is crucial to include the '-u' which specifies the branch for effectively control 'pushes'. Your branch maybe 'python', 'gui', 'master origin' - please only use the branch you've been allocated to.
 <p align="center">
-    _GIT PUSH -B `<BRANCH NAME>`_
+    _GIT PUSH -U `<BRANCH NAME>`_
 </p> <br />
 
 
