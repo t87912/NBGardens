@@ -111,9 +111,9 @@ Expected Alpha next week!!!  <br /><br />
 ## Libraries
 Below are the internal libraries needed to execute the program; <br />
 ```
-install tkinter	                 # tkinter: graphical user interface (GUI)
-install csv                      # webpy: provide API facilities
-install sys                      # mysqldb: retrieve mysql data
+import tkinter	                 # tkinter: graphical user interface (GUI)
+import csv                       # webpy: provide API facilities
+import sys                       # mysqldb: retrieve mysql data
 ```
 More details on installation are provided in additional doxygen documentation. <br /><br />
 
