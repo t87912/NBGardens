@@ -113,14 +113,14 @@ class MainApplication(tk.Frame):
                 print(value)
                 if (value == options[0]):
                     self.queryResultBox.delete('1.0', tk.END)
-                    toPrint = self.db.userStory1(True, '2010-01-01','2015-01-01')
+                    toPrint = self.db.callUserStory1(True, '2010-01-01','2015-01-01')
                     for i in range(0, len(toPrint)):
                         textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
                         print (textToEval)
                         eval(textToEval)    
                 elif (value == options[1]):
                     self.queryResultBox.delete('1.0', tk.END)
-                    toPrint = self.db.userStory2(True, '2010-01-01','2015-01-01')
+                    toPrint = self.db.callUserStory2(True, '2010-01-01','2015-01-01')
                     for i in range(0, len(toPrint)):
                         textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
                         print (textToEval)
