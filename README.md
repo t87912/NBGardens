@@ -22,7 +22,7 @@ This project is a shared project produced by a group of trainee consultants enro
 
 
 ## Highlighted Features
-Below are some screenshots of the new features for application;
+Below are some screenshots of the new features of the application;
 
 <ul>
     <li>
@@ -51,47 +51,47 @@ Below are some screenshots of the new features for application;
 #### Developers
 In an effort of good version control the project makes use of git technology and the Github service. Below you will find a series of suitable and appropriate commands to achieve certain routine actions. Please follow the syntax and insert any relevant additional information as stated. <br />
 
-**Clone the repository** - Laymen: set up a link between the link repoistory to your local system. This should be your first git command and you should in theory only need it once.
+**Clone the repository** - layman explanation: set up a link between the link repository to your local system. This should be your first git command and you should in theory only need it once.
 <p align="center">
     _GIT CLONE + `<REPO>` + `<SAVE DIRECTORY>`_
 </p> <br />
 
 
-**Add and append in the repository individually** - Laymen: update the repository of any local changes so that a shared version is generated on Github.
+**Add and append in the repository individually** - layman explanation: update the repository of any local changes so that a shared version is generated on Github.
 <p align="center">
     _GIT ADD + `<FILE NAME>`_
 </p> <br />
-**Add multiple files and changes to the repository** - Laymen: Similarly to the above, but for multiple files and changes using the '.' operator.
+**Add multiple files and changes to the repository** - layman explanation: Similarly to the above, but for multiple files and changes using the '.' operator.
 <p align="center">
     _GIT ADD ._
 </p> <br />
 
 
-**Commit to the repository** - Laymen: encapsulate everything added into one binded package update to be pushed. The 'm' in this instance can stand for message, please include this when using this command and describe any amendment or other update made.
+**Commit to the repository** - layman explanation: encapsulate everything added into one binded package update to be pushed. The 'm' in this instance can stand for message, please include this when using this command and describe any amendment and/ or update made.
 <p align="center">
     _GIT COMMIT -M "`<SOME TEXT>`"_
 </p> <br />
 
 
-**Publish to the repository** - Laymen: update the repository of any local changes so that a shared version is generated on Github. It is crucial to include the '-u' which specifies the branch for effectively control 'pushes'. Your branch maybe 'python', 'gui', 'master origin' - please only use the branch you've been allocated to.
+**Publish to the repository** - layman explanation: update the repository of any local changes so that a shared version is generated on Github. It is crucial to include the '-u' which specifies the branch for effectively control 'pushes'. Your branch maybe 'python', 'gui', 'master origin' - please only use the branch you've been allocated to.
 <p align="center">
     _GIT PUSH -U `<BRANCH NAME>`_
 </p> <br />
 
 
-**Remove file from repository** - Laymen: Should you wish to remove file(s) from repository.
+**Remove file from repository** - layman explanation: Should you wish to remove file(s) from repository.
 <p align="center">
     _GIT RM `<FILE NAME>`_
 </p> <br />
-**Remove folder from repository** - Laymen: Similarly to remove a folder use the following with the inclusion of '-R'.
+**Remove folder from repository** - layman explanation: Similarly to remove a folder use the following with the inclusion of '-R'.
 <p align="center">
     _GIT RM -R `<FOLDER NAME>`_
 </p> <br />
 
-NOTE: Remember this is version control thus any mistake can be reversed. A full listing of further commands by using are friendly search engine, Google or just ask Anthony.<br />
+NOTE: Remember this is version control thus any mistake can be reversed. A full listing of further commands can be found by using are friendly search engine, Google or just ask Anthony.<br />
 
 #### Normal Users
-Download the application with the additional required packages, there is no requirement in cloning the repository. <br /><br />
+Download the application with the additional required material, there is no requirement in cloning the repository. <br /><br />
 
 
 
