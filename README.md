@@ -24,18 +24,18 @@ This project is a shared project produced by a group of trainee consultants enro
 ## Highlighted Features
 Below are some screenshots of the new features for application;
 
-<!-- <ul>
+<ul>
     <li>
-        <div>Website with new data type options such as Flickr and distinct user filters:</div>
-        <div><img src="https://raw.githubusercontent.com/ameenhaq/VernacularPlaceNameFinder-Project/master/img/0.png" /></div>
+        <div>Menu option list ..... some text:<br /> </div>
+        <div><img src="https://raw.githubusercontent.com/t87912/NBGardens/master/qaShared-Python-Friday/img/nbgardensTUI.PNG" /></div>
     </li>
     <br />
     <li>
-        <div>Website with new statistical data and GeoPy integration:</div>
-        <div><img src="https://raw.githubusercontent.com/ameenhaq/VernacularPlaceNameFinder-Project/master/img/1.png" /></div>
+        <div>Query system.... some text :</div>
+        <div><img src="https://raw.githubusercontent.com/t87912/NBGardens/master/qaShared-Python-Friday/img/nbscreenshot.PNG" /></div>
     </li>
-    <br />
-    <li>
+    <!-- <br /> -->
+    <!-- <li>
         <div>Modified API facility with additional statistical information for ease of comparison (e.g. mean and median density, precision, recall, f-measure, accuracy and error):</div>
         <div><img src="https://raw.githubusercontent.com/ameenhaq/VernacularPlaceNameFinder-Project/master/img/2.png" /></div>
     </li>
@@ -43,8 +43,8 @@ Below are some screenshots of the new features for application;
     <li>
         <div>Webpage that visualizes the concave (blue = Comparison data, red = system/ social media data) and convex hull (purple = Comparison data, orange = system/ social media data). This example shows the concave and convex hull polygon of Canton:</div>
         <div><img src="https://raw.githubusercontent.com/ameenhaq/VernacularPlaceNameFinder-Project/master/img/3.png" /></div>
-    </li>
-</ul> -->
+    </li> -->
+</ul>
 <br /><br />
 
 ## Instructions
