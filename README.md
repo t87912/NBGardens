@@ -61,9 +61,9 @@ In an effort of good version control the project makes use of git technology and
 <p align="center">
     _GIT ADD + `<FILE NAME>`_
 </p> <br />
-**Add multiple to the repository** - Laymen: Similarly to the above, but for multiple files and changes.
+**Add multiple files and changes to the repository** - Laymen: Similarly to the above, but for multiple files and changes using the '.' operator.
 <p align="center">
-    _GIT ADD + `<FILE NAME>`_
+    _GIT ADD ._
 </p> <br />
 
 
