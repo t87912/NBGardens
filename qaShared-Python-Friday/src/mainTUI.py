@@ -11,8 +11,8 @@ import logging
 
 # Import other python class files:
 from Login import Login
-from MySQLDatabase import MySQLDatabase
-from MongoDatabase import MongoDatabase
+from sqlDatabase.MySQLDatabase import MySQLDatabase
+from mongoDatabase.MongoDatabase import MongoDatabase
 
 class MainLogic(object):
     """ MainLogic: Holds the logic for running the program in the prompt.  """
@@ -65,10 +65,10 @@ class MainLogic(object):
     def printGnome(self):
         """ printGnome: Reads text file containing gnome in ASCII text and
             prints it out, stripping out newline characters. """
-        with open('gnome.txt') as f:            
-            for line in f: 
-                line = line.rstrip('\n')
-                print (line)
+        #with open('') as f:            
+         #   for line in f: 
+          #      line = line.rstrip('\n')
+        print ('test')
     
     def getMenuInput(self):
         """ getMenuInput: Gets user input for the menu, returns True/False. """

@@ -10,7 +10,7 @@ import csv
 import sys
 from pprint import pprint
 from pymongo import MongoClient
-import MongoQueries
+from mongoDatabase import MongoQueries
 
 from UserStories.userStory7 import userStory7
 from UserStories.userStory8 import userStory8
@@ -19,7 +19,7 @@ from UserStories.userStory10 import userStory10
 from UserStories.userStory11 import userStory11
 from UserStories.userStory15 import userStory15
 
-import MySQLDatabase
+#import MySQLDatabase
 
 #MONGODB_URI = 'mongodb://master:pa$$w0rd@ds019766.mlab.com:19766/nbgardens'
 #conn = MongoClient(MONGODB_URI)

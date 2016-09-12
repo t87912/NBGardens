@@ -5,8 +5,8 @@ Created on Tue Sep  6 21:24:58 2016
 @author: user
 """
 
-from SQLQueries import queries
-from Query import query
+from sqlDatabase.SQLQueries import queries
+from sqlDatabase.Query import query
 
 def userStory1(db, GUI, startDate, endDate):
     """ useCase1: Accepts parameter 'period' which is a period, 1-4 """

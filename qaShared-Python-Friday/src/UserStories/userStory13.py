@@ -6,8 +6,8 @@ Created on Tue Sep  6 21:24:58 2016
 """
 import matplotlib.pyplot as plt
 
-from SQLQueries import queries
-from Query import query
+from sqlDatabase.SQLQueries import queries
+from sqlDatabase.Query import query
 import os
 
 def userStory13(db, GUI, startDate, endDate):
