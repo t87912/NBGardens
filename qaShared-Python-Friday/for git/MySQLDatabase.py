@@ -23,7 +23,6 @@ from UserStories.userStory13 import userStory13
 from UserStories.userStory14 import userStory14
 from UserStories.userStory16 import userStory16
 
-from MongoDatabase import MongoDatabase
 
 # TODO:
 # rename local userStoryX to runUserStoryX etc
@@ -72,34 +71,34 @@ class MySQLDatabase(object):
             valid = self.getMenuInput() 
             if (valid):
                 if (self.menuOption == 1):
-                    self.userStory1(False, 0, 0)
+                    self.callUserStory1(False, 0, 0)
                     valid = False
                 elif (self.menuOption == 2):
-                    self.userStory2(False, 0, 0)
+                    self.callUserStory2(False, 0, 0)
                     valid = False
                 elif (self.menuOption == 3):
-                    self.userStory3(False, 0, 0, 0)
+                    self.callUserStory3(False, 0, 0, 0)
                     valid = False
                 elif (self.menuOption == 4):
-                    self.userStory4(False, 0, 0)
+                    self.callUserStory4(False, 0, 0)
                     valid = False
                 elif (self.menuOption == 5):
-                    self.userStory5(False, 0, 0)
+                    self.callUserStory5(False, 0, 0)
                     valid = False
                 elif (self.menuOption == 6):
-                    self.userStory6(False, 0, 0)
+                    self.callUserStory6(False, 0, 0)
                     valid = False
                 elif (self.menuOption == 12):
-                    self.userStory12(False, 0)
+                    self.callUserStory12(False, 0)
                     valid = False
                 elif (self.menuOption == 13):
-                    self.userStory13(False, 0, 0)
+                    self.callUserStory13(False, 0, 0)
                     valid = False
                 elif (self.menuOption == 14):
-                    self.userStory14(False, 0, 0, 0)
+                    self.callUserStory14(False, 0, 0, 0)
                     valid = False
                 elif (self.menuOption == 16):
-                    self.userStory16(False, 0, 0)
+                    self.callUserStory16(False, 0, 0)
                     valid = False
                 elif (self.menuOption == 17):
                     self.customQuery(False, 0)                    
@@ -178,70 +177,70 @@ class MySQLDatabase(object):
         if (GUI):
             return results
         
-    def userStory1(self, GUI, startDate, endDate):
+    def callUserStory1(self, GUI, startDate, endDate):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (GUI):
             return userStory1(self.db, True, startDate, endDate)
         else:
             return userStory1(self.db, False, startDate, endDate)
         
-    def userStory2(self, GUI, startDate, endDate):
+    def callUserStory2(self, GUI, startDate, endDate):
         """ etc """
         if (GUI):
             return userStory2(self.db, True, startDate, endDate)
         else:
             return userStory2(self.db, False, startDate, endDate)
             
-    def userStory3(self, GUI, amount, startDate, endDate):
+    def callUserStory3(self, GUI, amount, startDate, endDate):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (GUI):
             return userStory3(self.db, True, amount, startDate, endDate)
         else:
             return userStory3(self.db, False, amount, startDate, endDate)
         
-    def userStory4(self, GUI, startDate, endDate):
+    def callUserStory4(self, GUI, startDate, endDate):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (GUI):
             return userStory4(self.db, True, startDate, endDate)
         else:
             return userStory4(self.db, False, startDate, endDate)
         
-    def userStory5(self, GUI, startDate, endDate):
+    def callUserStory5(self, GUI, startDate, endDate):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (GUI):
             return userStory5(self.db, True, startDate, endDate)
         else:
             return userStory5(self.db, False, startDate, endDate)
         
-    def userStory6(self, GUI, startDate, endDate):
+    def callUserStory6(self, GUI, startDate, endDate):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (GUI):
             return userStory6(self.db, True, startDate, endDate)
         else:
             return userStory6(self.db, False, startDate, endDate)
         
-    def userStory12(self, GUI, productID):
+    def callUserStory12(self, GUI, productID):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (GUI):
             return userStory12(self.db, True, productID)
         else:
             return userStory12(self.db, False, productID)
         
-    def userStory13(self, GUI, startDate, endDate):
+    def callUserStory13(self, GUI, startDate, endDate):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (GUI):
             return userStory13(self.db, True, startDate, endDate)
         else:
             return userStory13(self.db, False, startDate, endDate)
         
-    def userStory14(self, GUI, startDate, endDate, employeeID):
+    def callUserStory14(self, GUI, startDate, endDate, employeeID):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (GUI):
             return userStory14(self.db, True, startDate, endDate, employeeID)
         else:
             return userStory14(self.db, False, startDate, endDate, employeeID)
         
-    def userStory16(self, GUI, startDate, endDate):
+    def callUserStory16(self, GUI, startDate, endDate):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (GUI):
             return userStory16(self.db, True, startDate, endDate)
