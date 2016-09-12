@@ -65,10 +65,10 @@ class MainLogic(object):
     def printGnome(self):
         """ printGnome: Reads text file containing gnome in ASCII text and
             prints it out, stripping out newline characters. """
-        #with open('') as f:            
-         #   for line in f: 
-          #      line = line.rstrip('\n')
-        print ('test')
+        with open('assets\\gnome.txt') as f:            
+            for line in f: 
+                line = line.rstrip('\n')
+                print (line)
     
     def getMenuInput(self):
         """ getMenuInput: Gets user input for the menu, returns True/False. """
