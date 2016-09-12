@@ -60,7 +60,7 @@ class MySQLDatabase(object):
             return True
         except:
             print ("Error: username or password incorrect.")
-            self.logger.info("Unsuccessful login: %s", self.username)
+            #self.logger.info("Unsuccessful login: %s", self.username)
             return False
             
     def mainLogic(self):

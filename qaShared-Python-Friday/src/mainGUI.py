@@ -211,6 +211,10 @@ class MainApplication(tk.Frame):
         self.queryResultBox.destroy()
         self.customQueryButtonMongo.destroy()
         self.drop.destroy()
+        self.submitUserStoryInputs.destroy()
+        self.queryInputBox1.destroy()
+        self.queryInputBox2.destroy()
+        self.queryInputBox3.destroy()
         
         # NEED TO CLOSE THE CONNECTION to mongo/mysql!!!
         

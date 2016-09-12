@@ -19,6 +19,9 @@ from UserStories.userStory10 import userStory10
 from UserStories.userStory11 import userStory11
 from UserStories.userStory15 import userStory15
 
+# TODO:
+# bug: running validLogin twice, once in init, once in run(), why? GUI related?
+
 #import MySQLDatabase
 
 #MONGODB_URI = 'mongodb://master:pa$$w0rd@ds019766.mlab.com:19766/nbgardens'
@@ -43,6 +46,8 @@ class MongoDatabase(object):
         validLogin = self.login()
         
     def run(self):
+        """ run: Tries to login, if successful, run main logic, otherwise
+            return to previous menu. """
         validLogin = self.login()
         if (validLogin):
             print ("Connection to MongoDB successful.")
@@ -146,7 +151,7 @@ class MongoDatabase(object):
                 writer.writerow(forCSV[z])
 
     def userStory7(self, GUI, customerID):
-        """ useCase7:  """
+        """ userStory7:  """
         #print ("Doing things")
         #from MySQLDatabase import MySQLDatabase
         #query = "SELECT * FROM Product"

@@ -5,6 +5,19 @@ Created on Wed Aug 31 11:11:07 2016
 @author: Administrator
 """
 
+# TODO
+# 1. once sql logins sorted, have one login system, ie login before any menu's are printed
+# 2. finish off mongo queries that use SQL
+# 3. make sure graphs are correct, right axes labels etc
+# 4. logging module
+# 5. documentation - tested with sphinx - couldn't get working
+# 6. doc strings on every method
+# 7. proper comments
+# 8. on github readme, have proper dependencies eg. need pysql/pymongo
+# 9. on github, do the wiki
+# 10. on github, put up the class/erd diagrams
+
+
 # Import modules:
 import sys
 import logging
