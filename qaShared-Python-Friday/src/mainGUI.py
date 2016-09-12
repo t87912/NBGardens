@@ -9,8 +9,8 @@ Created on Thu Sep  1 15:13:49 2016
 import tkinter as tk
 
 # Import other python class files:
-from MySQLDatabase import MySQLDatabase
-from MongoDatabase import MongoDatabase
+from sqlDatabase.MySQLDatabase import MySQLDatabase
+from mongoDatabase.MongoDatabase import MongoDatabase
 
 # Tkinter fonts:
 LARGE_FONT= ("Verdana", 12)
