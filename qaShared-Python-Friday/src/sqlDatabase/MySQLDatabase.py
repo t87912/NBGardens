@@ -7,21 +7,21 @@ Created on Wed Aug 31 11:06:51 2016
 
 # Import modules:
 import pymysql
-import sys
 import csv
 import logging
 
 # Import the user story py files:
-from UserStories.userStory1 import userStory1
-from UserStories.userStory2 import userStory2
-from UserStories.userStory3 import userStory3
-from UserStories.userStory4 import userStory4
-from UserStories.userStory5 import userStory5
-from UserStories.userStory6 import userStory6
-from UserStories.userStory12 import userStory12
-from UserStories.userStory13 import userStory13
-from UserStories.userStory14 import userStory14
-from UserStories.userStory16 import userStory16
+from UserStories import AllUserStories
+#from UserStories.userStory1 import userStory1
+#from UserStories.userStory2 import userStory2
+#from UserStories.userStory3 import userStory3
+#from UserStories.userStory4 import userStory4
+#from UserStories.userStory5 import userStory5
+#from UserStories.userStory6 import userStory6
+#from UserStories.userStory12 import userStory12
+#from UserStories.userStory13 import userStory13
+#from UserStories.userStory14 import userStory14
+#from UserStories.userStory16 import userStory16
 
 
 # TODO:
@@ -35,6 +35,7 @@ class MySQLDatabase(object):
         self.username = userLoginDetails[0]
         self.password = userLoginDetails[1]
         self.db = None
+        self.run_query_obj = AllUserStories.AllUserStories()
         self.menuLines = ["\nPlease select an option: ",
                           "User Story Number | Description",
                           "1. Top salesperson of a given period, based on total cost of their sales during that time",
@@ -62,53 +63,81 @@ class MySQLDatabase(object):
             print ("Error: username or password incorrect.")
             #self.logger.info("Unsuccessful login: %s", self.username)
             return False
-            
+    
+    
+    def methodFinder(self):
+        one_param_cases = [12];
+        two_param_cases = [1, 2, 4, 6, 13, 16];
+        three_param_cases = [3, 5, 14];
+        # construct a method name
+        
+        if int(self.menuOption) in two_param_cases:
+            return self.run_query_obj.userStorySeries1(self.db, False, 0, 0, int(self.menuOption))
+        elif int(self.menuOption) in three_param_cases:
+            return self.run_query_obj.userStorySeries2(self.db, False, 0, 0, 0, int(self.menuOption))
+        method_name = 'userStory' + str(self.menuOption)     
+        # use string as the method name and call it else return alt method
+        find_method = getattr(self.run_query_obj, method_name)
+        # ifs to provide additional params should the user cases require them
+        if (int(self.menuOption) == 17):
+            return find_method(False, 0)
+        elif int(self.menuOption) in one_param_cases:
+            return find_method(self.db, False, 0)
+        else:
+            return find_method()
+    
+    
     def mainLogic(self):
-        """ mainLogic: Holds the logic for the main menu. """
+        """ mainLogic: Holds the logic for the main menu. """     
         valid = False
         while (not valid):
             self.printMenu()
             valid = self.getMenuInput() 
             if (valid):
-                if (self.menuOption == 1):
-                    self.callUserStory1(False, 0, 0)
-                    valid = False
-                elif (self.menuOption == 2):
-                    self.callUserStory2(False, 0, 0)
-                    valid = False
-                elif (self.menuOption == 3):
-                    self.callUserStory3(False, 0, 0, 0)
-                    valid = False
-                elif (self.menuOption == 4):
-                    self.callUserStory4(False, 0, 0)
-                    valid = False
-                elif (self.menuOption == 5):
-                    self.callUserStory5(False, 0, 0)
-                    valid = False
-                elif (self.menuOption == 6):
-                    self.callUserStory6(False, 0, 0)
-                    valid = False
-                elif (self.menuOption == 12):
-                    self.callUserStory12(False, 0)
-                    valid = False
-                elif (self.menuOption == 13):
-                    self.callUserStory13(False, 0, 0)
-                    valid = False
-                elif (self.menuOption == 14):
-                    self.callUserStory14(False, 0, 0, 0)
-                    valid = False
-                elif (self.menuOption == 16):
-                    self.callUserStory16(False, 0, 0)
-                    valid = False
-                elif (self.menuOption == 17):
-                    self.customQuery(False, 0)                    
-                    valid = False
-                elif (self.menuOption == 18):
-                    print ("Returning to main menu...")
-                elif (self.menuOption == 19):
-                    print ("Exiting the program...")
-                    sys.exit(0)
-                    
+                self.methodFinder()
+                valid = False     
+                
+# DEPRECATED CODE ============================================================================                      
+#                if (self.menuOption == 1):
+#                    self.callUserStory1(False, 0, 0)
+#                    valid = False
+#                elif (self.menuOption == 2):
+#                    self.callUserStory2(False, 0, 0)
+#                    valid = False
+#                elif (self.menuOption == 3):
+#                    self.callUserStory3(False, 0, 0, 0)
+#                    valid = False
+#                elif (self.menuOption == 4):
+#                    self.callUserStory4(False, 0, 0)
+#                    valid = False
+#                elif (self.menuOption == 5):
+#                    self.callUserStory5(False, 0, 0)
+#                    valid = False
+#                elif (self.menuOption == 6):
+#                    self.callUserStory6(False, 0, 0)
+#                    valid = False
+#                elif (self.menuOption == 12):
+#                    self.callUserStory12(False, 0)
+#                    valid = False
+#                elif (self.menuOption == 13):
+#                    self.callUserStory13(False, 0, 0)
+#                    valid = False
+#                elif (self.menuOption == 14):
+#                    self.callUserStory14(False, 0, 0, 0)
+#                    valid = False
+#                elif (self.menuOption == 16):
+#                    self.callUserStory16(False, 0, 0)
+#                    valid = False
+#                elif (self.menuOption == 17):
+#                    self.customQuery(False, 0)                    
+#                    valid = False
+#                elif (self.menuOption == 18):
+#                    print ("Returning to main menu...")
+#                elif (self.menuOption == 19):
+#                    print ("Exiting the program...")
+#                    sys.exit(0)
+# DEPRECATED CODE ============================================================================  
+    
     def printMenu(self):
         """ printMenu: Prints the main menu. """
         for x in range(0, len(self.menuLines)):
@@ -177,72 +206,72 @@ class MySQLDatabase(object):
         if (GUI):
             return results
         
-    def callUserStory1(self, GUI, startDate, endDate):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        if (GUI):
-            return userStory1(self.db, True, startDate, endDate)
-        else:
-            return userStory1(self.db, False, startDate, endDate)
-        
-    def callUserStory2(self, GUI, startDate, endDate):
-        """ etc """
-        if (GUI):
-            return userStory2(self.db, True, startDate, endDate)
-        else:
-            return userStory2(self.db, False, startDate, endDate)
-            
-    def callUserStory3(self, GUI, amount, startDate, endDate):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        if (GUI):
-            return userStory3(self.db, True, amount, startDate, endDate)
-        else:
-            return userStory3(self.db, False, amount, startDate, endDate)
-        
-    def callUserStory4(self, GUI, startDate, endDate):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        if (GUI):
-            return userStory4(self.db, True, startDate, endDate)
-        else:
-            return userStory4(self.db, False, startDate, endDate)
-        
-    def callUserStory5(self, GUI, startDate, endDate):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        if (GUI):
-            return userStory5(self.db, True, startDate, endDate)
-        else:
-            return userStory5(self.db, False, startDate, endDate)
-        
-    def callUserStory6(self, GUI, startDate, endDate):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        if (GUI):
-            return userStory6(self.db, True, startDate, endDate)
-        else:
-            return userStory6(self.db, False, startDate, endDate)
-        
-    def callUserStory12(self, GUI, productID):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        if (GUI):
-            return userStory12(self.db, True, productID)
-        else:
-            return userStory12(self.db, False, productID)
-        
-    def callUserStory13(self, GUI, startDate, endDate):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        if (GUI):
-            return userStory13(self.db, True, startDate, endDate)
-        else:
-            return userStory13(self.db, False, startDate, endDate)
-        
-    def callUserStory14(self, GUI, startDate, endDate, employeeID):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        if (GUI):
-            return userStory14(self.db, True, startDate, endDate, employeeID)
-        else:
-            return userStory14(self.db, False, startDate, endDate, employeeID)
-        
-    def callUserStory16(self, GUI, startDate, endDate):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        if (GUI):
-            return userStory16(self.db, True, startDate, endDate)
-        else:
-            return userStory16(self.db, False, startDate, endDate)
+#    def callUserStory1(self, GUI, startDate, endDate):
+#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+#        if (GUI):
+#            return userStory1(self.db, True, startDate, endDate)
+#        else:
+#            return userStory1(self.db, False, startDate, endDate)
+#        
+#    def callUserStory2(self, GUI, startDate, endDate):
+#        """ etc """
+#        if (GUI):
+#            return userStory2(self.db, True, startDate, endDate)
+#        else:
+#            return userStory2(self.db, False, startDate, endDate)
+#            
+#    def callUserStory3(self, GUI, amount, startDate, endDate):
+#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+#        if (GUI):
+#            return userStory3(self.db, True, amount, startDate, endDate)
+#        else:
+#            return userStory3(self.db, False, amount, startDate, endDate)
+#        
+#    def callUserStory4(self, GUI, startDate, endDate):
+#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+#        if (GUI):
+#            return userStory4(self.db, True, startDate, endDate)
+#        else:
+#            return userStory4(self.db, False, startDate, endDate)
+#        
+#    def callUserStory5(self, GUI, startDate, endDate):
+#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+#        if (GUI):
+#            return userStory5(self.db, True, startDate, endDate)
+#        else:
+#            return userStory5(self.db, False, startDate, endDate)
+#        
+#    def callUserStory6(self, GUI, startDate, endDate):
+#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+#        if (GUI):
+#            return userStory6(self.db, True, startDate, endDate)
+#        else:
+#            return userStory6(self.db, False, startDate, endDate)
+#        
+#    def callUserStory12(self, GUI, productID):
+#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+#        if (GUI):
+#            return userStory12(self.db, True, productID)
+#        else:
+#            return userStory12(self.db, False, productID)
+#        
+#    def callUserStory13(self, GUI, startDate, endDate):
+#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+#        if (GUI):
+#            return userStory13(self.db, True, startDate, endDate)
+#        else:
+#            return userStory13(self.db, False, startDate, endDate)
+#        
+#    def callUserStory14(self, GUI, startDate, endDate, employeeID):
+#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+#        if (GUI):
+#            return userStory14(self.db, True, startDate, endDate, employeeID)
+#        else:
+#            return userStory14(self.db, False, startDate, endDate, employeeID)
+#        
+#    def callUserStory16(self, GUI, startDate, endDate):
+#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+#        if (GUI):
+#            return userStory16(self.db, True, startDate, endDate)
+#        else:
+#            return userStory16(self.db, False, startDate, endDate)
