@@ -16,7 +16,6 @@ class AllUserStories (object):
     
     def __init__(self):
         empty = 0
-        print("you've opened user stories")
         # some instructions
 
  
@@ -345,38 +344,38 @@ class AllUserStories (object):
 #            return [results]
 
 
-    def userStory17(self, GUI, query, empty_param):
-        """ customeQuery: Executes user custom query. Need validation here. """
-        if (not GUI):
-            query = input("Input SQL query: ")
-        
-        self.logger = logging.info('Custom SQL query: %s', query)
-        cursor = self.db.cursor() # Creating the cursor to query the database
-        # Executing the query:
-        try:
-            cursor.execute(query)
-            self.db.commit()
-        except:
-            self.db.rollback()
-
-        results = cursor.fetchall()
-        for row in results:
-            toPrint = []
-            for i in range(0, len(row)):
-                toPrint.append([row[i]])
-            print (toPrint)
-        
-        if (GUI):
-            return results
+#    def userStory17(self, GUI, query):
+#        """ customeQuery: Executes user custom query. Need validation here. """
+#        if (not GUI):
+#            query = input("Input SQL query: ")
+#        
+#        self.logger = logging.info('Custom SQL query: %s', query)
+#        cursor = self.db.cursor() # Creating the cursor to query the database
+#        # Executing the query:
+#        try:
+#            cursor.execute(query)
+#            self.db.commit()
+#        except:
+#            self.db.rollback()
+#
+#        results = cursor.fetchall()
+#        for row in results:
+#            toPrint = []
+#            for i in range(0, len(row)):
+#                toPrint.append([row[i]])
+#            print (toPrint)
+#        
+#        if (GUI):
+#            return results
     
     
-    def userStory18(self):
-         print ("Returning to main menu...")
-  
-  
-    def userStory19(self):
-         print ("Exiting the program...")
-         sys.exit(0)
+#    def userStory18(self):
+#         print ("Returning to main menu...")
+#  
+#  
+#    def userStory19(self):
+#         print ("Exiting the program...")
+#         sys.exit(0)
          
          
     def userStorySeries1(self, db, GUI, startDate, endDate, query_number):

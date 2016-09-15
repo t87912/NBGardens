@@ -9,6 +9,7 @@ Created on Wed Aug 31 11:06:51 2016
 import pymysql
 import csv
 import logging
+import sys
 
 # Import the user story py files:
 from UserStories import AllUserStories
@@ -34,6 +35,7 @@ class MySQLDatabase(object):
         self.menuOption = 0
         self.username = userLoginDetails[0]
         self.password = userLoginDetails[1]
+        self.backToMain = False
         self.db = None
         self.run_query_obj = AllUserStories.AllUserStories()
         self.menuLines = ["\nPlease select an option: ",
@@ -75,16 +77,23 @@ class MySQLDatabase(object):
             return self.run_query_obj.userStorySeries1(self.db, False, 0, 0, int(self.menuOption))
         elif int(self.menuOption) in three_param_cases:
             return self.run_query_obj.userStorySeries2(self.db, False, 0, 0, 0, int(self.menuOption))
-        method_name = 'userStory' + str(self.menuOption)     
-        # use string as the method name and call it else return alt method
-        find_method = getattr(self.run_query_obj, method_name)
-        # ifs to provide additional params should the user cases require them
-        if (int(self.menuOption) == 17):
-            return find_method(False, 0)
-        elif int(self.menuOption) in one_param_cases:
-            return find_method(self.db, False, 0)
+        elif (int(self.menuOption) == 17):
+            #return find_method(False, 0)
+            self.customQuery(False, 0)
+        elif (int(self.menuOption) == 18):
+            print ("Returning to main menu...")
+            self.backToMain = True
+        elif (int(self.menuOption) == 19):
+            self.exitProgram()
         else:
-            return find_method()
+            method_name = 'userStory' + str(self.menuOption)     
+            # use string as the method name and call it else return alt method
+            find_method = getattr(self.run_query_obj, method_name)
+            # ifs to provide additional params should the user cases require them
+            if int(self.menuOption) in one_param_cases:
+                return find_method(self.db, False, 0)
+            else:
+                return find_method()
     
     
     def mainLogic(self):
@@ -95,7 +104,10 @@ class MySQLDatabase(object):
             valid = self.getMenuInput() 
             if (valid):
                 self.methodFinder()
-                valid = False     
+                if (self.backToMain):
+                    valid = True
+                else:
+                    valid = False     
                 
 # DEPRECATED CODE ============================================================================                      
 #                if (self.menuOption == 1):
@@ -137,6 +149,10 @@ class MySQLDatabase(object):
 #                    print ("Exiting the program...")
 #                    sys.exit(0)
 # DEPRECATED CODE ============================================================================  
+                
+    def exitProgram(self):
+        print ("Exiting the program...")
+        sys.exit(0)
     
     def printMenu(self):
         """ printMenu: Prints the main menu. """
