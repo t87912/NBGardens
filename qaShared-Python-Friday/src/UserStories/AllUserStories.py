@@ -119,7 +119,7 @@ class AllUserStories (object):
 #            return [results]
             
             
-    def userStory7(self, MongoQueries, GUI, custID): # + GUI (bool) + startDate + endDate etc
+    def mongoStory1(self, MongoQueries, GUI, custID): # + GUI (bool) + startDate + endDate etc
         """ userStory7(Boolean for GUI, customer id): This method does xyz """
         if (not GUI):
             custID = int(input("What is the customer ID you want to view review scores for?: "))
@@ -160,7 +160,7 @@ class AllUserStories (object):
             return result # result = [[prodID, date date ], [], []]
 
      
-    def userStory8(self, MongoQueries, GUI, gender):
+    def mongoStory2(self, MongoQueries, GUI, gender):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         #if (not GUI):
           #  custID = int(input("What gender would you like to search for customer scores by? /n Select from M or F"))
@@ -170,13 +170,13 @@ class AllUserStories (object):
         
     
     
-    def userStory9(self, MongoQueries, GUI):
+    def mongoStory3(self, MongoQueries, GUI):
         """ useCase9: """    
         print("TBC: need some SQL")
         
         
         
-    def userStory10(self, MongoQueries, GUI, productID):
+    def mongoStory4(self, MongoQueries, GUI, productID):
         """ useCase10 """
         print("TBC: need some SQL")
         if(not GUI):
@@ -212,10 +212,16 @@ class AllUserStories (object):
             return result
 
    
-    def userStory11(self, MongoQueries, GUI):
+    def mongoStory5(self, MongoQueries, GUI):
         """ useCase11 """
         #!!!!! very similar to 7 but with dates, needs SQL !!!!#
         print("TBC: need some SQL")    
+    
+    
+    def mongoStory6(MongoQueries, GUI):
+        """ useCase15 """
+        #!!!! againn need SQL for date !!!!#
+        print("TBC: need some SQL")
     
     
     def userStory12(self, db, GUI, productID):

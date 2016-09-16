@@ -92,8 +92,6 @@ class MySQLDatabase(object):
             # ifs to provide additional params should the user cases require them
             if int(self.menuOption) in one_param_cases:
                 return find_method(self.db, False, 0)
-            else:
-                return find_method()
     
     
     def mainLogic(self):
