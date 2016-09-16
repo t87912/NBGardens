@@ -20,7 +20,7 @@ Created on Wed Aug 31 11:11:07 2016
 
 # Import modules:
 import sys
-import logging
+#import logging
 
 # Import other python class files:
 from Login import Login
@@ -34,7 +34,9 @@ class MainLogic(object):
                          "1. Query MySQL Database.",
                          "2. Query MongoDB Database.",
                          "9. Quit."]
+        self.loggedIn = False        
         self.runProgram()
+        
     
     """
     def startLogging(self):
@@ -44,31 +46,62 @@ class MainLogic(object):
         self.logger.info('ASAS Program Opened - Logging Started')
     """
 
+#    def runProgram(self):  
+#        """ runProgram: Holds logic for the menu choices. """
+#        valid = False
+#        while (not valid):
+#            print ("Welcome to the NB Gardens Databse Query System!")
+#            self.printGnome()
+#            self.printMenu()
+#            valid = self.getMenuInput()
+#            if (valid):
+#                if (self.menuOption == 1):
+#                    validLogin = False
+#                    while (not validLogin):
+#                        userLogin = Login()
+#                        userLoginDetails = userLogin.getLoginDetails()
+#                        db = MySQLDatabase(userLoginDetails)
+#                        validLogin = db.login()
+#                    db.mainLogic()
+#                    valid = False
+#                elif (self.menuOption == 2):
+#                    mongoDB = MongoDatabase()
+#                    mongoDB.run()
+#                    valid = False
+#                elif (self.menuOption == 9):
+#                    print ("Exiting the program...")
+#                    sys.exit(0)
+
     def runProgram(self):  
         """ runProgram: Holds logic for the menu choices. """
         valid = False
         while (not valid):
-            print ("Welcome to the NB Gardens Databse Query System!")
-            self.printGnome()
-            self.printMenu()
-            valid = self.getMenuInput()
-            if (valid):
-                if (self.menuOption == 1):
-                    validLogin = False
-                    while (not validLogin):
-                        userLogin = Login()
-                        userLoginDetails = userLogin.getLoginDetails()
-                        db = MySQLDatabase(userLoginDetails)
-                        validLogin = db.login()
-                    db.mainLogic()
-                    valid = False
-                elif (self.menuOption == 2):
+            if (not self.loggedIn):
+                print ("Welcome to the NB Gardens Databse Query System!")
+                self.printGnome()
+                validLogin = False
+                while (not validLogin):
+                    userLogin = Login()
+                    userLoginDetails = userLogin.getLoginDetails()
+                    # init mysql db
+                    db = MySQLDatabase(userLoginDetails)
+                    validLogin = db.login()
+                    # init mongo db
                     mongoDB = MongoDatabase()
-                    mongoDB.run()
-                    valid = False
-                elif (self.menuOption == 9):
-                    print ("Exiting the program...")
-                    sys.exit(0)
+                    self.loggedIn = True
+            else:
+                if (self.loggedIn):
+                    self.printMenu()
+                    valid = self.getMenuInput()
+                    if (self.menuOption == 1):
+                        db.mainLogic()
+                        valid = False
+                    elif (self.menuOption == 2):
+                        mongoDB.run()
+                        valid = False
+                    elif (self.menuOption == 9):
+                        print ("Exiting the program...")
+                        sys.exit(0)
         
     def printMenu(self):
         """ printMenu: Prints the main menu. """
