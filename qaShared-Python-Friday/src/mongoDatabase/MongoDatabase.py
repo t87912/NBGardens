@@ -33,6 +33,7 @@ class MongoDatabase(object):
         for the Mongo options, executes custom query. """
     def __init__(self):
         self.conn = None # Mongo connection set later on
+        self.sqlDB = None
         self.menuLines = ["\nPlease select an option: ",
                           "1. Create a graph showing levels of customer satisfaction in a range of areas over a period of time", # mongo
                           "2. Average rating a particular customer has given NB Gardens", # mongo
@@ -47,6 +48,11 @@ class MongoDatabase(object):
         self.backToMain = False
         self.run_mongo_query = AllUserStories.AllUserStories()
     
+    def setDatabase(self, db):
+        """ setDatabase: This method takes in a database object and assigngs
+            it to a self variable. this is for use in user stories that require
+            mostly mongo queries but also some SQL. """
+        self.sqlDB = db
     
     def methodFinder(self):
         two_param_cases = [1,2,4];
@@ -160,6 +166,26 @@ class MongoDatabase(object):
     def exitProgram(self):
         print ("Exiting the program...")
         sys.exit(0)
+        
+        
+    def andrewExampleSQL(self):
+        """ andrewExampleSQL: """
+        print ("Testing SQL commands from MongoDB")
+        query = "SELECT * FROM Product"
+        cursor = self.sqlDB.cursor() # Creating the cursor to query the database
+        # Executing the query:
+        try:
+            cursor.execute(query)
+            self.sqlDB.commit()
+        except:
+            self.sqlDB.rollback()
+
+        results = cursor.fetchall()
+        for row in results:
+            toPrint = []
+            for i in range(0, len(row)):
+                toPrint.append([row[i]])
+            print (toPrint)
         
         
     def customQuery(self, GUI, userInput):

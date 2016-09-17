@@ -65,6 +65,9 @@ class MySQLDatabase(object):
             print ("Error: username or password incorrect.")
             #self.logger.info("Unsuccessful login: %s", self.username)
             return False
+            
+    def getDB(self):
+        return self.db
     
     
     def methodFinder(self):

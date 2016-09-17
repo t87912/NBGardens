@@ -87,7 +87,9 @@ class MainLogic(object):
                     db = MySQLDatabase(userLoginDetails)
                     validLogin = db.login()
                     # init mongo db
+                    sqlDBForMongo = db.getDB()
                     mongoDB = MongoDatabase()
+                    mongoDB.setDatabase(sqlDBForMongo)
                     self.loggedIn = True
             else:
                 if (self.loggedIn):
