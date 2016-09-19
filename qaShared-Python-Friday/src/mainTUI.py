@@ -33,6 +33,7 @@ class MainLogic(object):
         self.menuLines = ["\nPlease select an option: ",
                          "1. Query MySQL Database.",
                          "2. Query MongoDB Database.",
+                         "8. Logout.",
                          "9. Quit."]
         self.loggedIn = False  
         self.initialLogin = True # used to not display gnome after first login
@@ -106,6 +107,9 @@ class MainLogic(object):
                         mongoDB.run()
                         valid = False
                         self.initialLogin = False
+                    elif (self.menuOption == 8):
+                        self.loggedIn = False
+                        valid = False
                     elif (self.menuOption == 9):
                         print ("Exiting the program...")
                         sys.exit(0)
@@ -126,12 +130,13 @@ class MainLogic(object):
     def getMenuInput(self):
         """ getMenuInput: Gets user input for the menu, returns True/False. """
         userChoice = input("Input option number: ")
+        validMenuInput = [1,2,8,9]
         try:
             userChoice = int(userChoice)
         except:
             print ("Error. Please enter a valid number.")
             return False
-        if (int(userChoice) not in [1,2,9]):
+        if (int(userChoice) not in validMenuInput):
             print ("Error. Please enter a valid number.")
             return False
         else:
