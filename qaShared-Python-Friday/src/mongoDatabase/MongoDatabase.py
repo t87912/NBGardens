@@ -94,6 +94,7 @@ class MongoDatabase(object):
             MONGODB_URI = 'mongodb://master:pa$$w0rd@ds019766.mlab.com:19766/nbgardens'
             self.conn = MongoClient(MONGODB_URI)
             print ("Connecting to MongoDB...")
+            print ("Connection to MongoDB was successful.")
             return True
         except:
             print ("Error: Could not connect to MongoDB.")

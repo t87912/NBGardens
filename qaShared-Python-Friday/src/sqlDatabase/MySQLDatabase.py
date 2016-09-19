@@ -58,8 +58,8 @@ class MySQLDatabase(object):
         """ login: Try/Except to log the user in. """
         try:
             self.db = pymysql.connect("db4free.net", "gemmai95", "raysmithy", "nbgardensqa")
-            print ("Login successful.")
-            print ("%s, welcome to ASAS!" % (self.username))
+            print ("Connecting to MySQL database...")
+            print ("Connection to MySQL database was successful.")
             return True
         except:
             print ("Error: username or password incorrect.")

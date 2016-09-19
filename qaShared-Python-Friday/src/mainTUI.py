@@ -34,7 +34,8 @@ class MainLogic(object):
                          "1. Query MySQL Database.",
                          "2. Query MongoDB Database.",
                          "9. Quit."]
-        self.loggedIn = False        
+        self.loggedIn = False  
+        self.initialLogin = True # used to not display gnome after first login
         self.runProgram()
         
     
@@ -83,24 +84,28 @@ class MainLogic(object):
                 while (not validLogin):
                     userLogin = Login()
                     userLoginDetails = userLogin.getLoginDetails()
-                    # init mysql db
-                    db = MySQLDatabase(userLoginDetails)
-                    validLogin = db.login()
-                    # init mongo db
-                    sqlDBForMongo = db.getDB()
-                    mongoDB = MongoDatabase()
-                    mongoDB.setDatabase(sqlDBForMongo)
+                    db = MySQLDatabase(userLoginDetails) # Init MySQL db
+                    validLogin = db.login() # Login to MySQL db
+                    sqlDBForMongo = db.getDB()# Get MySQL db object to pass to MongoDB
+                    mongoDB = MongoDatabase() # Init Mongo db
+                    mongoDB.setDatabase(sqlDBForMongo) # Pass MySQL db into Mongo
                     self.loggedIn = True
             else:
                 if (self.loggedIn):
-                    self.printMenu()
-                    valid = self.getMenuInput()
+                    if (not self.initialLogin):
+                        print ("Welcome to the NB Gardens Databse Query System!")
+                        self.printGnome()
+                    while (not valid):
+                        self.printMenu()
+                        valid = self.getMenuInput()
                     if (self.menuOption == 1):
                         db.mainLogic()
                         valid = False
+                        self.initialLogin = False
                     elif (self.menuOption == 2):
                         mongoDB.run()
                         valid = False
+                        self.initialLogin = False
                     elif (self.menuOption == 9):
                         print ("Exiting the program...")
                         sys.exit(0)

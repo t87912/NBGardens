@@ -25,7 +25,8 @@ class Login(object):
         """ getPassword: Get userinput for the password, getpass module 
             should be used to print '*'s as the user types in password,
             this doesn't work in Spyder IDE though. """
-        password = input("Please enter your password: ")
+        password = input("Password: ")
+        print ("") # For formatting
         return password
         
     def getLoginDetails(self):
