@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import os
 import sys
 import logging
+import time
 
 class AllUserStories (object):
     
@@ -386,10 +387,15 @@ class AllUserStories (object):
          
     def userStorySeries1(self, db, GUI, startDate, endDate, query_number):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-   
         if (not GUI):
-            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-            endDate = input("Please enter the end date (YYYY-MM-DD): ") 
+            validStartDate = False
+            validEndDate = False
+            while (not validStartDate):    
+                startDate = input("Please enter the start date (YYYY-MM-DD): ")
+                validStartDate = self.validateDateInput(startDate)
+            while (not validEndDate):
+                endDate = input("Please enter the end date (YYYY-MM-DD): ") 
+                validEndDate = self.validateDateInput(endDate)
         
             sqlParse = queries[query_number] % (startDate, endDate)
             sql = sqlParse
@@ -441,14 +447,32 @@ class AllUserStories (object):
         # If GUI return the data
         if (GUI):
             return [results]
-    
+            
+    def validateDateInput(self, date):
+        """ validateDateInput: This method accepts a date as a parameter and
+            will return true/false depending on whether the date is in the
+            right format or not. Date should be in format YYYY-MM-DD. """
+        try:
+            # Try putting the date in the right format using strptime()
+            date = time.strptime(date, "%Y-%m-%d")
+            validDate = True
+        except:
+            print ("Error: Please input a date in the correct format.")
+            validDate = False
+        return validDate
     
     def userStorySeries2(self, db, GUI, startDate, endDate, additional_attribute, query_number):
         """ useCase3: Accepts parameter 'period' which is a period, 1-4 """
     
         if (not GUI):
-            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-            endDate = input("Please enter the end date (YYYY-MM-DD): ")
+            validStartDate = False
+            validEndDate = False
+            while (not validStartDate):    
+                startDate = input("Please enter the start date (YYYY-MM-DD): ")
+                validStartDate = self.validateDateInput(startDate)
+            while (not validEndDate):
+                endDate = input("Please enter the end date (YYYY-MM-DD): ") 
+                validEndDate = self.validateDateInput(endDate)
             if (query_number == 3):
                 amount_or_productid = input("Please enter the amount: ")
             else:
