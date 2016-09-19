@@ -210,18 +210,17 @@ class MySQLDatabase(object):
         try:
             cursor.execute(query)
             self.db.commit()
+            results = cursor.fetchall()
+            for row in results:
+                toPrint = []
+                for i in range(0, len(row)):
+                    toPrint.append([row[i]])
+                print (toPrint)
+            if (GUI):
+                return results            
         except:
             self.db.rollback()
-
-        results = cursor.fetchall()
-        for row in results:
-            toPrint = []
-            for i in range(0, len(row)):
-                toPrint.append([row[i]])
-            print (toPrint)
-        
-        if (GUI):
-            return results
+            print ("Error: SQL query was invalid.") 
         
 #    def callUserStory1(self, GUI, startDate, endDate):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
