@@ -19,6 +19,41 @@ class AllUserStories (object):
         empty = 0
         # some instructions
 
+    def validateDateInput(self, date):
+        """ validateDateInput: This method accepts a date as a parameter and
+            will return true/false depending on whether the date is in the
+            right format or not. Date should be in format YYYY-MM-DD. """
+        try:
+            # Try putting the date in the right format using strptime()
+            date = time.strptime(date, "%Y-%m-%d")
+            validDate = True
+        except:
+            print ("Error: Please input a date in the correct format.")
+            validDate = False
+        return validDate 
+        
+    def validateProductIDInput(self, productID):
+        """ validateProductIDInput: This method accepts a product id (e.g. 
+            prod id = 1) and validates it. True/false is returned. """
+        try:
+            int(productID)
+            validID = True
+        except:
+            print ("Error: Please input a valid product ID.")
+            validID = False
+        return validID
+        
+    def validateAmountInput(self, amount):
+        """ validateAmountInput: This method accepts an amount (e.g. 
+            amount = 1 or 1.0) and validates it. True/false is returned. """
+        try:
+            float(amount)
+            validAmount = True
+        except:
+            print ("Error: Please input a valid amount.")
+            validAmount = False
+        return validAmount
+        
  
 #    def userStory1(self, db, GUI, startDate, endDate):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
@@ -229,7 +264,10 @@ class AllUserStories (object):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         
         if (not GUI):
-            productID = input("Please enter the productID: ") 
+            validProductID = False
+            while (not validProductID):    
+                productID = input("Please enter the productID: ") 
+                validProductID = self.validateProductIDInput(productID)
         
         sqlParse = queries[12] % (productID)
         sql = sqlParse
@@ -447,19 +485,6 @@ class AllUserStories (object):
         # If GUI return the data
         if (GUI):
             return [results]
-            
-    def validateDateInput(self, date):
-        """ validateDateInput: This method accepts a date as a parameter and
-            will return true/false depending on whether the date is in the
-            right format or not. Date should be in format YYYY-MM-DD. """
-        try:
-            # Try putting the date in the right format using strptime()
-            date = time.strptime(date, "%Y-%m-%d")
-            validDate = True
-        except:
-            print ("Error: Please input a date in the correct format.")
-            validDate = False
-        return validDate
     
     def userStorySeries2(self, db, GUI, startDate, endDate, additional_attribute, query_number):
         """ useCase3: Accepts parameter 'period' which is a period, 1-4 """
@@ -474,11 +499,17 @@ class AllUserStories (object):
                 endDate = input("Please enter the end date (YYYY-MM-DD): ") 
                 validEndDate = self.validateDateInput(endDate)
             if (query_number == 3):
-                amount_or_productid = input("Please enter the amount: ")
+                validAmount = False
+                while (not validAmount):
+                    amount_or_productid = input("Please enter the amount: ")
+                    validAmount = self.validateAmountInput(amount_or_productid)
             else:
-                amount_or_productid = input("Please enter the productID: ")
+                validProductID = False
+                while (not validProductID):
+                    amount_or_productid = input("Please enter the productID: ")
+                    validProductID = self.validateProductIDInput(amount_or_productid)
+                    
         sqlParse = queries[query_number] % (startDate, endDate, amount_or_productid)
-        
         sql = sqlParse
         results = query(db, sql)
         
