@@ -506,7 +506,10 @@ class AllUserStories (object):
             else:
                 validProductID = False
                 while (not validProductID):
-                    amount_or_productid = input("Please enter the productID: ")
+                    if (query_number == 14):
+                        amount_or_productid = input("Please enter the employeeID: ")
+                    else:
+                        amount_or_productid = input("Please enter the productID: ")                        
                     validProductID = self.validateProductIDInput(amount_or_productid)
                     
         sqlParse = queries[query_number] % (startDate, endDate, amount_or_productid)
