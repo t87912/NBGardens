@@ -59,6 +59,19 @@ I am not sure whether this would be a seperate query or if there is an option to
 
 If a seperate query is nescessary, the Database team needs to write those queries and then the python team will append the column names to the first element of the returned data.
 
+# 9. JIRA:
+
+Need to set up JIRA on either a QA Computer (if this is even allowed) or set it up using web hosting.
+
+This would be connected to Git to log any issues etc.
+
+# 10. CloudFoundry:
+
+Need to set up CloudFoundry to deploy our project.
+
+# 11. Jenkins:
+
+Not sure if this is possible, but it would be nice to have Jenkins run the project to see if there are any errors?
 
 # Old ToDO stuff:
 
