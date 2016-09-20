@@ -3,6 +3,7 @@ from tkinter import *
 import tkinter.messagebox as tm
 
 
+
 class LoginFrame(Frame):
 
     validLogin = False
@@ -29,9 +30,9 @@ class LoginFrame(Frame):
     def _login_btn_clickked(self):
         username = self.usernameEntry.get()
         password = self.passwordEntry.get()
-        #userLoginDetails = [username, password]
-        #self.db = MySQLDatabase(userLoginDetails)
-        #validLogin = self.db.login() # Returns bool True if valid
+        userLoginDetails = [username, password]
+        self.db = MySQLDatabase(userLoginDetails)
+        validLogin = self.db.login() # Returns bool True if valid
 
 
         #sql input here instead of variables

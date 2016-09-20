@@ -3,18 +3,20 @@ from tkinter import ttk
 
 
 
-class MainFrame(ttk.Frame):
+class MainFrame(ttk.Frame,db):
 
     queryID = -1
     dates = ['o','o']
     endDateEnt = 0
-    startDateEnt = 0
-    true = 0
+    startDateEnt=0
+    idEnt = 0
+    l1=0
+    l2=0
+    db = db
     def __init__(self, master, *args, **kwargs):
         self.test = 1
         self.master = master
         #Setting up main window
-
 
         #output frame
         outputFrame = Frame(root,height=30,width = 60)
@@ -81,44 +83,55 @@ class MainFrame(ttk.Frame):
         status = Label(root, text = "ready", bd = 1, relief = "sunken", anchor = W)
         status.pack(side = BOTTOM, fill = X)
 
-    def getDates(self,a,b):
-        start=a.get()
-        end=b.get()
-        self.dates = [start,end]
 
-    def getQueryID(self,tab,CV):
-        queryID = CV[0]
-        print(queryID)
-        if(queryID=='Top Sales Person'):
-            self.dates = self.createDateInputs(tab,5,0)
+    def getQueryID(self,tab,CB):
+        #if(self.endDateEnt != 0):
+            #self.createDateInputs(tab,5,0,1)
+        print(CB.current())
+        if(CB.current()==0):
+            self.createDateInputs(tab,5,0,0)
             ok = Button(tab,text = "Perform Query", command =lambda:self.topSales(tab))
             ok.grid(row="1", column="2")
-
+        elif(CB.current()==1):
+            id = 'SalesID:'
+            self.createIdInputs(tab,5,0,id)
+            ok = Button(tab,text = "Perform Query", command =lambda:self.SalesOfID(tab))
+            ok.grid(row="1", column="2")
 
 #Method to insert Start/End Date Entry Inputs
-    def createDateInputs(self,tab, row, column):
-        dateInputFrame = Frame(tab)
-        Label(dateInputFrame, text="Start Date (yyyy-mm-dd)").grid(row="0", column="0", sticky=W, padx=5, pady=5)
-        self.startDateEnt = Entry(dateInputFrame)
-        self.startDateEnt.grid(row="0", column="1")
-        Label(dateInputFrame, text="End Date (yyyy-mm-dd)").grid(row="1", column="0", sticky=W, padx=5)
-        self.endDateEnt = Entry(dateInputFrame)
-        self.endDateEnt.grid(row="1", column="1")
-        dateInputFrame.grid(row=row)
+
+##Think it will be easier to have two/three perminant lables that get changed because they're hard to delete
+    def createDateInputs(self,tab, row, column,destroy):
+        if(destroy == 0):
+            dateInputFrame = Frame(tab)
+            self.l1 = Label(dateInputFrame, text="Start Date (yyyy-mm-dd)").grid(row="0", column="0", sticky=W, padx=5, pady=5)
+            self.startDateEnt = Entry(dateInputFrame)
+            self.startDateEnt.grid(row="0", column="1")
+            self.l2 = Label(dateInputFrame, text="End Date (yyyy-mm-dd)").grid(row="1", column="0", sticky=W, padx=5)
+            self.endDateEnt = Entry(dateInputFrame)
+            self.endDateEnt.grid(row="1", column="1")
+            dateInputFrame.grid(row=row)
+        elif(destroy ==1):
+            self.endDateEnt.destroy()
+            self.startDateEnt.destroy()
+            self.endDateEnt = 0
+            self.startDateEnt = 0
+            self.l1.destroy()
+            self.l2.destroy()
 
 
     #Method to take ID
-    def createIdInputs(self,frameWindow, row, column):
+    def createIdInputs(self,frameWindow, row, column,id):
         idInputFrame = Frame(frameWindow)
-        Label(idInputFrame, text="ID").grid(row="0", column="0", sticky=W, padx=5, pady=5)
-        idEnt = Entry(idInputFrame)
-        idEnt.grid(row="0", column="1")
+        self.Label(idInputFrame, text=id).grid(row="0", column="0", sticky=W, padx=5, pady=5)
+        self.idEnt = Entry(idInputFrame)
+        self.idEnt.grid(row="0", column="1")
         idInputFrame.grid(row=row)
 
     #Method to take country
     def createCountryInputs(self,frameWindow, row, column):
         countryInputFrame = Frame(frameWindow)
-        Label(idInputFrame, text="Country").grid(row="0", column="0", sticky=W, padx=5, pady=5)
+        self.Label(idInputFrame, text="Country").grid(row="0", column="0", sticky=W, padx=5, pady=5)
         countryEnt = Entry(countryInputFrame)
         countryEnt.grid(row="0", column="1")
         countryInputFrame.grid(row=row)
@@ -131,21 +144,29 @@ class MainFrame(ttk.Frame):
         combobox.current(0)
         combobox.config(state = 'readonly')
         combobox.grid(row = "0", column = "1")
-        B = Button(queryComboBoxFrame,text = "Select Query", command =lambda: self.getQueryID(tab,comboValues))
+        B = Button(queryComboBoxFrame,text = "Select Query", command =lambda: self.getQueryID(tab,combobox))
         B.grid(row=1)
         queryComboBoxFrame.grid(row=row, column=column)
         queryComboBoxFrame.grid_columnconfigure(0, weight=1)
 
     #Method to work out the top sales
     def topSales(self,tab):
-        self.getDates(self.startDateEnt,self.endDateEnt)
-        datefrom = self.dates[0]
-        dateto = self.dates[1]
+        datefrom = self.startDateEnt.get()
+        dateto = self.endDateEnt.get()
         #MainApplication.userStory1(dateFrom,dateTo)
+        from UserStories.UserStory1 import UserStory1
+        toPrint = callUserStory1(self.db, True, datefrom,dateto)
         print(datefrom,dateto)
+        print(toPrint)
+
+    def SalesOfID(self,tab):
+        id = self.idEnt.get()
+        #MainApplication.userStory12(id)
+        print(id)
+
 
 root = Tk()
 MainFrame = MainFrame(root)
 root.title("NB Gardens")
-root.geometry("600x600")
+root.geometry("700x600")
 root.mainloop()
