@@ -2,7 +2,10 @@
 from tkinter import *
 import tkinter.messagebox as tm
 
-
+# Import other python class files:
+from sqlDatabase.MySQLDatabase import MySQLDatabase
+from mongoDatabase.MongoDatabase import MongoDatabase
+from UserStories.userStory1 import userStory1
 
 class LoginFrame(Frame):
 
@@ -33,16 +36,31 @@ class LoginFrame(Frame):
         userLoginDetails = [username, password]
         self.db = MySQLDatabase(userLoginDetails)
         validLogin = self.db.login() # Returns bool True if valid
+        
+        self.dbConnection = self.db.getDB() # get the db connection
+        
+        if (validLogin):
+            # show main program stuff
+            print ("Successful login to MySQL and Mongo databases.")
+            
+            # Example query:
+            toPrint = userStory1(self.dbConnection, True, "2000-1-1","2020-1-1")
+            print (toPrint)
+            
+            
+        else:
+            print ("Invalid username/password, please try again.")
+            # need to show error message in gui somehow
 
 
         #sql input here instead of variables
-        if username == "darrell" and password == "password":
-            tm.showinfo("Login info", "Welcome darrell")
-            validLogin = True
+        #if username == "darrell" and password == "password":
+         #   tm.showinfo("Login info", "Welcome darrell")
+          #  validLogin = True
 
-        else:
-            tm.showerror("Login error", "Incorrect username or password")
-            validLogin = False
+        #else:
+         #   tm.showerror("Login error", "Incorrect username or password")
+          #  validLogin = False
 
 
 #### needs to be on for GUI
