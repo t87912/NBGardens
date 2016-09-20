@@ -7,6 +7,9 @@ class MainFrame(ttk.Frame):
 
     queryID = -1
     dates = ['o','o']
+    endDateEnt = 0
+    startDateEnt = 0
+    true = 0
     def __init__(self, master, *args, **kwargs):
         self.test = 1
         self.master = master
@@ -73,12 +76,6 @@ class MainFrame(ttk.Frame):
         tabControl.add(tab4, text='Employee')
         comboValues = ['Top Sales Person', 'Sales by Sales Person']
         self.createQueryComboBoxOrders(tab4, 0, 0, comboValues)
-        #topSales(tab4)
-        #This should add new input fields based on the query selected
-        #if queryID == 0:
-        #if self.test == 1:
-            #self.topSales(tab4)
-            #createDateInputs(tab4,5,0)
 
         #Status bar
         status = Label(root, text = "ready", bd = 1, relief = "sunken", anchor = W)
@@ -88,22 +85,26 @@ class MainFrame(ttk.Frame):
         start=a.get()
         end=b.get()
         self.dates = [start,end]
-    
 
-    #Method to insert Start/End Date Entry Inputs
-    def createDateInputs(self,frameWindow, row, column):
-        dateInputFrame = Frame(frameWindow)
+    def getQueryID(self,tab,CV):
+        queryID = CV[0]
+        print(queryID)
+        if(queryID=='Top Sales Person'):
+            self.dates = self.createDateInputs(tab,5,0)
+            ok = Button(tab,text = "Perform Query", command =lambda:self.topSales(tab))
+            ok.grid(row="1", column="2")
+
+
+#Method to insert Start/End Date Entry Inputs
+    def createDateInputs(self,tab, row, column):
+        dateInputFrame = Frame(tab)
         Label(dateInputFrame, text="Start Date (yyyy-mm-dd)").grid(row="0", column="0", sticky=W, padx=5, pady=5)
-        startDateEnt = Entry(dateInputFrame)
-        startDateEnt.grid(row="0", column="1")
+        self.startDateEnt = Entry(dateInputFrame)
+        self.startDateEnt.grid(row="0", column="1")
         Label(dateInputFrame, text="End Date (yyyy-mm-dd)").grid(row="1", column="0", sticky=W, padx=5)
-        endDateEnt = Entry(dateInputFrame)
-        endDateEnt.grid(row="1", column="1")
-        ok = Button(frameWindow,text = "Perform Query", command =lambda:self.getDates(startDateEnt,endDateEnt))
-        ok.grid(row="1", column="2")
+        self.endDateEnt = Entry(dateInputFrame)
+        self.endDateEnt.grid(row="1", column="1")
         dateInputFrame.grid(row=row)
-        print("hi")
-        #frameWindow.update()
 
 
     #Method to take ID
@@ -123,36 +124,25 @@ class MainFrame(ttk.Frame):
         countryInputFrame.grid(row=row)
 
     #Dropdown box for Queries
-    def createQueryComboBoxOrders(self,frameWindow, row, column, comboValues):
-        queryComboBoxFrame = Frame(frameWindow)
+    def createQueryComboBoxOrders(self,tab, row, column, comboValues):
+        queryComboBoxFrame = Frame(tab)
         Label(queryComboBoxFrame, text="Choose a query:").grid(row="0", column="0", sticky=W, padx=5, pady=5)
-        penguinType_combobox = ttk.Combobox(queryComboBoxFrame, values = comboValues, width="50")
-        penguinType_combobox.current(0)
-        penguinType_combobox.grid(row = "0", column = "1")
-
-        def justamethod():
-            print (penguinType_combobox.current())
-            queryID = penguinType_combobox.current()
-            self.test = 1
-
-        B = Button(queryComboBoxFrame,text = "Perform Query", command =lambda: self.topSales(frameWindow))
+        combobox = ttk.Combobox(queryComboBoxFrame, values = comboValues, width="50")
+        combobox.current(0)
+        combobox.config(state = 'readonly')
+        combobox.grid(row = "0", column = "1")
+        B = Button(queryComboBoxFrame,text = "Select Query", command =lambda: self.getQueryID(tab,comboValues))
         B.grid(row=1)
         queryComboBoxFrame.grid(row=row, column=column)
         queryComboBoxFrame.grid_columnconfigure(0, weight=1)
 
-    def createQueryButton(self,tab4, row, column):
-        ok = Button(tab4,text = "Perform Query", command =lambda:self.getDates())
-        ok.grid(row="1", column="2")
-
     #Method to work out the top sales
-    def topSales(self,tab4):
-        self.createDateInputs(tab4,5,0)
-        #self.createQueryButton(tab4,6,0)
-        print("hi")
-        #datefrom = self.startDateEnt.get()
-        #dateto =
-        #userStory1(dateFrom,dateTo)
-        print(self.dates)
+    def topSales(self,tab):
+        self.getDates(self.startDateEnt,self.endDateEnt)
+        datefrom = self.dates[0]
+        dateto = self.dates[1]
+        #MainApplication.userStory1(dateFrom,dateTo)
+        print(datefrom,dateto)
 
 root = Tk()
 MainFrame = MainFrame(root)
