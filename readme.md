@@ -1,6 +1,6 @@
 ## Jobs for people:
 
-# 1. writeToCSV() Function:
+# 1. writeToCSV() Function (DAMIEN):
 
 This function will accept data in the form [[row 1],[row 2]...[row n]] where a row is a list of elements, e.g. row1 = [1.0, 2015, 5, "Some string"] e.t.c.
 
