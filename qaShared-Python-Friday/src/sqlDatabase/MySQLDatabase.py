@@ -57,7 +57,8 @@ class MySQLDatabase(object):
     def login(self):
         """ login: Try/Except to log the user in. """
         try:
-            self.db = pymysql.connect("db4free.net", "gemmai95", "raysmithy", "nbgardensqa")
+            # Ask Tom for the ip/password
+            self.db = pymysql.connect("", "AlStock", "", "nbgardensds")
             print ("Connecting to MySQL database...")
             print ("Connection to MySQL database was successful.")
             return True
