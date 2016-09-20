@@ -8,4 +8,3 @@ class main():
     GUIlogin.LoginFrame(Frame)
     if GUIlogin.validLogin:
         GUImain.MainFrame(Frame)
-        GUIMain.main()
