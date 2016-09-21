@@ -105,6 +105,9 @@ class MongoDatabase(object):
         for x in range(0, len(self.menuLines)):
             print (self.menuLines[x])
             
+    def closeConnection(self):
+        self.conn.close()
+            
     def getMenuInput(self):
         """ getMenuInput: Get user input menu choice. """
         userChoice = input("Input option number: ")

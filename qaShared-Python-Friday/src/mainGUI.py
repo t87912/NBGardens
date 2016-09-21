@@ -143,6 +143,16 @@ class MainApplication(tk.Frame):
             self.submitUserStoryInputs = tk.Button(self.master, text = "Submit", command = self.submitUserStory)
             self.submitUserStoryInputs.grid(row=12,column=4)
             
+            # Set prompt text of input boxes:
+            self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
+            self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
+            self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+            
+            # Bind the input boxes, so on focus remove prompt text:
+            self.queryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox1"))
+            self.queryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox2"))
+            self.queryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox3"))
+            
             # Disable the inputs:
             self.queryInputBox1.configure(state="disabled")
             self.queryInputBox2.configure(state="disabled")
@@ -161,6 +171,12 @@ class MainApplication(tk.Frame):
         
     def dropDownInput(self, value):
         print(value)
+        self.queryInputBox1.delete(0, "end")
+        self.queryInputBox2.delete(0, "end")
+        self.queryInputBox3.delete(0, "end")
+        self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
         self.queryInputBox1.config(state='disabled')                    
         self.queryInputBox2.config(state='disabled')
         self.queryInputBox3.config(state='disabled')
@@ -218,6 +234,7 @@ class MainApplication(tk.Frame):
             self.queryInputBox2.config(state='normal')
             
             
+            
     def submitUserStory(self):
         if (self.userStory == 0):
             self.queryResultBox.delete('1.0', tk.END)
@@ -272,7 +289,11 @@ class MainApplication(tk.Frame):
             toDate = self.queryInputBox2.get()
             toPrint = userStory16(self.dbConn, True, fromDate, toDate)
         
-        self.outputQueryResult(toPrint)        
+        self.outputQueryResult(toPrint) 
+        
+        self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
         
         self.queryInputBox1.config(state='disabled')                    
         self.queryInputBox2.config(state='disabled')
@@ -298,7 +319,10 @@ class MainApplication(tk.Frame):
         self.queryInputBox1.destroy()
         self.queryInputBox2.destroy()
         self.queryInputBox3.destroy()
-        # NEED TO CLOSE THE CONNECTION to mongo/mysql!!!
+        
+        # On logout, close the database connections
+        self.db.closeConnection()
+        self.mongoDB.closeConnection()
         
     def customSQL(self):
         """ customSQL: Allows custom SQL queries to be input, sends user input

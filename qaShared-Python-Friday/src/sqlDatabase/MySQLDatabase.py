@@ -69,6 +69,9 @@ class MySQLDatabase(object):
 
     def getDB(self):
         return self.db
+        
+    def closeConnection(self):
+        self.db.close()
 
 
     def methodFinder(self):
