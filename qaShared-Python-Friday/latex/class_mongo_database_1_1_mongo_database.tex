@@ -1,0 +1,116 @@
+\hypertarget{class_mongo_database_1_1_mongo_database}{}\section{Mongo\+Database.\+Mongo\+Database Class Reference}
+\label{class_mongo_database_1_1_mongo_database}\index{Mongo\+Database.\+Mongo\+Database@{Mongo\+Database.\+Mongo\+Database}}
+Inheritance diagram for Mongo\+Database.\+Mongo\+Database\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_mongo_database_1_1_mongo_database}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_mongo_database_1_1_mongo_database_a02dc685b883d5747c2a8329d4d4c67b5}{}\label{class_mongo_database_1_1_mongo_database_a02dc685b883d5747c2a8329d4d4c67b5} 
+def {\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+\hypertarget{class_mongo_database_1_1_mongo_database_a6a22d9c25edbbd88115bbc64889f854d}{}\label{class_mongo_database_1_1_mongo_database_a6a22d9c25edbbd88115bbc64889f854d} 
+def {\bfseries method\+Finder} (self)
+\item 
+def \hyperlink{class_mongo_database_1_1_mongo_database_afdd3078ad8bb851bab945b1b477f1529}{run} (self)
+\item 
+def \hyperlink{class_mongo_database_1_1_mongo_database_a54df0dccd3550bc038fa246ee0f97a15}{login} (self)
+\item 
+def \hyperlink{class_mongo_database_1_1_mongo_database_a2eb4c5b675b39a871dfdf03458376363}{print\+Menu} (self)
+\item 
+def \hyperlink{class_mongo_database_1_1_mongo_database_ab5d6d51b956790d3804e4c566ae40cfe}{get\+Menu\+Input} (self)
+\item 
+def \hyperlink{class_mongo_database_1_1_mongo_database_a123d046fd01db4d2b342289a972e8e31}{main\+Logic} (self)
+\item 
+\hypertarget{class_mongo_database_1_1_mongo_database_a80a8491e446682c7e420fd1270c8cfe2}{}\label{class_mongo_database_1_1_mongo_database_a80a8491e446682c7e420fd1270c8cfe2} 
+def {\bfseries exit\+Program} (self)
+\item 
+def \hyperlink{class_mongo_database_1_1_mongo_database_af1be85a82838d6e46f181af707892606}{custom\+Query} (self, G\+UI, user\+Input)
+\item 
+def \hyperlink{class_mongo_database_1_1_mongo_database_a27e20258620a2a1953a460e7c7aa3e14}{to\+C\+SV} (self, dates, ratings)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_mongo_database_1_1_mongo_database_ac6b838c7e0c2357101e8e8db0dc94aa4}{}\label{class_mongo_database_1_1_mongo_database_ac6b838c7e0c2357101e8e8db0dc94aa4} 
+{\bfseries conn}
+\item 
+\hypertarget{class_mongo_database_1_1_mongo_database_a6de8929dee773729992475177f062af8}{}\label{class_mongo_database_1_1_mongo_database_a6de8929dee773729992475177f062af8} 
+{\bfseries menu\+Lines}
+\item 
+\hypertarget{class_mongo_database_1_1_mongo_database_ab4aeb0410a6d8f6fcdebb4f40ec68c48}{}\label{class_mongo_database_1_1_mongo_database_ab4aeb0410a6d8f6fcdebb4f40ec68c48} 
+{\bfseries back\+To\+Main}
+\item 
+\hypertarget{class_mongo_database_1_1_mongo_database_ad8b5437c836f2ea68938f98431ae2028}{}\label{class_mongo_database_1_1_mongo_database_ad8b5437c836f2ea68938f98431ae2028} 
+{\bfseries run\+\_\+mongo\+\_\+query}
+\item 
+\hypertarget{class_mongo_database_1_1_mongo_database_a2fb2dbb70d9b350dc0183c4f5da9f396}{}\label{class_mongo_database_1_1_mongo_database_a2fb2dbb70d9b350dc0183c4f5da9f396} 
+{\bfseries menu\+Option}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Database: Holds the database object used for querying. Prints the menu
+    for the Mongo options, executes custom query. \end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_mongo_database_1_1_mongo_database_af1be85a82838d6e46f181af707892606}{}\label{class_mongo_database_1_1_mongo_database_af1be85a82838d6e46f181af707892606} 
+\index{Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}!custom\+Query@{custom\+Query}}
+\index{custom\+Query@{custom\+Query}!Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}}
+\subsubsection{\texorpdfstring{custom\+Query()}{customQuery()}}
+{\footnotesize\ttfamily def Mongo\+Database.\+Mongo\+Database.\+custom\+Query (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{G\+UI,  }\item[{}]{user\+Input }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}customQuery: Allows the user to execute a custom query by running
+    eval() on the user input. Need validation for drop table etc. \end{DoxyVerb}
+ \hypertarget{class_mongo_database_1_1_mongo_database_ab5d6d51b956790d3804e4c566ae40cfe}{}\label{class_mongo_database_1_1_mongo_database_ab5d6d51b956790d3804e4c566ae40cfe} 
+\index{Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}!get\+Menu\+Input@{get\+Menu\+Input}}
+\index{get\+Menu\+Input@{get\+Menu\+Input}!Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}}
+\subsubsection{\texorpdfstring{get\+Menu\+Input()}{getMenuInput()}}
+{\footnotesize\ttfamily def Mongo\+Database.\+Mongo\+Database.\+get\+Menu\+Input (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}getMenuInput: Get user input menu choice. \end{DoxyVerb}
+ \hypertarget{class_mongo_database_1_1_mongo_database_a54df0dccd3550bc038fa246ee0f97a15}{}\label{class_mongo_database_1_1_mongo_database_a54df0dccd3550bc038fa246ee0f97a15} 
+\index{Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}!login@{login}}
+\index{login@{login}!Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}}
+\subsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily def Mongo\+Database.\+Mongo\+Database.\+login (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}login: Connects to mongoDB using default parameters. \end{DoxyVerb}
+ \hypertarget{class_mongo_database_1_1_mongo_database_a123d046fd01db4d2b342289a972e8e31}{}\label{class_mongo_database_1_1_mongo_database_a123d046fd01db4d2b342289a972e8e31} 
+\index{Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}!main\+Logic@{main\+Logic}}
+\index{main\+Logic@{main\+Logic}!Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}}
+\subsubsection{\texorpdfstring{main\+Logic()}{mainLogic()}}
+{\footnotesize\ttfamily def Mongo\+Database.\+Mongo\+Database.\+main\+Logic (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}mainLogic: Provides the logic for the main menu. \end{DoxyVerb}
+ \hypertarget{class_mongo_database_1_1_mongo_database_a2eb4c5b675b39a871dfdf03458376363}{}\label{class_mongo_database_1_1_mongo_database_a2eb4c5b675b39a871dfdf03458376363} 
+\index{Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}!print\+Menu@{print\+Menu}}
+\index{print\+Menu@{print\+Menu}!Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}}
+\subsubsection{\texorpdfstring{print\+Menu()}{printMenu()}}
+{\footnotesize\ttfamily def Mongo\+Database.\+Mongo\+Database.\+print\+Menu (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}printMenu: Prints the main menu. \end{DoxyVerb}
+ \hypertarget{class_mongo_database_1_1_mongo_database_afdd3078ad8bb851bab945b1b477f1529}{}\label{class_mongo_database_1_1_mongo_database_afdd3078ad8bb851bab945b1b477f1529} 
+\index{Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}!run@{run}}
+\index{run@{run}!Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily def Mongo\+Database.\+Mongo\+Database.\+run (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}run: Tries to login, if successful, run main logic, otherwise
+    return to previous menu. \end{DoxyVerb}
+ \hypertarget{class_mongo_database_1_1_mongo_database_a27e20258620a2a1953a460e7c7aa3e14}{}\label{class_mongo_database_1_1_mongo_database_a27e20258620a2a1953a460e7c7aa3e14} 
+\index{Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}!to\+C\+SV@{to\+C\+SV}}
+\index{to\+C\+SV@{to\+C\+SV}!Mongo\+Database\+::\+Mongo\+Database@{Mongo\+Database\+::\+Mongo\+Database}}
+\subsubsection{\texorpdfstring{to\+C\+S\+V()}{toCSV()}}
+{\footnotesize\ttfamily def Mongo\+Database.\+Mongo\+Database.\+to\+C\+SV (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{dates,  }\item[{}]{ratings }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}toCSV: Writes the dates/ratings to a CSV file. \end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/mongo\+Database/Mongo\+Database.\+py\end{DoxyCompactItemize}
