@@ -27,7 +27,7 @@ from UserStories import AllUserStories
 
 # TODO:
 # rename local userStoryX to runUserStoryX etc
-            
+
 class MySQLDatabase(object):
     """ Database: Holds the database object used for querying, also holds the
         logic for the menus and runs the actual queries. """
@@ -53,7 +53,7 @@ class MySQLDatabase(object):
                           "\n17. Input a custom SQL query.",
                           "\n18. Go back to the main menu",
                           "19. Quit"]
-    
+
     def login(self):
         """ login: Try/Except to log the user in. """
         try:
@@ -66,17 +66,28 @@ class MySQLDatabase(object):
             print ("Error: username or password incorrect.")
             #self.logger.info("Unsuccessful login: %s", self.username)
             return False
-            
+
     def getDB(self):
         return self.db
-    
-    
+
+
     def methodFinder(self):
+        """
+        Generates a method to call by using predefined statments with user inputs i.e. <predef mathod tag> + <user menu option number>.
+        Constructed string is then used to retrirve an attribute of a class that is identical.
+        Inital 'ifs' - inputs uses an instance of obj run_query_obj and runs a user story series if user input matches a list member
+
+        @attention: Previous iteration of this method has been deprecated and since then most methods are called using the combined
+        query method named series1 or series2. Only a minority of the superset is used in the intended 'method constructor' form.
+
+        @param:  no params are needed
+        @return: a method name to call with appropriate needed params
+        """
         one_param_cases = [12];
         two_param_cases = [1, 2, 4, 6, 13, 16];
         three_param_cases = [3, 5, 14];
         # construct a method name
-        
+
         if int(self.menuOption) in two_param_cases:
             return self.run_query_obj.userStorySeries1(self.db, False, 0, 0, int(self.menuOption))
         elif int(self.menuOption) in three_param_cases:
@@ -90,28 +101,28 @@ class MySQLDatabase(object):
         elif (int(self.menuOption) == 19):
             self.exitProgram()
         else:
-            method_name = 'userStory' + str(self.menuOption)     
+            method_name = 'userStory' + str(self.menuOption)
             # use string as the method name and call it else return alt method
             find_method = getattr(self.run_query_obj, method_name)
             # ifs to provide additional params should the user cases require them
             if int(self.menuOption) in one_param_cases:
                 return find_method(self.db, False, 0)
-    
-    
+
+
     def mainLogic(self):
-        """ mainLogic: Holds the logic for the main menu. """     
+        """ mainLogic: Holds the logic for the main menu. """
         valid = False
         while (not valid):
             self.printMenu()
-            valid = self.getMenuInput() 
+            valid = self.getMenuInput()
             if (valid):
                 self.methodFinder()
                 if (self.backToMain):
                     valid = True
                 else:
-                    valid = False     
-                
-# DEPRECATED CODE ============================================================================                      
+                    valid = False
+
+# DEPRECATED CODE ============================================================================
 #                if (self.menuOption == 1):
 #                    self.callUserStory1(False, 0, 0)
 #                    valid = False
@@ -143,24 +154,24 @@ class MySQLDatabase(object):
 #                    self.callUserStory16(False, 0, 0)
 #                    valid = False
 #                elif (self.menuOption == 17):
-#                    self.customQuery(False, 0)                    
+#                    self.customQuery(False, 0)
 #                    valid = False
 #                elif (self.menuOption == 18):
 #                    print ("Returning to main menu...")
 #                elif (self.menuOption == 19):
 #                    print ("Exiting the program...")
 #                    sys.exit(0)
-# DEPRECATED CODE ============================================================================  
-                
+# DEPRECATED CODE ============================================================================
+
     def exitProgram(self):
         print ("Exiting the program...")
         sys.exit(0)
-    
+
     def printMenu(self):
         """ printMenu: Prints the main menu. """
         for x in range(0, len(self.menuLines)):
             print (self.menuLines[x])
-        
+
     def getMenuInput(self):
         """ getMenuInput: Gets and validates user input of menu choice. """
         userChoice = input("Input option number: ")
@@ -169,7 +180,7 @@ class MySQLDatabase(object):
         except:
             print ("Error. Please enter a valid number.")
             return False
-            
+
         # Below is list of all valid input numbers
         validInputList = list(range(1, 7)) + list(range(12, 15)) + list(range(16, 20))
 
@@ -179,32 +190,32 @@ class MySQLDatabase(object):
         else:
             self.menuOption = userChoice
             return True
-        
+
     def toCSV(self, dates, ratings):
         """ toCSV: Writes dates/ratings to CSV file.  """
         # Convert datetimes to date strings
         for x in range(0, len(dates)):
             dates[x] = dates[x].strftime('%d-%m-%Y')
-            
+
         for y in range(0, len(ratings)):
             ratings[y] = str(ratings[y])
-        
+
         forCSV = []
         for i in range(0,len(ratings)):
             forCSV.append([dates[i],ratings[i]])
-        
+
         print ("Writing dates and ratings to CSV file: /CSV Files/ratingsOverTime.csv...")
         with open("C:\\Users\\Administrator\\Desktop\\Week 5 - Python\\py files\\CSV Files\\ratingsOverTimeSQL.csv", "w") as f:
-            # Last 2 parameters below to remove empty line between each line            
+            # Last 2 parameters below to remove empty line between each line
             writer = csv.writer(f, sys.stdout, lineterminator='\n')
             for z in range(0, len(forCSV)):
                 writer.writerow(forCSV[z])
-                
+
     def customQuery(self, GUI, query):
         """ customeQuery: Executes user custom query. Need validation here. """
         if (not GUI):
             query = input("Input SQL query: ")
-        
+
         self.logger = logging.info('Custom SQL query: %s', query)
         cursor = self.db.cursor() # Creating the cursor to query the database
         # Executing the query:
@@ -218,74 +229,74 @@ class MySQLDatabase(object):
                     toPrint.append([row[i]])
                 print (toPrint)
             if (GUI):
-                return results            
+                return results
         except:
             self.db.rollback()
-            print ("Error: SQL query was invalid.") 
-        
+            print ("Error: SQL query was invalid.")
+
 #    def callUserStory1(self, GUI, startDate, endDate):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
 #        if (GUI):
 #            return userStory1(self.db, True, startDate, endDate)
 #        else:
 #            return userStory1(self.db, False, startDate, endDate)
-#        
+#
 #    def callUserStory2(self, GUI, startDate, endDate):
 #        """ etc """
 #        if (GUI):
 #            return userStory2(self.db, True, startDate, endDate)
 #        else:
 #            return userStory2(self.db, False, startDate, endDate)
-#            
+#
 #    def callUserStory3(self, GUI, amount, startDate, endDate):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
 #        if (GUI):
 #            return userStory3(self.db, True, amount, startDate, endDate)
 #        else:
 #            return userStory3(self.db, False, amount, startDate, endDate)
-#        
+#
 #    def callUserStory4(self, GUI, startDate, endDate):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
 #        if (GUI):
 #            return userStory4(self.db, True, startDate, endDate)
 #        else:
 #            return userStory4(self.db, False, startDate, endDate)
-#        
+#
 #    def callUserStory5(self, GUI, startDate, endDate):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
 #        if (GUI):
 #            return userStory5(self.db, True, startDate, endDate)
 #        else:
 #            return userStory5(self.db, False, startDate, endDate)
-#        
+#
 #    def callUserStory6(self, GUI, startDate, endDate):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
 #        if (GUI):
 #            return userStory6(self.db, True, startDate, endDate)
 #        else:
 #            return userStory6(self.db, False, startDate, endDate)
-#        
+#
 #    def callUserStory12(self, GUI, productID):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
 #        if (GUI):
 #            return userStory12(self.db, True, productID)
 #        else:
 #            return userStory12(self.db, False, productID)
-#        
+#
 #    def callUserStory13(self, GUI, startDate, endDate):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
 #        if (GUI):
 #            return userStory13(self.db, True, startDate, endDate)
 #        else:
 #            return userStory13(self.db, False, startDate, endDate)
-#        
+#
 #    def callUserStory14(self, GUI, startDate, endDate, employeeID):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
 #        if (GUI):
 #            return userStory14(self.db, True, startDate, endDate, employeeID)
 #        else:
 #            return userStory14(self.db, False, startDate, endDate, employeeID)
-#        
+#
 #    def callUserStory16(self, GUI, startDate, endDate):
 #        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
 #        if (GUI):
