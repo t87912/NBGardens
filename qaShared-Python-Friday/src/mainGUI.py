@@ -11,13 +11,16 @@ import tkinter as tk
 # Import other python class files:
 from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
+from mongoDatabase import MongoQueries
 
+# Import user stories:
 from UserStories.userStory1 import userStory1
 from UserStories.userStory2 import userStory2
 from UserStories.userStory3 import userStory3
 from UserStories.userStory4 import userStory4
 from UserStories.userStory5 import userStory5
 from UserStories.userStory6 import userStory6
+from UserStories.userStory7 import userStory7
 from UserStories.userStory12 import userStory12
 from UserStories.userStory13 import userStory13
 from UserStories.userStory14 import userStory14
@@ -39,6 +42,25 @@ class MainApplication(tk.Frame):
                           "2. Print a list of customers, products and orders",
                           "3. Show Ratings for a product over time",
                           "8. Go back to the main menu"]
+                          
+        self.options = [
+                           "1.  (SQL) Top salesperson of a given period, based on total cost of their sales during that time",
+                           "2.  (SQL) Which customer has highest spending in given period",
+                           "3.  (SQL) Which customer has spent more than 'x' amount during a given period",
+                           "4.  (SQL) Total spend vs total cost for given time period",
+                           "5.  (SQL) Total return on investment for particular product for given time period",
+                           "6.  (SQL) Average amont of time it takes to fulfill an order during a particular time period",
+                           "7.  (Mongo) Average rating a particular customer has given NB Gardens",
+                           "8.  (Mongo) Average rating a group of customers from particular county has given NB Gardens",
+                           "9.  (Mongo) Average rating a group of customers from particular demographic (age, gender etc.) has given NB Gardens",
+                           "10. (Mongo) Compare average rating given to a product through the website against customer order ratings with that same product included",
+                           "11. (Mongo) Customer satisfaction in key areas of the business over a given time period",
+                           "12. (SQL) Check website details for particular product match that is stored in the physical inventory",
+                           "13. (SQL) Create a graph showing the amount of sales for a particular product over a period of time",
+                           "14. (SQL) Create a graph showing the amount of sales made by a particular sales person over a period of time",
+                           "15. (Mongo) Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
+                           "16. (SQL) Create a graph of the number of stock available for a particular product with the number of sales for that particular product over a particular time period"
+                          ]  
         
         self.nbTitle = tk.Label(self.master, text = "\nWelcome to the NB Gardens Accounts and Sales Analytics System (ASAS)", font = LARGE_FONT)
         self.nbTitle.grid(row = 0, columnspan = 16, padx = 300) # Pad to move title to centre
@@ -102,25 +124,6 @@ class MainApplication(tk.Frame):
             
             self.customQueryButtonMongo = tk.Button(self.master, text = "Submit MongoDB", command = self.customMongo, width=55)
             self.customQueryButtonMongo.grid(row=8,column=5, columnspan=2)
-            
-            self.options = [
-                           "1. (SQL) Top salesperson of a given period, based on total cost of their sales during that time",
-                           "2. (SQL) Which customer has highest spending in given period",
-                           "3. (SQL) Which customer has spent more than 'x' amount during a given period",
-                           "4. (SQL) Total spend vs total cost for given time period",
-                           "5. (SQL) Total return on investment for particular product for given time period",
-                           "6. (SQL) Average amont of time it takes to fulfill an order during a particular time period",
-                           "7. Average rating a particular customer has given NB Gardens",
-                           "8. Average rating a group of customers from particular county has given NB Gardens",
-                           "9. Average rating a group of customers from particular demographic (age, gender etc.) has given NB Gardens",
-                           "10. Compare average rating given to a product through the website against customer order ratings with that same product included",
-                           "11. Customer satisfaction in key areas of the business over a given time period",
-                           "12. (SQL) Check website details for particular product match that is stored in the physical inventory",
-                           "13. (SQL) Create a graph showing the amount of sales for a particular product over a period of time",
-                           "14. (SQL) Create a graph showing the amount of sales made by a particular sales person over a period of time",
-                           "15. Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
-                           "16. (SQL) Create a graph of the number of stock available for a particular product with the number of sales for that particular product over a particular time period"
-                          ]             
                     
             self.spacerLabel0 = tk.Label(self.master, text = "\n\n").grid(row=11, column=0)
 
@@ -212,6 +215,10 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             self.queryInputBox1.config(state='normal')                    
             self.queryInputBox2.config(state='normal')
+        elif (value == self.options[6]): # MONGO - 7
+            self.userStory = 6
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox3.config(state='normal')                    
         elif (value == self.options[11]):
             self.userStory = 11
             self.queryResultBox.delete('1.0', tk.END)
@@ -232,8 +239,6 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             self.queryInputBox1.config(state='normal')                    
             self.queryInputBox2.config(state='normal')
-            
-            
             
     def submitUserStory(self):
         if (self.userStory == 0):
@@ -268,6 +273,10 @@ class MainApplication(tk.Frame):
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
             toPrint = userStory6(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 6): # MONGO - 7
+            self.queryResultBox.delete('1.0', tk.END)
+            customerID = self.queryInputBox3.get()
+            toPrint = userStory7(MongoQueries, True, customerID)
         elif (self.userStory == 11):
             self.queryResultBox.delete('1.0', tk.END)
             productID = self.queryInputBox3.get()
@@ -289,12 +298,15 @@ class MainApplication(tk.Frame):
             toDate = self.queryInputBox2.get()
             toPrint = userStory16(self.dbConn, True, fromDate, toDate)
         
+        # Put query result in the GUI text box
         self.outputQueryResult(toPrint) 
         
+        # Insert default prompt values back into inputs
         self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
         self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
         
+        # Disable the inputs
         self.queryInputBox1.config(state='disabled')                    
         self.queryInputBox2.config(state='disabled')
         self.queryInputBox3.config(state='disabled')
@@ -343,6 +355,11 @@ class MainApplication(tk.Frame):
         self.outputQueryResult(toPrint)
             
     def outputQueryResult(self, toPrint):
+        """ outputQueryResult: Accepts toPrint parameter which is a list of
+            lists containing the query results. This iterates over the list
+            and creates a textToEval variable which adds that element of the
+            list to the queryResultsBox, incrementing the line it inserts onto
+            with each new row. This textToEval is then evaluated."""
         for i in range(0, len(toPrint)):
             textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
             eval(textToEval)
@@ -350,6 +367,6 @@ class MainApplication(tk.Frame):
 if __name__ == "__main__":
     root = tk.Tk()
     MainApplication = MainApplication(root)
-    root.geometry('1200x800')
+    root.geometry('1200x1000')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()

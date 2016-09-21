@@ -12,3 +12,4 @@ def userStory8(MongoQueries, GUI, gender):
         #if (GUI):
             #!!!!! need an SQL statement to create table of Male/Female Customers, same for age !!!!#
         print("TBC: need some SQL")
+        return ["need some sql"]
