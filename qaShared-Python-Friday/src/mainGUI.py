@@ -12,6 +12,17 @@ import tkinter as tk
 from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
 
+from UserStories.userStory1 import userStory1
+from UserStories.userStory2 import userStory2
+from UserStories.userStory3 import userStory3
+from UserStories.userStory4 import userStory4
+from UserStories.userStory5 import userStory5
+from UserStories.userStory6 import userStory6
+from UserStories.userStory12 import userStory12
+from UserStories.userStory13 import userStory13
+from UserStories.userStory14 import userStory14
+from UserStories.userStory16 import userStory16
+
 # Tkinter fonts:
 LARGE_FONT= ("Verdana", 12)
 MED_FONT = ("Verdana", 10)
@@ -22,6 +33,7 @@ class MainApplication(tk.Frame):
     def __init__(self, master, *args, **kwargs):
         self.master = master
         self.firstClick = True
+        self.userStory = 0
         self.menuLines = ["\nPlease select an option: ",
                           "1. Input a custom SQL query.",
                           "2. Print a list of customers, products and orders",
@@ -65,6 +77,7 @@ class MainApplication(tk.Frame):
         userLoginDetails = [username, password]
         self.db = MySQLDatabase(userLoginDetails)
         validLogin = self.db.login() # Returns bool True if valid
+        self.dbConn = self.db.getDB()
         self.mongoDB = MongoDatabase()
         
         if (validLogin):
@@ -90,7 +103,7 @@ class MainApplication(tk.Frame):
             self.customQueryButtonMongo = tk.Button(self.master, text = "Submit MongoDB", command = self.customMongo, width=55)
             self.customQueryButtonMongo.grid(row=8,column=5, columnspan=2)
             
-            options = [    "",
+            self.options = [
                            "1. (SQL) Top salesperson of a given period, based on total cost of their sales during that time",
                            "2. (SQL) Which customer has highest spending in given period",
                            "3. (SQL) Which customer has spent more than 'x' amount during a given period",
@@ -107,46 +120,13 @@ class MainApplication(tk.Frame):
                            "14. (SQL) Create a graph showing the amount of sales made by a particular sales person over a period of time",
                            "15. Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
                            "16. (SQL) Create a graph of the number of stock available for a particular product with the number of sales for that particular product over a particular time period"
-                          ]
-            
-            def func(value):
-                print(value)
-                if (value == options[0]):
-                    self.queryResultBox.delete('1.0', tk.END)
-                    toPrint = self.db.callUserStory1(True, '2010-01-01','2015-01-01')
-                    for i in range(0, len(toPrint)):
-                        textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
-                        print (textToEval)
-                        eval(textToEval)    
-                elif (value == options[1]):
-                    self.queryResultBox.delete('1.0', tk.END)
-                    toPrint = self.db.callUserStory2(True, '2010-01-01','2015-01-01')
-                    for i in range(0, len(toPrint)):
-                        textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
-                        print (textToEval)
-                        eval(textToEval)
-              
-            """
-            def func(value):
-                print(value)
-                if (value == options[1]):
-                    self.queryResultBox.delete('1.0', tk.END)
-                    # need two input boxes
-                    self.queryInputBox1.configure(state="normal")
-                    self.queryInputBox2.configure(state="normal")
-                    self.queryInputBox1.insert(0, 'From (YYYY-MM-DD)')
-                    self.queryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox1"))
-                    self.queryInputBox2.insert(0, 'To (YYYY-MM-DD)')
-                    self.queryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox2"))
-                elif (value == options[1]):
-                    self.queryResultBox.delete('1.0', tk.END)
-                    """
+                          ]             
                     
             self.spacerLabel0 = tk.Label(self.master, text = "\n\n").grid(row=11, column=0)
 
             var = tk.StringVar()
-            var.set(options[0]) # default value
-            self.drop = tk.OptionMenu(self.master, var, *options, command=func)
+            var.set(self.options[0]) # default value
+            self.drop = tk.OptionMenu(self.master, var, *self.options, command=self.dropDownInput)
             self.drop.grid(row=11, column = 0, columnspan=8)
             
             self.spacerLabel1 = tk.Label(self.master, text = "\n").grid(row=12, column=0)
@@ -167,7 +147,6 @@ class MainApplication(tk.Frame):
             self.queryInputBox1.configure(state="disabled")
             self.queryInputBox2.configure(state="disabled")
             self.queryInputBox3.configure(state="disabled")
-            
            # self.spacerLabel2 = tk.Label(self.master, text = "\n").grid(row=13, column=0)
             
             self.queryResultBox = tk.Text(self.master)
@@ -180,20 +159,125 @@ class MainApplication(tk.Frame):
         stringToEval = "%s.delete(0, \"end\")" % (tkWidgetName)
         eval(stringToEval)
         
-    def setCurrentDropDownMenuNo(self, no):
-        print ('test')
-        
-    def submitUserStory(self, userStoryNo):
-        userStoryNo = [int(s) for s in userStoryNo.split() if s.isdigit()]
-        print (userStoryNo)
-        if (userStoryNo[:2] in ['1.']):
-            # get inputs
+    def dropDownInput(self, value):
+        print(value)
+        self.queryInputBox1.config(state='disabled')                    
+        self.queryInputBox2.config(state='disabled')
+        self.queryInputBox3.config(state='disabled')
+        if (value == self.options[0]):
+            self.userStory = 0
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox2.config(state='normal')  
+        elif (value == self.options[1]):
+            self.userStory = 1
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox2.config(state='normal')
+        elif (value == self.options[2]):
+            self.userStory = 2
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox2.config(state='normal')
+            self.queryInputBox3.config(state='normal')
+        elif (value == self.options[3]):
+            self.userStory = 3
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox2.config(state='normal')
+        elif (value == self.options[4]):
+            self.userStory = 4
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox2.config(state='normal')
+            self.queryInputBox3.config(state='normal')
+        elif (value == self.options[5]):
+            self.userStory = 5
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox2.config(state='normal')
+        elif (value == self.options[11]):
+            self.userStory = 11
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox3.config(state='normal')
+        elif (value == self.options[12]):
+            self.userStory = 12
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox2.config(state='normal')  
+        elif (value == self.options[13]):
+            self.userStory = 13
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox2.config(state='normal')
+            self.queryInputBox3.config(state='normal')   
+        elif (value == self.options[15]):
+            self.userStory = 15
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox2.config(state='normal')
+            
+            
+    def submitUserStory(self):
+        if (self.userStory == 0):
+            self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
-            # send to db
-            toPrint = "self.db.userStory1(True, '2010-01-01','2015-01-01')" 
+            toPrint = userStory1(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 1):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.queryInputBox1.get()
+            toDate = self.queryInputBox2.get()
+            toPrint = userStory2(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 2):
+            self.queryResultBox.delete('1.0', tk.END)
+            amount = self.queryInputBox3.get()
+            fromDate = self.queryInputBox1.get()
+            toDate = self.queryInputBox2.get()
+            toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
+        elif (self.userStory == 3):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.queryInputBox1.get()
+            toDate = self.queryInputBox2.get()
+            toPrint = userStory4(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 4):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.queryInputBox1.get()
+            toDate = self.queryInputBox2.get()
+            productID = self.queryInputBox3.get()
+            toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
+        elif (self.userStory == 5):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.queryInputBox1.get()
+            toDate = self.queryInputBox2.get()
+            toPrint = userStory6(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 11):
+            self.queryResultBox.delete('1.0', tk.END)
+            productID = self.queryInputBox3.get()
+            toPrint = userStory12(self.dbConn, True, productID)
+        elif (self.userStory == 12):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.queryInputBox1.get()
+            toDate = self.queryInputBox2.get()
+            toPrint = userStory13(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 13):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.queryInputBox1.get()
+            toDate = self.queryInputBox2.get()
+            employeeID = self.queryInputBox3.get()
+            toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
+        elif (self.userStory == 15):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.queryInputBox1.get()
+            toDate = self.queryInputBox2.get()
+            toPrint = userStory16(self.dbConn, True, fromDate, toDate)
         
-    
+        self.outputQueryResult(toPrint)        
+        
+        self.queryInputBox1.config(state='disabled')                    
+        self.queryInputBox2.config(state='disabled')
+        self.queryInputBox3.config(state='disabled')
+            
     def logout(self):
         """ logout: Destroys GUI features on logout, changes loginStatus label
             text and enable login button and user/password inputs. """
@@ -204,7 +288,6 @@ class MainApplication(tk.Frame):
         self.passwordEntry.delete(0, 'end')
         self.usernameEntry.configure(state="normal")
         self.usernameEntry.delete(0, 'end')
-        
         self.customQueryLabel.destroy()
         self.customQueryEntry.destroy()
         self.customQueryButton.destroy()
@@ -215,9 +298,7 @@ class MainApplication(tk.Frame):
         self.queryInputBox1.destroy()
         self.queryInputBox2.destroy()
         self.queryInputBox3.destroy()
-        
         # NEED TO CLOSE THE CONNECTION to mongo/mysql!!!
-        
         
     def customSQL(self):
         """ customSQL: Allows custom SQL queries to be input, sends user input
@@ -226,14 +307,8 @@ class MainApplication(tk.Frame):
         self.queryResultBox.delete('1.0', tk.END)
         query = self.customQueryEntry.get()
         toPrint = self.db.customQuery(True, query)
-        print ("toPrint:")        
-        print (toPrint)
-        print (len(toPrint))
-        for i in range(0, len(toPrint)):
-            textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
-            print (textToEval)
-            eval(textToEval)
-            
+        self.outputQueryResult(toPrint)
+        
     def customMongo(self):
         """ customSQL: Allows custom SQL queries to be input, sends user input
             to method in MySQLDatabase, results returned in toPrint. Results
@@ -241,12 +316,11 @@ class MainApplication(tk.Frame):
         self.queryResultBox.delete('1.0', tk.END)
         query = self.customQueryEntry.get()
         toPrint = self.mongoDB.customQuery(True, query)
-        print ("toPrint:")        
-        print (toPrint)
-        print (len(toPrint))
+        self.outputQueryResult(toPrint)
+            
+    def outputQueryResult(self, toPrint):
         for i in range(0, len(toPrint)):
             textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
-            print (textToEval)
             eval(textToEval)
         
 if __name__ == "__main__":

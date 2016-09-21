@@ -48,4 +48,4 @@ def userStory14(db, GUI, startDate, endDate, employeeID):
 
         # If GUI return the data
         if (GUI):
-            return [results]
+            return results

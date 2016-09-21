@@ -20,4 +20,4 @@ def userStory2(db, GUI, startDate, endDate):
     sql = sqlParse
     results = query(db, sql) 
     if (GUI):  # If GUI return the data
-        return [results]
+        return results

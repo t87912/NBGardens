@@ -22,4 +22,4 @@ def userStory3(db, GUI, amount, startDate, endDate):
     
     # If GUI return the data
     if (GUI):
-        return [results]
+        return results

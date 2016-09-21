@@ -23,4 +23,4 @@ def userStory1(db, GUI, startDate, endDate):
     
     # If GUI return the data
     if (GUI):
-        return [results]
+        return results

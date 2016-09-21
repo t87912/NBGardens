@@ -20,4 +20,4 @@ def userStory12(db, GUI, productID):
         
         # If GUI return the data
         if (GUI):
-            return [results]
+            return results
