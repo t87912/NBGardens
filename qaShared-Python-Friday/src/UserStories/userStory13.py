@@ -35,7 +35,7 @@ def userStory13(db, GUI, startDate, endDate):
         #string = eval(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'Image Files'))).replace('\\','\\\\')
         #string = string.replace('\\','\\\\')
         #print (string)
-        plt.savefig("graph.png")
+        plt.savefig("assets\\graph.png")
         #plt.savefig("\\Image Files\\userStory13.png")
         plt.show()    
         

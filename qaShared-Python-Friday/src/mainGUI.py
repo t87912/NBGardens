@@ -182,6 +182,7 @@ class MainApplication(tk.Frame):
         self.writeToCSVButton.grid(row=12,column=5)
         self.showGraphButton = tk.Button(self.master, text = "Show Graph", command = self.showGraph)
         self.showGraphButton.grid(row=12,column=6)
+        self.showGraphButton.config(state='disabled')
         
         # Set prompt text of input boxes:
         self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
@@ -234,6 +235,7 @@ class MainApplication(tk.Frame):
         self.queryInputBox1.config(state='disabled')                    
         self.queryInputBox2.config(state='disabled')
         self.queryInputBox3.config(state='disabled')
+        self.showGraphButton.config(state='disabled')
         if (value == self.options[0]):
             self.userStory = 0
             self.queryResultBox.delete('1.0', tk.END)
@@ -297,13 +299,13 @@ class MainApplication(tk.Frame):
             self.userStory = 12
             self.queryResultBox.delete('1.0', tk.END)
             self.queryInputBox1.config(state='normal')                    
-            self.queryInputBox2.config(state='normal')  
+            self.queryInputBox2.config(state='normal')
         elif (value == self.options[13]):
             self.userStory = 13
             self.queryResultBox.delete('1.0', tk.END)
             self.queryInputBox1.config(state='normal')                    
             self.queryInputBox2.config(state='normal')
-            self.queryInputBox3.config(state='normal')   
+            self.queryInputBox3.config(state='normal')
         elif (value == self.options[15]):
             self.userStory = 15
             self.queryResultBox.delete('1.0', tk.END)
@@ -382,22 +384,26 @@ class MainApplication(tk.Frame):
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
             toPrint = userStory13(self.dbConn, True, fromDate, toDate)
+            self.showGraphButton.config(state='active')
         elif (self.userStory == 13):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
             employeeID = self.queryInputBox3.get()
             toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
-        elif (self.userStory == 10): # MONGO - 15
+            self.showGraphButton.config(state='active')
+        elif (self.userStory == 14): # MONGO - 15
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
             toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+            self.showGraphButton.config(state='active')
         elif (self.userStory == 15):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
             toPrint = userStory16(self.dbConn, True, fromDate, toDate)
+            self.showGraphButton.config(state='active')
         
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint) 

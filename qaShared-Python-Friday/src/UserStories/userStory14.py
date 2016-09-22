@@ -43,7 +43,7 @@ def userStory14(db, GUI, startDate, endDate, employeeID):
             plt.title('Amount of sales made by a particular salesperson over a period of time')
             plt.grid(True)
             #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory14.png")
-            plt.savefig("graph.png")
+            plt.savefig("assets\\graph.png")
             plt.show()
 
         # If GUI return the data
