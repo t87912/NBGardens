@@ -1,41 +1,36 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Sep  6 21:24:58 2016
+from MongoQueries import CustomerOrderReviews, OnlineReviews
 
-@author: user
-"""
+def userStory10(GUI, prodID):
+    """(boolean for GUI, int for productID):
+	This method returns an array with the average customer score and average online score for the selected product"""
 
-def userStory10(MongoQueries, GUI, productID):
-        """ useCase10 """
-        print("TBC: need some SQL")
-        if(not GUI):
-            prodID = int(input("What is the product ID you want to view review scores for?: "))
+    if(not GUI):
+        prodID = int(input("What is the product ID you want to view review scores for?: "))
         
-        customerReviewScores = MongoQueries.CustomerOrderReviews.getProductScores(prodID)
-        if len(customerReviewScores) == 0:
-            avCustomerScore = "N/A"
+    customerReviewScores = CustomerOrderReviews.getProductScores(prodID)
+    if len(customerReviewScores) == 0:
+        avCustomerScore = "N/A"  
+    else:
+        totalReviewScores = 0
+        for i in customerReviewScores:
+            totalReviewScores += i
+        avCustomerScore = totalReviewScores / len(customerReviewScores)
             
-        else:
-            totalReviewScores = 0
-            for i in customerReviewScores:
-                totalReviewScores += i
-            avCustomerScore = totalReviewScores / len(customerReviewScores)
-            
-        onlineReviewScores = MongoQueries.OnlineReviews.getOnlineReviewScores(prodID)
-        if len(onlineReviewScores) == 0:
+    onlineReviewScores = OnlineReviews.getOnlineReviewScores(prodID)
+    if len(onlineReviewScores) == 0:
             avOnlineScore = "N/A"
         
-        else:
+    else:
             totalReviewScores = 0
-            for i in onlineReviewScores:
-                totalReviewScores += i
-            avOnlineScore = totalReviewScores / len(onlineReviewScores)
+        for i in onlineReviewScores:
+            totalReviewScores += i
+        avOnlineScore = totalReviewScores / len(onlineReviewScores)
         
-        reviewScores = [avCustomerScore, avOnlineScore]
+    reviewScores = [avCustomerScore, avOnlineScore]
         
-        if(not GUI):
-            print("Customer Score    Online Score \n" + str(reviewScores[0]) + "               " + str(reviewScores[1]))
+    if(not GUI):
+        print("Customer Score    Online Score \n" + str(reviewScores[0]) + "               " + str(reviewScores[1]))
         
-        if(GUI):
-            result = [reviewScores]
-            return result
+    if(GUI):
+        result = [reviewScores]
+        return result

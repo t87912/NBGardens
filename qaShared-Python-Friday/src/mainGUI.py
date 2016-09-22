@@ -21,6 +21,10 @@ from UserStories.userStory4 import userStory4
 from UserStories.userStory5 import userStory5
 from UserStories.userStory6 import userStory6
 from UserStories.userStory7 import userStory7
+from UserStories.userStory8 import userStory8
+from UserStories.userStory9 import userStory9
+from UserStories.userStory10 import userStory10
+from UserStories.userStory11 import userStory11
 from UserStories.userStory12 import userStory12
 from UserStories.userStory13 import userStory13
 from UserStories.userStory14 import userStory14
@@ -101,6 +105,7 @@ class MainApplication(tk.Frame):
         validLogin = self.db.login() # Returns bool True if valid
         self.dbConn = self.db.getDB()
         self.mongoDB = MongoDatabase()
+        self.conn = self.mongoDB.getConnection()
         
         if (validLogin):
             # Change status of buttons/entry widgets on login
@@ -218,7 +223,26 @@ class MainApplication(tk.Frame):
         elif (value == self.options[6]): # MONGO - 7
             self.userStory = 6
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox3.config(state='normal')                    
+            self.queryInputBox3.config(state='normal')
+        elif (value == self.options[7]): # MONGO - 8
+            self.userStory = 7
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox3.config(state='normal')   
+        elif (value == self.options[8]): # MONGO - 9
+            self.userStory = 8
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')
+            self.queryInputBox2.config(state='normal')
+            self.queryInputBox3.config(state='normal')  
+        elif (value == self.options[9]): # MONGO - 10
+            self.userStory = 9
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox3.config(state='normal') 
+        elif (value == self.options[10]): # MONGO - 11
+            self.userStory = 10
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal') 
+            self.queryInputBox2.config(state='normal')
         elif (value == self.options[11]):
             self.userStory = 11
             self.queryResultBox.delete('1.0', tk.END)
@@ -276,7 +300,26 @@ class MainApplication(tk.Frame):
         elif (self.userStory == 6): # MONGO - 7
             self.queryResultBox.delete('1.0', tk.END)
             customerID = self.queryInputBox3.get()
-            toPrint = userStory7(MongoQueries, True, customerID)
+            toPrint = userStory7(self.dbConn, self.conn, True, customerID)
+        elif (self.userStory == 7): # MONGO - 8
+            self.queryResultBox.delete('1.0', tk.END)
+            county = self.queryInputBox3.get()
+            toPrint = userStory8(self.dbConn, self.conn, True, county)
+        elif (self.userStory == 8): # MONGO - 9
+            self.queryResultBox.delete('1.0', tk.END)
+            gender = self.queryInputBox3.get()
+            agemin = self.queryInputBox3.get()
+            agemax = self.queryInputBox3.get()
+            toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
+        elif (self.userStory == 9): # MONGO - 10
+            self.queryResultBox.delete('1.0', tk.END)
+            productID = self.queryInputBox3.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, productID)
+        elif (self.userStory == 10): # MONGO - 11
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.queryInputBox1.get()
+            toDate = self.queryInputBox2.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 11):
             self.queryResultBox.delete('1.0', tk.END)
             productID = self.queryInputBox3.get()
@@ -292,6 +335,11 @@ class MainApplication(tk.Frame):
             toDate = self.queryInputBox2.get()
             employeeID = self.queryInputBox3.get()
             toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
+        elif (self.userStory == 10): # MONGO - 15
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.queryInputBox1.get()
+            toDate = self.queryInputBox2.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 15):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.queryInputBox1.get()

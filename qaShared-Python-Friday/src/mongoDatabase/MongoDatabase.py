@@ -107,6 +107,9 @@ class MongoDatabase(object):
             
     def closeConnection(self):
         self.conn.close()
+        
+    def getConnection(self):
+        return self.conn
             
     def getMenuInput(self):
         """ getMenuInput: Get user input menu choice. """

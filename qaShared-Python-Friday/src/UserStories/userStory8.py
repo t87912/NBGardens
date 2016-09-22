@@ -1,15 +1,61 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Sep  6 21:24:58 2016
+from mongoDatabase.MongoQueries import CustomerOrderReviews
+from sqlDatabase.SQLQueries import queriesForMongo
 
-@author: user
-"""
+def userStory8(GUI, sqlDB, county):
+    """(boolean for GUI, sql database reference?, string):
+    This method returns the average ratings for customers from a specific county"""
+    if (not GUI):
+        county = input("Which county would you like to search for customer ratings from?")
 
-def userStory8(MongoQueries, GUI, gender):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        #if (not GUI):
-          #  custID = int(input("What gender would you like to search for customer scores by? /n Select from M or F"))
-        #if (GUI):
-            #!!!!! need an SQL statement to create table of Male/Female Customers, same for age !!!!#
-        print("TBC: need some SQL")
-        return ["need some sql"]
+    query = queriesForMongo[5] % (county)
+    cursor = sqlDB.cursor()  # Creating the cursor to query the database
+    # Executing the query:
+    try:
+        cursor.execute(query)
+        sqlDB.commit()
+    except:
+        sqlDB.rollback()
+
+    custIDs = cursor.fetchall()
+
+    totalavProductScore = 0
+    totalavDeliveryScore = 0
+    totalavServiceScore = 0
+    count = 0
+    for custID in custIDs:
+        customerProductScores = CustomerOrderReviews.getProductScoresfCust(custID)
+        if len(customerProductScores) == 0:
+            break
+        else:
+            totalProductScores = 0
+            for i in customerProductScores:
+                totalProductScores += i
+            avProductScore = totalProductScores / len(customerProductScores)
+            totalavProductScore += avProductScore
+
+            customerDeliveryScores = CustomerOrderReviews.getDeliveryScore(custID)
+            totalDeliveryScores = 0
+            for i in customerDeliveryScores:
+                totalDeliveryScores += i
+            avDeliveryScore = totalDeliveryScores / len(customerDeliveryScores)
+            totalavDeliveryScore += avDeliveryScore
+
+            customerServiceScores = CustomerOrderReviews.getServiceScore(custID)
+            totalServiceScores = 0
+            for i in customerServiceScores:
+                totalServiceScores += i
+            avServiceScore = totalServiceScores / len(customerServiceScores)
+            totalavServiceScore += avServiceScore
+            count += 1
+
+    finalProductScore = totalavProductScore / count
+    finalServiceScore = totalavServiceScore / count
+    finalDeliveryScore = totalavDeliveryScore / count
+    scoresFromCounty = [finalProductScore, finalDeliveryScore, finalServiceScore]
+
+    if (not GUI):
+        print("For customers in " + county + " average review scores are:\n Products: " + finalProductScore + \
+              "\n Delivery: " + finalDeliveryScore + "\n Service: " + finalServiceScore)
+    else:
+        result = [scoresFromCounty]
+        return result  # result = [[finalProductScore, finalDeliveryScore, finalServiceScore]]

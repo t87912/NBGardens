@@ -1,12 +1,12 @@
-#from pymongo import MongoClient
+from pymongo import MongoClient
 #conn = MongoClient()
 #db = conn.NBGardensMongo
 
-#MONGODB_URI = 'mongodb://master:pa$$w0rd@ds019766.mlab.com:19766/nbgardens'
+MONGODB_URI = 'mongodb://master:pa$$w0rd@ds019766.mlab.com:19766/nbgardens'
 
-#conn = MongoClient(MONGODB_URI)
+conn = MongoClient(MONGODB_URI)
 
-#db = conn.get_default_database() 
+db = conn.get_default_database() 
 
 class OnlineReviews:
     ##### accesses OnlineReviews Collection #####
@@ -29,7 +29,6 @@ class OnlineReviews:
             reviewArray.append(rev)
         return reviewArray
         
-
 class ProductDetails:
     ##### accesses ProductDetails Collection #####
     def getProductDetails(i):
@@ -53,51 +52,11 @@ class ProductDetails:
             desc = prod["description"]
         return desc
         
-class CustomerOrderReviews(object):
-    ##### accesses CustomerOrderReviews Collection #####
-    def __init__(self, conn):
-        self.conn = conn
-        self.db = self.conn.get_default_database() 
-
-
-    class fOrder(object):
-        ##### returns details from customer orders from order number
-        def __init__(self, conn):
-            self.conn = conn
-            self.db = conn.get_default_database() 
-            
-        def getProductScoresfOrder(self, i):
-            reviews = self.db.CustomerReviews.find({"_id":i})
-            productScores = []
-            for rev in reviews:
-                products = rev["products"]
-                for prod in products:
-                    productScores.append(prod["score"])
-            return productScores
-            
-        def getServiceScoresfOrder(self, i):
-            reviews = self.db.CustomerReviews.find({"_id":i})
-            for rev in reviews:
-                score = rev["customerServiceScore"]
-            return score
-            
-        def getDeliveryScoresfOrder(self, i):
-            reviews = self.db.CustomerReviews.find({"_id":i})
-            for rev in reviews:
-                score = rev["deliveryScore"]
-            return score
-
-    def getCustomerOrders(self):
-        ##### returns list of cutomer order ID's #####
-        reviews = self.db.CustomerReviews.find({})
-        custIDs = []
-        for rev in reviews:
-            custIDs.append(rev["_id"])
-        return custIDs
-
-    def getProductScores(self, i):
+class CustomerOrderReviews:
+    ##### accesses ProductDetails Collection #####
+    def getProductScores(i):
         ##### returns an array of the products scores from product id #####
-        reviews = self.db.CustomerReviews.find({})
+        reviews = db.CustomerReviews.find({})
         productScores = []
         for rev in reviews:
             products = rev["products"]
@@ -106,9 +65,10 @@ class CustomerOrderReviews(object):
                     productScores.append(prod["score"])
         return productScores
 
-    def getProductScoresfCust(self, i):
+        
+    def getProductScoresfCust(i):
         ##### returns an array of the products scores from customer id #####
-        reviews = self.db.CustomerReviews.find({})
+        reviews = db.CustomerReviews.find({})
         productReviews = []
         for rev in reviews:
             if rev["customer_id"] == i:
@@ -116,10 +76,10 @@ class CustomerOrderReviews(object):
                 for prod in products:
                     productReviews.append(prod["score"])      
         return productReviews
-                    
-    def getProductReviewsfProd(self, i):
+        
+    def getProductReviewsfProd(i):
         ##### returns an array of the products reviews from product id #####
-        reviews = self.db.CustomerReviews.find({})
+        reviews = db.CustomerReviews.find({})
         productReviews = []
         for rev in reviews:
             products = rev["products"]
@@ -128,9 +88,9 @@ class CustomerOrderReviews(object):
                     productReviews.append(prod["review"])
         return productReviews
         
-    def getProductReviewsfCust(self, i):
+    def getProductReviewsfCust(i):
         ##### returns an array of the products reviews from customer id #####
-        reviews = self.db.CustomerReviews.find({})
+        reviews = db.CustomerReviews.find({})
         productReviews = []
         for rev in reviews:
             if rev["customer_id"] == i:
@@ -139,18 +99,18 @@ class CustomerOrderReviews(object):
                     productReviews.append(prod["review"])
         return productReviews
         
-    def getServiceScore(self, i):
-        ##### returns serviceScores for a particular customer from customerID #####
-        reviews = self.db.CustomerReviews.find({"customer_id" : i})
+    def getServiceScore(i):
+        ##### returns serviceScore for a particular customer from customerID #####
+        reviews = db.CustomerReviews.find({"customer_id" : i})
         serviceScores = []
         for rev in reviews:
             serviceScore = rev["customerServiceScore"]
             serviceScores.append(serviceScore)
         return serviceScores
         
-    def getDeliveryScore(self, i):
-        ##### returns deliveryScores for a particular customer from customerID #####
-        reviews = self.db.CustomerReviews.find({"customer_id" : i})
+    def getDeliveryScore(i):
+        ##### returns deliveryScore for a particular customer from customerID #####
+        reviews = db.CustomerReviews.find({"customer_id" : i})
         deliveryScores = []
         for rev in reviews:
             deliveryScore = rev["customerServiceScore"]
@@ -179,7 +139,7 @@ class UserStories:
             count += 1
         return totalScore/count
         
-    def deliveryScoresOverTime(self):
+    def deliveryScoresOverTime():
         ##### UNFINISHED NEED SQL DATE QUERY #####
         reviews = db.CustomerReviews.find()
         totalScore = 0
@@ -191,7 +151,7 @@ class UserStories:
             count += 1
         return totalScore/count
             
-    def customerServiceScoresOverTime(self):
+    def customerServiceScoresOverTime():
         ##### UNFINISHED NEED SQL DATE QUERY #####
         reviews = db.CustomerReviews.find()
         totalScore = 0
@@ -203,6 +163,7 @@ class UserStories:
             count += 1
         return totalScore/count    
         
-#customerProductScores = CustomerOrderReviews.getProductScoresfCust(1)
-#print (customerProductScores)
+#custOrdRev = CustomerOrderReviews()
+customerProductScores = CustomerOrderReviews.getProductScoresfCust(1)
+print (customerProductScores)
         
