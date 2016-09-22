@@ -7,6 +7,8 @@ Created on Thu Sep  1 15:13:49 2016
 
 # Import modules:
 import tkinter as tk
+import csv
+import sys
 
 # Import other python class files:
 from sqlDatabase.MySQLDatabase import MySQLDatabase
@@ -40,6 +42,7 @@ class MainApplication(tk.Frame):
     def __init__(self, master, *args, **kwargs):
         self.master = master
         self.firstClick = True
+        self.currentQueryResult = []
         self.userStory = 0
         self.menuLines = ["\nPlease select an option: ",
                           "1. Input a custom SQL query.",
@@ -150,6 +153,9 @@ class MainApplication(tk.Frame):
             
             self.submitUserStoryInputs = tk.Button(self.master, text = "Submit", command = self.submitUserStory)
             self.submitUserStoryInputs.grid(row=12,column=4)
+            
+            self.writeToCSVButton = tk.Button(self.master, text = "Export to CSV", command = self.exportToCSV)
+            self.writeToCSVButton.grid(row=12,column=5)
             
             # Set prompt text of input boxes:
             self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
@@ -408,9 +414,17 @@ class MainApplication(tk.Frame):
             and creates a textToEval variable which adds that element of the
             list to the queryResultsBox, incrementing the line it inserts onto
             with each new row. This textToEval is then evaluated."""
+        self.currentQueryResult = toPrint # For use when writing to CSV
         for i in range(0, len(toPrint)):
             textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
             eval(textToEval)
+            
+    def exportToCSV(self):
+        """ exportToCSV: """        
+        with open("Assets\\CSV_Output.csv", "w") as csvFile:
+            writer = csv.writer(csvFile, sys.stdout, lineterminator='\n')
+            for row in range(0, len(self.currentQueryResult)):
+                writer.writerow(self.currentQueryResult[row])
         
 if __name__ == "__main__":
     root = tk.Tk()
