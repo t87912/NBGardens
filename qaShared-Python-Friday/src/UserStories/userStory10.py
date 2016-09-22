@@ -1,4 +1,4 @@
-from MongoQueries import CustomerOrderReviews, OnlineReviews
+from mongoDatabase.MongoQueries import CustomerOrderReviews, OnlineReviews
 
 def userStory10(GUI, prodID):
     """(boolean for GUI, int for productID):
@@ -21,7 +21,7 @@ def userStory10(GUI, prodID):
             avOnlineScore = "N/A"
         
     else:
-            totalReviewScores = 0
+        totalReviewScores = 0
         for i in onlineReviewScores:
             totalReviewScores += i
         avOnlineScore = totalReviewScores / len(onlineReviewScores)

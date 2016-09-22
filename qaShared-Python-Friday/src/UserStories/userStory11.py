@@ -1,4 +1,4 @@
-from MongoQueries import CustomerOrderReviews
+from mongoDatabase.MongoQueries import CustomerOrderReviews
 
 def userStory11(db, GUI, dateFrom, dateTo):
     """(db is sql database, boolean for GUI, a date from when to get review scores from, and to):
@@ -25,14 +25,14 @@ def userStory11(db, GUI, dateFrom, dateTo):
     for orderID in orderIDs:
         
         query = queriesForMongo[3] % (orderID)
-		cursor = sqlDB.cursor()  # Creating the cursor to query the database
-		# Executing the query:
-		try:
-			cursor.execute(query)
-			sqlDB.commit()
-		except:
-			sqlDB.rollback()
-		orderDate = cursor.fetchall()
+        cursor = sqlDB.cursor()  # Creating the cursor to query the database
+        # Executing the query:
+        try:
+            cursor.execute(query)
+            sqlDB.commit()
+        except:
+            sqlDB.rollback()
+        orderDate = cursor.fetchall()
         
         if (dateFrom < orderDate < dateTo):        
         
