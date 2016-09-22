@@ -175,11 +175,13 @@ class MainApplication(tk.Frame):
         self.queryInputBox3 = tk.Entry(self.master)
         self.queryInputBox3.grid(row=12,column=3)
         
-        # The submit user story and export to csv buttons:
+        # The submit user story, export to csv and show graph buttons:
         self.submitUserStoryInputs = tk.Button(self.master, text = "Submit", command = self.submitUserStory)
         self.submitUserStoryInputs.grid(row=12,column=4)            
         self.writeToCSVButton = tk.Button(self.master, text = "Export to CSV", command = self.exportToCSV)
         self.writeToCSVButton.grid(row=12,column=5)
+        self.showGraphButton = tk.Button(self.master, text = "Show Graph", command = self.showGraph)
+        self.showGraphButton.grid(row=12,column=6)
         
         # Set prompt text of input boxes:
         self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
@@ -204,6 +206,18 @@ class MainApplication(tk.Frame):
         """ onEntryClick: onFocus event will delete prompt text in entry box """
         stringToEval = "%s.delete(0, \"end\")" % (tkWidgetName)
         eval(stringToEval)
+        
+    def showGraph(self):
+        """ showGraph: This method will open a new top level window and display
+            a graph image. It simply shows the image file called graph.png
+            which is stored in /assets. This will be the most recent graph
+            that has been created. """
+        graphWindow = tk.Toplevel()
+        canvas = tk.Canvas(graphWindow, width = 500, height = 400)
+        canvas.pack(expand = tk.YES, fill = tk.BOTH)
+        graphToShow = tk.PhotoImage(file = 'assets\\graph.png')
+        canvas.create_image(50, 10, image = graphToShow, anchor = tk.NW)
+        canvas.graphToShow = graphToShow      
         
     def dropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a

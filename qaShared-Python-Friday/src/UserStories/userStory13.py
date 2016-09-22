@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 
 from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
-import os
 
 def userStory13(db, GUI, startDate, endDate):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
