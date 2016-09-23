@@ -24,15 +24,13 @@ It would be nice to allow the user to search the MongoDB based upon a keyword.
 
 So if the user search for "Good", all reviews with the keyword "Good" would be returned.
 
-# 5. Ensure all User Stories ask for the right inputs and return the right data (DATABASE TEAMS):
+# 5. Make sure graph data/axes/labels are correct (TOM C)
 
-This job is for both database teams. Basically just run the program and go through the user stories, making sure each user story returns the correct data, ordered correctly etc.
+# 6. Login to Mongo and SQL, not just SQL (TOM C)
 
-# 6. Make sure graph data/axes/labels are correct (TOM C)
+# 7. Add toCSV method to each Mongo story and Mongo Stories in AllUserStories.py (TOM C)
 
-# 7. Login to Mongo and SQL, not just SQL (TOM C)
-
-# 8. Add toCSV method to each userStory and allUserStories (TOM C)
+# 8. In AllUserStories, need to add headers to results (AMEEN)
 
 ## DevOps Jobs:
 
