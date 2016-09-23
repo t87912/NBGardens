@@ -7,28 +7,20 @@ Created on Mon Sep 19 22:23:41 2016
 
 # Write to csv function
 
-def writeToCSV(data):
+def writeToCSV(rows, headers = ""):
     """ writeToCSV: This function accepts data as a parameter. This data is in
-        the following format: [[row 1], [row 2]...[row n]].  """
-        
-    # BELOW IS MY CODE FROM THE ORIGINAL PROGRAM
-    # IT NEEDS TO BE EXTENDED TO ALLOW ANY DATA SET TO BE WRITTEN TO A CSV FILE
-    # Convert datetimes to date strings
-    dates = []
-    ratings = []
-    for x in range(0, len(dates)):
-        dates[x] = dates[x].strftime('%d-%m-%Y')
-        
-    for y in range(0, len(ratings)):
-        ratings[y] = str(ratings[y])
-    
-    forCSV = []
-    for i in range(0,len(ratings)):
-        forCSV.append([dates[i],ratings[i]])
-    
-    print ("Writing dates and ratings to CSV file: /CSV Files/ratingsOverTime.csv...")
-    with open("C:\\Users\\Administrator\\Desktop\\Week 5 - Python\\py files\\CSV Files\\ratingsOverTimeSQL.csv", "w") as f:
-        # Last 2 parameters below to remove empty line between each line            
-        writer = csv.writer(f, sys.stdout, lineterminator='\n')
-        for z in range(0, len(forCSV)):
-            writer.writerow(forCSV[z])
+        the following format: [[row 1], [row 2]...[row n]].
+
+        Author: Damien Lloyd"""
+
+    path = os.getcwd() + '/'
+    filename = path + filename
+    print ("Writing CSV to " + filename)
+
+    with open(filename, 'w', newline='') as f:
+        a_csv = csv.writer(f)
+
+        if headers != "":
+            a_csv.writerow(headers)
+
+        a_csv.writerows(rows)
