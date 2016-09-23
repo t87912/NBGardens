@@ -10,37 +10,43 @@ from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
 
 def userStory16(db, GUI, startDate, endDate):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        if (not GUI):
-            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-            endDate = input("Please enter the end date (YYYY-MM-DD): ")    
+    """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+    if (not GUI):
+        startDate = input("Please enter the start date (YYYY-MM-DD): ")
+        endDate = input("Please enter the end date (YYYY-MM-DD): ")    
+
+    sqlParse = queries[16] % (startDate, endDate)
+      
+    sql = sqlParse
+    queryResults = query(db, sql)
     
-        sqlParse = queries[16] % (startDate, endDate)
-          
-        sql = sqlParse
-        results = query(db, sql)
+    ids = []
+    totals = [] 
+    amounts = []
+    for r in range(0, len(queryResults)):
+        ids.append(queryResults[r][0])
+        totals.append(queryResults[r][1])
+        amounts.append(queryResults[r][2])
+    
+    # dates ratings product
+    print ("Plotting the data...")
+    plt.plot(ids, totals, amounts, "#993A54")
+    plt.legend(loc=1)
+    plt.xlabel('Date (YYYY-MM-DD)')
+    plt.xticks(rotation=45)
+    plt.ylabel('Number of Sales')
+    plt.title('Amount of sales made by a particular salesperson over a period of time')
+    plt.grid(True)
+    #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory16.png")
+    plt.savefig("assets\\graph.png")        
+    plt.show()    
+    
+    header = ("ProductID","NumberSold","NumberInStock")
+    results = []
+    results.append(header)
+    for x in range(0, len(queryResults)):
+        results.append(queryResults[x])
         
-        ids = []
-        totals = [] 
-        amounts = []
-        for r in range(0, len(results)):
-            ids.append(results[r][0])
-            totals.append(results[r][1])
-            amounts.append(results[r][2])
-        
-        # dates ratings product
-        print ("Plotting the data...")
-        plt.plot(ids, totals, amounts, "#993A54")
-        plt.legend(loc=1)
-        plt.xlabel('Date (YYYY-MM-DD)')
-        plt.xticks(rotation=45)
-        plt.ylabel('Number of Sales')
-        plt.title('Amount of sales made by a particular salesperson over a period of time')
-        plt.grid(True)
-        #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory16.png")
-        plt.savefig("assets\\graph.png")        
-        plt.show()        
-        
-        # If GUI return the data
-        if (GUI):
-            return results
+    # If GUI return the data
+    if (GUI):
+        return results

@@ -9,15 +9,20 @@ from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
 
 def userStory12(db, GUI, productID):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+    """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+    
+    if (not GUI):
+        productID = input("Please enter the productID: ") 
+    
+    sqlParse = queries[12] % (productID)
+    header = ("NumberOfProductsInInventory")
+    results = []
+    sql = sqlParse
+    queryResults = query(db, sql) 
+    results.append(header)
+    for x in range(0, len(queryResults)):
+        results.append(queryResults[x])
         
-        if (not GUI):
-            productID = input("Please enter the productID: ") 
-        
-        sqlParse = queries[12] % (productID)
-        sql = sqlParse
-        results = query(db, sql)
-        
-        # If GUI return the data
-        if (GUI):
-            return results
+    # If GUI return the data
+    if (GUI):
+        return results

@@ -18,13 +18,13 @@ def userStory13(db, GUI, startDate, endDate):
         sqlParse = queries[13] % (startDate, endDate)
           
         sql = sqlParse
-        results = query(db, sql)
+        queryResults = query(db, sql)
         
         products = []
         totals = []        
-        for r in range(0, len(results)):
-            products.append(results[r][0])
-            totals.append(results[r][1])
+        for r in range(0, len(queryResults)):
+            products.append(queryResults[r][0])
+            totals.append(queryResults[r][1])
         
         print ("Plotting the data...")
         plt.plot(products, totals, "#993A54")
@@ -32,12 +32,14 @@ def userStory13(db, GUI, startDate, endDate):
         plt.ylabel('Amount of sales')
         plt.title('Amount of sales for a particular product over a period of time')
         plt.grid(True)
-        #string = eval(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'Image Files'))).replace('\\','\\\\')
-        #string = string.replace('\\','\\\\')
-        #print (string)
         plt.savefig("assets\\graph.png")
-        #plt.savefig("\\Image Files\\userStory13.png")
-        plt.show()    
+        plt.show()
+        
+        header = ("ProductID","NumberOfSales")
+        results = []
+        results.append(header)
+        for x in range(0, len(queryResults)):
+            results.append(queryResults[x])
         
         # If GUI return the data
         if (GUI):

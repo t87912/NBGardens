@@ -9,17 +9,22 @@ from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
 
 def userStory5(db, GUI, startDate, endDate, productID):
-        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-        
-        if (not GUI):
-            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-            endDate = input("Please enter the end date (YYYY-MM-DD): ") 
-            productID = input("Please enter the productID: ") 
-        
-        sqlParse = queries[5] % (startDate, endDate, productID)
-        sql = sqlParse
-        results = query(db, sql)
-        
-        # If GUI return the data
-        if (GUI):
-            return results
+    """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+    
+    if (not GUI):
+        startDate = input("Please enter the start date (YYYY-MM-DD): ")
+        endDate = input("Please enter the end date (YYYY-MM-DD): ") 
+        productID = input("Please enter the productID: ") 
+    
+    sqlParse = queries[5] % (startDate, endDate, productID)
+    header = ("ProductID","ReturnOnInvestment")
+    results = []
+    sql = sqlParse
+    queryResults = query(db, sql) 
+    results.append(header)
+    for x in range(0, len(queryResults)):
+        results.append(queryResults[x])
+    
+    # If GUI return the data
+    if (GUI):
+        return results
