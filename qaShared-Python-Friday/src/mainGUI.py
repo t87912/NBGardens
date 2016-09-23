@@ -487,6 +487,6 @@ class MainApplication(tk.Frame):
 if __name__ == "__main__":
     root = tk.Tk()
     MainApplication = MainApplication(root)
-    root.geometry('1200x1000')
+    root.geometry('1200x900')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()
