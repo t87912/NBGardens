@@ -4,7 +4,7 @@ Created on Tue Sep  6 21:38:50 2016
 
 @author: user
 """
-
+from exportToCSV import exportToCSV
 from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
 
@@ -25,3 +25,5 @@ def userStory2(db, GUI, startDate, endDate):
         results.append(queryResults[x])
     if (GUI):  # If GUI return the data
         return results
+    else:
+        exportToCSV(results)

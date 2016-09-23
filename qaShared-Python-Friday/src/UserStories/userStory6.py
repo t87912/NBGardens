@@ -5,6 +5,7 @@ Created on Tue Sep  6 21:24:58 2016
 @author: user
 """
 
+from exportToCSV import exportToCSV
 from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
 
@@ -27,3 +28,5 @@ def userStory6(db, GUI, startDate, endDate):
     # If GUI return the data
     if (GUI):
         return results
+    else:
+        exportToCSV(results)

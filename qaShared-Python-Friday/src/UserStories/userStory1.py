@@ -5,11 +5,14 @@ Created on Tue Sep  6 21:24:58 2016
 @author: user
 """
 
+from exportToCSV import exportToCSV
 from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
 
 def userStory1(db, GUI, startDate, endDate):
     """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
+    
+    print ("USERSTORY1")    
     
     # If called in terminal program, get user to set input:        
     if (not GUI):
@@ -27,3 +30,5 @@ def userStory1(db, GUI, startDate, endDate):
     # If GUI return the data
     if (GUI):
         return results
+    else:
+        exportToCSV(results)

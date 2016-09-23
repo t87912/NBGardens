@@ -5,6 +5,7 @@ Created on Thu Sep 15 11:48:47 2016
 @author: Administrator
 """
 
+from exportToCSV import exportToCSV
 from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
 import matplotlib.pyplot as plt
@@ -274,8 +275,12 @@ class AllUserStories (object):
         results = query(db, sql)
 
         # If GUI return the data
+        print ("test")
         if (GUI):
             return [results]
+        else:
+            print ("not gui")
+            exportToCSV(results)
 
 
 #    def userStory13(self, db, GUI, startDate, endDate):
@@ -498,6 +503,8 @@ class AllUserStories (object):
         # If GUI return the data
         if (GUI):
             return [results]
+        else:
+            exportToCSV(results)
 
 
     def userStorySeries2(self, db, GUI, startDate, endDate, additional_attribute, query_number):
@@ -572,3 +579,5 @@ class AllUserStories (object):
         # If GUI return the data
         if (GUI):
             return [results]
+        else:
+            exportToCSV(results)

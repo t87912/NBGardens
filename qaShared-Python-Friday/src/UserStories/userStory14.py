@@ -7,7 +7,7 @@ Created on Tue Sep  6 21:24:58 2016
 
 import matplotlib.pyplot as plt
 
-
+from exportToCSV import exportToCSV
 from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
 
@@ -55,3 +55,5 @@ def userStory14(db, GUI, startDate, endDate, employeeID):
     # If GUI return the data
     if (GUI):
         return results
+    else:
+        exportToCSV(results)
