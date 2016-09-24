@@ -32,6 +32,10 @@ So if the user search for "Good", all reviews with the keyword "Good" would be r
 
 # 8. In AllUserStories, need to add headers to results (AMEEN)
 
+# 9. Add Scroll Bar to GUI results box (TOM)
+
+# 10. Add new user stories without coding, eg generate new code for user stories?
+
 ## DevOps Jobs:
 
 # 1. CloudFoundry:
