@@ -17,16 +17,10 @@ def userStory6(db, GUI, startDate, endDate):
         endDate = input("Please enter the end date (YYYY-MM-DD): ") 
     
     sqlParse = queries[6] % (startDate, endDate)
-    header = ("AverageTimeToFullfillOrder(days)")
-    results = []
     sql = sqlParse
     queryResults = query(db, sql) 
-    results.append(header)
-    for x in range(0, len(queryResults)):
-        results.append(queryResults[x])
-        
     # If GUI return the data
     if (GUI):
-        return results
+        return queryResults
     else:
-        exportToCSV(results)
+        exportToCSV(queryResults)

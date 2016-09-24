@@ -16,14 +16,9 @@ def userStory2(db, GUI, startDate, endDate):
         endDate = input("Please enter the end date (YYYY-MM-DD): ")
         
     sqlParse = queries[2] % (startDate, endDate)
-    header = ("CustomerID","Firstname","LastName","SpendingTotal")
-    results = []
     sql = sqlParse
     queryResults = query(db, sql) 
-    results.append(header)
-    for x in range(0, len(queryResults)):
-        results.append(queryResults[x])
     if (GUI):  # If GUI return the data
-        return results
+        return queryResults
     else:
-        exportToCSV(results)
+        exportToCSV(queryResults)

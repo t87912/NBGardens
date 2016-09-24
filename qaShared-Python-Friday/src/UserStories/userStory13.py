@@ -21,8 +21,8 @@ def userStory13(db, GUI, startDate, endDate):
         queryResults = query(db, sql)
         
         products = []
-        totals = []        
-        for r in range(0, len(queryResults)):
+        totals = []
+        for r in range(1, len(queryResults)):
             products.append(queryResults[r][0])
             totals.append(queryResults[r][1])
         
@@ -35,15 +35,9 @@ def userStory13(db, GUI, startDate, endDate):
         plt.savefig("assets\\graph.png")
         plt.show()
         
-        header = ("ProductID","NumberOfSales")
-        results = []
-        results.append(header)
-        for x in range(0, len(queryResults)):
-            results.append(queryResults[x])
-        
         # If GUI return the data
         if (GUI):
-            return results
+            return queryResults
         else:
-            exportToCSV(results)
+            exportToCSV(queryResults)
     

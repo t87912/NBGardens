@@ -15,16 +15,10 @@ def userStory12(db, GUI, productID):
         productID = input("Please enter the productID: ") 
     
     sqlParse = queries[12] % (productID)
-    header = ("NumberOfProductsInInventory")
-    results = []
     sql = sqlParse
-    queryResults = query(db, sql) 
-    results.append(header)
-    for x in range(0, len(queryResults)):
-        results.append(queryResults[x])
-        
+    queryResults = query(db, sql)  
     # If GUI return the data
     if (GUI):
-        return results
+        return queryResults
     else:
-        exportToCSV(results)
+        exportToCSV(queryResults)

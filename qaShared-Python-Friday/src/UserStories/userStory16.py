@@ -23,32 +23,33 @@ def userStory16(db, GUI, startDate, endDate):
     ids = []
     totals = [] 
     amounts = []
-    for r in range(0, len(queryResults)):
+    
+    for r in range(1, len(queryResults)):
         ids.append(queryResults[r][0])
         totals.append(queryResults[r][1])
         amounts.append(queryResults[r][2])
     
+    print (len(ids))    
+    print (len(totals))
+    print (len(amounts))    
+    
     # dates ratings product
     print ("Plotting the data...")
-    plt.plot(ids, totals, amounts, "#993A54")
-    plt.legend(loc=1)
-    plt.xlabel('Date (YYYY-MM-DD)')
-    plt.xticks(rotation=45)
+    width = 0.35       # the width of the bars
+    plt.bar(ids, totals, width, color='r')
+    plt.bar(ids, amounts, width, color='b')
+    #plt.plot(ids, totals)
+    #plt.plot(ids, amounts)
+    plt.legend(['Number of Sales', 'Stock Available'], loc='upper left')
+    plt.xlabel('Product ID')
     plt.ylabel('Number of Sales')
     plt.title('Amount of sales made by a particular salesperson over a period of time')
     plt.grid(True)
-    #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory16.png")
     plt.savefig("assets\\graph.png")        
-    plt.show()    
-    
-    header = ("ProductID","NumberSold","NumberInStock")
-    results = []
-    results.append(header)
-    for x in range(0, len(queryResults)):
-        results.append(queryResults[x])
+    plt.show()
         
     # If GUI return the data
     if (GUI):
-        return results
+        return queryResults
     else:
-        exportToCSV(results)
+        exportToCSV(queryResults)

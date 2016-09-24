@@ -24,14 +24,14 @@ def userStory14(db, GUI, startDate, endDate, employeeID):
     
     dates = []
     totals = []        
-    for r in range(0, len(queryResults)):
+    for r in range(1, len(queryResults)):
         dates.append(queryResults[r][1])
         totals.append(queryResults[r][2])      
     
     if (len(queryResults) == 0):
         print ("There is no sales data available for this employee for the specified timeframe.")
         if (GUI):
-            results = ["There is no sales data available for this employee for the specified timeframe."]
+            queryResults = ["There is no sales data available for this employee for the specified timeframe."]
     else:
         # dates ratings product
         print ("Plotting the data...")
@@ -46,14 +46,8 @@ def userStory14(db, GUI, startDate, endDate, employeeID):
         plt.savefig("assets\\graph.png")
         plt.show()
         
-    header = ("EmployeeID","OrderCreationDate","OrderTotal")
-    results = []
-    results.append(header)
-    for x in range(0, len(queryResults)):
-        results.append(queryResults[x])
-
     # If GUI return the data
     if (GUI):
-        return results
+        return queryResults
     else:
-        exportToCSV(results)
+        exportToCSV(queryResults)
