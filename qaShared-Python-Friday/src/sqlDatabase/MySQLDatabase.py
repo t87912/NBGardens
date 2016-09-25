@@ -31,7 +31,9 @@ from UserStories import AllUserStories
 class MySQLDatabase(object):
     """ Database: Holds the database object used for querying, also holds the
         logic for the menus and runs the actual queries. """
-    def __init__(self, userLoginDetails):
+    def __init__(self, userLoginDetails, logger, fh):
+        self.logger = logger
+        self.fh = fh # set filehandler, for closing the log file        
         self.menuOption = 0
         self.username = userLoginDetails[0]
         self.password = userLoginDetails[1]
@@ -61,6 +63,7 @@ class MySQLDatabase(object):
             self.db = pymysql.connect("", "", "", "nbgardensds")
             print ("Connecting to MySQL database...")
             print ("Connection to MySQL database was successful.")
+            self.logger.info('Successful login to MySQL database, username: %s' % (self.username))
             return True
         except:
             print ("Error: username or password incorrect.")
@@ -168,6 +171,8 @@ class MySQLDatabase(object):
 
     def exitProgram(self):
         print ("Exiting the program...")
+        self.logger.info('---------- Finished logging -----------')
+        self.fh.close()
         sys.exit(0)
 
     def printMenu(self):

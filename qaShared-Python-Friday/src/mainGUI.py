@@ -15,6 +15,7 @@ from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
 from mongoDatabase import MongoQueries
 from exportToCSV import exportToCSV
+from Logger import Logger
 
 # Import user stories:
 from UserStories.userStory1 import userStory1
@@ -68,7 +69,10 @@ class MainApplication(tk.Frame):
                            "14. (SQL) Create a graph showing the amount of sales made by a particular sales person over a period of time",
                            "15. (Mongo) Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
                            "16. (SQL) Create a graph of the number of stock available for a particular product with the number of sales for that particular product over a particular time period"
-                          ]  
+                          ]
+        loggerObject = Logger("GUI") # Init the logger object
+        self.logger = loggerObject.getLogger() # Get the logger object
+        self.fh = loggerObject.getFileHandler() # Get the logger filehandler
         self.createInitialGUI()
         
     def createInitialGUI(self):
@@ -111,7 +115,7 @@ class MainApplication(tk.Frame):
         userLoginDetails = [username, password]
         
         # Init MySQLDatabase with login details
-        self.db = MySQLDatabase(userLoginDetails)
+        self.db = MySQLDatabase(userLoginDetails, self.logger, self.fh)
         
         # Attempt to login, returns true/false if valid/invalid
         validLogin = self.db.login()
