@@ -28,21 +28,20 @@ def userStory14(db, GUI, startDate, endDate, employeeID):
         dates.append(queryResults[r][1])
         totals.append(queryResults[r][2])      
     
-    if (len(queryResults) == 0):
-        print ("There is no sales data available for this employee for the specified timeframe.")
+    if (len(queryResults) == 1):
+        print ("There is no data available for the specified timeframe.")
         if (GUI):
-            queryResults = ["There is no sales data available for this employee for the specified timeframe."]
+            queryResults = [["There is no data available for the specified timeframe."]]
     else:
         # dates ratings product
         print ("Plotting the data...")
         plt.plot_date(dates, totals, "#993A54")
         plt.legend(loc=1)
-        plt.xlabel('Date (YYYY-MM-DD)')
+        plt.xlabel('Date (MMM-YYYY)')
         plt.xticks(rotation=45)
-        plt.ylabel('Number of Sales')
-        plt.title('Amount of sales made by a particular salesperson over a period of time')
+        plt.ylabel('Value of Sales (£)')
+        plt.title('Amount of sales made by salespersonID %s between %s and %s' % (employeeID, startDate, endDate))
         plt.grid(True)
-        #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory14.png")
         plt.savefig("assets\\graph.png")
         plt.show()
         

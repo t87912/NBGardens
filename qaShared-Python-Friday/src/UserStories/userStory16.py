@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from exportToCSV import exportToCSV
 from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
+import numpy as np
 
 def userStory16(db, GUI, startDate, endDate):
     """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
@@ -27,26 +28,31 @@ def userStory16(db, GUI, startDate, endDate):
     for r in range(1, len(queryResults)):
         ids.append(queryResults[r][0])
         totals.append(queryResults[r][1])
-        amounts.append(queryResults[r][2])
+        amounts.append(queryResults[r][2]) 
     
-    print (len(ids))    
-    print (len(totals))
-    print (len(amounts))    
-    
-    # dates ratings product
-    print ("Plotting the data...")
-    width = 0.35       # the width of the bars
-    plt.bar(ids, totals, width, color='r')
-    plt.bar(ids, amounts, width, color='b')
-    #plt.plot(ids, totals)
-    #plt.plot(ids, amounts)
-    plt.legend(['Number of Sales', 'Stock Available'], loc='upper left')
-    plt.xlabel('Product ID')
-    plt.ylabel('Number of Sales')
-    plt.title('Amount of sales made by a particular salesperson over a period of time')
-    plt.grid(True)
-    plt.savefig("assets\\graph.png")        
-    plt.show()
+    if (len(queryResults) == 1):
+        print ("There is no data available for the specified timeframe.")
+        if (GUI):
+            queryResults = [["There is no data available for the specified timeframe."]]
+    else:
+        # dates ratings product
+        print ("Plotting the data...")
+        ids2 = ids[:] # Copy ids into ids2
+        # Below is a hacky solution to showing the bars on seperate x axis
+        # positions, just take 0.35 off each to offset
+        for i in range(0,len(ids2)):
+            ids2[i] -= 0.35
+        # Force x axis to show every ID, not go up in intervals > 1
+        plt.xticks(np.arange(min(ids), max(ids)+1, 1.0))
+        plt.bar(ids, amounts,width=0.3,color='g',align='center')
+        plt.bar(ids2, totals,width=0.3,color='r',align='center')
+        plt.legend(['Stock Available', 'Number of Sales'], loc='upper left')
+        plt.xlabel('Product ID')
+        plt.ylabel('Number of Stock')
+        plt.title('Number of stock available for all products with the number of sales between %s and %s' % (startDate, endDate))
+        plt.grid(True)
+        plt.savefig("assets\\graph.png")        
+        plt.show()
         
     # If GUI return the data
     if (GUI):
