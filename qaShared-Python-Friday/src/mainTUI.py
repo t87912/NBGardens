@@ -20,7 +20,7 @@ Created on Wed Aug 31 11:11:07 2016
 
 # Import modules:
 import sys
-#import logging
+import logging
 
 # Import other python class files:
 from Login import Login
@@ -35,18 +35,34 @@ class MainLogic(object):
                          "2. Query MongoDB Database.",
                          "8. Logout.",
                          "9. Quit."]
-        self.loggedIn = False  
+        self.loggedIn = False
+        self.startLogging()
         self.initialLogin = True # used to not display gnome after first login
         self.runProgram()
         
     
-    """
     def startLogging(self):
-        self.logger = logging.getLogger('ASAS Log')
-        self.logger.setLevel(logging.DEBUG)
-        logging.basicConfig(filename = "Logs\\ASAS-Log.log", filemode="a", level = logging.DEBUG, format='%(asctime)s %(message)s')
-        self.logger.info('ASAS Program Opened - Logging Started')
-    """
+#        print ("loggin")
+#        self.logger = logging.getLogger('ASAS Log')
+#        self.logger.setLevel(logging.DEBUG)
+#        logging.basicConfig(filename = "ASAS-Log.log", filemode="w", level = logging.DEBUG, format='%(asctime)s %(message)s')
+#        self.logger.info('ASAS Program Opened - Logging Started')
+    
+        logger = logging.getLogger()
+        logger.setLevel(logging.DEBUG)
+        
+        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        
+        fh = logging.FileHandler('log_filename.txt')
+        fh.setLevel(logging.DEBUG)
+        fh.setFormatter(formatter)
+        logger.addHandler(fh)
+        
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.DEBUG)
+        ch.setFormatter(formatter)
+        logger.addHandler(ch)
+        logger.debug('This is a test log message.')
 
 #    def runProgram(self):  
 #        """ runProgram: Holds logic for the menu choices. """
