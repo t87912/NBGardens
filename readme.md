@@ -1,5 +1,6 @@
 # NBGardens ASAS
 
+<<<<<<< HEAD
 # NOTICE: "don't do anything to the master, work on the python/gui branch" - Tom.
 Refer to the instruction - developer section for more details on using branches.
 
@@ -20,10 +21,14 @@ This project is a shared project produced by a group of trainee consultants enro
 * Query log system
 * To be filled.
 
+=======
+# 1. Finish off Mongo Queries that use SQL (ANDREW):
+>>>>>>> 7c125b11614316978aabf207d2834dd4a0ae8dfd
 
 ## Highlighted Features
 Below are some screenshots of the new features of the application;
 
+<<<<<<< HEAD
 <ul>
     <li>
         <div>Menu option list ..... some text:<br /> </div>
@@ -46,6 +51,9 @@ Below are some screenshots of the new features of the application;
     </li> -->
 </ul>
 <br /><br />
+=======
+# 2. Get Logging sorted (TOM C):
+>>>>>>> 7c125b11614316978aabf207d2834dd4a0ae8dfd
 
 ## Instructions
 #### Developers
@@ -66,18 +74,26 @@ In an effort of good version control the project makes use of git technology and
     _GIT ADD ._
 </p> <br />
 
+<<<<<<< HEAD
+=======
+# 3. Comments and DocStrings (EVERYBODY):
+>>>>>>> 7c125b11614316978aabf207d2834dd4a0ae8dfd
 
 **Commit to the repository** - layman explanation: encapsulate everything added into one binded package update to be pushed. The 'm' in this instance can stand for message, please include this when using this command and describe any amendment and/ or update made.
 <p align="center">
     _GIT COMMIT -M "`<SOME TEXT>`"_
 </p> <br />
 
+<<<<<<< HEAD
 
 **Publish to the repository** - layman explanation: update the repository of any local changes so that a shared version is generated on Github. It is crucial to include the '-u' which specifies the branch for effectively control 'pushes'. Your branch maybe 'python', 'gui', 'master origin' - please only use the branch you've been allocated to.
 <p align="center">
     _GIT PUSH -U `<BRANCH NAME>`_
 </p> <br />
 
+=======
+# 4. Search MongoDB by review keyword (ANDREW?):
+>>>>>>> 7c125b11614316978aabf207d2834dd4a0ae8dfd
 
 **Remove file from repository** - layman explanation: Should you wish to remove file(s) from repository.
 <p align="center">
@@ -90,6 +106,7 @@ In an effort of good version control the project makes use of git technology and
 
 NOTE: Remember this is version control thus any mistake can be reversed. A full listing of further commands can be found by using are friendly search engine, Google or just ask Anthony.<br />
 
+<<<<<<< HEAD
 #### Normal Users
 Download the application with the additional required material, there is no requirement in cloning the repository. <br /><br />
 
@@ -120,3 +137,27 @@ More details on installation are provided in additional doxygen documentation. <
 
 ## Support
 This project is a part of QAC learning projects. The project will be continued in the near future under QAC.
+=======
+# 5. Make sure graph data/axes/labels are correct (TOM C)
+
+# 6. Login to Mongo and SQL, not just SQL (TOM C)
+
+# 7. Add toCSV method to each Mongo story and Mongo Stories in AllUserStories.py (TOM C)
+
+# 8. In AllUserStories, need to add headers to results (AMEEN)
+
+# 9. Add Scroll Bar to GUI results box (TOM)
+
+# 10. Add new user stories without coding, eg generate new code for user stories?
+
+## DevOps Jobs:
+
+# 1. CloudFoundry:
+
+Need to set up CloudFoundry to deploy our project.
+
+# 2. Jenkins:
+
+Not sure if this is possible, but it would be nice to have Jenkins run the project to see if there are any errors?
+
+>>>>>>> 7c125b11614316978aabf207d2834dd4a0ae8dfd

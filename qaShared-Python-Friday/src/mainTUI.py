@@ -20,12 +20,12 @@ Created on Wed Aug 31 11:11:07 2016
 
 # Import modules:
 import sys
-#import logging
 
 # Import other python class files:
 from Login import Login
 from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
+from Logger import Logger
 
 class MainLogic(object):
     """ MainLogic: Holds the logic for running the program in the prompt.  """
@@ -35,18 +35,12 @@ class MainLogic(object):
                          "2. Query MongoDB Database.",
                          "8. Logout.",
                          "9. Quit."]
-        self.loggedIn = False  
+        self.loggedIn = False
+        loggerObject = Logger("TUI") # Init the logger object
+        self.logger = loggerObject.getLogger() # Get the logger object
+        self.fh = loggerObject.getFileHandler() # Get the logger filehandler      
         self.initialLogin = True # used to not display gnome after first login
         self.runProgram()
-        
-    
-    """
-    def startLogging(self):
-        self.logger = logging.getLogger('ASAS Log')
-        self.logger.setLevel(logging.DEBUG)
-        logging.basicConfig(filename = "Logs\\ASAS-Log.log", filemode="a", level = logging.DEBUG, format='%(asctime)s %(message)s')
-        self.logger.info('ASAS Program Opened - Logging Started')
-    """
 
 #    def runProgram(self):  
 #        """ runProgram: Holds logic for the menu choices. """
@@ -85,7 +79,7 @@ class MainLogic(object):
                 while (not validLogin):
                     userLogin = Login()
                     userLoginDetails = userLogin.getLoginDetails()
-                    db = MySQLDatabase(userLoginDetails) # Init MySQL db
+                    db = MySQLDatabase(userLoginDetails, self.logger, self.fh) # Init MySQL db
                     validLogin = db.login() # Login to MySQL db
                     sqlDBForMongo = db.getDB()# Get MySQL db object to pass to MongoDB
                     mongoDB = MongoDatabase() # Init Mongo db
@@ -112,6 +106,8 @@ class MainLogic(object):
                         valid = False
                     elif (self.menuOption == 9):
                         print ("Exiting the program...")
+                        self.logger.info('---------- Finished logging TUI -----------')
+                        self.fh.close()
                         sys.exit(0)
         
     def printMenu(self):
