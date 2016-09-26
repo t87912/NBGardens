@@ -33,7 +33,7 @@ class MySQLDatabase(object):
         logic for the menus and runs the actual queries. """
     def __init__(self, userLoginDetails, logger, fh):
         self.logger = logger
-        self.fh = fh # set filehandler, for closing the log file        
+        self.fh = fh # set filehandler, for closing the log file
         self.menuOption = 0
         self.username = userLoginDetails[0]
         self.password = userLoginDetails[1]
@@ -72,12 +72,9 @@ class MySQLDatabase(object):
 
     def getDB(self):
         return self.db
-<<<<<<< HEAD
-=======
-        
+
     def closeConnection(self):
         self.db.close()
->>>>>>> 7c125b11614316978aabf207d2834dd4a0ae8dfd
 
 
     def methodFinder(self):
@@ -92,20 +89,13 @@ class MySQLDatabase(object):
         @param:  no params are needed
         @return: a method name to call with appropriate needed params
         """
-<<<<<<< HEAD
 
         one_param_cases = [12];
         two_param_cases = [1, 2, 4, 6, 13, 16];
         three_param_cases = [3, 5, 14];
 
         # eombined quereies into a method
-=======
-        one_param_cases = [12];
-        two_param_cases = [1, 2, 4, 6, 13, 16];
-        three_param_cases = [3, 5, 14];
-        # construct a method name
 
->>>>>>> 7c125b11614316978aabf207d2834dd4a0ae8dfd
         if int(self.menuOption) in two_param_cases:
             return self.run_query_obj.userStorySeries1(self.db, False, 0, 0, int(self.menuOption))
         elif int(self.menuOption) in three_param_cases:
@@ -118,10 +108,6 @@ class MySQLDatabase(object):
         elif (int(self.menuOption) == 19):
             self.exitProgram()
         else:
-<<<<<<< HEAD
-            # construct a method name
-=======
->>>>>>> 7c125b11614316978aabf207d2834dd4a0ae8dfd
             method_name = 'userStory' + str(self.menuOption)
             # use string as the method name and call it else return alt method
             find_method = getattr(self.run_query_obj, method_name)

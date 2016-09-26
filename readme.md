@@ -1,6 +1,5 @@
 # NBGardens ASAS
 
-<<<<<<< HEAD
 # NOTICE: "don't do anything to the master, work on the python/gui branch" - Tom.
 Refer to the instruction - developer section for more details on using branches.
 
@@ -28,7 +27,6 @@ This project is a shared project produced by a group of trainee consultants enro
 ## Highlighted Features
 Below are some screenshots of the new features of the application;
 
-<<<<<<< HEAD
 <ul>
     <li>
         <div>Menu option list ..... some text:<br /> </div>
@@ -74,7 +72,6 @@ In an effort of good version control the project makes use of git technology and
     _GIT ADD ._
 </p> <br />
 
-<<<<<<< HEAD
 =======
 # 3. Comments and DocStrings (EVERYBODY):
 >>>>>>> 7c125b11614316978aabf207d2834dd4a0ae8dfd
@@ -83,8 +80,6 @@ In an effort of good version control the project makes use of git technology and
 <p align="center">
     _GIT COMMIT -M "`<SOME TEXT>`"_
 </p> <br />
-
-<<<<<<< HEAD
 
 **Publish to the repository** - layman explanation: update the repository of any local changes so that a shared version is generated on Github. It is crucial to include the '-u' which specifies the branch for effectively control 'pushes'. Your branch maybe 'python', 'gui', 'master origin' - please only use the branch you've been allocated to.
 <p align="center">
@@ -106,7 +101,6 @@ In an effort of good version control the project makes use of git technology and
 
 NOTE: Remember this is version control thus any mistake can be reversed. A full listing of further commands can be found by using are friendly search engine, Google or just ask Anthony.<br />
 
-<<<<<<< HEAD
 #### Normal Users
 Download the application with the additional required material, there is no requirement in cloning the repository. <br /><br />
 
