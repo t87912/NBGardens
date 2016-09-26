@@ -14,6 +14,8 @@ import sys
 from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
 from mongoDatabase import MongoQueries
+from exportToCSV import exportToCSV
+from Logger import Logger
 
 # Import user stories:
 from UserStories.userStory1 import userStory1
@@ -67,7 +69,10 @@ class MainApplication(tk.Frame):
                            "14. (SQL) Create a graph showing the amount of sales made by a particular sales person over a period of time",
                            "15. (Mongo) Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
                            "16. (SQL) Create a graph of the number of stock available for a particular product with the number of sales for that particular product over a particular time period"
-                          ]  
+                          ]
+        loggerObject = Logger("GUI") # Init the logger object
+        self.logger = loggerObject.getLogger() # Get the logger object
+        self.fh = loggerObject.getFileHandler() # Get the logger filehandler
         self.createInitialGUI()
         
     def createInitialGUI(self):
@@ -110,7 +115,7 @@ class MainApplication(tk.Frame):
         userLoginDetails = [username, password]
         
         # Init MySQLDatabase with login details
-        self.db = MySQLDatabase(userLoginDetails)
+        self.db = MySQLDatabase(userLoginDetails, self.logger, self.fh)
         
         # Attempt to login, returns true/false if valid/invalid
         validLogin = self.db.login()
@@ -178,7 +183,7 @@ class MainApplication(tk.Frame):
         # The submit user story, export to csv and show graph buttons:
         self.submitUserStoryInputs = tk.Button(self.master, text = "Submit", command = self.submitUserStory)
         self.submitUserStoryInputs.grid(row=12,column=4)            
-        self.writeToCSVButton = tk.Button(self.master, text = "Export to CSV", command = self.exportToCSV)
+        self.writeToCSVButton = tk.Button(self.master, text = "Export to CSV", command = self.callCSV)
         self.writeToCSVButton.grid(row=12,column=5)
         self.showGraphButton = tk.Button(self.master, text = "Show Graph", command = self.showGraph)
         self.showGraphButton.grid(row=12,column=6)
@@ -207,6 +212,12 @@ class MainApplication(tk.Frame):
         """ onEntryClick: onFocus event will delete prompt text in entry box """
         stringToEval = "%s.delete(0, \"end\")" % (tkWidgetName)
         eval(stringToEval)
+        
+    def callCSV(self):
+        """ callCSV: This just calls the external method exportToCSV. There is
+            a bug preventing it being called directly from the button press,
+            so the press goes here before calling the external function. """
+        exportToCSV(self.currentQueryResult)
         
     def showGraph(self):
         """ showGraph: This method will open a new top level window and display
@@ -472,17 +483,6 @@ class MainApplication(tk.Frame):
         for i in range(0, len(toPrint)):
             textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
             eval(textToEval)
-            
-    def exportToCSV(self):
-        """ exportToCSV: Writes the contents of the query output results box
-            to a CSV file in /Assets called CSV_Output.csv. This method can
-            write data with any number of rows and columns, assuming the data
-            format is a list of lists, e.g. [[1,2],[3,4],[5,6]] """        
-        with open("Assets\\CSV_Output.csv", "w") as csvFile:
-            # Remove empty line in between every row when writing to CSV
-            writer = csv.writer(csvFile, sys.stdout, lineterminator='\n')
-            for row in range(0, len(self.currentQueryResult)):
-                writer.writerow(self.currentQueryResult[row])
         
 if __name__ == "__main__":
     root = tk.Tk()
