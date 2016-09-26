@@ -74,7 +74,7 @@ class MainApplication(tk.Frame):
         loggerObject = Logger("GUI") # Init the logger object
         self.logger = loggerObject.getLogger() # Get the logger object
         self.fh = loggerObject.getFileHandler() # Get the logger filehandler
-        self.db = MySQLDatabase(userLoginDetails, self.logger, self.fh)
+        self.db = MySQLDatabase(["test","TEST"], self.logger, self.fh)
         # Attempt to login, returns true/false if valid/invalid
         validLogin = self.db.login()
         # If connection to MySQL made, connect to Mongo
@@ -125,11 +125,11 @@ class MainApplication(tk.Frame):
         menu.add_command(label = "Logout")
 
         outputFrame = tk.Frame(root,height=30,width = 60)
-        outputFrame.pack(side = TOP)
+        outputFrame.pack(side = tk.TOP)
 
         self.queryResultBox = tk.Text(outputFrame,width=65,height=20)
-        self.queryResultBox.pack(side = LEFT)
-        self.queryResultBox.config(state = DISABLED)
+        self.queryResultBox.pack(side = tk.LEFT)
+        #self.queryResultBox.config(state = DISABLED)
 
         #input frame
         inputFrame = tk.Frame(root,height=300,width = 600)
@@ -455,6 +455,11 @@ class MainApplication(tk.Frame):
             and creates a textToEval variable which adds that element of the
             list to the queryResultsBox, incrementing the line it inserts onto
             with each new row. This textToEval is then evaluated."""
+        self.currentQueryResult = toPrint # For use when writing to CSV
+        # queryResultBox
+        for i in range(0, len(toPrint)):
+            textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
+            eval(textToEval)
 
 if __name__ == "__main__":
     root = tk.Tk()
