@@ -31,16 +31,7 @@ class MainApplication(tk.Frame):
         """ createInitialGUI: This method is called from __init__ and creates
             the initial GUI, showing just the login/logout buttons and the
             username/password entry boxes. """
-        outputFrame = tk.Frame(root,height=30,width = 60)
-        outputFrame.pack(side = TOP)
 
-        outputBox = tk.Text(outputFrame,width=65,height=20)
-        outputBox.pack(side = LEFT)
-        outputBox.config(state = DISABLED)
-
-        #input frame
-        inputFrame = tk.Frame(root,height=300,width = 600)
-        inputFrame.pack(fill = 'both')
 
         #GUI menu
         menu = tk.Menu(root)
@@ -73,6 +64,18 @@ class MainApplication(tk.Frame):
 
         menu.add_command(label = "Logout")
 
+        outputFrame = tk.Frame(root,height=30,width = 60)
+        outputFrame.pack(side = TOP)
+
+        outputBox = tk.Text(outputFrame,width=65,height=20)
+        outputBox.pack(side = LEFT)
+        outputBox.config(state = DISABLED)
+
+        #input frame
+        inputFrame = tk.Frame(root,height=300,width = 600)
+        inputFrame.pack(fill = 'both')
+
+
         #Tabs
         tabControl = ttk.Notebook(inputFrame)
 
@@ -96,10 +99,6 @@ class MainApplication(tk.Frame):
         tabControl.add(tab4, text='Employee')
 
         tk.Label(tab4, text="Query the database for Employees").grid(column =1, row=0)
-
-        #Input frame
-        inputFrame = tk.Frame(root)
-        inputFrame.pack(side = TOP, fill = X)
 
         #Status bar
         status = tk.Label(root, text = "ready", bd = 1, relief = "sunken", anchor = W)
@@ -174,7 +173,7 @@ class MainApplication(tk.Frame):
 if __name__ == "__main__":
     root = tk.Tk()
     MainApplication = MainApplication(root)
-    root.geometry('700x600')
+    root.geometry('600x600')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()
 #print ("hello")
