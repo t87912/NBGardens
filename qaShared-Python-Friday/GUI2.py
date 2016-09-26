@@ -22,7 +22,7 @@ class MainApplication(tk.Frame):
         user to log in with user/password, before executing SQL and Mongo
         queries using the userStory drop down menu. The user can also execute
         custom SQL/Mongo queries. """
-        
+
     def __init__(self, master, *args, **kwargs):
         self.master = master
 
@@ -177,10 +177,3 @@ if __name__ == "__main__":
     root.geometry('600x600')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()
-#print ("hello")
-#root = tk.Tk()
-#login = tk.Tk()
-#login.title("NB Gardens")
-#login.geometry("600x600")
-#root.title("NB Gardens")
-#root.geometry("700x600")
