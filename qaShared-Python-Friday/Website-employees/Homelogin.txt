@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+
+
+</head>
+<body>
+
+
+</body>
+<footer>
+	<div class="footer">
+	  <h4>Trademark</h4>
+	  <h4>Number: 12311 356789</h4>
+  </div>
+</footer>
+</html>
