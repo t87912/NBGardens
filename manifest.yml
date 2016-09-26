@@ -3,4 +3,4 @@ applications:
 - name: NBGardensApp
   memory: 1024M
   host: NBGardens
-  path: target/NBGardens/qaShared-Python-Friday/src/mainGUI.py
+  path: /qaShared-Python-Friday/src/mainGUI.py
