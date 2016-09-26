@@ -22,6 +22,7 @@ class MainApplication(tk.Frame):
         user to log in with user/password, before executing SQL and Mongo
         queries using the userStory drop down menu. The user can also execute
         custom SQL/Mongo queries. """
+        
     def __init__(self, master, *args, **kwargs):
         self.master = master
 
