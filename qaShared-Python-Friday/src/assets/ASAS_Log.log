@@ -173,3 +173,5 @@
 2016-09-25 19:39:15,556 - INFO - Custom SQL query: SELECT * FROM Product
 2016-09-25 19:39:15,556 - INFO - Custom SQL query: SELECT * FROM Product
 2016-09-26 13:55:48,150 - INFO - ---------- Started logging GUI ----------
+2016-09-26 14:39:35,552 - INFO - ---------- Started logging GUI ----------
+2016-09-26 14:43:49,655 - INFO - ---------- Started logging GUI ----------

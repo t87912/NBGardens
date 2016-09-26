@@ -51,7 +51,7 @@ class MainApplication(tk.Frame):
                           "1. Input a custom SQL query.",
                           "2. Print a list of customers, products and orders",
                           "3. Show Ratings for a product over time",
-                          "8. Go back to the main menu"]           
+                          "8. Go back to the main menu"]
         self.options = [
                            "1.  (SQL) Top salesperson of a given period, based on total cost of their sales during that time",
                            "2.  (SQL) Which customer has highest spending in given period",
@@ -74,12 +74,12 @@ class MainApplication(tk.Frame):
         self.logger = loggerObject.getLogger() # Get the logger object
         self.fh = loggerObject.getFileHandler() # Get the logger filehandler
         self.createInitialGUI()
-        
+
     def createInitialGUI(self):
         """ createInitialGUI: This method is called from __init__ and creates
             the initial GUI, showing just the login/logout buttons and the
-            username/password entry boxes. """        
-        
+            username/password entry boxes. """
+
         # The welcome message and prompt text
         self.nbTitle = tk.Label(self.master, text = "\nWelcome to the NB Gardens Accounts and Sales Analytics System (ASAS)", font = LARGE_FONT)
         self.nbTitle.grid(row = 0, columnspan = 16, padx = 300) # Pad to move title to centre
@@ -88,7 +88,7 @@ class MainApplication(tk.Frame):
         self.sqlLabel = tk.Label(self.master, text = "Query the MySQL database:\n\n\n\n", font = MED_FONT)
         self.sqlLabel.grid(row=2,columnspan=6)
 
-        # User/passwd labels and entry boxes, submit button:        
+        # User/passwd labels and entry boxes, submit button:
         self.usernameLabel = tk.Label(self.master, text = "Username: ").grid(row=2, column=0)
         self.usernameEntry = tk.Entry(self.master)
         self.usernameEntry.grid(row=2,column=1)
@@ -97,43 +97,43 @@ class MainApplication(tk.Frame):
         self.passwordEntry.grid(row=3,column=1)
         self.submitButton = tk.Button(self.master, text = "Login", command = self.submit)
         self.submitButton.grid(row=2,column=2, columnspan=2, rowspan=2)
-        
+
         # Login button and login status label:
         self.logoutButton = tk.Button(self.master, text = "Logout", state = 'disabled', command = self.logout)
         self.logoutButton.grid(row=2,column=3, columnspan=2, rowspan=2)
         self.loginStatusLabel = tk.Label(self.master, text = "\nLogin Status: Not logged in\n")
         self.loginStatusLabel.grid(row=4, column=0, columnspan=2)
-        
+
     def submit(self):
         """ submit: Submits the user/password to MySQL database, will update
             the loginStatus text on login or failed login. If the login is
             successful, the onValidLogin method will be called to create the
-            rest of the GUI. """   
+            rest of the GUI. """
         # Get the username and password from the entry boxes, put in list:
         username = self.usernameEntry.get()
         password = self.passwordEntry.get()
         userLoginDetails = [username, password]
-        
+
         # Init MySQLDatabase with login details
         self.db = MySQLDatabase(userLoginDetails, self.logger, self.fh)
-        
+
         # Attempt to login, returns true/false if valid/invalid
         validLogin = self.db.login()
-        
+
         # If connection to MySQL made, connect to Mongo
         if (validLogin):
             # Get MySQL connection so it can be passed into some of the Mongo
             # queries that require bits of SQL.
             self.dbConn = self.db.getDB()
             self.mongoDB = MongoDatabase() # Init MongoDB
-            
+
             # Get Mongo connection so it can be passed in to Mongo user stories
             self.conn = self.mongoDB.getConnection()
             self.onValidLogin() # On valid login display rest of GUI:
         else:
             # Change login status label if incorrect login
             self.loginStatusLabel.config(text = '\nLogin Status: Error, username or password is incorrect\n')
-            
+
     def onValidLogin(self):
         """ onValidLogin: This method is called when a successful login is
             made. It creates the rest of the GUI. Login buttons and inputs are
@@ -144,7 +144,7 @@ class MainApplication(tk.Frame):
         self.logoutButton.config(state="active")
         self.passwordEntry.configure(state="disabled")
         self.usernameEntry.configure(state="disabled")
-        
+
         # Custom query label and input box, bound to remove prompt text:
         self.customQueryLabel = tk.Label(self.master, text = "Enter a custom SQL/Mongo query: ")
         self.customQueryLabel.grid(row=8, column=0, columnspan = 1)
@@ -152,26 +152,26 @@ class MainApplication(tk.Frame):
         self.customQueryEntry.grid(row=8,column=1, columnspan=3)
         self.customQueryEntry.insert(0, 'Enter the custom query...')
         self.customQueryEntry.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.customQueryEntry"))
-        
+
         # Submit custom query buttons for Mongo/SQL:
         self.customQueryButton = tk.Button(self.master, text = "Submit SQL", command = self.customSQL)
         self.customQueryButton.grid(row=8,column=3, columnspan=2)
         self.customQueryButtonMongo = tk.Button(self.master, text = "Submit MongoDB", command = self.customMongo, width=55)
         self.customQueryButtonMongo.grid(row=8,column=5, columnspan=2)
-        
+
         # A spacer label to help format the way the GUI displays:
         self.spacerLabel0 = tk.Label(self.master, text = "\n\n").grid(row=11, column=0)
-        
+
         # The drop down menu with the user stories, default value is the
         # first user story, onclick call self.dropDownInput()
         var = tk.StringVar()
         var.set(self.options[0]) # default value
         self.drop = tk.OptionMenu(self.master, var, *self.options, command=self.dropDownInput)
         self.drop.grid(row=11, column = 0, columnspan=8)
-        
+
         # A spacer label to help format the way the GUI displays:
         self.spacerLabel1 = tk.Label(self.master, text = "\n").grid(row=12, column=0)
-        
+
         # Query input boxes:
         self.queryInputBox1 = tk.Entry(self.master)
         self.queryInputBox1.grid(row=12,column=1)
@@ -179,46 +179,46 @@ class MainApplication(tk.Frame):
         self.queryInputBox2.grid(row=12,column=2)
         self.queryInputBox3 = tk.Entry(self.master)
         self.queryInputBox3.grid(row=12,column=3)
-        
+
         # The submit user story, export to csv and show graph buttons:
         self.submitUserStoryInputs = tk.Button(self.master, text = "Submit", command = self.submitUserStory)
-        self.submitUserStoryInputs.grid(row=12,column=4)            
+        self.submitUserStoryInputs.grid(row=12,column=4)
         self.writeToCSVButton = tk.Button(self.master, text = "Export to CSV", command = self.callCSV)
         self.writeToCSVButton.grid(row=12,column=5)
         self.showGraphButton = tk.Button(self.master, text = "Show Graph", command = self.showGraph)
         self.showGraphButton.grid(row=12,column=6)
         self.showGraphButton.config(state='disabled')
-        
+
         # Set prompt text of input boxes:
         self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
         self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
-        
+
         # Bind the input boxes, so on focus remove prompt text:
         self.queryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox1"))
         self.queryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox2"))
         self.queryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox3"))
-        
+
         # Disable the inputs:
         self.queryInputBox1.configure(state="disabled")
         self.queryInputBox2.configure(state="disabled")
         self.queryInputBox3.configure(state="disabled")
-        
+
         # The query results box:
         self.queryResultBox = tk.Text(self.master)
         self.queryResultBox.grid(row = 14, column = 0, columnspan = 8, rowspan = 4)
-    
+
     def onEntryClick(self, event, tkWidgetName):
         """ onEntryClick: onFocus event will delete prompt text in entry box """
         stringToEval = "%s.delete(0, \"end\")" % (tkWidgetName)
         eval(stringToEval)
-        
+
     def callCSV(self):
         """ callCSV: This just calls the external method exportToCSV. There is
             a bug preventing it being called directly from the button press,
             so the press goes here before calling the external function. """
         exportToCSV(self.currentQueryResult)
-        
+
     def showGraph(self):
         """ showGraph: This method will open a new top level window and display
             a graph image. It simply shows the image file called graph.png
@@ -229,8 +229,8 @@ class MainApplication(tk.Frame):
         canvas.pack(expand = tk.YES, fill = tk.BOTH)
         graphToShow = tk.PhotoImage(file = 'assets\\graph.png')
         canvas.create_image(50, 10, image = graphToShow, anchor = tk.NW)
-        canvas.graphToShow = graphToShow      
-        
+        canvas.graphToShow = graphToShow
+
     def dropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
             menu option from the drop down menu. It deletes the contents of the
@@ -243,41 +243,41 @@ class MainApplication(tk.Frame):
         self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
         self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
-        self.queryInputBox1.config(state='disabled')                    
+        self.queryInputBox1.config(state='disabled')
         self.queryInputBox2.config(state='disabled')
         self.queryInputBox3.config(state='disabled')
         self.showGraphButton.config(state='disabled')
         if (value == self.options[0]):
             self.userStory = 0
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')                    
-            self.queryInputBox2.config(state='normal')  
+            self.queryInputBox1.config(state='normal')
+            self.queryInputBox2.config(state='normal')
         elif (value == self.options[1]):
             self.userStory = 1
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
         elif (value == self.options[2]):
             self.userStory = 2
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
             self.queryInputBox3.config(state='normal')
         elif (value == self.options[3]):
             self.userStory = 3
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
         elif (value == self.options[4]):
             self.userStory = 4
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
             self.queryInputBox3.config(state='normal')
         elif (value == self.options[5]):
             self.userStory = 5
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
         elif (value == self.options[6]): # MONGO - 7
             self.userStory = 6
@@ -286,21 +286,21 @@ class MainApplication(tk.Frame):
         elif (value == self.options[7]): # MONGO - 8
             self.userStory = 7
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox3.config(state='normal')   
+            self.queryInputBox3.config(state='normal')
         elif (value == self.options[8]): # MONGO - 9
             self.userStory = 8
             self.queryResultBox.delete('1.0', tk.END)
             self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
-            self.queryInputBox3.config(state='normal')  
+            self.queryInputBox3.config(state='normal')
         elif (value == self.options[9]): # MONGO - 10
             self.userStory = 9
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox3.config(state='normal') 
+            self.queryInputBox3.config(state='normal')
         elif (value == self.options[10]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal') 
+            self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
         elif (value == self.options[11]):
             self.userStory = 11
@@ -309,20 +309,25 @@ class MainApplication(tk.Frame):
         elif (value == self.options[12]):
             self.userStory = 12
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
         elif (value == self.options[13]):
             self.userStory = 13
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
             self.queryInputBox3.config(state='normal')
         elif (value == self.options[15]):
             self.userStory = 15
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')                    
+            self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
-            
+        else:
+            self.userStory = 15
+            self.queryResultBox.delete('1.0', tk.END)
+            self.queryInputBox1.config(state='normal')
+            self.queryInputBox2.config(state='normal')
+
     def submitUserStory(self):
         """ submitUserStory: This method is called when the submit button is
             pressed. It uses self.userStory (number of drop down menu that
@@ -415,20 +420,20 @@ class MainApplication(tk.Frame):
             toDate = self.queryInputBox2.get()
             toPrint = userStory16(self.dbConn, True, fromDate, toDate)
             self.showGraphButton.config(state='active')
-        
+
         # Put query result in the GUI text box
-        self.outputQueryResult(toPrint) 
-        
+        self.outputQueryResult(toPrint)
+
         # Insert default prompt values back into inputs
         self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
         self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
-        
+
         # Disable the inputs
-        self.queryInputBox1.config(state='disabled')                    
+        self.queryInputBox1.config(state='disabled')
         self.queryInputBox2.config(state='disabled')
         self.queryInputBox3.config(state='disabled')
-            
+
     def logout(self):
         """ logout: Destroys GUI features on logout, changes loginStatus label
             text and enable login button and user/password inputs. Also closes
@@ -450,11 +455,11 @@ class MainApplication(tk.Frame):
         self.queryInputBox1.destroy()
         self.queryInputBox2.destroy()
         self.queryInputBox3.destroy()
-        
+
         # On logout, close the database connections
         self.db.closeConnection()
         self.mongoDB.closeConnection()
-        
+
     def customSQL(self):
         """ customSQL: Allows custom SQL queries to be input, sends user input
             to method in MySQLDatabase, results returned in toPrint. Results
@@ -463,7 +468,7 @@ class MainApplication(tk.Frame):
         query = self.customQueryEntry.get()
         toPrint = self.db.customQuery(True, query)
         self.outputQueryResult(toPrint)
-        
+
     def customMongo(self):
         """ customSQL: Allows custom SQL queries to be input, sends user input
             to method in MySQLDatabase, results returned in toPrint. Results
@@ -472,7 +477,7 @@ class MainApplication(tk.Frame):
         query = self.customQueryEntry.get()
         toPrint = self.mongoDB.customQuery(True, query)
         self.outputQueryResult(toPrint)
-            
+
     def outputQueryResult(self, toPrint):
         """ outputQueryResult: Accepts toPrint parameter which is a list of
             lists containing the query results. This iterates over the list
@@ -483,7 +488,7 @@ class MainApplication(tk.Frame):
         for i in range(0, len(toPrint)):
             textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
             eval(textToEval)
-        
+
 if __name__ == "__main__":
     root = tk.Tk()
     MainApplication = MainApplication(root)
