@@ -62,15 +62,29 @@ class main():
     #GUI submenus
     fileSub = Menu(menu)
     menu.add_cascade(label = "File", menu = fileSub)
-    fileSub.add_command(label = "Log Out")
+    fileSub.add_command(label = "New")
+    fileSub.add_command(label = "Save")
+    fileSub.add_command(label = "Open")
+
+    editSub = Menu(menu)
+    menu.add_cascade(label = "Edit", menu = editSub)
+    editSub.add_command(label = "Copy")
+    editSub.add_command(label = "Paste")
+    editSub.add_command(label = "Select All")
+
+    viewSub = Menu(menu)
+    menu.add_cascade(label = "View", menu = viewSub)
+    viewSub.add_command(label = "Toggle full screen")
 
     dataSub = Menu(menu)
     menu.add_cascade(label = "Data", menu = dataSub)
-    dataSub.add_command(label = "Export to .csv")
+    dataSub.add_command(label = "Export as .csv")
 
     graphSub = Menu(menu)
     menu.add_cascade(label = "Graph", menu = graphSub)
-    graphSub.add_command(label = "Export to .png")
+    graphSub.add_command(label = "Export as .png")
+
+    menu.add_command(label = "Logout")
 
     #Tabs
     tabControl = ttk.Notebook(inputFrame)
@@ -105,5 +119,5 @@ class main():
     status.pack(side = BOTTOM, fill = X)
 
     #Run windows
-    GUIlogin.LoginFrame(Frame)
+    #GUIlogin.LoginFrame(Frame)
     root.mainloop()
