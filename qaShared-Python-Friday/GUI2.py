@@ -12,10 +12,11 @@ import tkinter as tk
 import csv
 import sys
 
-
 # Tkinter fonts:
 LARGE_FONT= ("Verdana", 12)
 MED_FONT = ("Verdana", 10)
+
+
 
 class MainApplication(tk.Frame):
     """ MainApplication: Provides the main logic for the GUI, allows the
@@ -26,13 +27,34 @@ class MainApplication(tk.Frame):
     def __init__(self, master, *args, **kwargs):
         self.master = master
 
+        self.currentQueryResult = [] # Will hold current query for printing
+        self.userStory = 0 # Holds userStory number from drop down menu
+
+        self.options = [
+                           "1.  (SQL) Top salesperson of a given period, based on total cost of their sales during that time",
+                           "2.  (SQL) Which customer has highest spending in given period",
+                           "3.  (SQL) Which customer has spent more than 'x' amount during a given period",
+                           "4.  (SQL) Total spend vs total cost for given time period",
+                           "5.  (SQL) Total return on investment for particular product for given time period",
+                           "6.  (SQL) Average amont of time it takes to fulfill an order during a particular time period",
+                           "7.  (Mongo) Average rating a particular customer has given NB Gardens",
+                           "8.  (Mongo) Average rating a group of customers from particular county has given NB Gardens",
+                           "9.  (Mongo) Average rating a group of customers from particular demographic (age, gender etc.) has given NB Gardens",
+                           "10. (Mongo) Compare average rating given to a product through the website against customer order ratings with that same product included",
+                           "11. (Mongo) Customer satisfaction in key areas of the business over a given time period",
+                           "12. (SQL) Check website details for particular product match that is stored in the physical inventory",
+                           "13. (SQL) Create a graph showing the amount of sales for a particular product over a period of time",
+                           "14. (SQL) Create a graph showing the amount of sales made by a particular sales person over a period of time",
+                           "15. (Mongo) Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
+                           "16. (SQL) Create a graph of the number of stock available for a particular product with the number of sales for that particular product over a particular time period"
+                          ]
+
         self.createInitialGUI()
 
     def createInitialGUI(self):
         """ createInitialGUI: This method is called from __init__ and creates
             the initial GUI, showing just the login/logout buttons and the
             username/password entry boxes. """
-
 
         #GUI menu
         menu = tk.Menu(root)
@@ -84,7 +106,22 @@ class MainApplication(tk.Frame):
         tabControl.add(tab1, text = 'Customer')
         tabControl.pack(expand=1, fill="both")
 
-        tk.Label(tab1, text="Query the database for Customers").grid(column =1, row=0)
+        var = tk.StringVar()
+        var.set(self.options[0]) # default value
+        self.drop = tk.OptionMenu(tab1, var, *self.options, command=self.dropDownInput)
+        tk.Label(tab1, text="Select Query").grid(row = 0, column = 0)
+        self.drop.grid(row=1, column = 0, columnspan=3)
+
+        # Query input boxes:
+        tk.Label(tab1, text="Date from:").grid(row = 3, column = 0)
+        self.queryInputBox1 = tk.Entry(tab1)
+        self.queryInputBox1.grid(row=3,column=1)
+        tk.Label(tab1, text="Date to:").grid(row = 4, column = 0)
+        self.queryInputBox2 = tk.Entry(tab1)
+        self.queryInputBox2.grid(row=4,column=1)
+        tk.Label(tab1, text="ID:").grid(row = 5, column = 0)
+        self.queryInputBox3 = tk.Entry(tab1)
+        self.queryInputBox3.grid(row=5,column=1)
 
         tab2 = tk.Frame(tabControl)
         tabControl.add(tab2, text='Orders')
@@ -136,6 +173,17 @@ class MainApplication(tk.Frame):
             menu option from the drop down menu. It deletes the contents of the
             input boxes, replaces them with a prompt (e.g. date/prodID).
             Depending on the userStory number, input boxes will be 'unlocked'. """
+        print(value)
+        self.queryInputBox1.delete(0, "end")
+        self.queryInputBox2.delete(0, "end")
+        self.queryInputBox3.delete(0, "end")
+        self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.queryInputBox1.config(state='disabled')
+        self.queryInputBox2.config(state='disabled')
+        self.queryInputBox3.config(state='disabled')
+        self.showGraphButton.config(state='disabled')
 
     def submitUserStory(self):
         """ submitUserStory: This method is called when the submit button is
