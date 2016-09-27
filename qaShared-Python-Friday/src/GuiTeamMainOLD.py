@@ -47,7 +47,6 @@ class MainApplication(tk.Frame):
         queries using the userStory drop down menu. The user can also execute
         custom SQL/Mongo queries. """
 
-    tabControl = None
     def __init__(self, master, *args, **kwargs):
         self.master = master
 
@@ -166,16 +165,25 @@ class MainApplication(tk.Frame):
         self.submitUserStoryInputs = tk.Button(tab1, text = "Submit", command = self.submitUserStory)
         self.submitUserStoryInputs.grid(row=12,column=3)
 
+        #Show graph button
+        self.showGraphButton = tk.Button(tab1, text = "Show Graph", command = self.showGraph)
+        self.showGraphButton.grid(row=12,column=4)
+        self.showGraphButton.config(state='disabled')
+
         tab2 = tk.Frame(tabControl)#Tab 2
         tabControl.add(tab2, text='Orders')
+
+        tk.Label(tab2, text="Select Query").grid(column =1, row=0)
 
         tab3 = tk.Frame(tabControl)
         tabControl.add(tab3, text='Products')
 
+        tk.Label(tab3, text="Query the database for Products").grid(column =1, row=0)
+
         tab4 = tk.Frame(tabControl)
         tabControl.add(tab4, text='Employee')
-        comboValues = ['Top Sales Person', 'Sales by Sales Person']
-        self.createQueryComboBoxOrders(tab4, 0, 0, comboValues)
+
+        tk.Label(tab4, text="Query the database for Employees").grid(column =1, row=0)
 
         #Status bar
         status = tk.Label(root, text = "ready", bd = 1, relief = "sunken", anchor = W)
@@ -195,53 +203,6 @@ class MainApplication(tk.Frame):
         self.queryInputBox1.configure(state="disabled")
         self.queryInputBox2.configure(state="disabled")
         self.queryInputBox3.configure(state="disabled")
-
-    def createQueryComboBoxOrders(self,tab, row, column, comboValues):
-        queryComboBoxFrame = Frame(tab)
-        Label(queryComboBoxFrame, text="Choose a query:").grid(row="0", column="0", sticky=W, padx=5, pady=5)
-        combobox = ttk.Combobox(queryComboBoxFrame, values = comboValues, width="50")
-        combobox.current(0)
-        combobox.config(state = 'readonly')
-        combobox.grid(row = "0", column = "1")
-        B = Button(queryComboBoxFrame,text = "Select Query", command =lambda: self.getEmployeeQueryID(tab,combobox))
-        B.grid(row=1)
-        queryComboBoxFrame.grid(row=row, column=column)
-        queryComboBoxFrame.grid_columnconfigure(0, weight=1)
-
-    def getEmployeeQueryID(self,tab,CB):
-        if(CB.current()==0):
-            self.us1(tab,0)
-        elif(CB.current()==1):
-            self.us2(tab)
-
-
-    def submitReq(self,u,fd,td,tab):
-        if(u == 0):
-            result = userStory1(self.dbConn, True, fd, td)
-            self.outputQueryResult(result)
-            self.us1(tab,1)
-
-    def us1(self,tab,delete):
-        if (delete == 0):
-            userStory = 0
-            dateInputFrame = Frame(tab)
-            l1 = Label(dateInputFrame, text="Start Date (yyyy-mm-dd)").grid(row="0", column="0", sticky=W, padx=5, pady=5)
-            startDateEnt = Entry(dateInputFrame)
-            startDateEnt.grid(row="0", column="1")
-            l2 = Label(dateInputFrame, text="End Date (yyyy-mm-dd)").grid(row="1", column="0", sticky=W, padx=5)
-            endDateEnt = Entry(dateInputFrame)
-            endDateEnt.grid(row="1", column="1")
-            dateInputFrame.grid(row=3)
-            fromDate = startDateEnt.get()
-            toDate = endDateEnt.get()
-            ok = Button(tab,text = "Perform Query", command =lambda:self.submitReq(userStory,startDateEnt.get(),endDateEnt.get(),tab))
-            ok.grid(row="1", column="2")
-        else:
-            startDateEnt.destroy()
-            endDateEnt.destroy()
-            l1.destroy()
-            
-
 
 
     def submit(self):
@@ -286,6 +247,7 @@ class MainApplication(tk.Frame):
         self.queryInputBox1.config(state='disabled')
         self.queryInputBox2.config(state='disabled')
         self.queryInputBox3.config(state='disabled')
+        self.showGraphButton.config(state='disabled')
 
         if (value == self.options[0]):
             self.userStory = 0
@@ -435,22 +397,26 @@ class MainApplication(tk.Frame):
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
             toPrint = userStory13(self.dbConn, True, fromDate, toDate)
+            self.showGraphButton.config(state='active')
         elif (self.userStory == 13):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
             employeeID = self.queryInputBox3.get()
             toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
+            self.showGraphButton.config(state='active')
         elif (self.userStory == 14): # MONGO - 15
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
             toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+            self.showGraphButton.config(state='active')
         elif (self.userStory == 15):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
             toPrint = userStory16(self.dbConn, True, fromDate, toDate)
+            self.showGraphButton.config(state='active')
 
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint)
