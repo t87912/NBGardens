@@ -18,8 +18,6 @@ from mongoDatabase import MongoQueries
 #from exportToCSV import exportToCSV
 from Logger import Logger
 
-import exportToCSV
-
 # Import user stories:
 from UserStories.userStory1 import userStory1
 from UserStories.userStory2 import userStory2
@@ -101,33 +99,32 @@ class MainApplication(tk.Frame):
         root.config(menu = menu)
 
         #GUI submenus
-        fileSub = tk.Menu(menu, tearoff = False)
+        fileSub = tk.Menu(menu)
         menu.add_cascade(label = "File", menu = fileSub)
         fileSub.add_command(label = "New")
         fileSub.add_command(label = "Save")
         fileSub.add_command(label = "Open")
 
-        editSub = tk.Menu(menu, tearoff = False)
+        editSub = tk.Menu(menu)
         menu.add_cascade(label = "Edit", menu = editSub)
-        editSub.add_command(label = "Copy", command = self.copy)
-        editSub.add_command(label = "Paste", command = self.paste)
+        editSub.add_command(label = "Copy")
+        editSub.add_command(label = "Paste")
         editSub.add_command(label = "Select All")
 
-        viewSub = tk.Menu(menu, tearoff = False)
+        viewSub = tk.Menu(menu)
         menu.add_cascade(label = "View", menu = viewSub)
         viewSub.add_command(label = "Toggle full screen")
 
-        dataSub = tk.Menu(menu, tearoff = False)
+        dataSub = tk.Menu(menu)
         menu.add_cascade(label = "Data", menu = dataSub)
         dataSub.add_command(label = "Export as .csv")
 
-        menu.add_command(label = "Logout", command = self.logout)
+        menu.add_command(label = "Logout")
 
-        #Output frame
-        self.outputFrame = tk.Frame(root,height=30,width = 60)
-        self.outputFrame.pack(side = tk.TOP)
+        outputFrame = tk.Frame(root,height=30,width = 60)
+        outputFrame.pack(side = tk.TOP)
 
-        self.queryResultBox = tk.Text(self.outputFrame,width=65,height=20)
+        self.queryResultBox = tk.Text(outputFrame,width=65,height=20)
         self.queryResultBox.pack(side = tk.LEFT)
         #self.queryResultBox.config(state = DISABLED)
 
@@ -164,12 +161,18 @@ class MainApplication(tk.Frame):
         #submit button
         self.submitUserStoryInputs = tk.Button(tab1, text = "Submit", command = self.submitUserStory)
         self.submitUserStoryInputs.grid(row=12,column=3)
+        comboValues = ['Highest spending customer', 'Highest spending customers (limit by min amount)', 'Customers Average rating', 'Average rating by county', 'Average rating by demographic', 'Customer satisfaction by business area', 'Customer satisfaction over areas']
+        self.createQueryComboBoxOrders(tab1, 0, 0, comboValues)
 
         tab2 = tk.Frame(tabControl)#Tab 2
         tabControl.add(tab2, text='Orders')
+        comboValues = ['Total spend versus total cost', 'Average amount of time taken to fulfil and order']
+        self.createQueryComboBoxOrders(tab2, 0, 0, comboValues)
 
         tab3 = tk.Frame(tabControl)
         tabControl.add(tab3, text='Products')
+        comboValues = ['Total return on investment', 'Average product website rating vs Average product order rating', 'Check if website and physical inventroy details match', 'Amount of Sales', 'Stock available against number of sales for product']
+        self.createQueryComboBoxOrders(tab3, 0, 0, comboValues)
 
         tab4 = tk.Frame(tabControl)
         tabControl.add(tab4, text='Employee')
@@ -195,16 +198,6 @@ class MainApplication(tk.Frame):
         self.queryInputBox2.configure(state="disabled")
         self.queryInputBox3.configure(state="disabled")
 
-    def copy(self):
-        content = self.outputFrame.selection_get()
-        root.clipboard_clear()
-        root.clipboard_append(content)
-
-    def paste(self):
-        t = root.focus_displayof()
-        content = root.clipboard_get()
-        print(t)
-
     def createQueryComboBoxOrders(self,tab, row, column, comboValues):
         queryComboBoxFrame = Frame(tab)
         Label(queryComboBoxFrame, text="Choose a query:").grid(row="0", column="0", sticky=W, padx=5, pady=5)
@@ -221,34 +214,65 @@ class MainApplication(tk.Frame):
         if(CB.current()==0):
             self.us1(tab,0)
         elif(CB.current()==1):
-            self.us2(tab)
+            self.us14(tab,0)
 
 
-    def submitReq(self,u,fd,td,tab):
+    def submitReq(self,u,fd,td,id,tab):
+        self.queryResultBox.delete(1.0,END)
         if(u == 0):
             result = userStory1(self.dbConn, True, fd, td)
             self.outputQueryResult(result)
             self.us1(tab,1)
+        if(u == 14):
+            result = userStory14(self.dbConn, True, fd, td,id)
+            self.outputQueryResult(result)
+            self.us14(tab,1)
 
     def us1(self,tab,delete):
         if (delete == 0):
             userStory = 0
             dateInputFrame = Frame(tab)
-            l1 = Label(dateInputFrame, text="Start Date (yyyy-mm-dd)").grid(row="0", column="0", sticky=W, padx=5, pady=5)
-            startDateEnt = Entry(dateInputFrame)
-            startDateEnt.grid(row="0", column="1")
-            l2 = Label(dateInputFrame, text="End Date (yyyy-mm-dd)").grid(row="1", column="0", sticky=W, padx=5)
-            endDateEnt = Entry(dateInputFrame)
-            endDateEnt.grid(row="1", column="1")
+            self.startDateEnt = Entry(dateInputFrame)
+            self.startDateEnt.grid(row="0", column="1")
+            self.startDateEnt.bind('<FocusIn>', lambda event: self.onEntryClick(event,"self.startDateEnt"))
+            self.startDateEnt.insert(END, 'From (YYYY-MM-DD)')
+            self.endDateEnt = Entry(dateInputFrame)
+            self.endDateEnt.insert(END, 'To (YYYY-MM-DD)')
+            self.endDateEnt.grid(row="1", column="1")
+            self.endDateEnt.bind('<FocusIn>', lambda event: self.onEntryClick(event,"self.endDateEnt"))
             dateInputFrame.grid(row=3)
-            fromDate = startDateEnt.get()
-            toDate = endDateEnt.get()
-            ok = Button(tab,text = "Perform Query", command =lambda:self.submitReq(userStory,startDateEnt.get(),endDateEnt.get(),tab))
+            fromDate = self.startDateEnt.get()
+            toDate = self.endDateEnt.get()
+            ok = Button(tab,text = "Perform Query", command =lambda:self.submitReq(userStory,self.startDateEnt.get(),self.endDateEnt.get(),None,tab))
             ok.grid(row="1", column="2")
         else:
-            startDateEnt.destroy()
-            endDateEnt.destroy()
-            l1.destroy()
+            self.startDateEnt.destroy()
+            self.endDateEnt.destroy()
+    def us14(self,tab,delete):
+        if (delete == 0):
+            userStory = 14
+            dateInputFrame = Frame(tab)
+            self.startDateEnt = Entry(dateInputFrame)
+            self.startDateEnt.grid(row="0", column="1")
+            self.startDateEnt.bind('<FocusIn>', lambda event: self.onEntryClick(event,"self.startDateEnt"))
+            self.startDateEnt.insert(END, 'From (YYYY-MM-DD)')
+            self.endDateEnt = Entry(dateInputFrame)
+            self.endDateEnt.insert(END, 'To (YYYY-MM-DD)')
+            self.endDateEnt.grid(row="1", column="1")
+            self.endDateEnt.bind('<FocusIn>', lambda event: self.onEntryClick(event,"self.endDateEnt"))
+            self.ID = Entry(dateInputFrame)
+            self.ID.insert(END, 'Sales ID')
+            self.ID.grid(row="2", column="1")
+            self.ID.bind('<FocusIn>', lambda event: self.onEntryClick(event,"self.ID"))
+            dateInputFrame.grid(row=3)
+            fromDate = self.startDateEnt.get()
+            toDate = self.endDateEnt.get()
+            ok = Button(tab,text = "Perform Query", command =lambda:self.submitReq(userStory,self.startDateEnt.get(),self.endDateEnt.get(),self.ID.get(),tab))
+            ok.grid(row="1", column="2")
+        else:
+            self.startDateEnt.destroy()
+            self.endDateEnt.destroy()
+            self.ID.destroy()
 
 
 
@@ -274,13 +298,11 @@ class MainApplication(tk.Frame):
             a bug preventing it being called directly from the button press,
             so the press goes here before calling the external function. """
 
-
     def showGraph(self):
         """ showGraph: This method will open a new top level window and display
             a graph image. It simply shows the image file called graph.png
             which is stored in /assets. This will be the most recent graph
             that has been created. """
-
 
     def dropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
