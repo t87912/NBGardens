@@ -3,3 +3,4 @@ applications:
 - name: NBGardensApp
   memory: 1024M
   host: NBGardens
+  path: /app.zip
