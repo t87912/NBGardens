@@ -217,3 +217,1256 @@
 2016-09-26 15:45:35,873 - INFO - Successful login to MySQL database, username: test
 2016-09-26 15:46:45,002 - INFO - ---------- Started logging GUI ----------
 2016-09-26 15:46:45,052 - INFO - Successful login to MySQL database, username: test
+2016-09-27 11:35:05,078 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:37:35,399 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:37:35,399 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:38:34,779 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:38:34,779 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:38:34,779 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:39:05,896 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:39:05,896 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:39:05,896 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:39:05,896 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:39:22,942 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:39:22,942 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:39:22,942 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:39:22,942 - INFO - ---------- Started logging GUI ----------
+2016-09-27 11:39:22,942 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:36,306 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:36,306 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:36,306 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:36,306 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:36,306 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:36,306 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:57,197 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:57,197 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:57,197 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:57,197 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:57,197 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:57,197 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:25:57,197 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:07,044 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:07,044 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:07,044 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:07,044 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:07,044 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:07,044 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:07,044 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:07,044 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:17,715 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:17,715 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:17,715 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:17,715 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:17,715 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:17,715 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:17,715 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:17,715 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:17,715 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:29,736 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:29,736 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:29,736 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:29,736 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:29,736 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:29,736 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:29,736 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:29,736 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:29,736 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:29,736 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:26:41,236 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:27:50,067 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:28:34,181 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:29:14,746 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:06,237 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:08,657 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:32:44,061 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:57,573 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:39:58,603 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:49,441 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:48:53,966 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:42,983 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:50:44,661 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:18,864 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:51:19,699 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:25,860 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:53:27,046 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:18,934 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:19,810 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:53,563 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:54:54,811 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:43,152 - INFO - ---------- Started logging GUI ----------
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 12:59:44,385 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:22,784 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:00:24,188 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:24,496 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:01:25,713 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:34,112 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:02:35,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:20,520 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:45:21,718 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:09,726 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:10,954 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:56,262 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:52:57,965 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:45,870 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:54:47,165 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:52,456 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:55:53,376 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:30,944 - INFO - ---------- Started logging GUI ----------
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 13:58:32,093 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:17,747 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:18,918 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:55,265 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:08:56,887 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:11,787 - INFO - ---------- Started logging GUI ----------
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 
+2016-09-27 14:10:12,848 - INFO - Successful login to MySQL database, username: 

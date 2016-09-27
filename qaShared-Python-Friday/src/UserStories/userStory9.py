@@ -3,7 +3,7 @@ from datetime import timedelta
 from mongoDatabase.MongoQueries import CustomerOrderReviews
 from sqlDatabase.SQLQueries import queriesForMongo
 
-def userStory9(GUI, sqlDB, gender, agemin, agemax):
+def userStory9(sqlConn, conn, GUI, gender, agemin, agemax):
     """(boolean for GUI, sql database reference?, string, int, int):
     This method returns the average ratings for customers of specific gender and age range"""
     if (not GUI):
@@ -12,13 +12,13 @@ def userStory9(GUI, sqlDB, gender, agemin, agemax):
         agemax = int(input("What is the maximum age of customer you want reviews from?:"))
 		
     query = queriesForMongo[6] % (gender)
-    cursor = sqlDB.cursor()  # Creating the cursor to query the database
+    cursor = sqlConn.cursor()  # Creating the cursor to query the database
     # Executing the query:
     try:
         cursor.execute(query)
-        sqlDB.commit()
+        sqlConn.commit()
     except:
-        sqlDB.rollback()
+        sqlConn.rollback()
     custIDsGender = cursor.fetchall()
 
     now = datetime.datetime.now()
@@ -43,7 +43,7 @@ def userStory9(GUI, sqlDB, gender, agemin, agemax):
     totalavServiceScore = 0
     count = 0
     for custID in custIDs:
-        customerProductScores = CustomerOrderReviews.getProductScoresfCust(custID)
+        customerProductScores = CustomerOrderReviews(conn).getProductScoresfCust(custID)
         if len(customerProductScores) == 0:
             break
         else:
@@ -53,14 +53,14 @@ def userStory9(GUI, sqlDB, gender, agemin, agemax):
             avProductScore = totalProductScores / len(customerProductScores)
             totalavProductScore += avProductScore
 
-            customerDeliveryScores = CustomerOrderReviews.getDeliveryScore(custID)
+            customerDeliveryScores = CustomerOrderReviews(conn).getDeliveryScore(custID)
             totalDeliveryScores = 0
             for i in customerDeliveryScores:
                 totalDeliveryScores += i
             avDeliveryScore = totalDeliveryScores / len(customerDeliveryScores)
             totalavDeliveryScore += avDeliveryScore
 
-            customerServiceScores = CustomerOrderReviews.getServiceScore(custID)
+            customerServiceScores = CustomerOrderReviews(conn).getServiceScore(custID)
             totalServiceScores = 0
             for i in customerServiceScores:
                 totalServiceScores += i

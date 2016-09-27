@@ -1,18 +1,14 @@
 
-#from mongoDatabase.MongoQueries import CustomerOrderReviews
-
 from mongoDatabase.MongoQueries import CustomerOrderReviews
 
-def userStory7(sqlConn, conn, GUI, custID):  # + GUI (bool) + startDate + endDate etc
+def userStory7(sqlConn, conn, GUI, custIDi):  # + GUI (bool) + startDate + endDate etc
     """(Boolean for GUI, customer id):
     This method gives the average ratings a customer has given NBGardens """
     if (not GUI):
         custID = int(input("What is the customer ID you want to view review scores for?: "))
-        
-    customQuery(sqlConn, True, "SELECT * FROM Product")
-
-    customerProductScores = CustomerOrderReviews(conn).getProductScoresfCust(1)
-    print (customerProductScores)
+    custID = int(custIDi)
+    customerProductScores = CustomerOrderReviews(conn).getProductScoresfCust(custID)
+    print (customerProductScores)   
     
     if len(customerProductScores) == 0:
         customerReviewScores = "N/A"
@@ -46,26 +42,24 @@ def userStory7(sqlConn, conn, GUI, custID):  # + GUI (bool) + startDate + endDat
         return result  # result = [[avProductScore, avDeliveryScore, avServiceScore]]
 
 
-def customQuery(db, GUI, query):
-    """ customeQuery: Executes user custom query. Need validation here. """
-    if (not GUI):
-        query = input("Input SQL query: ")
-
-    cursor = db.cursor() # Creating the cursor to query the database
-    # Executing the query:
-    try:
-        cursor.execute(query)
-        db.commit()
-        results = cursor.fetchall()
-        for row in results:
-            toPrint = []
-            for i in range(0, len(row)):
-                toPrint.append([row[i]])
-            print (toPrint)
-        if (GUI):
-            return results
-    except:
-        db.rollback()
-        print ("Error: SQL query was invalid.")
-        
-    print (results)
+#def customQuery(db, GUI, query):
+#    """ customeQuery: Executes user custom query. Need validation here. """
+#    if (not GUI):
+#        query = input("Input SQL query: ")
+#
+#    cursor = db.cursor() # Creating the cursor to query the database
+#    # Executing the query:
+#    try:
+#        cursor.execute(query)
+#        db.commit()
+#        results = cursor.fetchall()
+#        for row in results:
+#            toPrint = []
+#            for i in range(0, len(row)):
+#                toPrint.append([row[i]])
+#            print (toPrint)
+#        if (GUI):
+#            return results
+#    except:
+#        db.rollback()
+#        print ("Error: SQL query was invalid.")
