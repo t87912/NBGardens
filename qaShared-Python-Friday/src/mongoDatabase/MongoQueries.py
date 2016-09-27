@@ -8,11 +8,15 @@
 
 #db = conn.get_default_database() 
 
-class OnlineReviews:
+class OnlineReviews(object):
     ##### accesses OnlineReviews Collection #####
-    def getOnlineReviews(i):
+    def __init__(self, conn):
+        self.conn = conn
+        self.db = self.conn.get_default_database() 
+
+    def getOnlineReviews(self, i):
         ##### returns array with all reviews for product with id = i #####
-        reviews = db.OnlineReviews.find({"product_id" : i})
+        reviews = self.db.OnlineReviews.find({"product_id" : i})
         reviewArray = []
         for doc in reviews:
             rev = doc["review"]
@@ -20,9 +24,9 @@ class OnlineReviews:
             print(reviewArray)
         return reviewArray
         
-    def getOnlineReviewScores(i):
+    def getOnlineReviewScores(self, i):
         ##### returns array with all scores for a product with id = i #####
-        reviews = db.OnlineReviews.find({"product_id" : i})
+        reviews = self.db.OnlineReviews.find({"product_id" : i})
         reviewArray = []
         for doc in reviews:
             rev = doc["score"]
@@ -58,34 +62,29 @@ class CustomerOrderReviews(object):
     def __init__(self, conn):
         self.conn = conn
         self.db = self.conn.get_default_database() 
-
-
-    class fOrder(object):
-        ##### returns details from customer orders from order number
-        def __init__(self, conn):
-            self.conn = conn
-            self.db = conn.get_default_database() 
             
-        def getProductScoresfOrder(self, i):
-            reviews = self.db.CustomerReviews.find({"_id":i})
-            productScores = []
-            for rev in reviews:
-                products = rev["products"]
-                for prod in products:
-                    productScores.append(prod["score"])
-            return productScores
+    def getProductScoresfOrder(self, i):
+        reviews = self.db.CustomerReviews.find({"_id":i})
+        productScores = []
+        for rev in reviews:
+            products = rev["products"]
+            for prod in products:
+                productScores.append(prod["score"])
+        return productScores
             
-        def getServiceScoresfOrder(self, i):
-            reviews = self.db.CustomerReviews.find({"_id":i})
-            for rev in reviews:
-                score = rev["customerServiceScore"]
-            return score
+    def getServiceScoresfOrder(self, i):
+        reviews = self.db.CustomerReviews.find({"_id":i})
+        score = 0
+        for rev in reviews:
+            score = rev["customerServiceScore"]
+        return score
             
-        def getDeliveryScoresfOrder(self, i):
-            reviews = self.db.CustomerReviews.find({"_id":i})
-            for rev in reviews:
-                score = rev["deliveryScore"]
-            return score
+    def getDeliveryScoresfOrder(self, i):
+        reviews = self.db.CustomerReviews.find({"_id":i})
+        score = 0
+        for rev in reviews:
+            score = rev["deliveryScore"]
+        return score
 
     def getCustomerOrders(self):
         ##### returns list of cutomer order ID's #####

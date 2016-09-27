@@ -385,12 +385,12 @@ class MainApplication(tk.Frame):
         elif (self.userStory == 9): # MONGO - 10
             self.queryResultBox.delete('1.0', tk.END)
             productID = self.queryInputBox3.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, productID)
+            toPrint = userStory10(self.dbConn, self.conn, True, productID)
         elif (self.userStory == 10): # MONGO - 11
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 11):
             self.queryResultBox.delete('1.0', tk.END)
             productID = self.queryInputBox3.get()

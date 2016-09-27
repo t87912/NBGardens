@@ -1,6 +1,8 @@
 from mongoDatabase.MongoQueries import CustomerOrderReviews
+from sqlDatabase.SQLQueries import queriesForMongo
+from datetime import datetime
 
-def userStory11(db, GUI, dateFrom, dateTo):
+def userStory11(sqlConn, conn, GUI, dateFrom, dateTo):
     """(db is sql database, boolean for GUI, a date from when to get review scores from, and to):
      This method returns the average customer review scores in 3 areas of the business over a given period of time """
         
@@ -13,47 +15,62 @@ def userStory11(db, GUI, dateFrom, dateTo):
     totalServiceScore = 0
     
     query = queriesForMongo[4]
-    cursor = sqlDB.cursor()  # Creating the cursor to query the database
+    cursor = sqlConn.cursor()  # Creating the cursor to query the database
     # Executing the query:
     try:
         cursor.execute(query)
-        sqlDB.commit()
+        sqlConn.commit()
     except:
-        sqlDB.rollback()
+        sqlConn.rollback()
     orderIDs = cursor.fetchall()
     
+    dateFrom = datetime.strptime(dateFrom, '%Y/%m/%d')
+    dateTo = datetime.strptime(dateTo, '%Y/%m/%d')
+    
+    reviewsCount = 0
+    
     for orderID in orderIDs:
+        orderID = orderID[0]
         
         query = queriesForMongo[3] % (orderID)
-        cursor = sqlDB.cursor()  # Creating the cursor to query the database
+        cursor = sqlConn.cursor()  # Creating the cursor to query the database
         # Executing the query:
         try:
             cursor.execute(query)
-            sqlDB.commit()
+            sqlConn.commit()
         except:
-            sqlDB.rollback()
+            sqlConn.rollback()
         orderDate = cursor.fetchall()
         
-        if (dateFrom < orderDate < dateTo):        
+        orderDate = orderDate[0][0]
+        orderDate = datetime.combine(orderDate, datetime.min.time())
         
-            prodScores = CustomerOrderReviews.fOrder.getProductScoresfOrder()
+        if (dateFrom < orderDate < dateTo):        
+            prodScores = CustomerOrderReviews(conn).getProductScoresfOrder(orderID)
             totalscore = 0
             count = 0
+            
             for i in prodScores:
                 totalscore += i
                 count +=1
+                
+            if (count == 0):
+                count = 1
 
-            avProdScore = totalscore / len(prodScores)
-            serviceScore = CustomerOrderReviews.fOrder.getServiceScoresfOrder(i)
-            deliveryScore = CustomerOrderReviews.fOrder.getDeliveryScoresfOrder(i)
+            avProdScore = totalscore / count
+            serviceScore = CustomerOrderReviews(conn).getServiceScoresfOrder(orderID)
+            deliveryScore = CustomerOrderReviews(conn).getDeliveryScoresfOrder(orderID)
+            
+            if (serviceScore!=0):
+                reviewsCount +=1
 
             totalProductScore += avProdScore
             totalDeliveryScore += serviceScore
             totalServiceScore += deliveryScore
 
-    finalProductScore = totalProductScore / len(count)
-    finalDeliveryScore = totalDeliveryScore / len(orderIDs)
-    finalServiceScore = totalServiceScore / len(orderIDs)
+    finalProductScore = totalProductScore / reviewsCount
+    finalDeliveryScore = totalDeliveryScore / reviewsCount
+    finalServiceScore = totalServiceScore / reviewsCount
 
     if (GUI):
         result = [finalProductScore, finalDeliveryScore, finalServiceScore]
