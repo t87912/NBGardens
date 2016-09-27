@@ -119,10 +119,6 @@ class MainApplication(tk.Frame):
         menu.add_cascade(label = "Data", menu = dataSub)
         dataSub.add_command(label = "Export as .csv")
 
-        graphSub = tk.Menu(menu)
-        menu.add_cascade(label = "Graph", menu = graphSub)
-        graphSub.add_command(label = "Export as .png")
-
         menu.add_command(label = "Logout")
 
         outputFrame = tk.Frame(root,height=30,width = 60)
@@ -240,7 +236,7 @@ class MainApplication(tk.Frame):
             startDateEnt.destroy()
             endDateEnt.destroy()
             l1.destroy()
-            
+
 
 
 
