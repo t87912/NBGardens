@@ -18,6 +18,8 @@ from mongoDatabase import MongoQueries
 #from exportToCSV import exportToCSV
 from Logger import Logger
 
+from AutoGenCode import AutoGenCode
+
 # Import user stories:
 from UserStories.userStory1 import userStory1
 from UserStories.userStory2 import userStory2
@@ -50,6 +52,7 @@ class MainApplication(tk.Frame):
     tabControl = None
     def __init__(self, master, *args, **kwargs):
         self.master = master
+        self.autoGen = args[0]
 
         self.currentQueryResult = [] # Will hold current query for printing
         self.userStory = 0 # Holds userStory number from drop down menu
@@ -75,7 +78,7 @@ class MainApplication(tk.Frame):
         loggerObject = Logger("GUI") # Init the logger object
         self.logger = loggerObject.getLogger() # Get the logger object
         self.fh = loggerObject.getFileHandler() # Get the logger filehandler
-        self.db = MySQLDatabase(["test","TEST"], self.logger, self.fh)
+        self.db = MySQLDatabase(["test","TEST"], self.logger, self.fh, self.autoGen)
         # Attempt to login, returns true/false if valid/invalid
         validLogin = self.db.login()
         # If connection to MySQL made, connect to Mongo
@@ -529,8 +532,10 @@ class MainApplication(tk.Frame):
             eval(textToEval)
 
 if __name__ == "__main__":
+    autoGenCode = AutoGenCode()
+    autoGen = autoGenCode.getAutoGen()
     root = tk.Tk()
-    MainApplication = MainApplication(root)
+    MainApplication = MainApplication(root, autoGen)
     root.geometry('600x600')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()

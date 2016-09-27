@@ -31,7 +31,10 @@ from UserStories import AllUserStories
 class MySQLDatabase(object):
     """ Database: Holds the database object used for querying, also holds the
         logic for the menus and runs the actual queries. """
-    def __init__(self, userLoginDetails, logger, fh):
+    def __init__(self, userLoginDetails, logger, fh, autoGen):
+        self.autoGen = autoGen
+        self.newMenuOptions = self.autoGen[2]
+        self.menuLines = self.autoGen[0]
         self.logger = logger
         self.fh = fh # set filehandler, for closing the log file
         self.menuOption = 0
@@ -40,21 +43,21 @@ class MySQLDatabase(object):
         self.backToMain = False
         self.db = None
         self.run_query_obj = AllUserStories.AllUserStories()
-        self.menuLines = ["\nPlease select an option: ",
-                          "User Story Number | Description",
-                          "1. Top salesperson of a given period, based on total cost of their sales during that time",
-                          "2. Which customer has highest spending in given period",
-                          "3. Which customer has spent more than 'x' amount during a given period",
-                          "4. Total spend vs total cost for given time period",
-                          "5. Total return on investment for particular product for given time period",
-                          "6. Average amont of time it takes to fulfill an order during a particular time period",
-                          "12. Check website details for particular product match that is stored in the physical inventory",
-                          "13. Create a graph showing the amount of sales for a particular product over a period of time",
-                          "14. Create a graph showing the amount of sales made by a particular sales person over a period of time",
-                          "16. Create a graph of the number of stock available for a particular product with the number of sales for that particular product over a particular time period",
-                          "\n17. Input a custom SQL query.",
-                          "\n18. Go back to the main menu",
-                          "19. Quit"]
+#        self.menuLines = ["\nPlease select an option: ",
+#                          "User Story Number | Description",
+#                          "1. Top salesperson of a given period, based on total cost of their sales during that time",
+#                          "2. Which customer has highest spending in given period",
+#                          "3. Which customer has spent more than 'x' amount during a given period",
+#                          "4. Total spend vs total cost for given time period",
+#                          "5. Total return on investment for particular product for given time period",
+#                          "6. Average amont of time it takes to fulfill an order during a particular time period",
+#                          "12. Check website details for particular product match that is stored in the physical inventory",
+#                          "13. Create a graph showing the amount of sales for a particular product over a period of time",
+#                          "14. Create a graph showing the amount of sales made by a particular sales person over a period of time",
+#                          "16. Create a graph of the number of stock available for a particular product with the number of sales for that particular product over a particular time period",
+#                          "\n17. Input a custom SQL query.",
+#                          "\n18. Go back to the main menu",
+#                          "19. Quit"]
 
     def login(self):
         """ login: Try/Except to log the user in. """
@@ -100,12 +103,14 @@ class MySQLDatabase(object):
             return self.run_query_obj.userStorySeries1(self.db, False, 0, 0, int(self.menuOption))
         elif int(self.menuOption) in three_param_cases:
             return self.run_query_obj.userStorySeries2(self.db, False, 0, 0, 0, int(self.menuOption))
-        elif (int(self.menuOption) == 17):
+        elif int(self.menuOption) in self.newMenuOptions:
+            print ("In new menu options!")
+        elif (int(self.menuOption) == self.autoGen[1][0]):
             self.customQuery(False, 0)
-        elif (int(self.menuOption) == 18):
+        elif (int(self.menuOption) == self.autoGen[1][1]):
             print ("Returning to main menu...")
             self.backToMain = True
-        elif (int(self.menuOption) == 19):
+        elif (int(self.menuOption) == self.autoGen[1][2]):
             self.exitProgram()
         else:
             method_name = 'userStory' + str(self.menuOption)
@@ -191,7 +196,7 @@ class MySQLDatabase(object):
             return False
 
         # Below is list of all valid input numbers
-        validInputList = list(range(1, 7)) + list(range(12, 15)) + list(range(16, 20))
+        validInputList = list(range(1, 7)) + list(range(12, 15)) + [16] + self.autoGen[1] + self.autoGen[2]
 
         if (int(userChoice) not in validInputList):
             print ("Error. Please enter a valid number.")

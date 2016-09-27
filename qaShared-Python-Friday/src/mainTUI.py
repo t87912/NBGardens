@@ -9,8 +9,6 @@ Created on Wed Aug 31 11:11:07 2016
 # 1. once sql logins sorted, have one login system, ie login before any menu's are printed
 # 2. finish off mongo queries that use SQL
 # 3. make sure graphs are correct, right axes labels etc
-# 4. logging module
-# 5. documentation - tested with sphinx - couldn't get working
 # 6. doc strings on every method
 # 7. proper comments
 # 8. on github readme, have proper dependencies eg. need pysql/pymongo
@@ -19,6 +17,8 @@ Created on Wed Aug 31 11:11:07 2016
 
 
 # Import modules:
+from AutoGenCode import AutoGenCode
+
 import sys
 
 # Import other python class files:
@@ -29,12 +29,13 @@ from Logger import Logger
 
 class MainLogic(object):
     """ MainLogic: Holds the logic for running the program in the prompt.  """
-    def __init__(self):
+    def __init__(self, autoGen):
         self.menuLines = ["\nPlease select an option: ",
                          "1. Query MySQL Database.",
                          "2. Query MongoDB Database.",
                          "8. Logout.",
                          "9. Quit."]
+        self.autoGen = autoGen
         self.loggedIn = False
         loggerObject = Logger("TUI") # Init the logger object
         self.logger = loggerObject.getLogger() # Get the logger object
@@ -79,7 +80,7 @@ class MainLogic(object):
                 while (not validLogin):
                     userLogin = Login()
                     userLoginDetails = userLogin.getLoginDetails()
-                    db = MySQLDatabase(userLoginDetails, self.logger, self.fh) # Init MySQL db
+                    db = MySQLDatabase(userLoginDetails, self.logger, self.fh, self.autoGen) # Init MySQL db
                     validLogin = db.login() # Login to MySQL db
                     sqlDBForMongo = db.getDB()# Get MySQL db object to pass to MongoDB
                     mongoDB = MongoDatabase() # Init Mongo db
@@ -138,6 +139,12 @@ class MainLogic(object):
         else:
             self.menuOption = userChoice
             return True
+            
+    
+
         
 if __name__ == "__main__":
-    app = MainLogic()
+    #app = MainLogic()
+    autoGenCode = AutoGenCode()
+    autoGen = autoGenCode.getAutoGen()
+    mainTUI = MainLogic(autoGen)

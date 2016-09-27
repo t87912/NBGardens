@@ -17,6 +17,8 @@ from mongoDatabase import MongoQueries
 from exportToCSV import exportToCSV
 from Logger import Logger
 
+from AutoGenCode import AutoGenCode
+
 # Import user stories:
 from UserStories.userStory1 import userStory1
 from UserStories.userStory2 import userStory2
@@ -45,6 +47,8 @@ class MainApplication(tk.Frame):
         custom SQL/Mongo queries. """
     def __init__(self, master, *args, **kwargs):
         self.master = master
+        self.autoGen = args[0]
+        print (self.autoGen)
         self.currentQueryResult = [] # Will hold current query for printing
         self.userStory = 0 # Holds userStory number from drop down menu
         self.menuLines = ["\nPlease select an option: ",
@@ -115,7 +119,7 @@ class MainApplication(tk.Frame):
         userLoginDetails = [username, password]
 
         # Init MySQLDatabase with login details
-        self.db = MySQLDatabase(userLoginDetails, self.logger, self.fh)
+        self.db = MySQLDatabase(userLoginDetails, self.logger, self.fh, self.autoGen)
 
         # Attempt to login, returns true/false if valid/invalid
         validLogin = self.db.login()
@@ -490,8 +494,10 @@ class MainApplication(tk.Frame):
             eval(textToEval)
 
 if __name__ == "__main__":
+    autoGenCode = AutoGenCode()
+    autoGen = autoGenCode.getAutoGen()
     root = tk.Tk()
-    MainApplication = MainApplication(root)
+    MainApplication = MainApplication(root, autoGen)
     root.geometry('1200x900')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()
