@@ -99,32 +99,33 @@ class MainApplication(tk.Frame):
         root.config(menu = menu)
 
         #GUI submenus
-        fileSub = tk.Menu(menu)
+        fileSub = tk.Menu(menu, tearoff = False)
         menu.add_cascade(label = "File", menu = fileSub)
         fileSub.add_command(label = "New")
         fileSub.add_command(label = "Save")
         fileSub.add_command(label = "Open")
 
-        editSub = tk.Menu(menu)
+        editSub = tk.Menu(menu, tearoff = False)
         menu.add_cascade(label = "Edit", menu = editSub)
-        editSub.add_command(label = "Copy")
-        editSub.add_command(label = "Paste")
+        editSub.add_command(label = "Copy", command = self.copy)
+        editSub.add_command(label = "Paste", command = self.paste)
         editSub.add_command(label = "Select All")
 
-        viewSub = tk.Menu(menu)
+        viewSub = tk.Menu(menu, tearoff = False)
         menu.add_cascade(label = "View", menu = viewSub)
         viewSub.add_command(label = "Toggle full screen")
 
-        dataSub = tk.Menu(menu)
+        dataSub = tk.Menu(menu, tearoff = False)
         menu.add_cascade(label = "Data", menu = dataSub)
         dataSub.add_command(label = "Export as .csv")
 
-        menu.add_command(label = "Logout")
+        menu.add_command(label = "Logout", command = self.logout)
 
-        outputFrame = tk.Frame(root,height=30,width = 60)
-        outputFrame.pack(side = tk.TOP)
+        #Output frame
+        self.outputFrame = tk.Frame(root,height=30,width = 60)
+        self.outputFrame.pack(side = tk.TOP)
 
-        self.queryResultBox = tk.Text(outputFrame,width=65,height=20)
+        self.queryResultBox = tk.Text(self.outputFrame,width=65,height=20)
         self.queryResultBox.pack(side = tk.LEFT)
         #self.queryResultBox.config(state = DISABLED)
 
@@ -191,6 +192,16 @@ class MainApplication(tk.Frame):
         self.queryInputBox1.configure(state="disabled")
         self.queryInputBox2.configure(state="disabled")
         self.queryInputBox3.configure(state="disabled")
+
+    def copy(self):
+        content = self.outputFrame.selection_get()
+        root.clipboard_clear()
+        root.clipboard_append(content)
+
+    def paste(self):
+        t = root.focus_displayof()
+        content = root.clipboard_get()
+        print(t)
 
     def createQueryComboBoxOrders(self,tab, row, column, comboValues):
         queryComboBoxFrame = Frame(tab)
