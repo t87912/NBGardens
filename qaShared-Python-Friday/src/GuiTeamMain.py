@@ -18,6 +18,8 @@ from mongoDatabase import MongoQueries
 #from exportToCSV import exportToCSV
 from Logger import Logger
 
+import exportToCSV
+
 # Import user stories:
 from UserStories.userStory1 import userStory1
 from UserStories.userStory2 import userStory2
@@ -272,11 +274,13 @@ class MainApplication(tk.Frame):
             a bug preventing it being called directly from the button press,
             so the press goes here before calling the external function. """
 
+
     def showGraph(self):
         """ showGraph: This method will open a new top level window and display
             a graph image. It simply shows the image file called graph.png
             which is stored in /assets. This will be the most recent graph
             that has been created. """
+
 
     def dropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
