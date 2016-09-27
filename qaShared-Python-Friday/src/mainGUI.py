@@ -378,8 +378,8 @@ class MainApplication(tk.Frame):
             toPrint = userStory8(self.dbConn, self.conn, True, county)
         elif (self.userStory == 8): # MONGO - 9
             self.queryResultBox.delete('1.0', tk.END)
-            gender = self.queryInputBox3.get()
-            agemin = self.queryInputBox3.get()
+            gender = self.queryInputBox1.get()
+            agemin = self.queryInputBox2.get()
             agemax = self.queryInputBox3.get()
             toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
         elif (self.userStory == 9): # MONGO - 10
