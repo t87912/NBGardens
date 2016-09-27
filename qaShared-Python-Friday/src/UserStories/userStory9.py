@@ -10,7 +10,11 @@ def userStory9(sqlConn, conn, GUI, gender, agemin, agemax):
         county = input("Which gender do you want reviews from? (Male, Female, Both):")
         agemin = int(input("What is the minimum age of customer you want reviews from?:"))
         agemax = int(input("What is the maximum age of customer you want reviews from?:"))
-		
+    else:
+        print(gender + "ages " + agemin + " " + agemax)
+        agemin = int(agemin)
+        agemax = int(agemax) 
+    
     query = queriesForMongo[6] % (gender)
     cursor = sqlConn.cursor()  # Creating the cursor to query the database
     # Executing the query:
@@ -21,22 +25,38 @@ def userStory9(sqlConn, conn, GUI, gender, agemin, agemax):
         sqlConn.rollback()
     custIDsGender = cursor.fetchall()
 
-    now = datetime.datetime.now()
-    dateNow = now.strftime("%Y-%m-%d")
-    dateFrom = dateNow - datetime.timedelta(days=365*agemax)
-    dateTo   = dateNow - datetime.timedelta(days=365*agemin)
-	
+    now = datetime.now()   
+    
+    dateFrom = now
+    dateTo = now
+    for i in range(0, agemax):
+        dateFrom = dateFrom + timedelta(days=-365)
+    for i in range(0, agemin):
+        dateTo   = dateTo + timedelta(days=-365)
+    
+    print(dateFrom)
+    print(dateTo)    
+    
     query = queriesForMongo[7] % (dateFrom, dateTo)
-    cursor = sqlDB.cursor()  # Creating the cursor to query the database
+    cursor = sqlConn.cursor()  # Creating the cursor to query the database
     # Executing the query:
     try:
         cursor.execute(query)
-        sqlDB.commit()
+        sqlConn.commit()
     except:
-        sqlDB.rollback()
+        sqlConn.rollback()
     custIDsAge = cursor.fetchall()
-	
-    custIDs = custIDsGender.intersection(custIDsAge)
+    
+    custIdsAgeSorted = []
+    for i in custIDsAge:
+        custIdsAgeSorted.append(i[0])
+    custIdsGenderSorted = []
+    for i in custIDsGender:
+        custIdsGenderSorted.append(i[0])
+    
+    print(custIdsAgeSorted)
+    print(custIdsGenderSorted)
+    custIDs = list(set(custIdsAgeSorted) & set(custIdsGenderSorted))
 	
     totalavProductScore = 0
     totalavDeliveryScore = 0
