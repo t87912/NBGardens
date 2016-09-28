@@ -237,7 +237,7 @@ class MySQLDatabase(object):
         if (not GUI):
             query = input("Input SQL query: ")
 
-        self.logger = logging.info('Custom SQL query: %s', query)
+        self.logger.info('Custom SQL query: %s', query)
         cursor = self.db.cursor() # Creating the cursor to query the database
         # Executing the query:
         try:

@@ -21,8 +21,63 @@ class AllUserStories (object):
         # some instructions
         
     def newUserStory(self, db, GUI, autoGen, query_number):
-        print ("Hello, world!")
-        print ("Query number: %s" % (query_number))
+        #print ("Query number: %s" % (query_number))
+        userStories = autoGen[3]
+        # [["%s. Print a list of all products", "SELECT * FROM Product", [0,0,0]]]
+        #print (userStories)
+        
+        sqlQuery = userStories[query_number][1]
+        queryInputs = userStories[query_number][2]
+        needInputs = False
+        
+        for y in range(0, len(userStories[query_number][2])):
+            if (userStories[query_number][2][y] == 1):
+                needInputs = True
+        
+        if (needInputs):
+            validStartDate = False
+            validEndDate = False
+            validProductID = False
+            validAmount = False
+            inputs = []
+            for x in range(0, len(queryInputs)):
+                if (queryInputs[x] == 1 and x == 0):
+                    while (not validStartDate):
+                            startDate = input("Please enter the start date (YYYY-MM-DD): ")
+                            validStartDate = self.validateDateInput(startDate)
+                            inputs.append(startDate)
+                elif (queryInputs[x] == 1 and x == 1):
+                    while (not validEndDate):
+                            endDate = input("Please enter the end date (YYYY-MM-DD): ")
+                            validEndDate = self.validateDateInput(endDate)
+                            inputs.append(endDate)
+                elif (queryInputs[x] == 1 and x == 2):
+                    while (not validProductID):
+                            productID = input("Please enter the productID: ")
+                            validProductID = self.validateProductIDInput(productID)
+                            inputs.append(productID)
+                elif (queryInputs[x] == 1 and x == 3):
+                    while (not validAmount):
+                            amount = input("Please enter the productID: ")
+                            validAmount = self.validateAmountInput(amount)
+                            inputs.append(amount)
+
+            #inputsString = ""            
+            #for i in range(0, len(inputs)):
+             #   if (len(inputs) == i+1):
+              #      inputsString += inputs
+               # elif (i == len(inputs)-1):
+                #    inputsString += inputs
+                #elif (i+1 == len(inputs)):
+                    
+                
+            #strToEval = "sqlParse = sqlQuery % (" + inputsString + ")"
+            sqlParse = sqlQuery % (startDate, endDate)
+
+            query(db, sqlParse)
+        else:
+            query(db, sqlQuery)
+        
 
     def validateDateInput(self, date):
         """ validateDateInput: This method accepts a date as a parameter and
