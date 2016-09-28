@@ -19,6 +19,10 @@ class AllUserStories (object):
     def __init__(self):
         empty = 0
         # some instructions
+        
+    def newUserStory(self, db, GUI, autoGen, query_number):
+        print ("Hello, world!")
+        print ("Query number: %s" % (query_number))
 
     def validateDateInput(self, date):
         """ validateDateInput: This method accepts a date as a parameter and

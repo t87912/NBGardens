@@ -32,7 +32,7 @@ class AutoGenCode(object):
                   "%s. Go back to the main menu",
                   "%s. Quit"]
         self.generateMenuLines()
-        self.autoGen = [self.menuLines,self.last3Options, self.newMenuOptions]
+        self.autoGen = [self.menuLines,self.last3Options, self.newMenuOptions, self.userStories]
         #MainLogic(autoGen)
         #self.generateMainLogic()
         

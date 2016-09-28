@@ -35,6 +35,7 @@ class MySQLDatabase(object):
         self.autoGen = autoGen
         self.newMenuOptions = self.autoGen[2]
         self.menuLines = self.autoGen[0]
+        self.userStories = self.autoGen[3]
         self.logger = logger
         self.fh = fh # set filehandler, for closing the log file
         self.menuOption = 0
@@ -105,6 +106,12 @@ class MySQLDatabase(object):
             return self.run_query_obj.userStorySeries2(self.db, False, 0, 0, 0, int(self.menuOption))
         elif int(self.menuOption) in self.newMenuOptions:
             print ("In new menu options!")
+            print (self.menuOption)
+            query_number = 0
+            for x in range(0, len(self.newMenuOptions)):
+                if (self.menuOption == self.newMenuOptions[x]):
+                    query_number = x
+            self.run_query_obj.newUserStory(self.db, False, self.autoGen, query_number)
         elif (int(self.menuOption) == self.autoGen[1][0]):
             self.customQuery(False, 0)
         elif (int(self.menuOption) == self.autoGen[1][1]):
