@@ -1966,3 +1966,40 @@
 2016-09-28 22:10:49,890 - INFO - Custom SQL query: 
 2016-09-28 22:10:51,437 - INFO - ---------- Finished logging -----------
 2016-09-28 22:10:51,437 - INFO - ---------- Finished logging -----------
+2016-09-29 12:21:29,047 - INFO - ---------- Started logging TUI ----------
+2016-09-29 12:21:58,549 - INFO - ---------- Started logging TUI ----------
+2016-09-29 12:22:01,267 - INFO - Successful login to MySQL database, username: sadasd
+2016-09-29 12:22:54,174 - INFO - ---------- Finished logging -----------
+2016-09-29 14:49:00,251 - INFO - ---------- Started logging TUI ----------
+2016-09-29 14:49:05,615 - INFO - Successful login to MySQL database, username: asdsadasd
+2016-09-29 14:52:36,349 - INFO - ---------- Started logging TUI ----------
+2016-09-29 14:52:36,349 - INFO - ---------- Started logging TUI ----------
+2016-09-29 14:52:36,399 - INFO - Successful login to MySQL database, username: asdasd
+2016-09-29 14:52:36,399 - INFO - Successful login to MySQL database, username: asdasd
+2016-09-29 14:53:00,911 - INFO - ---------- Started logging TUI ----------
+2016-09-29 14:55:00,665 - INFO - Successful login to MySQL database, username: asd
+2016-09-29 14:57:22,151 - INFO - ---------- Started logging TUI ----------
+2016-09-29 14:57:22,151 - INFO - ---------- Started logging TUI ----------
+2016-09-29 14:57:22,201 - INFO - Successful login to MySQL database, username: runfile('C:/Users/Administrator/Documents/Big Data/Python/NBGardens/qaShared-Python-Friday/src/mainTUI.py', wdir='C:/Users/Administrator/Documents/Big Data/Python/NBGardens/qaShared-Python-Friday/src')
+2016-09-29 14:57:22,201 - INFO - Successful login to MySQL database, username: runfile('C:/Users/Administrator/Documents/Big Data/Python/NBGardens/qaShared-Python-Friday/src/mainTUI.py', wdir='C:/Users/Administrator/Documents/Big Data/Python/NBGardens/qaShared-Python-Friday/src')
+2016-09-29 14:58:11,599 - INFO - ---------- Started logging TUI ----------
+2016-09-29 14:58:14,465 - INFO - Successful login to MySQL database, username: adsasd
+2016-09-29 14:59:47,472 - INFO - ---------- Finished logging -----------
+2016-09-29 15:00:41,508 - INFO - ---------- Started logging TUI ----------
+2016-09-29 15:00:41,508 - INFO - ---------- Started logging TUI ----------
+2016-09-29 15:00:44,503 - INFO - Successful login to MySQL database, username: asd
+2016-09-29 15:00:44,503 - INFO - Successful login to MySQL database, username: asd
+2016-09-29 15:02:36,346 - INFO - ---------- Started logging TUI ----------
+2016-09-29 15:02:36,346 - INFO - ---------- Started logging TUI ----------
+2016-09-29 15:02:36,346 - INFO - ---------- Started logging TUI ----------
+2016-09-29 15:02:38,650 - INFO - Successful login to MySQL database, username: asddas
+2016-09-29 15:02:38,650 - INFO - Successful login to MySQL database, username: asddas
+2016-09-29 15:02:38,650 - INFO - Successful login to MySQL database, username: asddas
+2016-09-29 15:02:55,760 - INFO - ---------- Started logging TUI ----------
+2016-09-29 15:02:59,002 - INFO - Successful login to MySQL database, username: asd
+2016-09-29 15:03:40,088 - INFO - ---------- Finished logging -----------
+2016-09-29 15:03:51,305 - INFO - ---------- Started logging TUI ----------
+2016-09-29 15:03:54,896 - INFO - Successful login to MySQL database, username: asdasd
+2016-09-29 15:05:20,487 - INFO - ---------- Started logging TUI ----------
+2016-09-29 15:05:22,417 - INFO - Successful login to MySQL database, username: asd
+2016-09-29 15:06:07,463 - INFO - ---------- Finished logging -----------

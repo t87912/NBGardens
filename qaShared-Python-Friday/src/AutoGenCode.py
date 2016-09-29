@@ -10,13 +10,13 @@ class AutoGenCode(object):
         backend based upon the contents of a seperate python file containing
         details of new user stories. """
     def __init__(self):
-        #self.userStories = [["%s. Print a list of all products", "SELECT e.idEmployee, e.firstName, e.lastName, round(SUM(p.salePrice * op.quantity),2) as 'Total Sales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct Join Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between '%s' and '%s' group by e.idEmployee order by 'Total Sales' desc limit 20", [1,1,0]]]
+        self.userStories = [["%s. Print a list of all products", "SELECT e.idEmployee, e.firstName, e.lastName, round(SUM(p.salePrice * op.quantity),2) as 'Total Sales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct Join Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between '%s' and '%s' group by e.idEmployee order by 'Total Sales' desc limit 20", [1,1,0]]]
         
         #["%s. Print a list of all products", "SELECT * FROM Product", [0,0,0]],
         #["%s. Testing 1","SELECT",[0,0,0]],
         #["%s. Testing 2","SELECT",[0,0,0]],
         #["%s. Testing 3","SELECT * FROM Product WHERE productID == '%s'",[0,0,1]]]
-        self.userStories = []
+        #self.userStories = []
         
         self.menuLines = ["\nPlease select an option: ",
                   "User Story Number | Description",

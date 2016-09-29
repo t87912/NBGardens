@@ -520,7 +520,7 @@ class AllUserStories (object):
         if (query_number == 13):
             products = []
             totals = []
-            for r in range(0, len(results)):
+            for r in range(1, len(results)):
                 products.append(results[r][0])
                 totals.append(results[r][1])
 
@@ -530,18 +530,14 @@ class AllUserStories (object):
             plt.ylabel('Amount of sales')
             plt.title('Amount of sales for a particular product over a period of time')
             plt.grid(True)
-            #string = eval(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'Image Files'))).replace('\\','\\\\')
-            #string = string.replace('\\','\\\\')
-            #print (string)
             plt.savefig("graph.png")
-            #plt.savefig("\\Image Files\\userStory13.png")
             plt.show()
 
         elif (query_number == 16):
             ids = []
             totals = []
             amounts = []
-            for r in range(0, len(results)):
+            for r in range(1, len(results)):
                 ids.append(results[r][0])
                 totals.append(results[r][1])
                 amounts.append(results[r][2])
@@ -555,7 +551,6 @@ class AllUserStories (object):
             plt.ylabel('Number of Sales')
             plt.title('Amount of sales made by a particular salesperson over a period of time')
             plt.grid(True)
-            #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory16.png")
             plt.savefig("graph.png")
             plt.show()
 
@@ -613,7 +608,7 @@ class AllUserStories (object):
 
             dates = []
             totals = []
-            for r in range(0, len(results)):
+            for r in range(1, len(results)):
                 dates.append(results[r][1])
                 totals.append(results[r][2])
 
@@ -631,7 +626,6 @@ class AllUserStories (object):
                 plt.ylabel('Number of Sales')
                 plt.title('Amount of sales made by a particular salesperson over a period of time')
                 plt.grid(True)
-                #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory14.png")
                 plt.savefig("graph.png")
                 plt.show()
 
