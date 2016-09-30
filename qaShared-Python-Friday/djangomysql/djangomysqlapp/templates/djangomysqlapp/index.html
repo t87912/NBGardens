@@ -1,0 +1,9 @@
+{% if latest_question_list %}
+    <ul>
+    {% for product in latest_question_list %}
+        <li><a href="/polls/{{ product.idproduct }}/">{{ product.productname }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
