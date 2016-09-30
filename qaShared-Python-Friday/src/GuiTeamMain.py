@@ -140,6 +140,8 @@ class MainApplication(tk.Frame):
         #Tabs
         tabControl = ttk.Notebook(inputFrame) #Tab control
 
+        # ------------------------------------------------------------------------- TAB 1 -------------------------------------------------------------------------
+
         tab1 = tk.Frame(tabControl) #Tab 1
         tabControl.add(tab1, text = 'Customer')
         tabControl.pack(expand=1, fill="both")
@@ -147,60 +149,92 @@ class MainApplication(tk.Frame):
         #Dropdown list
         var = tk.StringVar()
         var.set(self.options[0])
-        self.drop = tk.OptionMenu(tab1, var, *self.options, command=self.dropDownInput)
-        tk.Label(tab1, text="Select Query").grid(row = 0, column = 0)
+        self.drop = tk.OptionMenu(tab1, var, *self.options, command=self.customerDropDownInput)
         self.drop.grid(row=1, column = 0, columnspan=3)
 
         # Query input boxes:
         tk.Label(tab1, text="Date from:").grid(row = 3, column = 0)
-        self.queryInputBox1 = tk.Entry(tab1)
-        self.queryInputBox1.grid(row=3,column=1)
+        self.customerQueryInputBox1 = tk.Entry(tab1)
+        self.customerQueryInputBox1.grid(row=3,column=1)
         tk.Label(tab1, text="Date to:").grid(row = 4, column = 0)
-        self.queryInputBox2 = tk.Entry(tab1)
-        self.queryInputBox2.grid(row=4,column=1)
+        self.customerQueryInputBox2 = tk.Entry(tab1)
+        self.customerQueryInputBox2.grid(row=4,column=1)
         tk.Label(tab1, text="ID:").grid(row = 5, column = 0)
-        self.queryInputBox3 = tk.Entry(tab1)
-        self.queryInputBox3.grid(row=5,column=1)
+        self.customerQueryInputBox3 = tk.Entry(tab1)
+        self.customerQueryInputBox3.grid(row=5,column=1)
 
         #submit button
         self.submitUserStoryInputs = tk.Button(tab1, text = "Submit", command = self.submitUserStory)
         self.submitUserStoryInputs.grid(row=12,column=3)
-        comboValues = ['Highest spending customer', 'Highest spending customers (limit by min amount)', 'Customers Average rating', 'Average rating by county', 'Average rating by demographic', 'Customer satisfaction by business area', 'Customer satisfaction over areas']
-        self.createQueryComboBoxOrders(tab1, 0, 0, comboValues)
 
-        tab2 = tk.Frame(tabControl)#Tab 2
+        # ------------------------------------------------------------------------- TAB 2 -------------------------------------------------------------------------
+
+        #tab2
+        tab2 = tk.Frame(tabControl)
         tabControl.add(tab2, text='Orders')
-        comboValues = ['Total spend versus total cost', 'Average amount of time taken to fulfil and order']
-        self.createQueryComboBoxOrders(tab2, 0, 0, comboValues)
+
+        #Dropdown list
+        var = tk.StringVar()
+        var.set(self.options[0])
+        self.drop = tk.OptionMenu(tab2, var, *self.options, command=self.orderDropDownInput)
+        self.drop.grid(row=1, column = 0, columnspan=3)
+
+        # Query input boxes:
+        tk.Label(tab1, text="Date from:").grid(row = 3, column = 0)
+        self.orderQueryInputBox1 = tk.Entry(tab2)
+        self.orderQueryInputBox1.grid(row=3,column=1)
+        tk.Label(tab1, text="Date to:").grid(row = 4, column = 0)
+        self.orderQueryInputBox2 = tk.Entry(tab2)
+        self.orderQueryInputBox2.grid(row=4,column=1)
+        tk.Label(tab1, text="ID:").grid(row = 5, column = 0)
+        self.orderQueryInputBox3 = tk.Entry(tab2)
+        self.orderQueryInputBox3.grid(row=5,column=1)
+
+        #submit button
+        self.submitUserStoryInputs = tk.Button(tab2, text = "Submit", command = self.submitUserStory)
+        self.submitUserStoryInputs.grid(row=12,column=3)
+
+        # ------------------------------------------------------------------------- TAB 3 -------------------------------------------------------------------------
 
         tab3 = tk.Frame(tabControl)
         tabControl.add(tab3, text='Products')
-        comboValues = ['Total return on investment', 'Average product website rating vs Average product order rating', 'Check if website and physical inventroy details match', 'Amount of Sales', 'Stock available against number of sales for product']
-        self.createQueryComboBoxOrders(tab3, 0, 0, comboValues)
+
+        # ------------------------------------------------------------------------- TAB 4 -------------------------------------------------------------------------
 
         tab4 = tk.Frame(tabControl)
         tabControl.add(tab4, text='Employee')
-        comboValues = ['Top Sales Person', 'Sales by Sales Person']
-        self.createQueryComboBoxOrders(tab4, 0, 0, comboValues)
+
 
         #Status bar
         status = tk.Label(root, text = "ready", bd = 1, relief = "sunken", anchor = W)
         status.pack(side = BOTTOM, fill = X)
 
         # Set prompt text of input boxes:
-        self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
-        self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.customerQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.customerQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.customerQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+
+        self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
 
         # Bind the input boxes, so on focus remove prompt text:
-        self.queryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox1"))
-        self.queryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox2"))
-        self.queryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.queryInputBox3"))
+        self.customerQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.customerQueryInputBox1"))
+        self.customerQueryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.customerQueryInputBox2"))
+        self.customerQueryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.customerQueryInputBox3"))
+
+        self.customerQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.customerQueryInputBox1"))
+        self.customerQueryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.customerQueryInputBox2"))
+        self.customerQueryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.customerQueryInputBox3"))
 
         # Disable the inputs:
-        self.queryInputBox1.configure(state="disabled")
-        self.queryInputBox2.configure(state="disabled")
-        self.queryInputBox3.configure(state="disabled")
+        self.customerQueryInputBox1.configure(state="disabled")
+        self.customerQueryInputBox2.configure(state="disabled")
+        self.customerQueryInputBox3.configure(state="disabled")
+
+        self.orderQueryInputBox1.configure(state="disabled")
+        self.orderQueryInputBox2.configure(state="disabled")
+        self.orderQueryInputBox3.configure(state="disabled")
 
     def copy(self):
         content = self.outputFrame.selection_get()
@@ -319,99 +353,191 @@ class MainApplication(tk.Frame):
             which is stored in /assets. This will be the most recent graph
             that has been created. """
 
-    def dropDownInput(self, value):
+    def customerDropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
             menu option from the drop down menu. It deletes the contents of the
             input boxes, replaces them with a prompt (e.g. date/prodID).
             Depending on the userStory number, input boxes will be 'unlocked'. """
         print(value)
-        self.queryInputBox1.delete(0, "end")
-        self.queryInputBox2.delete(0, "end")
-        self.queryInputBox3.delete(0, "end")
-        self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
-        self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
-        self.queryInputBox1.config(state='disabled')
-        self.queryInputBox2.config(state='disabled')
-        self.queryInputBox3.config(state='disabled')
+        self.customerQueryInputBox1.delete(0, "end")
+        self.customerQueryInputBox2.delete(0, "end")
+        self.customerQueryInputBox3.delete(0, "end")
+        self.customerQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.customerQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.customerQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.customerQueryInputBox1.config(state='disabled')
+        self.customerQueryInputBox2.config(state='disabled')
+        self.customerQueryInputBox3.config(state='disabled')
 
         if (value == self.options[0]):
             self.userStory = 0
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
         elif (value == self.options[1]):
             self.userStory = 1
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
         elif (value == self.options[2]):
             self.userStory = 2
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
-            self.queryInputBox3.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
+            self.customerQueryInputBox3.config(state='normal')
         elif (value == self.options[3]):
             self.userStory = 3
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
         elif (value == self.options[4]):
             self.userStory = 4
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
-            self.queryInputBox3.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
+            self.customerQueryInputBox3.config(state='normal')
         elif (value == self.options[5]):
             self.userStory = 5
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
         elif (value == self.options[6]): # MONGO - 7
             self.userStory = 6
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox3.config(state='normal')
+            self.customerQueryInputBox3.config(state='normal')
         elif (value == self.options[7]): # MONGO - 8
             self.userStory = 7
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox3.config(state='normal')
+            self.customerQueryInputBox3.config(state='normal')
         elif (value == self.options[8]): # MONGO - 9
             self.userStory = 8
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
-            self.queryInputBox3.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
+            self.customerQueryInputBox3.config(state='normal')
         elif (value == self.options[9]): # MONGO - 10
             self.userStory = 9
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox3.config(state='normal')
+            self.customerQueryInputBox3.config(state='normal')
         elif (value == self.options[10]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
         elif (value == self.options[11]):
             self.userStory = 11
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox3.config(state='normal')
+            self.customerQueryInputBox3.config(state='normal')
         elif (value == self.options[12]):
             self.userStory = 12
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
         elif (value == self.options[13]):
             self.userStory = 13
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
-            self.queryInputBox3.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
+            self.customerQueryInputBox3.config(state='normal')
         elif (value == self.options[15]):
             self.userStory = 15
             self.queryResultBox.delete('1.0', tk.END)
-            self.queryInputBox1.config(state='normal')
-            self.queryInputBox2.config(state='normal')
+            self.customerQueryInputBox1.config(state='normal')
+            self.customerQueryInputBox2.config(state='normal')
 
-    def submitUserStory(self):
+    def orderDropDownInput(self, value):
+        """ dropDownInput: This method is called whenever the user selects a
+            menu option from the drop down menu. It deletes the contents of the
+            input boxes, replaces them with a prompt (e.g. date/prodID).
+            Depending on the userStory number, input boxes will be 'unlocked'. """
+        print(value)
+        self.orderQueryInputBox1.delete(0, "end")
+        self.orderQueryInputBox2.delete(0, "end")
+        self.orderQueryInputBox3.delete(0, "end")
+        self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.orderQueryInputBox1.config(state='disabled')
+        self.orderQueryInputBox2.config(state='disabled')
+        self.orderQueryInputBox3.config(state='disabled')
+
+        if (value == self.options[0]):
+            self.userStory = 0
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+        elif (value == self.options[1]):
+            self.userStory = 1
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+        elif (value == self.options[2]):
+            self.userStory = 2
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+            self.orderQueryInputBox3.config(state='normal')
+        elif (value == self.options[3]):
+            self.userStory = 3
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+        elif (value == self.options[4]):
+            self.userStory = 4
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+            self.orderQueryInputBox3.config(state='normal')
+        elif (value == self.options[5]):
+            self.userStory = 5
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+        elif (value == self.options[6]): # MONGO - 7
+            self.userStory = 6
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox3.config(state='normal')
+        elif (value == self.options[7]): # MONGO - 8
+            self.userStory = 7
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox3.config(state='normal')
+        elif (value == self.options[8]): # MONGO - 9
+            self.userStory = 8
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+            self.orderQueryInputBox3.config(state='normal')
+        elif (value == self.options[9]): # MONGO - 10
+            self.userStory = 9
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox3.config(state='normal')
+        elif (value == self.options[10]): # MONGO - 11
+            self.userStory = 10
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+        elif (value == self.options[11]):
+            self.userStory = 11
+            self.orderQueryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox3.config(state='normal')
+        elif (value == self.options[12]):
+            self.userStory = 12
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+        elif (value == self.options[13]):
+            self.userStory = 13
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+            self.orderQueryInputBox3.config(state='normal')
+        elif (value == self.options[15]):
+            self.userStory = 15
+            self.queryResultBox.delete('1.0', tk.END)
+            self.orderQueryInputBox1.config(state='normal')
+            self.orderQueryInputBox2.config(state='normal')
+
+    def customerSubmitUserStory(self):
         """ submitUserStory: This method is called when the submit button is
             pressed. It uses self.userStory (number of drop down menu that
             is currently selected) to decide the values of which input boxes
@@ -421,67 +547,67 @@ class MainApplication(tk.Frame):
             which is passed in to the self.outputQueryResult method. """
         if (self.userStory == 0):
             self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
             toPrint = userStory1(self.dbConn, True, fromDate, toDate)
         elif (self.userStory == 1):
             self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
             toPrint = userStory2(self.dbConn, True, fromDate, toDate)
         elif (self.userStory == 2):
             self.queryResultBox.delete('1.0', tk.END)
-            amount = self.queryInputBox3.get()
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
+            amount = self.customerQueryInputBox3.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
             toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
         elif (self.userStory == 3):
             self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
             toPrint = userStory4(self.dbConn, True, fromDate, toDate)
         elif (self.userStory == 4):
             self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
-            productID = self.queryInputBox3.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
+            productID = self.customerQueryInputBox3.get()
             toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
         elif (self.userStory == 5):
             self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
             toPrint = userStory6(self.dbConn, True, fromDate, toDate)
         elif (self.userStory == 6): # MONGO - 7
             self.queryResultBox.delete('1.0', tk.END)
-            customerID = self.queryInputBox3.get()
+            customerID = self.customerQueryInputBox3.get()
             toPrint = userStory7(self.dbConn, self.conn, True, customerID)
         elif (self.userStory == 7): # MONGO - 8
             self.queryResultBox.delete('1.0', tk.END)
-            county = self.queryInputBox3.get()
+            county = self.customerQueryInputBox3.get()
             toPrint = userStory8(self.dbConn, self.conn, True, county)
         elif (self.userStory == 8): # MONGO - 9
             self.queryResultBox.delete('1.0', tk.END)
-            gender = self.queryInputBox3.get()
-            agemin = self.queryInputBox3.get()
-            agemax = self.queryInputBox3.get()
+            gender = self.customerQueryInputBox3.get()
+            agemin = self.customerQueryInputBox3.get()
+            agemax = self.customerQueryInputBox3.get()
             toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
         elif (self.userStory == 9): # MONGO - 10
             self.queryResultBox.delete('1.0', tk.END)
-            productID = self.queryInputBox3.get()
+            productID = self.customerQueryInputBox3.get()
             toPrint = userStory7(self.dbConn, self.conn, True, productID)
         elif (self.userStory == 10): # MONGO - 11
             self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
             toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 11):
             self.queryResultBox.delete('1.0', tk.END)
-            productID = self.queryInputBox3.get()
+            productID = self.customerQueryInputBox3.get()
             toPrint = userStory12(self.dbConn, True, productID)
         elif (self.userStory == 12):
             self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
             toPrint = userStory13(self.dbConn, True, fromDate, toDate)
         elif (self.userStory == 13):
             self.queryResultBox.delete('1.0', tk.END)
