@@ -1,13 +1,3 @@
-#from pymongo import MongoClient
-#conn = MongoClient()
-#db = conn.NBGardensMongo
-
-#MONGODB_URI = 'mongodb://master:pa$$w0rd@ds019766.mlab.com:19766/nbgardens'
-
-#conn = MongoClient(MONGODB_URI)
-
-#db = conn.get_default_database() 
-
 class OnlineReviews(object):
     ##### accesses OnlineReviews Collection #####
     def __init__(self, conn):
@@ -201,7 +191,3 @@ class UserStories:
             totalScore += rev["customerServiceScore"]
             count += 1
         return totalScore/count    
-        
-#customerProductScores = CustomerOrderReviews.getProductScoresfCust(1)
-#print (customerProductScores)
-        

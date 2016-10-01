@@ -36,6 +36,7 @@ def userStory7(sqlConn, conn, GUI, custIDi):  # + GUI (bool) + startDate + endDa
         print("Average Product Score:      " + customerReviewScores[0] + "\n" + \
               "Average Delivery Score:     " + customerReviewScores[1] + "\n" + \
               "Average Service Score:      " + customerReviewScores[1])
+        print (customerReviewScores)
 
     if (GUI):
         result = [customerReviewScores]

@@ -73,9 +73,13 @@ class MongoDatabase(object):
             find_method = getattr(self.run_mongo_query, method_name)
             
             if int(self.menuOption) in two_param_cases:
-                return find_method(MongoQueries, False, 0)
+                #return find_method(MongoQueries, False, 0)
+                return find_method(self.sqlDB, self.conn, False, 0)
+                #sqlConn, conn, GUI, custIDi
             elif int(self.menuOption) in one_param_cases:
-                return find_method(MongoQueries, False)     
+                #return find_method(MongoQueries, False)
+                return find_method(self.sqlDB, self.conn, False)
+                
         
         
     def run(self):

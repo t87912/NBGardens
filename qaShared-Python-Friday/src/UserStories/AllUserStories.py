@@ -5,6 +5,9 @@ Created on Thu Sep 15 11:48:47 2016
 @author: Administrator
 """
 
+from mongoDatabase.MongoQueries import CustomerOrderReviews
+
+
 from exportToCSV import exportToCSV
 from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
@@ -113,45 +116,82 @@ class AllUserStories (object):
             validAmount = False
         return validAmount
 
-    def mongoStory1(self, MongoQueries, GUI, custID): # + GUI (bool) + startDate + endDate etc
+    #def mongoStory1(self, MongoQueries, GUI, custIDi): # + GUI (bool) + startDate + endDate etc
+    def mongoStory1(self, sqlConn, conn, GUI, custID): # mongo 7
         """ userStory7(Boolean for GUI, customer id): This method does xyz """
         if (not GUI):
             custID = int(input("What is the customer ID you want to view review scores for?: "))
-
-        customerProductScores = MongoQueries.CustomerOrderReviews.getProductScoresfCust(custID)
-
+        customerProductScores = CustomerOrderReviews(conn).getProductScoresfCust(custID)
+        
         if len(customerProductScores) == 0:
             customerReviewScores = "N/A"
+            print ("warning n/a")
         else:
             totalProductScores = 0
-
             for i in customerProductScores:
                 totalProductScores += i
-
             avProductScore = totalProductScores / len(customerProductScores)
-            customerDeliveryScores = MongoQueries.CustomerOrderReviews.getDeliveryScore(custID)
+    
+            customerDeliveryScores = CustomerOrderReviews(conn).getDeliveryScore(custID)
             totalDeliveryScores = 0
-
             for i in customerDeliveryScores:
                 totalDeliveryScores += i
-
             avDeliveryScore = totalDeliveryScores / len(customerDeliveryScores)
-            customerServiceScores = MongoQueries.CustomerOrderReviews.getServiceScore(custID)
+    
+            customerServiceScores = CustomerOrderReviews(conn).getServiceScore(custID)
             totalServiceScores = 0
-
             for i in customerServiceScores:
                 totalServiceScores += i
-
             avServiceScore = totalServiceScores / len(customerServiceScores)
-            customerReviewScores = [avProductScore, avDeliveryScore, avServiceScore]
-
+    
+            customerReviewScores = [["averageProductScore","averageDeliveryScore", "averageServiceScore"],
+                                    [avProductScore, avDeliveryScore, avServiceScore]]
+    
         if (not GUI):
-            #!!!! to get customer name need SQL QUERY !!!!#
-            print(customerReviewScores)
-
+            #print (customerReviewScores)
+            for u in range(0, len(customerReviewScores)):
+                print (customerReviewScores[u])
+    
         if (GUI):
-            result = [customerReviewScores]
-            return result # result = [[prodID, date date ], [], []]
+            result = customerReviewScores
+            return result
+#        if (not GUI):
+#            custID = int(input("What is the customer ID you want to view review scores for?: "))
+#
+#        customerProductScores = MongoQueries.CustomerOrderReviews.getProductScoresfCust(custID)
+#
+#        if len(customerProductScores) == 0:
+#            customerReviewScores = "N/A"
+#        else:
+#            totalProductScores = 0
+#
+#            for i in customerProductScores:
+#                totalProductScores += i
+#
+#            avProductScore = totalProductScores / len(customerProductScores)
+#            customerDeliveryScores = MongoQueries.CustomerOrderReviews.getDeliveryScore(custID)
+#            totalDeliveryScores = 0
+#
+#            for i in customerDeliveryScores:
+#                totalDeliveryScores += i
+#
+#            avDeliveryScore = totalDeliveryScores / len(customerDeliveryScores)
+#            customerServiceScores = MongoQueries.CustomerOrderReviews.getServiceScore(custID)
+#            totalServiceScores = 0
+#
+#            for i in customerServiceScores:
+#                totalServiceScores += i
+#
+#            avServiceScore = totalServiceScores / len(customerServiceScores)
+#            customerReviewScores = [avProductScore, avDeliveryScore, avServiceScore]
+#
+#        if (not GUI):
+#            #!!!! to get customer name need SQL QUERY !!!!#
+#            print(customerReviewScores)
+#
+#        if (GUI):
+#            result = [customerReviewScores]
+#            return result # result = [[prodID, date date ], [], []]
 
 
     def mongoStory2(self, MongoQueries, GUI, gender):
