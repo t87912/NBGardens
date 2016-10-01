@@ -9,15 +9,14 @@ from exportToCSV import exportToCSV
 from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
 import matplotlib.pyplot as plt
-import os
-import sys
-import logging
 import time
+import numpy as np
 
 class AllUserStories (object):
 
     def __init__(self):
         empty = 0
+        empty += 1
         # some instructions
         
     def newUserStory(self, db, GUI, autoGen, query_number):
@@ -113,107 +112,6 @@ class AllUserStories (object):
             print ("Error: Please input a valid amount.")
             validAmount = False
         return validAmount
-
-
-#    def userStory1(self, db, GUI, startDate, endDate):
-#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-#
-#        # If called in terminal program, get user to set input:
-#        if (not GUI):
-#            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-#            endDate = input("Please enter the end date (YYYY-MM-DD): ")
-#
-#        sqlParse = queries[1] % (startDate, endDate)
-#
-#        sql = sqlParse
-#        results = query(db, sql)
-#
-#        # If GUI return the data
-#        if (GUI):
-#            return [results]
-#
-#
-#    def userStory2(self, db, GUI, startDate, endDate):
-#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-#        # If called in terminal program, get user to set input
-#        if (not GUI):
-#            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-#            endDate = input("Please enter the end date (YYYY-MM-DD): ")
-#
-#        sqlParse = queries[2] % (startDate, endDate)
-#
-#        sql = sqlParse
-#        results = query(db, sql)
-#        if (GUI):  # If GUI return the data
-#            return [results]
-
-
-#    def userStory3(self, db, GUI, amount, startDate, endDate):
-#        """ useCase3: Accepts parameter 'period' which is a period, 1-4 """
-#
-#        if (not GUI):
-#            amount = input("Please enter the amount: ")
-#            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-#            endDate = input("Please enter the end date (YYYY-MM-DD): ")
-#
-#        sqlParse = queries[3] % (startDate, endDate, amount)
-#        sql = sqlParse
-#        results = query(db, sql)
-#
-#        # If GUI return the data
-#        if (GUI):
-#            return [results]
-
-
-#    def userStory4(self, db, GUI, startDate, endDate):
-#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-#
-#        if (not GUI):
-#            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-#            endDate = input("Please enter the end date (YYYY-MM-DD): ")
-#
-#        sqlParse = queries[4] % (startDate, endDate)
-#        sql = sqlParse
-#        results = query(db, sql)
-#
-#        # If GUI return the data
-#        if (GUI):
-#            return [results]
-
-#
-#    def userStory5(self, db, GUI, startDate, endDate, productID):
-#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-#
-#        if (not GUI):
-#            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-#            endDate = input("Please enter the end date (YYYY-MM-DD): ")
-#            productID = input("Please enter the productID: ")
-#
-#        sqlParse = queries[5] % (startDate, endDate, productID)
-#        sql = sqlParse
-#        results = query(db, sql)
-#
-#        # If GUI return the data
-#        if (GUI):
-#            return [results]
-
-
-#    def userStory6(self, db, GUI, startDate, endDate):
-#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-#
-#        if (not GUI):
-#            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-#            endDate = input("Please enter the end date (YYYY-MM-DD): ")
-#
-#        sqlParse = queries[6] % (startDate, endDate)
-#        sql = sqlParse
-#
-#        results = query(db, sql)
-#
-#        # If GUI return the data
-#        if (GUI):
-#            return [results]
-
 
     def mongoStory1(self, MongoQueries, GUI, custID): # + GUI (bool) + startDate + endDate etc
         """ userStory7(Boolean for GUI, customer id): This method does xyz """
@@ -334,157 +232,10 @@ class AllUserStories (object):
         results = query(db, sql)
 
         # If GUI return the data
-        print ("test")
         if (GUI):
             return [results]
         else:
-            print ("not gui")
             exportToCSV(results)
-
-
-#    def userStory13(self, db, GUI, startDate, endDate):
-#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-#        if (not GUI):
-#            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-#            endDate = input("Please enter the end date (YYYY-MM-DD): ")
-#
-#        sqlParse = queries[13] % (startDate, endDate)
-#
-#        sql = sqlParse
-#        results = query(db, sql)
-#
-#        products = []
-#        totals = []
-#        for r in range(0, len(results)):
-#            products.append(results[r][0])
-#            totals.append(results[r][1])
-#
-#        print ("Plotting the data...")
-#        plt.plot(products, totals, "#993A54")
-#        plt.xlabel('Product ID')
-#        plt.ylabel('Amount of sales')
-#        plt.title('Amount of sales for a particular product over a period of time')
-#        plt.grid(True)
-#        #string = eval(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'Image Files'))).replace('\\','\\\\')
-#        #string = string.replace('\\','\\\\')
-#        #print (string)
-#        plt.savefig("graph.png")
-#        #plt.savefig("\\Image Files\\userStory13.png")
-#        plt.show()
-#
-#        # If GUI return the data
-#        if (GUI):
-#            return [results]
-
-#    def userStory14(db, GUI, startDate, endDate, employeeID):
-#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-#        if (not GUI):
-#            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-#            endDate = input("Please enter the end date (YYYY-MM-DD): ")
-#            employeeID = input("Please enter the employee ID: ")
-#
-#        sqlParse = queries[14] % (startDate, endDate, employeeID)
-#        sql = sqlParse
-#        results = query(db, sql)
-#
-#        dates = []
-#        totals = []
-#        for r in range(0, len(results)):
-#            dates.append(results[r][1])
-#            totals.append(results[r][2])
-#
-#        if (len(results) == 0):
-#            print ("There is no sales data available for this employee for the specified timeframe.")
-#            if (GUI):
-#                results = ["There is no sales data available for this employee for the specified timeframe."]
-#        else:
-#            # dates ratings product
-#            print ("Plotting the data...")
-#            plt.plot_date(dates, totals, "#993A54")
-#            plt.legend(loc=1)
-#            plt.xlabel('Date (YYYY-MM-DD)')
-#            plt.xticks(rotation=45)
-#            plt.ylabel('Number of Sales')
-#            plt.title('Amount of sales made by a particular salesperson over a period of time')
-#            plt.grid(True)
-#            #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory14.png")
-#            plt.savefig("graph.png")
-#            plt.show()
-#
-#        # If GUI return the data
-#        if (GUI):
-#            return [results]
-
-
-#    def userStory16(self, db, GUI, startDate, endDate):
-#        """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
-#        if (not GUI):
-#            startDate = input("Please enter the start date (YYYY-MM-DD): ")
-#            endDate = input("Please enter the end date (YYYY-MM-DD): ")
-#
-#        sqlParse = queries[16] % (startDate, endDate)
-#
-#        sql = sqlParse
-#        results = query(db, sql)
-#
-#        ids = []
-#        totals = []
-#        amounts = []
-#        for r in range(0, len(results)):
-#            ids.append(results[r][0])
-#            totals.append(results[r][1])
-#            amounts.append(results[r][2])
-#
-#        # dates ratings product
-#        print ("Plotting the data...")
-#        plt.plot(ids, totals, amounts, "#993A54")
-#        plt.legend(loc=1)
-#        plt.xlabel('Date (YYYY-MM-DD)')
-#        plt.xticks(rotation=45)
-#        plt.ylabel('Number of Sales')
-#        plt.title('Amount of sales made by a particular salesperson over a period of time')
-#        plt.grid(True)
-#        #plt.savefig("C:\\Users\\Administrator\\Desktop\\qaShared-python-20160907T080629Z\\qaShared-python\\qaShared-python\\for git\\Image Files\\userStory16.png")
-#        plt.savefig("graph.png")
-#        plt.show()
-#
-#        # If GUI return the data
-#        if (GUI):
-#            return [results]
-
-
-#    def userStory17(self, GUI, query):
-#        """ customeQuery: Executes user custom query. Need validation here. """
-#        if (not GUI):
-#            query = input("Input SQL query: ")
-#
-#        self.logger = logging.info('Custom SQL query: %s', query)
-#        cursor = self.db.cursor() # Creating the cursor to query the database
-#        # Executing the query:
-#        try:
-#            cursor.execute(query)
-#            self.db.commit()
-#        except:
-#            self.db.rollback()
-#
-#        results = cursor.fetchall()
-#        for row in results:
-#            toPrint = []
-#            for i in range(0, len(row)):
-#                toPrint.append([row[i]])
-#            print (toPrint)
-#
-#        if (GUI):
-#            return results
-
-
-#    def userStory18(self):
-#         print ("Returning to main menu...")
-#
-#
-#    def userStory19(self):
-#         print ("Exiting the program...")
-#         sys.exit(0)
 
 
     def userStorySeries1(self, db, GUI, startDate, endDate, query_number):
@@ -518,41 +269,103 @@ class AllUserStories (object):
         results = query(db, sql)
 
         if (query_number == 13):
+#            products = []
+#            totals = []
+#            for r in range(1, len(results)):
+#                products.append(results[r][0])
+#                totals.append(results[r][1])
+#
+#            print ("Plotting the data...")
+#            plt.plot(products, totals, "#993A54")
+#            plt.xlabel('Product ID')
+#            plt.ylabel('Amount of sales')
+#            plt.title('Amount of sales for a particular product over a period of time')
+#            plt.grid(True)
+#            plt.savefig("graph.png")
+#            plt.show()
+        
             products = []
             totals = []
             for r in range(1, len(results)):
                 products.append(results[r][0])
                 totals.append(results[r][1])
-
-            print ("Plotting the data...")
-            plt.plot(products, totals, "#993A54")
-            plt.xlabel('Product ID')
-            plt.ylabel('Amount of sales')
-            plt.title('Amount of sales for a particular product over a period of time')
-            plt.grid(True)
-            plt.savefig("graph.png")
-            plt.show()
+        
+            if (len(results) == 1):
+                print ("There is no data available for the specified timeframe.")
+                if (GUI):
+                    results = [["There is no data available for the specified timeframe."]]
+            else:
+                print ("Plotting the data...")
+                #plt.plot(products, totals, "#993A54")
+                #width = 0.35       # the width of the bars
+                products2 = products[:] # Copy ids into ids2
+                # Below is a hacky solution to showing the bars on seperate x axis
+                # positions, just take 0.2 off each to offset
+                # Bascially aligns prodID bar directly over prodID x tick
+                for i in range(0,len(products2)):
+                    products2[i] -= 0.2
+                plt.bar(products2, totals, width=0.4)
+                plt.xticks(np.arange(min(products), max(products)+1, 1.0))
+                plt.xlabel('Product ID')
+                plt.ylabel('Amount of sales')
+                plt.title('Amount of sales for all products between %s and %s' % (startDate, endDate))
+                plt.grid(True)
+                plt.savefig("assets\\graph.png")
+                plt.show()
 
         elif (query_number == 16):
+#            ids = []
+#            totals = []
+#            amounts = []
+#            for r in range(1, len(results)):
+#                ids.append(results[r][0])
+#                totals.append(results[r][1])
+#                amounts.append(results[r][2])
+#
+#            # dates ratings product
+#            print ("Plotting the data...")
+#            plt.plot(ids, totals, amounts, "#993A54")
+#            plt.legend(loc=1)
+#            plt.xlabel('Date (YYYY-MM-DD)')
+#            plt.xticks(rotation=45)
+#            plt.ylabel('Number of Sales')
+#            plt.title('Amount of sales made by a particular salesperson over a period of time')
+#            plt.grid(True)
+#            plt.savefig("graph.png")
+#            plt.show()
+        
             ids = []
-            totals = []
+            totals = [] 
             amounts = []
+            
             for r in range(1, len(results)):
                 ids.append(results[r][0])
                 totals.append(results[r][1])
-                amounts.append(results[r][2])
-
-            # dates ratings product
-            print ("Plotting the data...")
-            plt.plot(ids, totals, amounts, "#993A54")
-            plt.legend(loc=1)
-            plt.xlabel('Date (YYYY-MM-DD)')
-            plt.xticks(rotation=45)
-            plt.ylabel('Number of Sales')
-            plt.title('Amount of sales made by a particular salesperson over a period of time')
-            plt.grid(True)
-            plt.savefig("graph.png")
-            plt.show()
+                amounts.append(results[r][2]) 
+            
+            if (len(results) == 1):
+                print ("There is no data available for the specified timeframe.")
+                if (GUI):
+                    results = [["There is no data available for the specified timeframe."]]
+            else:
+                # dates ratings product
+                print ("Plotting the data...")
+                ids2 = ids[:] # Copy ids into ids2
+                # Below is a hacky solution to showing the bars on seperate x axis
+                # positions, just take 0.35 off each to offset
+                for i in range(0,len(ids2)):
+                    ids2[i] -= 0.35
+                # Force x axis to show every ID, not go up in intervals > 1
+                plt.xticks(np.arange(min(ids), max(ids)+1, 1.0))
+                plt.bar(ids, amounts,width=0.3,color='g',align='center')
+                plt.bar(ids2, totals,width=0.3,color='r',align='center')
+                plt.legend(['Stock Available', 'Number of Sales'], loc='upper left')
+                plt.xlabel('Product ID')
+                plt.ylabel('Number of Stock')
+                plt.title('Number of stock available for all products with the number of sales between %s and %s' % (startDate, endDate))
+                plt.grid(True)
+                plt.savefig("assets\\graph.png")        
+                plt.show()
 
         # If GUI return the data
         if (GUI):
@@ -607,26 +420,26 @@ class AllUserStories (object):
         if (query_number == 14):
 
             dates = []
-            totals = []
+            totals = []        
             for r in range(1, len(results)):
                 dates.append(results[r][1])
-                totals.append(results[r][2])
-
-            if (len(results) == 0):
-                print ("There is no sales data available for this employee for the specified timeframe.")
+                totals.append(results[r][2])      
+            
+            if (len(results) == 1):
+                print ("There is no data available for the specified timeframe.")
                 if (GUI):
-                    results = ["There is no sales data available for this employee for the specified timeframe."]
+                    results = [["There is no data available for the specified timeframe."]]
             else:
                 # dates ratings product
                 print ("Plotting the data...")
                 plt.plot_date(dates, totals, "#993A54")
                 plt.legend(loc=1)
-                plt.xlabel('Date (YYYY-MM-DD)')
+                plt.xlabel('Date (MMM-YYYY)')
                 plt.xticks(rotation=45)
-                plt.ylabel('Number of Sales')
-                plt.title('Amount of sales made by a particular salesperson over a period of time')
+                plt.ylabel('Value of Sales (£)')
+                plt.title('Amount of sales made by salespersonID %s between %s and %s' % (amount_or_productid, startDate, endDate))
                 plt.grid(True)
-                plt.savefig("graph.png")
+                plt.savefig("assets\\graph.png")
                 plt.show()
 
         # If GUI return the data

@@ -82,10 +82,11 @@ class MainLogic(object):
                     userLoginDetails = userLogin.getLoginDetails()
                     db = MySQLDatabase(userLoginDetails, self.logger, self.fh, self.autoGen) # Init MySQL db
                     validLogin = db.login() # Login to MySQL db
-                    sqlDBForMongo = db.getDB()# Get MySQL db object to pass to MongoDB
-                    mongoDB = MongoDatabase() # Init Mongo db
-                    mongoDB.setDatabase(sqlDBForMongo) # Pass MySQL db into Mongo
-                    self.loggedIn = True
+                    if (validLogin):
+                        sqlDBForMongo = db.getDB()# Get MySQL db object to pass to MongoDB
+                        mongoDB = MongoDatabase() # Init Mongo db
+                        mongoDB.setDatabase(sqlDBForMongo) # Pass MySQL db into Mongo
+                        self.loggedIn = True
             else:
                 if (self.loggedIn):
                     if (not self.initialLogin):

@@ -13,9 +13,6 @@ def exportToCSV(data):
         to a CSV file in /Assets called CSV_Output.csv. This method can
         write data with any number of rows and columns, assuming the data
         format is a list of lists, e.g. [[1,2],[3,4],[5,6]] """
-    print ("Printing data:")
-    print (data)
-    print ("Printing data END")
     with open("assets/CSV_Output.csv", "w") as csvFile:
         # Remove empty line in between every row when writing to CSV
         writer = csv.writer(csvFile, sys.stdout, lineterminator='\n')
