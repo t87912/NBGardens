@@ -64,7 +64,7 @@ class MySQLDatabase(object):
         """ login: Try/Except to log the user in. """
         try:
             # Ask Tom for the ip/password
-            self.db = pymysql.connect("", "", "", "nbgardensds")
+            self.db = pymysql.connect("", "", "", "nbgardensds")            
             print ("Connecting to MySQL database...")
             print ("Connection to MySQL database was successful.")
             self.logger.info('Successful login to MySQL database, username: %s' % (self.username))
@@ -93,6 +93,8 @@ class MySQLDatabase(object):
         @param:  no params are needed
         @return: a method name to call with appropriate needed params
         """
+
+        self.backToMain = False
 
         one_param_cases = [12];
         two_param_cases = [1, 2, 4, 6, 13, 16];

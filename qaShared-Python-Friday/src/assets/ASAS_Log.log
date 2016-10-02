@@ -2143,3 +2143,26 @@
 2016-10-01 21:57:38,509 - INFO - Successful login to MySQL database, username: asd
 2016-10-01 22:03:37,993 - INFO - ---------- Started logging TUI ----------
 2016-10-01 22:03:40,405 - INFO - Successful login to MySQL database, username: adw
+2016-10-02 10:33:39,051 - INFO - ---------- Started logging TUI ----------
+2016-10-02 10:33:46,318 - INFO - Successful login to MySQL database, username:  dsad
+2016-10-02 10:37:48,155 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-02 10:38:21,530 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-02 10:39:31,412 - INFO - ---------- Finished logging TUI -----------
+2016-10-02 10:40:19,594 - INFO - ---------- Started logging TUI ----------
+2016-10-02 10:40:19,594 - INFO - ---------- Started logging TUI ----------
+2016-10-02 10:40:23,424 - INFO - Successful login to MySQL database, username: sadasd
+2016-10-02 10:40:23,424 - INFO - Successful login to MySQL database, username: sadasd
+2016-10-02 10:41:02,896 - INFO - ---------- Finished logging TUI -----------
+2016-10-02 10:41:02,896 - INFO - ---------- Finished logging TUI -----------
+2016-10-02 10:41:12,832 - INFO - ---------- Started logging TUI ----------
+2016-10-02 10:41:14,878 - INFO - Successful login to MySQL database, username: sad
+2016-10-02 10:41:40,249 - INFO - Custom SQL query: 
+2016-10-02 10:43:12,853 - INFO - ---------- Finished logging TUI -----------
+2016-10-02 10:43:16,698 - INFO - ---------- Started logging TUI ----------
+2016-10-02 10:43:16,698 - INFO - ---------- Started logging TUI ----------
+2016-10-02 10:43:19,261 - INFO - Successful login to MySQL database, username: dsa
+2016-10-02 10:43:19,261 - INFO - Successful login to MySQL database, username: dsa
+2016-10-02 10:43:54,087 - INFO - Successful login to MySQL database, username: asd
+2016-10-02 10:43:54,087 - INFO - Successful login to MySQL database, username: asd
+2016-10-02 10:44:03,214 - INFO - ---------- Finished logging TUI -----------
+2016-10-02 10:44:03,214 - INFO - ---------- Finished logging TUI -----------
