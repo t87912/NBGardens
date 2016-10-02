@@ -67,7 +67,7 @@ class MongoDatabase(object):
     
     def methodFinder(self):
         two_param_cases = [0] #[1,2,4];
-        one_param_cases = [1,2] #[3,5,6];
+        one_param_cases = [1,2,4] #[3,5,6];
         three_param_cases = [3]
         
         if (int(self.menuOption) == 7):

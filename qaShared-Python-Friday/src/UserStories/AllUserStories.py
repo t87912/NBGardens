@@ -6,6 +6,7 @@ Created on Thu Sep 15 11:48:47 2016
 """
 
 from mongoDatabase.MongoQueries import CustomerOrderReviews
+from mongoDatabase.MongoQueries import OnlineReviews
 
 
 from exportToCSV import exportToCSV
@@ -213,7 +214,9 @@ class AllUserStories (object):
                                 [finalProductScore, finalDeliveryScore, finalServiceScore]]
     
         if (not GUI):
-            print (scoresFromCounty)
+            #print (scoresFromCounty)
+            for u in range(0, len(scoresFromCounty)):
+                print (scoresFromCounty[u])    
             #print("For customers in " + county + " average review scores are:\n Products: " + finalProductScore + \
              #     "\n Delivery: " + finalDeliveryScore + "\n Service: " + finalServiceScore)
         else:
@@ -307,47 +310,84 @@ class AllUserStories (object):
                            [finalProductScore, finalDeliveryScore, finalServiceScore]]
     
         if (not GUI):
-            print (scoresFromDemos)
+            #print (scoresFromCounty)
+            for u in range(0, len(scoresFromDemos)):
+                print (scoresFromDemos[u]) 
         else:
             result = scoresFromDemos
             return result  # result = [[finalProductScore, finalDeliveryScore, finalServiceScore]]
 
 
 
-    def mongoStory4(self, MongoQueries, GUI, productID):
+    def mongoStory4(self, sqlConn, conn, GUI, prodID):
         """ useCase10 """
-        print("TBC: need some SQL")
+        
         if(not GUI):
             prodID = int(input("What is the product ID you want to view review scores for?: "))
-
-        customerReviewScores = MongoQueries.CustomerOrderReviews.getProductScores(prodID)
+        
+        prodID = int(prodID)
+        customerReviewScores = CustomerOrderReviews(conn).getProductScores(prodID)
         if len(customerReviewScores) == 0:
-            avCustomerScore = "N/A"
-
+            avCustomerScore = "N/A"  
         else:
             totalReviewScores = 0
             for i in customerReviewScores:
                 totalReviewScores += i
             avCustomerScore = totalReviewScores / len(customerReviewScores)
-
-        onlineReviewScores = MongoQueries.OnlineReviews.getOnlineReviewScores(prodID)
+        
+        onlineReviewScores = OnlineReviews(conn).getOnlineReviewScores(prodID)
         if len(onlineReviewScores) == 0:
-            avOnlineScore = "N/A"
-
+                avOnlineScore = "N/A"
+            
         else:
             totalReviewScores = 0
             for i in onlineReviewScores:
                 totalReviewScores += i
             avOnlineScore = totalReviewScores / len(onlineReviewScores)
-
-        reviewScores = [avCustomerScore, avOnlineScore]
-
+            
+        reviewScores = [["avCustomerScore","avOnlineScore"],
+                        [avCustomerScore, avOnlineScore]]
+            
         if(not GUI):
-            print("Customer Score    Online Score \n" + str(reviewScores[0]) + "               " + str(reviewScores[1]))
-
+            #print("Customer Score    Online Score \n" + str(reviewScores[0]) + "               " + str(reviewScores[1]))
+            for u in range(0, len(reviewScores)):
+                print (reviewScores[u])            
+            
         if(GUI):
-            result = [reviewScores]
+            result = reviewScores
             return result
+#        print("TBC: need some SQL")
+#        if(not GUI):
+#            prodID = int(input("What is the product ID you want to view review scores for?: "))
+#
+#        customerReviewScores = MongoQueries.CustomerOrderReviews.getProductScores(prodID)
+#        if len(customerReviewScores) == 0:
+#            avCustomerScore = "N/A"
+#
+#        else:
+#            totalReviewScores = 0
+#            for i in customerReviewScores:
+#                totalReviewScores += i
+#            avCustomerScore = totalReviewScores / len(customerReviewScores)
+#
+#        onlineReviewScores = MongoQueries.OnlineReviews.getOnlineReviewScores(prodID)
+#        if len(onlineReviewScores) == 0:
+#            avOnlineScore = "N/A"
+#
+#        else:
+#            totalReviewScores = 0
+#            for i in onlineReviewScores:
+#                totalReviewScores += i
+#            avOnlineScore = totalReviewScores / len(onlineReviewScores)
+#
+#        reviewScores = [avCustomerScore, avOnlineScore]
+#
+#        if(not GUI):
+#            print("Customer Score    Online Score \n" + str(reviewScores[0]) + "               " + str(reviewScores[1]))
+#
+#        if(GUI):
+#            result = [reviewScores]
+#            return result
 
 
     def mongoStory5(self, MongoQueries, GUI):
