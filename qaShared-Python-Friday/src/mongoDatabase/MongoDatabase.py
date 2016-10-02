@@ -34,13 +34,24 @@ class MongoDatabase(object):
     def __init__(self):
         self.conn = None # Mongo connection set later on
         self.sqlDB = None
-        self.menuLines = ["\nPlease select an option: ",
+        self.menuLinesOLD = ["\nPlease select an option: ",
                           "1. Create a graph showing levels of customer satisfaction in a range of areas over a period of time", # mongo
                           "2. Average rating a particular customer has given NB Gardens", # mongo
                           "3. Average rating a group of customers from a particular county has given NB Gardens.", # mongo + small sql statement
                           "4. Average rating a group of customers from a particular demographic (age, gender) has given NB Gardens", # mongo + small sql statement (age + gender)
                           "5. Average rating given to a product through the website against customer order ratings with that same product included", # mongo
                           "6. Customer satisfaction in key areas of the business over a given period of time", # mongo + order creation date from order id in SQL
+                          "7. Input a custom MongoDB query.",
+                          "8. Go back to the main menu",
+                          "9. Quit"]
+                          
+        self.menuLines = ["\nPlease select an option: ",
+                          "1. Average rating a particular customer has given NB Garden",
+                          "2. Average rating a group of customers from particular county has given NB Gardens",
+                          "3. Average rating a group of customers from particular demographic (age, gender etc.) has given NB Gardens",
+                          "4. Compare average rating given to a product through the website against customer order ratings with that same product included",
+                          "5. Customer satisfaction in key areas of the business over a given time period",
+                          "6. Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
                           "7. Input a custom MongoDB query.",
                           "8. Go back to the main menu",
                           "9. Quit"]
@@ -55,8 +66,9 @@ class MongoDatabase(object):
         self.sqlDB = db
     
     def methodFinder(self):
-        two_param_cases = [1,2,4];
-        one_param_cases = [3,5,6];
+        two_param_cases = [0] #[1,2,4];
+        one_param_cases = [1,2] #[3,5,6];
+        three_param_cases = [3]
         
         if (int(self.menuOption) == 7):
             self.customQuery(False, 0)
@@ -69,16 +81,19 @@ class MongoDatabase(object):
             # construct a method name
             method_name = 'mongoStory' + str(self.menuOption)     
             # use string as the method name and call it else return alt method
-            print (method_name)
             find_method = getattr(self.run_mongo_query, method_name)
             
-            if int(self.menuOption) in two_param_cases:
+            if int(self.menuOption) in one_param_cases:
                 #return find_method(MongoQueries, False, 0)
                 return find_method(self.sqlDB, self.conn, False, 0)
+            elif int(self.menuOption) in two_param_cases:
+                #return find_method(MongoQueries, False, 0)
+                return find_method(self.sqlDB, self.conn, False, 0, 0)
                 #sqlConn, conn, GUI, custIDi
-            elif int(self.menuOption) in one_param_cases:
+            elif int(self.menuOption) in three_param_cases:
                 #return find_method(MongoQueries, False)
-                return find_method(self.sqlDB, self.conn, False)
+                return find_method(self.sqlDB, self.conn, False, 0, 0, 0)
+            
                 
         
         
