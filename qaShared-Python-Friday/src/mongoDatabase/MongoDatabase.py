@@ -66,7 +66,7 @@ class MongoDatabase(object):
         self.sqlDB = db
     
     def methodFinder(self):
-        two_param_cases = [0] #[1,2,4];
+        two_param_cases = [5] #[1,2,4];
         one_param_cases = [1,2,4] #[3,5,6];
         three_param_cases = [3]
         
