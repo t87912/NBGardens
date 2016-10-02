@@ -5,32 +5,31 @@ Created on Thu Sep 15 11:48:47 2016
 @author: Administrator
 """
 
+# Import other classes/functions:
 from mongoDatabase.MongoQueries import CustomerOrderReviews
 from mongoDatabase.MongoQueries import OnlineReviews
-
-
-from exportToCSV import exportToCSV
 from sqlDatabase.SQLQueries import queries
 from sqlDatabase.Query import query
+from sqlDatabase.SQLQueries import queriesForMongo
+from assets.counties import counties
+
+# Other imports:
+from exportToCSV import exportToCSV
 import matplotlib.pyplot as plt
 import time
 import numpy as np
-from sqlDatabase.SQLQueries import queriesForMongo
 from datetime import datetime  
 from datetime import timedelta
 
 class AllUserStories (object):
-
+    """ AllUserStories: Explain """
     def __init__(self):
         empty = 0
         empty += 1
         # some instructions
         
     def newUserStory(self, db, GUI, autoGen, query_number):
-        #print ("Query number: %s" % (query_number))
         userStories = autoGen[3]
-        # [["%s. Print a list of all products", "SELECT * FROM Product", [0,0,0]]]
-        #print (userStories)
         
         sqlQuery = userStories[query_number][1]
         queryInputs = userStories[query_number][2]
@@ -105,9 +104,20 @@ class AllUserStories (object):
             int(productID)
             validID = True
         except:
-            print ("Error: Please input a valid product ID.")
+            print ("Error: Please input a valid ID.")
             validID = False
         return validID
+        
+    def validateAgeInput(self, age):
+        """ validateProductIDInput: This method accepts a product id (e.g.
+            prod id = 1) and validates it. True/false is returned. """
+        try:
+            int(age)
+            validAge = True
+        except:
+            print ("Error: Please input a valid age.")
+            validAge = False
+        return validAge
 
     def validateAmountInput(self, amount):
         """ validateAmountInput: This method accepts an amount (e.g.
@@ -119,17 +129,37 @@ class AllUserStories (object):
             print ("Error: Please input a valid amount.")
             validAmount = False
         return validAmount
+        
+    def validateCountyInput(self, county):
+        if (county in counties):
+            validCounty = True
+        else:
+            print ("Error: Please input a valid county.")
+            validCounty = False
+        return validCounty
+        
+    def validateGenderInput(self, gender):
+        if (gender in ["Male","Female"]):
+            validGender = True
+        else:
+            print ("Error: Please input a valid gender (Male, Female).")
+            validGender = False
+        return validGender
 
     #def mongoStory1(self, MongoQueries, GUI, custIDi): # + GUI (bool) + startDate + endDate etc
     def mongoStory1(self, sqlConn, conn, GUI, custID): # mongo 7
         """ userStory7(Boolean for GUI, customer id): This method does xyz """
         if (not GUI):
-            custID = int(input("What is the customer ID you want to view review scores for?: "))
+            validCustID = False
+            while (not validCustID):
+                custID = input("CustomerID: ")
+                validCustID = self.validateProductIDInput(custID)
+            
+        custID = int(custID)
         customerProductScores = CustomerOrderReviews(conn).getProductScoresfCust(custID)
         
         if len(customerProductScores) == 0:
             customerReviewScores = "N/A"
-            print ("Warning N/A")
         else:
             totalProductScores = 0
             for i in customerProductScores:
@@ -152,7 +182,6 @@ class AllUserStories (object):
                                     [avProductScore, avDeliveryScore, avServiceScore]]
     
         if (not GUI):
-            #print (customerReviewScores)
             for u in range(0, len(customerReviewScores)):
                 print (customerReviewScores[u])    
         if (GUI):
@@ -161,7 +190,10 @@ class AllUserStories (object):
     def mongoStory2(self, sqlConn, conn, GUI, county):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (not GUI):
-            county = input("Which county would you like to search for customer ratings from? ")
+            validCounty = False
+            while (not validCounty):
+                county = input("County: ")
+                validCounty = self.validateCountyInput(county)
     
         query = queriesForMongo[5] % (county)
         cursor = sqlConn.cursor()  # Creating the cursor to query the database
@@ -228,13 +260,25 @@ class AllUserStories (object):
     def mongoStory3(self, sqlConn, conn, GUI, gender, agemin, agemax):
         """ useCase9: """
         if (not GUI):
-            gender = str(input("Which gender do you want reviews from? (Male, Female): "))
-            agemin = int(input("What is the minimum age of customer you want reviews from?: "))
-            agemax = int(input("What is the maximum age of customer you want reviews from?: "))
+            validGender = False
+            while (not validGender):
+                gender = input("Gender (Male, Female): ")
+                validGender = self.validateGenderInput(gender)
+            validAgeMin = False
+            while (not validAgeMin):
+                agemin = input("Minimum age: ")
+                validAgeMin = self.validateAgeInput(agemin)
+            validAgeMax = False
+            while (not validAgeMax):
+                agemax = input("Maximum age: ")
+                validAgeMax = self.validateAgeInput(agemax)
         else:
             agemin = int(agemin)
             agemax = int(agemax) 
         
+        agemin = int(agemin)
+        agemax = int(agemax)
+        gender = str(gender)
         query = queriesForMongo[6] % (gender)
         cursor = sqlConn.cursor()  # Creating the cursor to query the database
         # Executing the query:
@@ -323,8 +367,11 @@ class AllUserStories (object):
         """ useCase10 """
         
         if(not GUI):
-            prodID = int(input("What is the product ID you want to view review scores for?: "))
-        
+            validProdID = False
+            while (not validProdID):
+                prodID = input("Product ID: ")
+                validProdID = self.validateProductIDInput(prodID)
+                
         prodID = int(prodID)
         customerReviewScores = CustomerOrderReviews(conn).getProductScores(prodID)
         if len(customerReviewScores) == 0:
@@ -349,53 +396,25 @@ class AllUserStories (object):
                         [avCustomerScore, avOnlineScore]]
             
         if(not GUI):
-            #print("Customer Score    Online Score \n" + str(reviewScores[0]) + "               " + str(reviewScores[1]))
             for u in range(0, len(reviewScores)):
                 print (reviewScores[u])            
             
         if(GUI):
             result = reviewScores
             return result
-#        print("TBC: need some SQL")
-#        if(not GUI):
-#            prodID = int(input("What is the product ID you want to view review scores for?: "))
-#
-#        customerReviewScores = MongoQueries.CustomerOrderReviews.getProductScores(prodID)
-#        if len(customerReviewScores) == 0:
-#            avCustomerScore = "N/A"
-#
-#        else:
-#            totalReviewScores = 0
-#            for i in customerReviewScores:
-#                totalReviewScores += i
-#            avCustomerScore = totalReviewScores / len(customerReviewScores)
-#
-#        onlineReviewScores = MongoQueries.OnlineReviews.getOnlineReviewScores(prodID)
-#        if len(onlineReviewScores) == 0:
-#            avOnlineScore = "N/A"
-#
-#        else:
-#            totalReviewScores = 0
-#            for i in onlineReviewScores:
-#                totalReviewScores += i
-#            avOnlineScore = totalReviewScores / len(onlineReviewScores)
-#
-#        reviewScores = [avCustomerScore, avOnlineScore]
-#
-#        if(not GUI):
-#            print("Customer Score    Online Score \n" + str(reviewScores[0]) + "               " + str(reviewScores[1]))
-#
-#        if(GUI):
-#            result = [reviewScores]
-#            return result
-
 
     def mongoStory5(self, sqlConn, conn, GUI, dateFrom, dateTo):
         """ useCase11 """
         #!!!!! very similar to 7 but with dates, needs SQL !!!!#
         if (not GUI):
-            dateFrom = input("From which date do you want to get review scores?: ")
-            dateTo = input("Until which date?: ")
+            validStartDate = False
+            validEndDate = False
+            while (not validStartDate):
+                dateFrom = input("Please enter the start date (YYYY-MM-DD): ")
+                validStartDate = self.validateDateInput(dateFrom)
+            while (not validEndDate):
+                dateTo = input("Please enter the end date (YYYY-MM-DD): ")
+                validEndDate = self.validateDateInput(dateTo)
     
         totalProductScore = 0
         totalDeliveryScore = 0
