@@ -383,9 +383,8 @@ class MainApplication(tk.Frame):
         root.clipboard_append(content)
 
     def paste(self):
-        t = root.focus_displayof()
         content = root.clipboard_get()
-        print(t)
+        print(content)
 
     def getEmployeeQueryID(self,tab,CB):
         if(CB.current()==0):
