@@ -542,8 +542,51 @@ class AllUserStories (object):
             
             dateUntil   = dateUntil + timedelta(days=30)
             whileCount += 1
-        print (graphData)
-        return graphData
+            
+        result = ["finalProductScore","finalDeliveryScore","finalServiceScore","date"]
+        graphData.insert(0, result)
+        
+        # graph the results:
+        productScores = []
+        deliveryScores = []
+        serviceScores = []
+        datesList = []
+        for r in range(1, len(graphData)):
+            productScores.append(graphData[r][0])
+            deliveryScores.append(graphData[r][1])
+            serviceScores.append(graphData[r][2])
+            date_object = datetime.strptime(graphData[r][3], '%Y-%m-%d')
+            datesList.append(date_object)
+    
+        if (len(graphData) == 1):
+            print ("There is no data available for the specified timeframe.")
+            if (GUI):
+                graphData = [["There is no data available for the specified timeframe."]]
+        else:
+            print ("Plotting the data...")
+            #plt.plot(datesList, productScores)
+            #plt.plot(datesList, deliveryScores)
+            #plt.plot(datesList, serviceScores)
+            plt.plot_date(datesList, productScores)            
+            plt.plot_date(datesList, deliveryScores)
+            plt.plot_date(datesList, serviceScores)            
+            #width = 0.35       # the width of the bars
+            # Below is a hacky solution to showing the bars on seperate x axis
+            # positions, just take 0.2 off each to offset
+            # Bascially aligns prodID bar directly over prodID x tick
+            plt.xlabel('Date (YYYY-MM-DD)')
+            plt.ylabel('Customer satisfaction (x/10)')
+            plt.title('Levels of customer satisfaction in a range of areas between %s and %s' % (dateFrom, dateTo))
+            plt.grid(True)
+            plt.savefig("assets\\graph.png")
+            plt.show()
+
+        if (not GUI):
+            for u in range(0, len(graphData)):
+                print (graphData[u])       
+        
+        if (GUI):
+            return graphData
 
 
     def userStory12(self, db, GUI, productID):
