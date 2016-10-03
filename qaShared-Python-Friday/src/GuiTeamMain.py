@@ -809,7 +809,8 @@ class MainApplication(tk.Frame):
             of the user stories. The connection to MySQL or MongoDB is passed
             in as the first parameter. The results are assigned to toPrint,
             which is passed in to the self.outputQueryResult method. """
-        if (self.userStory == 0):
+        # 1, 11, 14, 15
+        if (self.userStory == 0): # sql 1
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
@@ -819,9 +820,9 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
         
-        elif (self.userStory == 13):
+        elif (self.userStory == 13): # 14
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
@@ -831,7 +832,7 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
        
 
         # Put query result in the GUI text box

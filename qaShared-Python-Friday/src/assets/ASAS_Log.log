@@ -2272,3 +2272,23 @@
 2016-10-02 20:21:35,611 - INFO - ---------- Started logging TUI ----------
 2016-10-02 20:21:39,438 - INFO - Successful login to MySQL database, username: asd
 2016-10-02 20:24:12,029 - INFO - ---------- Finished logging TUI -----------
+2016-10-03 15:57:30,123 - INFO - ---------- Started logging GUI ----------
+2016-10-03 15:57:30,172 - INFO - Successful login to MySQL database, username: test
+2016-10-03 15:59:00,461 - INFO - ---------- Started logging GUI ----------
+2016-10-03 15:59:00,461 - INFO - ---------- Started logging GUI ----------
+2016-10-03 15:59:00,512 - INFO - Successful login to MySQL database, username: test
+2016-10-03 15:59:00,512 - INFO - Successful login to MySQL database, username: test
+2016-10-03 16:00:22,758 - INFO - ---------- Started logging GUI ----------
+2016-10-03 16:00:22,758 - INFO - ---------- Started logging GUI ----------
+2016-10-03 16:00:22,758 - INFO - ---------- Started logging GUI ----------
+2016-10-03 16:00:22,811 - INFO - Successful login to MySQL database, username: test
+2016-10-03 16:00:22,811 - INFO - Successful login to MySQL database, username: test
+2016-10-03 16:00:22,811 - INFO - Successful login to MySQL database, username: test
+2016-10-03 16:02:05,654 - INFO - ---------- Started logging GUI ----------
+2016-10-03 16:02:05,654 - INFO - ---------- Started logging GUI ----------
+2016-10-03 16:02:05,654 - INFO - ---------- Started logging GUI ----------
+2016-10-03 16:02:05,654 - INFO - ---------- Started logging GUI ----------
+2016-10-03 16:02:05,720 - INFO - Successful login to MySQL database, username: test
+2016-10-03 16:02:05,720 - INFO - Successful login to MySQL database, username: test
+2016-10-03 16:02:05,720 - INFO - Successful login to MySQL database, username: test
+2016-10-03 16:02:05,720 - INFO - Successful login to MySQL database, username: test
