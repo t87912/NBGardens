@@ -10,8 +10,8 @@ def userStory15(sqlConn, conn, GUI, dateFrom, dateTo):
         dateFrom = input("From which date do you want the graph to start?: ")
         dateTo = input("Which date should it finish on?: ")
         
-    dateFrom = datetime.strptime(dateFrom, '%Y/%m/%d')
-    dateTo = datetime.strptime(dateTo, '%Y/%m/%d')
+    dateFrom = datetime.strptime(dateFrom, '%Y-%m-%d')
+    dateTo = datetime.strptime(dateTo, '%Y-%m-%d')
     dateUntil = dateFrom + timedelta(days=30)
     graphData = []
     whileCount = 0
