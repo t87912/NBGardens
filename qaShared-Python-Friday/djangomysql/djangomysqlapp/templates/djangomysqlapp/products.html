@@ -84,7 +84,7 @@
 	
 	<form method="post" action="/chosen_year/">
 		{% csrf_token %}
-		{{ form }}
+		{{ form.as_ul }}
 		<input type="submit" value="Submit">
 	</form>
 
