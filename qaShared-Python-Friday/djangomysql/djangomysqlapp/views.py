@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import Product, Purchase
-from .forms import YearForm, LoginForm
+from .forms import YearForm, LoginForm, ContactForm
 
 # Create your views here.
 def index(request):
@@ -72,3 +72,10 @@ def get_login(request):
         form = LoginForm()
 
     return render(request, 'home.html', {'form': form})
+	
+def contact(request):
+    form_class = ContactForm
+    
+    return render(request, 'contact.html', {
+        'form': form_class,
+    })
