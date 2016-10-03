@@ -82,17 +82,14 @@
 		</div>
 	</div>
 	
-	{% extends 'layouts/base.html' %}
-	{% block title %}Contact - {{ block.super }}{% endblock %}
-
-	{% block content %}
-	<h1>Contact</h1>
-	<form role="form" action="" method="post">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit">Submit</button>
-	</form>
-	{% endblock %}
+	<p><label for="id_subject">Subject:</label>
+    <input id="id_subject" type="text" name="subject" maxlength="100" required /></p>
+	<p><label for="id_message">Message:</label>
+    <textarea name="message" id="id_message" required></textarea></p>
+	<p><label for="id_sender">Sender:</label>
+    <input type="email" name="sender" id="id_sender" required /></p>
+	<p><label for="id_cc_myself">Cc myself:</label>
+    <input type="checkbox" name="cc_myself" id="id_cc_myself" /></p>
 	
 	<h1>Please Choose a year</h1>
 	<form method="post" action="">
