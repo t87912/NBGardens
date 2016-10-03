@@ -556,80 +556,20 @@ class MainApplication(tk.Frame):
         self.orderQueryInputBox3.config(state='disabled')
 
         if (value == self.orderOptions[0]):
-            self.userStory = 0
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox1.config(state='normal')
-            self.orderQueryInputBox2.config(state='normal')
-        elif (value == self.orderOptions[1]):
-            self.userStory = 1
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox1.config(state='normal')
-            self.orderQueryInputBox2.config(state='normal')
-        elif (value == self.orderOptions[2]):
-            self.userStory = 2
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox1.config(state='normal')
-            self.orderQueryInputBox2.config(state='normal')
-            self.orderQueryInputBox3.config(state='normal')
-        elif (value == self.orderOptions[3]):
-            self.userStory = 3
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox1.config(state='normal')
-            self.orderQueryInputBox2.config(state='normal')
-        elif (value == self.orderOptions[4]):
-            self.userStory = 4
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox1.config(state='normal')
-            self.orderQueryInputBox2.config(state='normal')
-            self.orderQueryInputBox3.config(state='normal')
-        elif (value == self.orderOptions[5]):
             self.userStory = 5
             self.queryResultBox.delete('1.0', tk.END)
             self.orderQueryInputBox1.config(state='normal')
             self.orderQueryInputBox2.config(state='normal')
-        elif (value == self.orderOptions[6]): # MONGO - 7
-            self.userStory = 6
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox3.config(state='normal')
-        elif (value == self.orderOptions[7]): # MONGO - 8
-            self.userStory = 7
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox3.config(state='normal')
-        elif (value == self.orderOptions[8]): # MONGO - 9
-            self.userStory = 8
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox1.config(state='normal')
-            self.orderQueryInputBox2.config(state='normal')
-            self.orderQueryInputBox3.config(state='normal')
-        elif (value == self.orderOptions[9]): # MONGO - 10
+        elif (value == self.orderOptions[1]): # MONGO - 10
             self.userStory = 9
             self.queryResultBox.delete('1.0', tk.END)
             self.orderQueryInputBox3.config(state='normal')
-        elif (value == self.orderOptions[10]): # MONGO - 11
+        elif (value == self.orderOptions[2]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
             self.orderQueryInputBox1.config(state='normal')
             self.orderQueryInputBox2.config(state='normal')
-        elif (value == self.orderOptions[11]):
-            self.userStory = 11
-            self.orderQueryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox3.config(state='normal')
-        elif (value == self.orderOptions[12]):
-            self.userStory = 12
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox1.config(state='normal')
-            self.orderQueryInputBox2.config(state='normal')
-        elif (value == self.orderOptions[13]):
-            self.userStory = 13
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox1.config(state='normal')
-            self.orderQueryInputBox2.config(state='normal')
-            self.orderQueryInputBox3.config(state='normal')
-        elif (value == self.orderOptions[15]):
-            self.userStory = 15
-            self.queryResultBox.delete('1.0', tk.END)
-            self.orderQueryInputBox1.config(state='normal')
-            self.orderQueryInputBox2.config(state='normal')
+        
             
     def productDropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
@@ -648,76 +588,30 @@ class MainApplication(tk.Frame):
         self.productQueryInputBox3.config(state='disabled')
 
         if (value == self.productOptions[0]):
-            self.userStory = 0
-            self.queryResultBox.delete('1.0', tk.END)
-            self.productQueryInputBox1.config(state='normal')
-            self.productQueryInputBox2.config(state='normal')
-        elif (value == self.productOptions[1]):
-            self.userStory = 1
-            self.queryResultBox.delete('1.0', tk.END)
-            self.productQueryInputBox1.config(state='normal')
-            self.productQueryInputBox2.config(state='normal')
-        elif (value == self.productOptions[2]):
-            self.userStory = 2
-            self.queryResultBox.delete('1.0', tk.END)
-            self.productQueryInputBox1.config(state='normal')
-            self.productQueryInputBox2.config(state='normal')
-            self.productQueryInputBox3.config(state='normal')
-        elif (value == self.optproductOptionsions[3]):
-            self.userStory = 3
-            self.queryResultBox.delete('1.0', tk.END)
-            self.productQueryInputBox1.config(state='normal')
-            self.productQueryInputBox2.config(state='normal')
-        elif (value == self.productOptions[4]):
             self.userStory = 4
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
             self.productQueryInputBox3.config(state='normal')
-        elif (value == self.productOptions[5]):
-            self.userStory = 5
-            self.queryResultBox.delete('1.0', tk.END)
-            self.productQueryInputBox1.config(state='normal')
-            self.productQueryInputBox2.config(state='normal')
-        elif (value == self.productOptions[6]): # MONGO - 7
-            self.userStory = 6
-            self.queryResultBox.delete('1.0', tk.END)
-            self.productQueryInputBox3.config(state='normal')
-        elif (value == self.productOptions[7]): # MONGO - 8
-            self.userStory = 7
-            self.queryResultBox.delete('1.0', tk.END)
-            self.productQueryInputBox3.config(state='normal')
-        elif (value == self.productOptions[8]): # MONGO - 9
-            self.userStory = 8
-            self.queryResultBox.delete('1.0', tk.END)
-            self.productQueryInputBox1.config(state='normal')
-            self.productQueryInputBox2.config(state='normal')
-            self.productQueryInputBox3.config(state='normal')
-        elif (value == self.productOptions[9]): # MONGO - 10
+        elif (value == self.productOptions[1]): # MONGO - 10
             self.userStory = 9
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox3.config(state='normal')
-        elif (value == self.productOptions[10]): # MONGO - 11
+        elif (value == self.productOptions[2]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
-        elif (value == self.productOptions[11]):
+        elif (value == self.productOptions[3]):
             self.userStory = 11
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox3.config(state='normal')
-        elif (value == self.productOptions[12]):
+        elif (value == self.productOptions[4]):
             self.userStory = 12
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
-        elif (value == self.productOptions[13]):
-            self.userStory = 13
-            self.queryResultBox.delete('1.0', tk.END)
-            self.productQueryInputBox1.config(state='normal')
-            self.productQueryInputBox2.config(state='normal')
-            self.productQueryInputBox3.config(state='normal')
-        elif (value == self.productOptions[15]):
+        elif (value == self.productOptions[5]):
             self.userStory = 15
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox1.config(state='normal')
@@ -744,76 +638,18 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             self.employeeQueryInputBox1.config(state='normal')
             self.employeeQueryInputBox2.config(state='normal')
-        elif (value == self.employeeOptions[1]):
-            self.userStory = 1
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox1.config(state='normal')
-            self.employeeQueryInputBox2.config(state='normal')
-        elif (value == self.employeeOptions[2]):
-            self.userStory = 2
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox1.config(state='normal')
-            self.employeeQueryInputBox2.config(state='normal')
-            self.employeeQueryInputBox3.config(state='normal')
-        elif (value == self.employeeOptions[3]):
-            self.userStory = 3
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox1.config(state='normal')
-            self.employeeQueryInputBox2.config(state='normal')
-        elif (value == self.employeeOptions[4]):
-            self.userStory = 4
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox1.config(state='normal')
-            self.employeeQueryInputBox2.config(state='normal')
-            self.employeeQueryInputBox3.config(state='normal')
-        elif (value == self.employeeOptions[5]):
-            self.userStory = 5
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox1.config(state='normal')
-            self.employeeQueryInputBox2.config(state='normal')
-        elif (value == self.employeeOptions[6]): # MONGO - 7
-            self.userStory = 6
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox3.config(state='normal')
-        elif (value == self.employeeOptions[7]): # MONGO - 8
-            self.userStory = 7
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox3.config(state='normal')
-        elif (value == self.employeeOptions[8]): # MONGO - 9
-            self.userStory = 8
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox1.config(state='normal')
-            self.employeeQueryInputBox2.config(state='normal')
-            self.employeeQueryInputBox3.config(state='normal')
-        elif (value == self.employeeOptions[9]): # MONGO - 10
-            self.userStory = 9
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox3.config(state='normal')
-        elif (value == self.employeeOptions[10]): # MONGO - 11
+        elif (value == self.employeeOptions[1]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
             self.employeeQueryInputBox1.config(state='normal')
             self.employeeQueryInputBox2.config(state='normal')
-        elif (value == self.employeeOptions[11]):
-            self.userStory = 11
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox3.config(state='normal')
-        elif (value == self.employeeOptions[12]):
-            self.userStory = 12
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox1.config(state='normal')
-            self.employeeQueryInputBox2.config(state='normal')
-        elif (value == self.employeeOptions[13]):
+        elif (value == self.employeeOptions[2]):
             self.userStory = 13
             self.queryResultBox.delete('1.0', tk.END)
             self.employeeQueryInputBox1.config(state='normal')
             self.employeeQueryInputBox2.config(state='normal')
             self.employeeQueryInputBox3.config(state='normal')
-        elif (value == self.employeeOptions[15]):
-            self.userStory = 15
-            self.queryResultBox.delete('1.0', tk.END)
-            self.employeeQueryInputBox1.config(state='normal')
-            self.employeeQueryInputBox2.config(state='normal')
+
 
     def customerSubmitUserStory(self):
         """ submitUserStory: This method is called when the submit button is
