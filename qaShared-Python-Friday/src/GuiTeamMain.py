@@ -118,12 +118,6 @@ class MainApplication(tk.Frame):
         root.config(menu = menu)
 
         #GUI submenus
-        fileSub = tk.Menu(menu, tearoff = False)
-        menu.add_cascade(label = "File", menu = fileSub)
-        fileSub.add_command(label = "New")
-        fileSub.add_command(label = "Save")
-        fileSub.add_command(label = "Open")
-
         editSub = tk.Menu(menu, tearoff = False)
         menu.add_cascade(label = "Edit", menu = editSub)
         editSub.add_command(label = "Copy", command = self.copy)
@@ -141,10 +135,10 @@ class MainApplication(tk.Frame):
         menu.add_command(label = "Logout", command = self.logout)
 
         #Output frame
-        self.outputFrame = tk.Frame(root,height=30,width = 60)
+        self.outputFrame = tk.Frame(root,height=30,width = 90)
         self.outputFrame.pack(side = tk.TOP)
 
-        self.queryResultBox = tk.Text(self.outputFrame,width=65,height=20)
+        self.queryResultBox = tk.Text(self.outputFrame,width=95,height=20)
         self.queryResultBox.pack(side = tk.LEFT)
         #self.queryResultBox.config(state = DISABLED)
 
@@ -889,6 +883,6 @@ if __name__ == "__main__":
     autoGen = autoGenCode.getAutoGen()
     root = tk.Tk()
     MainApplication = MainApplication(root, autoGen)
-    root.geometry('600x600')
+    root.geometry('800x600')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()
