@@ -92,14 +92,62 @@ class MainApplication(tk.Frame):
                            "15. (Mongo) Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
                           ] 
                           
+        self.canLogin = False
+        self.login()
+        self.canLoginTest = self.getter()
+        # If connection to MySQL made, connect to Mongo
+#        if (self.canLoginTest):
+#            # Get MySQL connection so it can be passed into some of the Mongo
+#            # queries that require bits of SQL.
+#            self.dbConn = self.db.getDB()
+#            self.mongoDB = MongoDatabase() # Init MongoDB
+#
+#            # Get Mongo connection so it can be passed in to Mongo user stories
+#            self.conn = self.mongoDB.getConnection()
+#            print ("Working")
+#            self.createInitialGUI()
+        
+    def login(self):
+        top = tk.Toplevel()
+        top.title("About this application...")
+        usernameLabel = tk.Label(top,text="Username")
+        passwordLabel = tk.Label(top,text="Password")
+        usernameEntry = tk.Entry(top)
+        passwordEntry = tk.Entry(top,show="*")
+#        passwordEntry.pack()
+#        usernameLabel.pack()
+#        passwordLabel.pack()
+#        usernameEntry.pack()
+        usernameLabel.grid(row=0, sticky=tk.E)
+        passwordLabel.grid(row=1, sticky=tk.E)
+        usernameEntry.grid(row=0, column=1)
+        passwordEntry.grid(row=1, column=1)
+        
+
+        logbtn = tk.Button(top, text="Login", command = lambda: test())
+        logbtn.grid(row=2, column=1,columnspan=2)
+        
+        def test():
+            username = usernameEntry.get()
+            password = passwordEntry.get()
+            print (username)
+            print (password)
+            self._login_btn_clickked(top, username, password)
+        #msg.pack()
+        
+    def _login_btn_clickked(self,top, username, password):
         loggerObject = Logger("GUI") # Init the logger object
         self.logger = loggerObject.getLogger() # Get the logger object
         self.fh = loggerObject.getFileHandler() # Get the logger filehandler
-        self.db = MySQLDatabase(["test","TEST"], self.logger, self.fh, self.autoGen)
+        self.db = MySQLDatabase([username,password], self.logger, self.fh, self.autoGen)
         # Attempt to login, returns true/false if valid/invalid
-        validLogin = self.db.login()
-        # If connection to MySQL made, connect to Mongo
-        if (validLogin):
+        self.loginWindowBool = self.db.login()
+        print ("Hello")
+        print (username)
+        print (password)
+        if (self.loginWindowBool):
+            self.setter()
+            top.destroy()
             # Get MySQL connection so it can be passed into some of the Mongo
             # queries that require bits of SQL.
             self.dbConn = self.db.getDB()
@@ -107,7 +155,14 @@ class MainApplication(tk.Frame):
 
             # Get Mongo connection so it can be passed in to Mongo user stories
             self.conn = self.mongoDB.getConnection()
-        self.createInitialGUI()
+            print ("Working")
+            self.createInitialGUI()
+        
+    def setter(self):
+        self.canLogin = True
+        
+    def getter(self):
+        return self.canLogin
 
     def createInitialGUI(self):
         """ createInitialGUI: This method is called from __init__ and creates
