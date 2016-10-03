@@ -82,9 +82,8 @@
 		</div>
 	</div>
 	
-	{% block content %}
 	<h1>Please Choose a year</h1>
-	<form method="post" action="/chosen_year/">
+	<form method="post" action="">
 		{% csrf_token %}
 		{{ form }}
 		<input type="submit" value="OK">
