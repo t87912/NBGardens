@@ -46,6 +46,18 @@ def get_year(request):
         # check whether it's valid:
         if form.is_valid():
             year = form.cleaned_data['year']
+			product_list = Product.objects.order_by('idproduct')
+			template = loader.get_template('djangomysqlapp/products.html')
+			context = {
+			'product_list': product_list,
+			}
+			return HttpResponse(template.render(context, request))
+			
+			
+			
+			
+			
+			
             return HttpResponseRedirect('/thanks/')
     # if a GET (or any other method) we'll create a blank form
     else:
