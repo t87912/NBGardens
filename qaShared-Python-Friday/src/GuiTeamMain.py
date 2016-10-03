@@ -149,8 +149,8 @@ class MainApplication(tk.Frame):
         #Dropdown list
         var = tk.StringVar()
         var.set(self.options[0])
-        self.drop = tk.OptionMenu(tab1, var, *self.options, command=self.customerDropDownInput)
-        self.drop.grid(row=1, column = 0, columnspan=3)
+        self.customerDrop = tk.OptionMenu(tab1, var, *self.options, command=self.customerDropDownInput)
+        self.customerDrop.grid(row=1, column = 0, columnspan=3)
 
         # Query input boxes:
         tk.Label(tab1, text="Date from:").grid(row = 3, column = 0)
@@ -164,52 +164,95 @@ class MainApplication(tk.Frame):
         self.customerQueryInputBox3.grid(row=5,column=1)
 
         #submit button
-        self.submitUserStoryInputs = tk.Button(tab1, text = "Submit", command = self.submitUserStory)
-        self.submitUserStoryInputs.grid(row=12,column=3)
+        self.customerSubmitUserStoryInputs = tk.Button(tab1, text = "Submit", command = self.customerSubmitUserStory)
+        self.customerSubmitUserStoryInputs.grid(row=12,column=3)
 
         # ------------------------------------------------------------------------- TAB 2 -------------------------------------------------------------------------
 
-        #tab2
         tab2 = tk.Frame(tabControl)
         tabControl.add(tab2, text='Orders')
 
         #Dropdown list
         var = tk.StringVar()
         var.set(self.options[0])
-        self.drop = tk.OptionMenu(tab2, var, *self.options, command=self.orderDropDownInput)
-        self.drop.grid(row=1, column = 0, columnspan=3)
+        self.orderDrop = tk.OptionMenu(tab2, var, *self.options, command=self.orderDropDownInput)
+        self.orderDrop.grid(row=1, column = 0, columnspan=3)
 
         # Query input boxes:
-        tk.Label(tab1, text="Date from:").grid(row = 3, column = 0)
+        tk.Label(tab2, text="Date from:").grid(row = 3, column = 0)
         self.orderQueryInputBox1 = tk.Entry(tab2)
         self.orderQueryInputBox1.grid(row=3,column=1)
-        tk.Label(tab1, text="Date to:").grid(row = 4, column = 0)
+        tk.Label(tab2, text="Date to:").grid(row = 4, column = 0)
         self.orderQueryInputBox2 = tk.Entry(tab2)
         self.orderQueryInputBox2.grid(row=4,column=1)
-        tk.Label(tab1, text="ID:").grid(row = 5, column = 0)
+        tk.Label(tab2, text="ID:").grid(row = 5, column = 0)
         self.orderQueryInputBox3 = tk.Entry(tab2)
         self.orderQueryInputBox3.grid(row=5,column=1)
 
         #submit button
-        self.submitUserStoryInputs = tk.Button(tab2, text = "Submit", command = self.submitUserStory)
-        self.submitUserStoryInputs.grid(row=12,column=3)
+        self.orderSubmitUserStoryInputs = tk.Button(tab2, text = "Submit", command = self.orderSubmitUserStory)
+        self.orderSubmitUserStoryInputs.grid(row=12,column=3)
 
         # ------------------------------------------------------------------------- TAB 3 -------------------------------------------------------------------------
 
         tab3 = tk.Frame(tabControl)
         tabControl.add(tab3, text='Products')
+        
+        #Dropdown list
+        var = tk.StringVar()
+        var.set(self.options[0])
+        self.productDrop = tk.OptionMenu(tab3, var, *self.options, command=self.productDropDownInput)
+        self.productDrop.grid(row=1, column = 0, columnspan=3)
+
+        # Query input boxes:
+        tk.Label(tab3, text="Date from:").grid(row = 3, column = 0)
+        self.productQueryInputBox1 = tk.Entry(tab3)
+        self.productQueryInputBox1.grid(row=3,column=1)
+        tk.Label(tab3, text="Date to:").grid(row = 4, column = 0)
+        self.productQueryInputBox2 = tk.Entry(tab3)
+        self.productQueryInputBox2.grid(row=4,column=1)
+        tk.Label(tab3, text="ID:").grid(row = 5, column = 0)
+        self.productQueryInputBox3 = tk.Entry(tab3)
+        self.productQueryInputBox3.grid(row=5,column=1)
+
+        #submit button
+        self.productSubmitUserStoryInputs = tk.Button(tab3, text = "Submit", command = self.productSubmitUserStory)
+        self.productSubmitUserStoryInputs.grid(row=12,column=3)
 
         # ------------------------------------------------------------------------- TAB 4 -------------------------------------------------------------------------
 
         tab4 = tk.Frame(tabControl)
         tabControl.add(tab4, text='Employee')
+        
+        #Dropdown list
+        var = tk.StringVar()
+        var.set(self.options[0])
+        self.employeeDrop = tk.OptionMenu(tab4, var, *self.options, command=self.employeeDropDownInput)
+        self.employeeDrop.grid(row=1, column = 0, columnspan=3)
+
+        # Query input boxes:
+        tk.Label(tab4, text="Date from:").grid(row = 3, column = 0)
+        self.employeeQueryInputBox1 = tk.Entry(tab4)
+        self.employeeQueryInputBox1.grid(row=3,column=1)
+        tk.Label(tab4, text="Date to:").grid(row = 4, column = 0)
+        self.employeeQueryInputBox2 = tk.Entry(tab4)
+        self.employeeQueryInputBox2.grid(row=4,column=1)
+        tk.Label(tab4, text="ID:").grid(row = 5, column = 0)
+        self.employeeQueryInputBox3 = tk.Entry(tab4)
+        self.employeeQueryInputBox3.grid(row=5,column=1)
+
+        #submit button
+        self.employeeSubmitUserStoryInputs = tk.Button(tab4, text = "Submit", command = self.employeeSubmitUserStory)
+        self.employeeSubmitUserStoryInputs.grid(row=12,column=3)
 
 
         #Status bar
         status = tk.Label(root, text = "ready", bd = 1, relief = "sunken", anchor = W)
         status.pack(side = BOTTOM, fill = X)
 
-        # Set prompt text of input boxes:
+        #----------------------------------------------------------------------Customer--------------------------------------------------------
+
+        # Set prompt text of Customer input boxes:
         self.customerQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.customerQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
         self.customerQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
@@ -235,6 +278,94 @@ class MainApplication(tk.Frame):
         self.orderQueryInputBox1.configure(state="disabled")
         self.orderQueryInputBox2.configure(state="disabled")
         self.orderQueryInputBox3.configure(state="disabled")
+        
+        #----------------------------------------------------------------------Order--------------------------------------------------------
+        
+        # Set prompt text of order input boxes:
+        self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+
+        self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+
+        # Bind the input boxes, so on focus remove prompt text:
+        self.orderQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.orderQueryInputBox1"))
+        self.orderQueryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.orderQueryInputBox2"))
+        self.orderQueryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.orderQueryInputBox3"))
+
+        self.orderQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.orderQueryInputBox1"))
+        self.orderQueryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.orderQueryInputBox2"))
+        self.orderQueryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.orderQueryInputBox3"))
+
+        # Disable the inputs:
+        self.orderQueryInputBox1.configure(state="disabled")
+        self.orderQueryInputBox2.configure(state="disabled")
+        self.orderQueryInputBox3.configure(state="disabled")
+
+        self.orderQueryInputBox1.configure(state="disabled")
+        self.orderQueryInputBox2.configure(state="disabled")
+        self.orderQueryInputBox3.configure(state="disabled")
+        
+        #----------------------------------------------------------------------Products--------------------------------------------------------
+
+        # Set prompt text of product input boxes:
+        self.productQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.productQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.productQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+
+        self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+
+        # Bind the input boxes, so on focus remove prompt text:
+        self.productQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.productQueryInputBox1"))
+        self.productQueryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.productQueryInputBox2"))
+        self.productQueryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.productQueryInputBox3"))
+
+        self.productQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.productQueryInputBox1"))
+        self.productQueryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.productQueryInputBox2"))
+        self.productQueryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.productQueryInputBox3"))
+
+        # Disable the inputs:
+        self.productQueryInputBox1.configure(state="disabled")
+        self.productQueryInputBox2.configure(state="disabled")
+        self.productQueryInputBox3.configure(state="disabled")
+
+        self.orderQueryInputBox1.configure(state="disabled")
+        self.orderQueryInputBox2.configure(state="disabled")
+        self.orderQueryInputBox3.configure(state="disabled")
+        
+        
+        #----------------------------------------------------------------------employee--------------------------------------------------------
+
+        # Set prompt text of employee input boxes:
+        self.employeeQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.employeeQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.employeeQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+
+        self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+
+        # Bind the input boxes, so on focus remove prompt text:
+        self.employeeQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.employeeQueryInputBox1"))
+        self.employeeQueryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.employeeQueryInputBox2"))
+        self.employeeQueryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.employeeQueryInputBox3"))
+
+        self.employeeQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.employeeQueryInputBox1"))
+        self.employeeQueryInputBox2.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.employeeQueryInputBox2"))
+        self.employeeQueryInputBox3.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.employeeQueryInputBox3"))
+
+        # Disable the inputs:
+        self.employeeQueryInputBox1.configure(state="disabled")
+        self.employeeQueryInputBox2.configure(state="disabled")
+        self.employeeQueryInputBox3.configure(state="disabled")
+
+        self.orderQueryInputBox1.configure(state="disabled")
+        self.orderQueryInputBox2.configure(state="disabled")
+        self.orderQueryInputBox3.configure(state="disabled")
 
     def copy(self):
         content = self.outputFrame.selection_get()
@@ -245,19 +376,6 @@ class MainApplication(tk.Frame):
         t = root.focus_displayof()
         content = root.clipboard_get()
         print(t)
-
-
-    def createQueryComboBoxOrders(self,tab, row, column, comboValues):
-        queryComboBoxFrame = Frame(tab)
-        Label(queryComboBoxFrame, text="Choose a query:").grid(row="0", column="0", sticky=W, padx=5, pady=5)
-        combobox = ttk.Combobox(queryComboBoxFrame, values = comboValues, width="50")
-        combobox.current(0)
-        combobox.config(state = 'readonly')
-        combobox.grid(row = "0", column = "1")
-        B = Button(queryComboBoxFrame,text = "Select Query", command =lambda: self.getEmployeeQueryID(tab,combobox))
-        B.grid(row=1)
-        queryComboBoxFrame.grid(row=row, column=column)
-        queryComboBoxFrame.grid_columnconfigure(0, weight=1)
 
     def getEmployeeQueryID(self,tab,CB):
         if(CB.current()==0):
@@ -536,6 +654,190 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             self.orderQueryInputBox1.config(state='normal')
             self.orderQueryInputBox2.config(state='normal')
+            
+    def productDropDownInput(self, value):
+        """ dropDownInput: This method is called whenever the user selects a
+            menu option from the drop down menu. It deletes the contents of the
+            input boxes, replaces them with a prompt (e.g. date/prodID).
+            Depending on the userStory number, input boxes will be 'unlocked'. """
+        print(value)
+        self.productQueryInputBox1.delete(0, "end")
+        self.productQueryInputBox2.delete(0, "end")
+        self.productQueryInputBox3.delete(0, "end")
+        self.productQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.productQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.productQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.productQueryInputBox1.config(state='disabled')
+        self.productQueryInputBox2.config(state='disabled')
+        self.productQueryInputBox3.config(state='disabled')
+
+        if (value == self.options[0]):
+            self.userStory = 0
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+        elif (value == self.options[1]):
+            self.userStory = 1
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+        elif (value == self.options[2]):
+            self.userStory = 2
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+            self.productQueryInputBox3.config(state='normal')
+        elif (value == self.options[3]):
+            self.userStory = 3
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+        elif (value == self.options[4]):
+            self.userStory = 4
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+            self.productQueryInputBox3.config(state='normal')
+        elif (value == self.options[5]):
+            self.userStory = 5
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+        elif (value == self.options[6]): # MONGO - 7
+            self.userStory = 6
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox3.config(state='normal')
+        elif (value == self.options[7]): # MONGO - 8
+            self.userStory = 7
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox3.config(state='normal')
+        elif (value == self.options[8]): # MONGO - 9
+            self.userStory = 8
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+            self.productQueryInputBox3.config(state='normal')
+        elif (value == self.options[9]): # MONGO - 10
+            self.userStory = 9
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox3.config(state='normal')
+        elif (value == self.options[10]): # MONGO - 11
+            self.userStory = 10
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+        elif (value == self.options[11]):
+            self.userStory = 11
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox3.config(state='normal')
+        elif (value == self.options[12]):
+            self.userStory = 12
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+        elif (value == self.options[13]):
+            self.userStory = 13
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+            self.productQueryInputBox3.config(state='normal')
+        elif (value == self.options[15]):
+            self.userStory = 15
+            self.queryResultBox.delete('1.0', tk.END)
+            self.productQueryInputBox1.config(state='normal')
+            self.productQueryInputBox2.config(state='normal')
+            
+    def employeeDropDownInput(self, value):
+        """ dropDownInput: This method is called whenever the user selects a
+            menu option from the drop down menu. It deletes the contents of the
+            input boxes, replaces them with a prompt (e.g. date/prodID).
+            Depending on the userStory number, input boxes will be 'unlocked'. """
+        print(value)
+        self.employeeQueryInputBox1.delete(0, "end")
+        self.employeeQueryInputBox2.delete(0, "end")
+        self.employeeQueryInputBox3.delete(0, "end")
+        self.employeeQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.employeeQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.employeeQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.employeeQueryInputBox1.config(state='disabled')
+        self.employeeQueryInputBox2.config(state='disabled')
+        self.employeeQueryInputBox3.config(state='disabled')
+
+        if (value == self.options[0]):
+            self.userStory = 0
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
+        elif (value == self.options[1]):
+            self.userStory = 1
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
+        elif (value == self.options[2]):
+            self.userStory = 2
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
+            self.employeeQueryInputBox3.config(state='normal')
+        elif (value == self.options[3]):
+            self.userStory = 3
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
+        elif (value == self.options[4]):
+            self.userStory = 4
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
+            self.employeeQueryInputBox3.config(state='normal')
+        elif (value == self.options[5]):
+            self.userStory = 5
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
+        elif (value == self.options[6]): # MONGO - 7
+            self.userStory = 6
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox3.config(state='normal')
+        elif (value == self.options[7]): # MONGO - 8
+            self.userStory = 7
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox3.config(state='normal')
+        elif (value == self.options[8]): # MONGO - 9
+            self.userStory = 8
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
+            self.employeeQueryInputBox3.config(state='normal')
+        elif (value == self.options[9]): # MONGO - 10
+            self.userStory = 9
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox3.config(state='normal')
+        elif (value == self.options[10]): # MONGO - 11
+            self.userStory = 10
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
+        elif (value == self.options[11]):
+            self.userStory = 11
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox3.config(state='normal')
+        elif (value == self.options[12]):
+            self.userStory = 12
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
+        elif (value == self.options[13]):
+            self.userStory = 13
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
+            self.employeeQueryInputBox3.config(state='normal')
+        elif (value == self.options[15]):
+            self.userStory = 15
+            self.queryResultBox.delete('1.0', tk.END)
+            self.employeeQueryInputBox1.config(state='normal')
+            self.employeeQueryInputBox2.config(state='normal')
 
     def customerSubmitUserStory(self):
         """ submitUserStory: This method is called when the submit button is
@@ -611,34 +913,340 @@ class MainApplication(tk.Frame):
             toPrint = userStory13(self.dbConn, True, fromDate, toDate)
         elif (self.userStory == 13):
             self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
-            employeeID = self.queryInputBox3.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
+            employeeID = self.customerQueryInputBox3.get()
             toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
         elif (self.userStory == 14): # MONGO - 15
             self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
             toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 15):
             self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.queryInputBox1.get()
-            toDate = self.queryInputBox2.get()
+            fromDate = self.customerQueryInputBox1.get()
+            toDate = self.customerQueryInputBox2.get()
             toPrint = userStory16(self.dbConn, True, fromDate, toDate)
 
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint)
 
         # Insert default prompt values back into inputs
-        self.queryInputBox1.insert(0, 'from: YYYY-MM-DD')
-        self.queryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.queryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.customerQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.customerQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.customerQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
 
         # Disable the inputs
-        self.queryInputBox1.config(state='disabled')
-        self.queryInputBox2.config(state='disabled')
-        self.queryInputBox3.config(state='disabled')
+        self.customerQueryInputBox1.config(state='disabled')
+        self.customerQueryInputBox2.config(state='disabled')
+        self.customerQueryInputBox3.config(state='disabled')
+        
+    def orderSubmitUserStory(self):
+        """ submitUserStory: This method is called when the submit button is
+            pressed. It uses self.userStory (number of drop down menu that
+            is currently selected) to decide the values of which input boxes
+            it needs to retrieve, before passing them in as parameters to one
+            of the user stories. The connection to MySQL or MongoDB is passed
+            in as the first parameter. The results are assigned to toPrint,
+            which is passed in to the self.outputQueryResult method. """
+        if (self.userStory == 0):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            toPrint = userStory1(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 1):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            toPrint = userStory2(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 2):
+            self.queryResultBox.delete('1.0', tk.END)
+            amount = self.orderQueryInputBox3.get()
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
+        elif (self.userStory == 3):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            toPrint = userStory4(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 4):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            productID = self.orderQueryInputBox3.get()
+            toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
+        elif (self.userStory == 5):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            toPrint = userStory6(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 6): # MONGO - 7
+            self.queryResultBox.delete('1.0', tk.END)
+            customerID = self.orderQueryInputBox3.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, customerID)
+        elif (self.userStory == 7): # MONGO - 8
+            self.queryResultBox.delete('1.0', tk.END)
+            county = self.orderQueryInputBox3.get()
+            toPrint = userStory8(self.dbConn, self.conn, True, county)
+        elif (self.userStory == 8): # MONGO - 9
+            self.queryResultBox.delete('1.0', tk.END)
+            gender = self.orderQueryInputBox3.get()
+            agemin = self.orderQueryInputBox3.get()
+            agemax = self.orderQueryInputBox3.get()
+            toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
+        elif (self.userStory == 9): # MONGO - 10
+            self.queryResultBox.delete('1.0', tk.END)
+            productID = self.orderQueryInputBox3.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, productID)
+        elif (self.userStory == 10): # MONGO - 11
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+        elif (self.userStory == 11):
+            self.queryResultBox.delete('1.0', tk.END)
+            productID = self.orderQueryInputBox3.get()
+            toPrint = userStory12(self.dbConn, True, productID)
+        elif (self.userStory == 12):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            toPrint = userStory13(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 13):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            employeeID = self.orderQueryInputBox3.get()
+            toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
+        elif (self.userStory == 14): # MONGO - 15
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+        elif (self.userStory == 15):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.orderQueryInputBox1.get()
+            toDate = self.orderQueryInputBox2.get()
+            toPrint = userStory16(self.dbConn, True, fromDate, toDate)
 
+        # Put query result in the GUI text box
+        self.outputQueryResult(toPrint)
+
+        # Insert default prompt values back into inputs
+        self.orderInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+
+        # Disable the inputs
+        self.orderQueryInputBox1.config(state='disabled')
+        self.orderQueryInputBox2.config(state='disabled')
+        self.orderQueryInputBox3.config(state='disabled')        
+        
+    def productSubmitUserStory(self):
+        """ submitUserStory: This method is called when the submit button is
+            pressed. It uses self.userStory (number of drop down menu that
+            is currently selected) to decide the values of which input boxes
+            it needs to retrieve, before passing them in as parameters to one
+            of the user stories. The connection to MySQL or MongoDB is passed
+            in as the first parameter. The results are assigned to toPrint,
+            which is passed in to the self.outputQueryResult method. """
+        if (self.userStory == 0):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            toPrint = userStory1(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 1):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            toPrint = userStory2(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 2):
+            self.queryResultBox.delete('1.0', tk.END)
+            amount = self.productQueryInputBox3.get()
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
+        elif (self.userStory == 3):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            toPrint = userStory4(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 4):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            productID = self.productQueryInputBox3.get()
+            toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
+        elif (self.userStory == 5):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            toPrint = userStory6(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 6): # MONGO - 7
+            self.queryResultBox.delete('1.0', tk.END)
+            customerID = self.productQueryInputBox3.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, customerID)
+        elif (self.userStory == 7): # MONGO - 8
+            self.queryResultBox.delete('1.0', tk.END)
+            county = self.productQueryInputBox3.get()
+            toPrint = userStory8(self.dbConn, self.conn, True, county)
+        elif (self.userStory == 8): # MONGO - 9
+            self.queryResultBox.delete('1.0', tk.END)
+            gender = self.productQueryInputBox3.get()
+            agemin = self.productQueryInputBox3.get()
+            agemax = self.productQueryInputBox3.get()
+            toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
+        elif (self.userStory == 9): # MONGO - 10
+            self.queryResultBox.delete('1.0', tk.END)
+            productID = self.productQueryInputBox3.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, productID)
+        elif (self.userStory == 10): # MONGO - 11
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+        elif (self.userStory == 11):
+            self.queryResultBox.delete('1.0', tk.END)
+            productID = self.productQueryInputBox3.get()
+            toPrint = userStory12(self.dbConn, True, productID)
+        elif (self.userStory == 12):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            toPrint = userStory13(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 13):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            employeeID = self.productQueryInputBox3.get()
+            toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
+        elif (self.userStory == 14): # MONGO - 15
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+        elif (self.userStory == 15):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.productQueryInputBox1.get()
+            toDate = self.productQueryInputBox2.get()
+            toPrint = userStory16(self.dbConn, True, fromDate, toDate)
+
+        # Put query result in the GUI text box
+        self.outputQueryResult(toPrint)
+
+        # Insert default prompt values back into inputs
+        self.productQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.productQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.productQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+
+        # Disable the inputs
+        self.productQueryInputBox1.config(state='disabled')
+        self.productQueryInputBox2.config(state='disabled')
+        self.productQueryInputBox3.config(state='disabled')
+        
+    def employeeSubmitUserStory(self):
+        """ submitUserStory: This method is called when the submit button is
+            pressed. It uses self.userStory (number of drop down menu that
+            is currently selected) to decide the values of which input boxes
+            it needs to retrieve, before passing them in as parameters to one
+            of the user stories. The connection to MySQL or MongoDB is passed
+            in as the first parameter. The results are assigned to toPrint,
+            which is passed in to the self.outputQueryResult method. """
+        if (self.userStory == 0):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            toPrint = userStory1(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 1):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            toPrint = userStory2(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 2):
+            self.queryResultBox.delete('1.0', tk.END)
+            amount = self.employeeQueryInputBox3.get()
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
+        elif (self.userStory == 3):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            toPrint = userStory4(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 4):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            productID = self.employeeQueryInputBox3.get()
+            toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
+        elif (self.userStory == 5):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            toPrint = userStory6(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 6): # MONGO - 7
+            self.queryResultBox.delete('1.0', tk.END)
+            customerID = self.employeeQueryInputBox3.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, customerID)
+        elif (self.userStory == 7): # MONGO - 8
+            self.queryResultBox.delete('1.0', tk.END)
+            county = self.employeeQueryInputBox3.get()
+            toPrint = userStory8(self.dbConn, self.conn, True, county)
+        elif (self.userStory == 8): # MONGO - 9
+            self.queryResultBox.delete('1.0', tk.END)
+            gender = self.employeeQueryInputBox3.get()
+            agemin = self.employeeQueryInputBox3.get()
+            agemax = self.employeeQueryInputBox3.get()
+            toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
+        elif (self.userStory == 9): # MONGO - 10
+            self.queryResultBox.delete('1.0', tk.END)
+            productID = self.employeeQueryInputBox3.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, productID)
+        elif (self.userStory == 10): # MONGO - 11
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+        elif (self.userStory == 11):
+            self.queryResultBox.delete('1.0', tk.END)
+            productID = self.employeeQueryInputBox3.get()
+            toPrint = userStory12(self.dbConn, True, productID)
+        elif (self.userStory == 12):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            toPrint = userStory13(self.dbConn, True, fromDate, toDate)
+        elif (self.userStory == 13):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            employeeID = self.employeeQueryInputBox3.get()
+            toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
+        elif (self.userStory == 14): # MONGO - 15
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+        elif (self.userStory == 15):
+            self.queryResultBox.delete('1.0', tk.END)
+            fromDate = self.employeeQueryInputBox1.get()
+            toDate = self.employeeQueryInputBox2.get()
+            toPrint = userStory16(self.dbConn, True, fromDate, toDate)
+
+        # Put query result in the GUI text box
+        self.outputQueryResult(toPrint)
+
+        # Insert default prompt values back into inputs
+        self.employeeQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
+        self.employeeQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
+        self.employeeQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+
+        # Disable the inputs
+        self.employeeQueryInputBox1.config(state='disabled')
+        self.employeeQueryInputBox2.config(state='disabled')
+        self.employeeQueryInputBox3.config(state='disabled')
+        
     def logout(self):
         """ logout: Destroys GUI features on logout, changes loginStatus label
             text and enable login button and user/password inputs. Also closes
