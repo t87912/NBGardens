@@ -82,20 +82,13 @@
 		</div>
 	</div>
 	
-	<p><label for="id_subject">Subject:</label>
-    <input id="id_subject" type="text" name="subject" maxlength="100" required /></p>
-	<p><label for="id_message">Message:</label>
-    <textarea name="message" id="id_message" required></textarea></p>
-	<p><label for="id_sender">Sender:</label>
-    <input type="email" name="sender" id="id_sender" required /></p>
-	<p><label for="id_cc_myself">Cc myself:</label>
-    <input type="checkbox" name="cc_myself" id="id_cc_myself" /></p>
-	
-	<h1>Please Choose a year</h1>
 	<form method="post" action="">
+		<p><label for="id_year">Year:</label>
+		
+		<input id="id_year" type="text" name="chosen_year" maxlength="100" required /></p>
 		{% csrf_token %}
 		{{ form }}
-		<input type="submit" value="OK">
+		<input type="submit" value="Submit">
 	</form>
 
 	

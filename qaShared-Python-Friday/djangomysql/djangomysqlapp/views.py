@@ -45,22 +45,19 @@ def get_year(request):
         form = YearForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
+            year = form.cleaned_data['year']
             return HttpResponseRedirect('/thanks/')
-
     # if a GET (or any other method) we'll create a blank form
     else:
         form = YearForm()
-
     return render(request, 'product.html', {'form': form})
+	
 
-def get_login(request):
+def get_contact(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = LoginForm(request.POST)
+        form = ContactForm(request.POST)
         # check whether it's valid:
 	if form.is_valid():
 		subject = form.cleaned_data['subject']
@@ -77,6 +74,6 @@ def get_login(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = LoginForm()
+        form = ContactForm()
 
     return render(request, 'home.html', {'form': form})
