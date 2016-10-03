@@ -659,12 +659,7 @@ class MainApplication(tk.Frame):
             of the user stories. The connection to MySQL or MongoDB is passed
             in as the first parameter. The results are assigned to toPrint,
             which is passed in to the self.outputQueryResult method. """
-        if (self.userStory == 0):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.customerQueryInputBox1.get()
-            toDate = self.customerQueryInputBox2.get()
-            toPrint = userStory1(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 1):
+        if (self.userStory == 1):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
@@ -680,17 +675,6 @@ class MainApplication(tk.Frame):
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
             toPrint = userStory4(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 4):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.customerQueryInputBox1.get()
-            toDate = self.customerQueryInputBox2.get()
-            productID = self.customerQueryInputBox3.get()
-            toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
-        elif (self.userStory == 5):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.customerQueryInputBox1.get()
-            toDate = self.customerQueryInputBox2.get()
-            toPrint = userStory6(self.dbConn, True, fromDate, toDate)
         elif (self.userStory == 6): # MONGO - 7
             self.queryResultBox.delete('1.0', tk.END)
             customerID = self.customerQueryInputBox3.get()
@@ -705,41 +689,17 @@ class MainApplication(tk.Frame):
             agemin = self.customerQueryInputBox3.get()
             agemax = self.customerQueryInputBox3.get()
             toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
-        elif (self.userStory == 9): # MONGO - 10
-            self.queryResultBox.delete('1.0', tk.END)
-            productID = self.customerQueryInputBox3.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, productID)
         elif (self.userStory == 10): # MONGO - 11
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
             toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
-        elif (self.userStory == 11):
-            self.queryResultBox.delete('1.0', tk.END)
-            productID = self.customerQueryInputBox3.get()
-            toPrint = userStory12(self.dbConn, True, productID)
-        elif (self.userStory == 12):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.customerQueryInputBox1.get()
-            toDate = self.customerQueryInputBox2.get()
-            toPrint = userStory13(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 13):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.customerQueryInputBox1.get()
-            toDate = self.customerQueryInputBox2.get()
-            employeeID = self.customerQueryInputBox3.get()
-            toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
         elif (self.userStory == 14): # MONGO - 15
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
             toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
-        elif (self.userStory == 15):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.customerQueryInputBox1.get()
-            toDate = self.customerQueryInputBox2.get()
-            toPrint = userStory16(self.dbConn, True, fromDate, toDate)
-
+       
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint)
 
@@ -761,52 +721,12 @@ class MainApplication(tk.Frame):
             of the user stories. The connection to MySQL or MongoDB is passed
             in as the first parameter. The results are assigned to toPrint,
             which is passed in to the self.outputQueryResult method. """
-        if (self.userStory == 0):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.orderQueryInputBox1.get()
-            toDate = self.orderQueryInputBox2.get()
-            toPrint = userStory1(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 1):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.orderQueryInputBox1.get()
-            toDate = self.orderQueryInputBox2.get()
-            toPrint = userStory2(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 2):
-            self.queryResultBox.delete('1.0', tk.END)
-            amount = self.orderQueryInputBox3.get()
-            fromDate = self.orderQueryInputBox1.get()
-            toDate = self.orderQueryInputBox2.get()
-            toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
-        elif (self.userStory == 3):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.orderQueryInputBox1.get()
-            toDate = self.orderQueryInputBox2.get()
-            toPrint = userStory4(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 4):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.orderQueryInputBox1.get()
-            toDate = self.orderQueryInputBox2.get()
-            productID = self.orderQueryInputBox3.get()
-            toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
-        elif (self.userStory == 5):
+        
+        if (self.userStory == 5):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.orderQueryInputBox1.get()
             toDate = self.orderQueryInputBox2.get()
             toPrint = userStory6(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 6): # MONGO - 7
-            self.queryResultBox.delete('1.0', tk.END)
-            customerID = self.orderQueryInputBox3.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, customerID)
-        elif (self.userStory == 7): # MONGO - 8
-            self.queryResultBox.delete('1.0', tk.END)
-            county = self.orderQueryInputBox3.get()
-            toPrint = userStory8(self.dbConn, self.conn, True, county)
-        elif (self.userStory == 8): # MONGO - 9
-            self.queryResultBox.delete('1.0', tk.END)
-            gender = self.orderQueryInputBox3.get()
-            agemin = self.orderQueryInputBox3.get()
-            agemax = self.orderQueryInputBox3.get()
-            toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
         elif (self.userStory == 9): # MONGO - 10
             self.queryResultBox.delete('1.0', tk.END)
             productID = self.orderQueryInputBox3.get()
@@ -816,31 +736,7 @@ class MainApplication(tk.Frame):
             fromDate = self.orderQueryInputBox1.get()
             toDate = self.orderQueryInputBox2.get()
             toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
-        elif (self.userStory == 11):
-            self.queryResultBox.delete('1.0', tk.END)
-            productID = self.orderQueryInputBox3.get()
-            toPrint = userStory12(self.dbConn, True, productID)
-        elif (self.userStory == 12):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.orderQueryInputBox1.get()
-            toDate = self.orderQueryInputBox2.get()
-            toPrint = userStory13(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 13):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.orderQueryInputBox1.get()
-            toDate = self.orderQueryInputBox2.get()
-            employeeID = self.orderQueryInputBox3.get()
-            toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
-        elif (self.userStory == 14): # MONGO - 15
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.orderQueryInputBox1.get()
-            toDate = self.orderQueryInputBox2.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
-        elif (self.userStory == 15):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.orderQueryInputBox1.get()
-            toDate = self.orderQueryInputBox2.get()
-            toPrint = userStory16(self.dbConn, True, fromDate, toDate)
+        
 
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint)
@@ -863,52 +759,13 @@ class MainApplication(tk.Frame):
             of the user stories. The connection to MySQL or MongoDB is passed
             in as the first parameter. The results are assigned to toPrint,
             which is passed in to the self.outputQueryResult method. """
-        if (self.userStory == 0):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.productQueryInputBox1.get()
-            toDate = self.productQueryInputBox2.get()
-            toPrint = userStory1(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 1):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.productQueryInputBox1.get()
-            toDate = self.productQueryInputBox2.get()
-            toPrint = userStory2(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 2):
-            self.queryResultBox.delete('1.0', tk.END)
-            amount = self.productQueryInputBox3.get()
-            fromDate = self.productQueryInputBox1.get()
-            toDate = self.productQueryInputBox2.get()
-            toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
-        elif (self.userStory == 3):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.productQueryInputBox1.get()
-            toDate = self.productQueryInputBox2.get()
-            toPrint = userStory4(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 4):
+       
+        if (self.userStory == 4):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
             productID = self.productQueryInputBox3.get()
             toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
-        elif (self.userStory == 5):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.productQueryInputBox1.get()
-            toDate = self.productQueryInputBox2.get()
-            toPrint = userStory6(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 6): # MONGO - 7
-            self.queryResultBox.delete('1.0', tk.END)
-            customerID = self.productQueryInputBox3.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, customerID)
-        elif (self.userStory == 7): # MONGO - 8
-            self.queryResultBox.delete('1.0', tk.END)
-            county = self.productQueryInputBox3.get()
-            toPrint = userStory8(self.dbConn, self.conn, True, county)
-        elif (self.userStory == 8): # MONGO - 9
-            self.queryResultBox.delete('1.0', tk.END)
-            gender = self.productQueryInputBox3.get()
-            agemin = self.productQueryInputBox3.get()
-            agemax = self.productQueryInputBox3.get()
-            toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
         elif (self.userStory == 9): # MONGO - 10
             self.queryResultBox.delete('1.0', tk.END)
             productID = self.productQueryInputBox3.get()
@@ -927,12 +784,6 @@ class MainApplication(tk.Frame):
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
             toPrint = userStory13(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 13):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.productQueryInputBox1.get()
-            toDate = self.productQueryInputBox2.get()
-            employeeID = self.productQueryInputBox3.get()
-            toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
         elif (self.userStory == 14): # MONGO - 15
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
@@ -970,65 +821,13 @@ class MainApplication(tk.Frame):
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             toPrint = userStory1(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 1):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.employeeQueryInputBox1.get()
-            toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory2(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 2):
-            self.queryResultBox.delete('1.0', tk.END)
-            amount = self.employeeQueryInputBox3.get()
-            fromDate = self.employeeQueryInputBox1.get()
-            toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
-        elif (self.userStory == 3):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.employeeQueryInputBox1.get()
-            toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory4(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 4):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.employeeQueryInputBox1.get()
-            toDate = self.employeeQueryInputBox2.get()
-            productID = self.employeeQueryInputBox3.get()
-            toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
-        elif (self.userStory == 5):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.employeeQueryInputBox1.get()
-            toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory6(self.dbConn, True, fromDate, toDate)
-        elif (self.userStory == 6): # MONGO - 7
-            self.queryResultBox.delete('1.0', tk.END)
-            customerID = self.employeeQueryInputBox3.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, customerID)
-        elif (self.userStory == 7): # MONGO - 8
-            self.queryResultBox.delete('1.0', tk.END)
-            county = self.employeeQueryInputBox3.get()
-            toPrint = userStory8(self.dbConn, self.conn, True, county)
-        elif (self.userStory == 8): # MONGO - 9
-            self.queryResultBox.delete('1.0', tk.END)
-            gender = self.employeeQueryInputBox3.get()
-            agemin = self.employeeQueryInputBox3.get()
-            agemax = self.employeeQueryInputBox3.get()
-            toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
-        elif (self.userStory == 9): # MONGO - 10
-            self.queryResultBox.delete('1.0', tk.END)
-            productID = self.employeeQueryInputBox3.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, productID)
+        
         elif (self.userStory == 10): # MONGO - 11
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
-        elif (self.userStory == 11):
-            self.queryResultBox.delete('1.0', tk.END)
-            productID = self.employeeQueryInputBox3.get()
-            toPrint = userStory12(self.dbConn, True, productID)
-        elif (self.userStory == 12):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.employeeQueryInputBox1.get()
-            toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory13(self.dbConn, True, fromDate, toDate)
+        
         elif (self.userStory == 13):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
@@ -1040,11 +839,7 @@ class MainApplication(tk.Frame):
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
-        elif (self.userStory == 15):
-            self.queryResultBox.delete('1.0', tk.END)
-            fromDate = self.employeeQueryInputBox1.get()
-            toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory16(self.dbConn, True, fromDate, toDate)
+       
 
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint)
