@@ -35,8 +35,8 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li><a href="home.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
-				<li class="active"><a href="products.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
+				<li class="active"><a href="home.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+				<li><a href="products.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
 				<li><a href="orders.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
 				<li><a href="#" data-toggle="tooltip" data-placement="top" title="Please sign in">Sales</a></li>
 				<li><a href="help.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
@@ -45,52 +45,21 @@
 	  </div>
 	</nav>
 	
-	<div class="table-responsive col-md-6">
-		<div class="panel panel-default">
-			<!-- Default panel contents -->
-			<div class="panel-heading">Products</div>
-
-			<!-- Table -->
-			<table class="table table-striped">
-				<thead>
-				<tr>
-					<th>Product ID</th>
-					<th>Product Name</th>
-					<th>Quantity</th>
-					<th>Buy Price</th>
-					<th>Sale Price</th>
-					<th>Description</th>
-				</tr>
-				</thead>
-				{% if product_list %}
-				<tbody>
-				{% for product in product_list %}
-					<tr>
-						<td>{{ product.idproduct}}</td>
-						<td><a href="/djangomysqlapp/product/{{ product.idproduct }}/">{{ product.productname }}</a></td>
-						<td>{{ product.amount}}</td>
-						<td>{{ product.buyprice}}</td>
-						<td>{{ product.saleprice}}</td>
-						<td>{{ product.description}}</td>
-						 {% endfor %}
-					</tr>
-				{% else %}
-				<p>No Products are available.</p>
-				{% endif %}
-				</tbody>
-			</table>
-		</div>
-	</div>
 	
-	<form method="post" action="simpleform.asp">
-		Year: <input type="text" name="year"><br>
+	{ if login=false}
+		<form method="post" action="simpleform.asp">
+			Username: <input type="text" name="username"><br>
+			Password: <input type="text" name="password"><br><br>
 		<input type="submit" value="Submit">
 	</form>
 	
 	<% 
 	response.write(request.form("year"))
 	%>
+	{ else }
 	
+	{ endif }
 	
+
 </body>
 </html>
