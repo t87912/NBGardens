@@ -35,7 +35,7 @@ def userStory15(sqlConn, conn, GUI, dateFrom, dateTo):
         reviewsCount = 0
         
         for orderID in orderIDs:
-            orderID = orderID[0]
+            #orderID = orderID[0]
             prodScores = CustomerOrderReviews(conn).getProductScoresfOrder(orderID)
         
             totalscore = 0
@@ -67,7 +67,7 @@ def userStory15(sqlConn, conn, GUI, dateFrom, dateTo):
         
         graphData.append([finalProductScore, finalDeliveryScore, finalServiceScore, dateUntil.strftime('%Y/%m/%d')])        
         
-        dateUntil   = dateUntil + timedelta(days=30)
+        dateUntil = dateUntil + timedelta(days=30)
         whileCount += 1
     return graphData
     

@@ -402,11 +402,11 @@ class AllUserStories (object):
         if(GUI):
             result = reviewScores
             return result
-
+            
     def mongoStory5(self, sqlConn, conn, GUI, dateFrom, dateTo):
-        """ useCase11 """
-        #!!!!! very similar to 7 but with dates, needs SQL !!!!#
         if (not GUI):
+            #dateFrom = input("From which date do you want to get review scores?: ")
+            #dateTo = input("Until which date?: ")
             validStartDate = False
             validEndDate = False
             while (not validStartDate):
@@ -416,11 +416,7 @@ class AllUserStories (object):
                 dateTo = input("Please enter the end date (YYYY-MM-DD): ")
                 validEndDate = self.validateDateInput(dateTo)
     
-        totalProductScore = 0
-        totalDeliveryScore = 0
-        totalServiceScore = 0
-        
-        query = queriesForMongo[4]
+        query = queriesForMongo[4] % (dateFrom, dateTo)
         cursor = sqlConn.cursor()  # Creating the cursor to query the database
         # Executing the query:
         try:
@@ -430,16 +426,76 @@ class AllUserStories (object):
             sqlConn.rollback()
         orderIDs = cursor.fetchall()
         
-        #date = time.strptime(date, "%Y-%m-%d")
-        dateFrom = datetime.strptime(str(dateFrom), '%Y-%m-%d')
-        dateTo = datetime.strptime(str(dateTo), '%Y-%m-%d')
-        
+        #print(orderIDs)
+        totalProductScore = 0
+        totalDeliveryScore = 0
+        totalServiceScore = 0
         reviewsCount = 0
-        
         for orderID in orderIDs:
             orderID = orderID[0]
+            prodScores = CustomerOrderReviews(conn).getProductScoresfOrder(orderID)
             
-            query = queriesForMongo[3] % (orderID)
+            totalscore = 0
+            count = 0
+            for i in prodScores:
+                totalscore += i
+                count +=1
+                    
+            if (count == 0):
+                count = 1
+    
+            avProdScore = totalscore / count
+            serviceScore = CustomerOrderReviews(conn).getServiceScoresfOrder(orderID)
+            deliveryScore = CustomerOrderReviews(conn).getDeliveryScoresfOrder(orderID)
+                
+            if (serviceScore!=0):
+                reviewsCount +=1
+    
+            totalProductScore += avProdScore
+            totalDeliveryScore += serviceScore
+            totalServiceScore += deliveryScore
+            
+        if(reviewsCount == 0):
+            reviewsCount = 1
+            
+        finalProductScore = totalProductScore / reviewsCount
+        finalDeliveryScore = totalDeliveryScore / reviewsCount
+        finalServiceScore = totalServiceScore / reviewsCount
+        result = [["finalProductScore","finalDeliveryScore","finalServiceScore"],
+                  [finalProductScore, finalDeliveryScore, finalServiceScore]]
+        
+        if (not GUI):
+            for u in range(0, len(result)):
+                print (result[u]) 
+    
+        if (GUI):
+            return result #[[finalProductScore, finalDeliveryScore, finalServiceScore]]
+            
+    def mongoStory6(self, sqlConn, conn, GUI, dateFrom, dateTo):
+        """ useCase15 """
+        if (not GUI):
+            validStartDate = False
+            validEndDate = False
+            while (not validStartDate):
+                dateFrom = input("Please enter the start date (YYYY-MM-DD): ")
+                validStartDate = self.validateDateInput(dateFrom)
+            while (not validEndDate):
+                dateTo = input("Please enter the end date (YYYY-MM-DD): ")
+                validEndDate = self.validateDateInput(dateTo)
+            
+        dateFrom = datetime.strptime(dateFrom, '%Y-%m-%d')
+        dateTo = datetime.strptime(dateTo, '%Y-%m-%d')
+        dateUntil = dateFrom + timedelta(days=30)
+        graphData = []
+        whileCount = 0
+        while(dateUntil < dateTo and whileCount < 20):
+            totalProductScore = 0
+            totalDeliveryScore = 0
+            totalServiceScore = 0
+            dateFroms = dateFrom.date().strftime('%Y-%m-%d') 
+            dateUntils = dateUntil.date().strftime('%Y-%m-%d')
+            
+            query = queriesForMongo[4] % (dateFroms, dateUntils)
             cursor = sqlConn.cursor()  # Creating the cursor to query the database
             # Executing the query:
             try:
@@ -447,16 +503,16 @@ class AllUserStories (object):
                 sqlConn.commit()
             except:
                 sqlConn.rollback()
-            orderDate = cursor.fetchall()
+            orderIDs = cursor.fetchall()
+    
+            reviewsCount = 0
             
-            orderDate = orderDate[0][0]
-            orderDate = datetime.combine(orderDate, datetime.min.time())
-            
-            if (dateFrom < orderDate < dateTo):        
+            for orderID in orderIDs:
+                orderID = orderID[0]
                 prodScores = CustomerOrderReviews(conn).getProductScoresfOrder(orderID)
+            
                 totalscore = 0
                 count = 0
-                
                 for i in prodScores:
                     totalscore += i
                     count +=1
@@ -474,25 +530,20 @@ class AllUserStories (object):
                 totalProductScore += avProdScore
                 totalDeliveryScore += serviceScore
                 totalServiceScore += deliveryScore
-    
-        finalProductScore = totalProductScore / reviewsCount
-        finalDeliveryScore = totalDeliveryScore / reviewsCount
-        finalServiceScore = totalServiceScore / reviewsCount
-        result = [["finalProductScore","finalDeliveryScore","finalServiceScore"],
-                  [finalProductScore, finalDeliveryScore, finalServiceScore]]
-        
-        if (not GUI):
-            for u in range(0, len(result)):
-                print (result[u]) 
-    
-        if (GUI):
-            return result #[[finalProductScore, finalDeliveryScore, finalServiceScore]]
-
-
-    def mongoStory6(MongoQueries, GUI):
-        """ useCase15 """
-        #!!!! againn need SQL for date !!!!#
-        print("TBC: need some SQL")
+            
+            if(reviewsCount == 0):
+                reviewsCount = 1
+            
+            finalProductScore = totalProductScore / reviewsCount
+            finalDeliveryScore = totalDeliveryScore / reviewsCount
+            finalServiceScore = totalServiceScore / reviewsCount
+            
+            graphData.append([finalProductScore, finalDeliveryScore, finalServiceScore, dateUntil.strftime('%Y-%m-%d')])        
+            
+            dateUntil   = dateUntil + timedelta(days=30)
+            whileCount += 1
+        print (graphData)
+        return graphData
 
 
     def userStory12(self, db, GUI, productID):

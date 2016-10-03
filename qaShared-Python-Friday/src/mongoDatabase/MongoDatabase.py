@@ -66,7 +66,7 @@ class MongoDatabase(object):
         self.sqlDB = db
     
     def methodFinder(self):
-        two_param_cases = [5] #[1,2,4];
+        two_param_cases = [5,6] #[1,2,4];
         one_param_cases = [1,2,4] #[3,5,6];
         three_param_cases = [3]
         
@@ -79,7 +79,7 @@ class MongoDatabase(object):
             self.exitProgram()
         else:
             # construct a method name
-            method_name = 'mongoStory' + str(self.menuOption)     
+            method_name = 'mongoStory' + str(self.menuOption)
             # use string as the method name and call it else return alt method
             find_method = getattr(self.run_mongo_query, method_name)
             
