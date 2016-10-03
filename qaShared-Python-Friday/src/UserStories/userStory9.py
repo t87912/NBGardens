@@ -7,11 +7,10 @@ def userStory9(sqlConn, conn, GUI, gender, agemin, agemax):
     """(boolean for GUI, sql database reference?, string, int, int):
     This method returns the average ratings for customers of specific gender and age range"""
     if (not GUI):
-        county = input("Which gender do you want reviews from? (Male, Female, Both):")
+        gender = input("Which gender do you want reviews from? (Male, Female, Both):")
         agemin = int(input("What is the minimum age of customer you want reviews from?:"))
         agemax = int(input("What is the maximum age of customer you want reviews from?:"))
     else:
-        print(gender + "ages " + agemin + " " + agemax)
         agemin = int(agemin)
         agemax = int(agemax) 
     
@@ -25,7 +24,7 @@ def userStory9(sqlConn, conn, GUI, gender, agemin, agemax):
         sqlConn.rollback()
     custIDsGender = cursor.fetchall()
 
-    now = datetime.now()   
+    now = datetime.now().date()
     
     dateFrom = now
     dateTo = now
@@ -34,8 +33,8 @@ def userStory9(sqlConn, conn, GUI, gender, agemin, agemax):
     for i in range(0, agemin):
         dateTo   = dateTo + timedelta(days=-365)
     
-    print(dateFrom)
-    print(dateTo)    
+    dateFrom = str(dateFrom)
+    dateTo = str(dateTo)
     
     query = queriesForMongo[7] % (dateFrom, dateTo)
     cursor = sqlConn.cursor()  # Creating the cursor to query the database
@@ -45,7 +44,7 @@ def userStory9(sqlConn, conn, GUI, gender, agemin, agemax):
         sqlConn.commit()
     except:
         sqlConn.rollback()
-    custIDsAge = cursor.fetchall()
+    custIDsAge = cursor.fetchall()    
     
     custIdsAgeSorted = []
     for i in custIDsAge:
@@ -53,9 +52,8 @@ def userStory9(sqlConn, conn, GUI, gender, agemin, agemax):
     custIdsGenderSorted = []
     for i in custIDsGender:
         custIdsGenderSorted.append(i[0])
+
     
-    print(custIdsAgeSorted)
-    print(custIdsGenderSorted)
     custIDs = list(set(custIdsAgeSorted) & set(custIdsGenderSorted))
 	
     totalavProductScore = 0
@@ -87,14 +85,17 @@ def userStory9(sqlConn, conn, GUI, gender, agemin, agemax):
             avServiceScore = totalServiceScores / len(customerServiceScores)
             totalavServiceScore += avServiceScore
             count += 1
-
+    
+    if(count == 0):
+        count = 1
+        
     finalProductScore = totalavProductScore / count
     finalServiceScore = totalavServiceScore / count
     finalDeliveryScore = totalavDeliveryScore / count
     scoresFromDemos = [finalProductScore, finalDeliveryScore, finalServiceScore]
 
     if (not GUI):
-        print("For customers in " + county + " average review scores are:\n Products: " + finalProductScore + \
+        print("For " + gender +" customers between the ages of " + str(agemin) + " and " + agemax + " average review scores are:\n Products: " + finalProductScore + \
               "\n Delivery: " + finalDeliveryScore + "\n Service: " + finalServiceScore)
     else:
         result = [scoresFromDemos]
