@@ -33,10 +33,10 @@ queriesForMongo = ["",
                    "SELECT idCustomer FROM Customer", # returns list of customer ID's
                    "SELECT firstName, lastName FROM Customer WHERE idCustomer = '%s'", # returns customer name where customer id is provided after the string
                    "SELECT createDate FROM Purchase WHERE idPurchase = '%s'", # returns the creation date for an order where the order number is provided after the string
-                   "SELECT idPurchase FROM Purchase", # returns list of purchaseID's
+                   "SELECT idPurchase FROM Purchase WHERE createDate BETWEEN '%s' AND '%s'", # returns list of purchaseID's
                    "SELECT cust_idCustomer FROM Address WHERE county = '%s'", #returns a list of all customerid's who are from a given county
                    "SELECT idCustomer FROM Customer WHERE gender = '%s'", #returns customer ID's of specific gender (must be Male or Female)
-                   "SELECT idCustomer FROM Customer WHERE '%s' < dob < '%s'" #returns customer ID's of certain ages (takes in dates of form "YYYY-MM-DD")
+                   "SELECT idCustomer FROM Customer WHERE dob BETWEEN '%s' AND '%s'" #returns customer ID's of certain ages (takes in dates of form "YYYY-MM-DD")
 ]
 
 

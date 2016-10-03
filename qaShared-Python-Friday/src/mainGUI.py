@@ -34,6 +34,7 @@ from UserStories.userStory11 import userStory11
 from UserStories.userStory12 import userStory12
 from UserStories.userStory13 import userStory13
 from UserStories.userStory14 import userStory14
+from UserStories.userStory15 import userStory15
 from UserStories.userStory16 import userStory16
 
 # Tkinter fonts:
@@ -321,8 +322,8 @@ class MainApplication(tk.Frame):
             self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
             self.queryInputBox3.config(state='normal')
-        elif (value == self.options[15]):
-            self.userStory = 15
+        elif (value == self.options[14]):
+            self.userStory = 14
             self.queryResultBox.delete('1.0', tk.END)
             self.queryInputBox1.config(state='normal')
             self.queryInputBox2.config(state='normal')
@@ -416,7 +417,7 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.queryInputBox1.get()
             toDate = self.queryInputBox2.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
             self.showGraphButton.config(state='active')
         elif (self.userStory == 15):
             self.queryResultBox.delete('1.0', tk.END)
