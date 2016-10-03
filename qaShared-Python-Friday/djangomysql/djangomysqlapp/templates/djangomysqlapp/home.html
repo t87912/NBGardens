@@ -47,15 +47,15 @@
 	
 	
 	{ if login=false}
-		<form method="post" action="simpleform.asp">
+		<div class="container">
+			<h2>Please Login to ASAS</h2>
+			<form action="
 			Username: <input type="text" name="username"><br>
 			Password: <input type="text" name="password"><br><br>
-		<input type="submit" value="Submit">
-	</form>
+			<input type="submit" value="Submit">
+		</form>
 	
-	<% 
-	response.write(request.form("year"))
-	%>
+
 	{ else }
 	
 	{ endif }

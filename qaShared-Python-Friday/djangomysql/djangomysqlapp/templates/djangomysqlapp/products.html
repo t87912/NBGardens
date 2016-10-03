@@ -82,14 +82,12 @@
 		</div>
 	</div>
 	
-	<form method="post" action="simpleform.asp">
-		Year: <input type="text" name="year"><br>
+	<form method="post" action="/chosen_year/">
+		{% csrf_token %}
+		{{ form }}
 		<input type="submit" value="Submit">
 	</form>
-	
-	<% 
-	response.write(request.form("year"))
-	%>
+
 	
 	
 </body>
