@@ -104,11 +104,11 @@
 		  <h3>Total Return on Investment for a particular product for a given time period</h3>
 		  <form method="post" action="">
 				<p><label for="id_year">Year:</label>
-				<input id="id_year" type="text" name="chosen_year" maxlength="100" required /></p>
+				<input id="id_year" type="text" name="year" maxlength="100" required /></p>
 				{% csrf_token %}
 				{{ form }}
 				<input type="submit" value="Submit">
-			</form>
+		   </form>
 		</div>
 		<div id="query2" class="tab-pane fade">
 		  <h3>Compare the average rating given to a product </h3>
