@@ -10,15 +10,15 @@ import numpy as np
 
 class TheWriterClass:
     
-    def __init__(self):
+    #def __init__(self):
         
-        self.data = np.empty((10, 1)).tolist()
-        print (self.data)
+        #self.data = np.empty((10, 1)).tolist()
+        #print (self.data)
     
     
     def writeToFile(self, data): 
-        with open('data.txt', 'w') as outfile:
+        with open('assets/data.json', 'w') as outfile:
             json.dump(data, outfile, sort_keys=True, indent=4)
 
-writer_obj = TheWriterClass()
-writer_obj.writeToFile()
+#writer_obj = TheWriterClass()
+#writer_obj.writeToFile()

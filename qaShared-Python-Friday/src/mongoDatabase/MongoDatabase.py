@@ -70,6 +70,7 @@ class MongoDatabase(object):
         one_param_cases = [1,2,4] #[3,5,6];
         three_param_cases = [3]
         
+        
         if (int(self.menuOption) == 7):
             self.customQuery(False, 0)
         elif (int(self.menuOption) == 8):

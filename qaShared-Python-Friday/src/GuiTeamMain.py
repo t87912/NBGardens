@@ -15,6 +15,7 @@ from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
 from mongoDatabase import MongoQueries
 from exportToCSV import exportToCSV
+from assets.JsonWriterTool import TheWriterClass
 from Logger import Logger
 
 from AutoGenCode import AutoGenCode
@@ -59,7 +60,7 @@ class MainApplication(tk.Frame):
         self.userStory = 0 # Holds userStory number from drop down menu
 
         self.customerOptions = [
-                           "2.  (SQL) Which customer has highest spending in given period",
+                           "Which customer has highest spending in given period",
                            "3.  (SQL) Which customer has spent more than 'x' amount during a given period",
                            "4.  (SQL) Total spend vs total cost for given time period",
                            "7.  (Mongo) Average rating a particular customer has given NB Gardens",
@@ -188,6 +189,7 @@ class MainApplication(tk.Frame):
         self.menu.add_cascade(label = "Data", menu = dataSub)
         dataSub.add_command(label = "Export as .txt", command = self.callTXT)
         dataSub.add_command(label = "Export as .csv", command = self.callCSV)
+        dataSub.add_command(label = "Export as .json", command = self.callJSON)
 
         self.menu.add_command(label = "Logout", command = self.logout)
 
@@ -439,7 +441,7 @@ class MainApplication(tk.Frame):
         content = self.outputFrame.selection_get()
         root.clipboard_clear()
         root.clipboard_append(content)
-
+        
     def paste(self):
         content = root.clipboard_get()
         print(content)
@@ -541,6 +543,10 @@ class MainApplication(tk.Frame):
             a bug preventing it being called directly from the button press,
             so the press goes here before calling the external function. """
         exportToCSV(self.currentQueryResult)
+        
+    def callJSON(self):
+        TheWriterClass().writeToFile(self.currentQueryResult)
+
 
 
     def customerDropDownInput(self, value):
