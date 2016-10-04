@@ -15,7 +15,7 @@ import sys
 from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
 from mongoDatabase import MongoQueries
-#from exportToCSV import exportToCSV
+from exportToCSV import exportToCSV
 from Logger import Logger
 
 from AutoGenCode import AutoGenCode
@@ -186,7 +186,7 @@ class MainApplication(tk.Frame):
 
         dataSub = tk.Menu(self.menu, tearoff = False)
         self.menu.add_cascade(label = "Data", menu = dataSub)
-        dataSub.add_command(label = "Export as .csv")
+        dataSub.add_command(label = "Export as .csv", command = self.callCSV)
 
         self.menu.add_command(label = "Logout", command = self.logout)
 
@@ -530,6 +530,7 @@ class MainApplication(tk.Frame):
         """ callCSV: This just calls the external method exportToCSV. There is
             a bug preventing it being called directly from the button press,
             so the press goes here before calling the external function. """
+        exportToCSV(self.currentQueryResult)
 
 
     def customerDropDownInput(self, value):
