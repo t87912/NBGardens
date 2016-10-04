@@ -14,6 +14,85 @@
     <script src="/static/js/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+ 
+		$('#form_top_sales').on('submit', function(event){
+			event.preventDefault();
+			console.log("form submitted!")  // sanity check
+			query_top_salespeople();
+		});
+
+		$.ajaxSetup({
+			data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+		});
+
+		function query_top_salespeople() {
+			var datestart =  $('#id_datefrom_top_sales').val();
+			var dateto =  $('#id_dateto_top_sales').val();
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/query/" + datestart + "/" +dateto, // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#results_top_sales").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+
+		};
+		
+		$('#form_spentmost').on('submit', function(event){
+			event.preventDefault();
+			console.log("form submitted!")  // sanity check
+			query_spentmost();
+		});
+		
+ 		function query_spentmost() {
+			var datestart =  $('#id_datefrom_spentmost').val();
+			var dateto =  $('#id_dateto_spentmost').val();
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/querytwo/" + datestart + "/" + dateto, // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#results_spentmost").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+
+		};
+ 
+	});
+	</script>
 
 	
 </head>
@@ -26,7 +105,7 @@
 		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
 	</div>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top"  data-spy="affix" data-offset-top="197">
+	<nav class="navbar navbar-inverse"  data-spy="affix" data-offset-top="197">
 	  <div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -66,7 +145,14 @@
 		</div>
 		<div id="query1" class="tab-pane fade">
 		  <h3>To see which customers have spent the most with us in any given period</h3>
-		  
+		  <form method="POST" id="form_spentmost">
+					<p><label for="id_datefrom_spentmost">Date From:</label>
+					<input id="id_datefrom_spentmost" type="date" name="datefrom" maxlength="100" required /></p>
+					<p><label for="id_dateto_spentmost">Date To:</label>
+					<input id="id_dateto_spentmost" type="date" name="dateto" maxlength="100" required /></p>
+					{{ form }}
+					<input type="submit" value="Submit">
+				</form>
 		</div>
 		<div id="query2" class="tab-pane fade">
 		  <h3>To see which customers have spent more than ‘x’ amount during a given period</h3>

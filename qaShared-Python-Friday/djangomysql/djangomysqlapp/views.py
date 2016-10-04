@@ -71,7 +71,18 @@ def queryfourteen(request, datestart, dateend, employeeid):
 	context = {
 	'order_list': order_list,
 	}
-	return HttpResponse(template.render(context, request))	
+	return HttpResponse(template.render(context, request))
+	
+def querytwo(request, datestart, dateend):
+	cursor = connection.cursor()
+	order_list = Employee.objects.raw('''select customer_order.customer_id, sum(order_lines.quantity*order_lines.price) as order_price from nbgardensds.customer_order join nbgardensds.order_lines on customer_order.customer_order_id = order_lines.customer_order_id where customer_order.time_placed between %(date_start)s and %(date_end)s group by customer_order.customer_id ORDER BY order_price DESC''', params={'date_start': datestart, 'date_end': dateend})
+	template = loader.get_template('djangomysqlapp/querytwo.html')
+	context = {
+	'order_list': order_list,
+	}
+	return HttpResponse(template.render(context, request))
+	
+	
 def get_year(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
