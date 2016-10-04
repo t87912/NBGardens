@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Product, Purchase, Employee
+from .models import Product, Purchase, Employee, Customer
 from .forms import YearForm, LoginForm, ContactForm
 from django.core.mail import send_mail
 from django.db import connection
@@ -41,6 +41,20 @@ def results(request, idproduct):
     return HttpResponse(response % idproduct)
 def vote(request, idproduct):
     return HttpResponse("You're voting on Product %s." % idproduct)	
+def employee(request):
+	product_list = Employee.objects.order_by('idemployee')
+	template = loader.get_template('djangomysqlapp/employee.html')
+	context = {
+	'product_list': product_list,
+	}
+	return HttpResponse(template.render(context, request))
+def customer(request):
+	product_list = Customer.objects.order_by('idCustomer')
+	template = loader.get_template('djangomysqlapp/customer.html')
+	context = {
+	'product_list': product_list,
+	}	
+	return HttpResponse(template.render(context, request))
 	
 def get_year(request):
     # if this is a POST request we need to process the form data
