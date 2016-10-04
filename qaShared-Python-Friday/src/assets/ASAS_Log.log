@@ -2879,3 +2879,390 @@
 2016-10-04 17:23:59,555 - INFO - ---------- Started logging GUI ----------
 2016-10-04 17:23:59,609 - INFO - Successful login to MySQL database, username: 
 2016-10-04 17:23:59,609 - INFO - Successful login to MySQL database, username: 
+2016-10-04 19:57:17,255 - INFO - ---------- Started logging GUI ----------
+2016-10-04 19:57:17,349 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:01:53,344 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:01:53,344 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:01:56,182 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:01:56,182 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:02:19,922 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:02:19,922 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:02:22,602 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:02:22,602 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:02:22,602 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:02:24,825 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:02:24,825 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:02:24,825 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:03:48,824 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:03:48,824 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:03:48,824 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:03:52,690 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:03:52,690 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:03:52,690 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:03:52,690 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:03:55,356 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:03:55,356 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:03:55,356 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:03:55,356 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:04:04,216 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:04:04,216 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:04:04,216 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:04:04,216 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:04:14,064 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:04:14,064 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:04:14,064 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:04:14,064 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:04:14,064 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:04:16,398 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:04:16,398 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:04:16,398 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:04:16,398 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:04:16,398 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:05:24,191 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:05:24,191 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:05:24,191 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:05:24,191 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:05:24,191 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:06:07,975 - INFO - ---------- Started logging GUI ----------
+2016-10-04 20:06:07,975 - INFO - ---------- Started logging GUI ----------
+2016-10-04 20:06:07,975 - INFO - ---------- Started logging GUI ----------
+2016-10-04 20:06:07,975 - INFO - ---------- Started logging GUI ----------
+2016-10-04 20:06:07,975 - INFO - ---------- Started logging GUI ----------
+2016-10-04 20:06:07,975 - INFO - ---------- Started logging GUI ----------
+2016-10-04 20:06:08,053 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:06:08,053 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:06:08,053 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:06:08,053 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:06:08,053 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:06:08,053 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:37:13,178 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:37:13,178 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:37:13,178 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:37:13,178 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:37:13,178 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:37:13,178 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:37:13,178 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:37:16,322 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:37:16,322 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:37:16,322 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:37:16,322 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:37:16,322 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:37:16,322 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:37:16,322 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:38:05,758 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:38:05,758 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:38:05,758 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:38:05,758 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:38:05,758 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:38:05,758 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:38:05,758 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:43:43,182 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:43:43,182 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:43:43,182 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:43:43,182 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:43:43,182 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:43:43,182 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:43:43,182 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:43:43,182 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:43:47,609 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:43:47,609 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:43:47,609 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:43:47,609 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:43:47,609 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:43:47,609 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:43:47,609 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:43:47,609 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:44:26,994 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:44:26,994 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:44:26,994 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:44:26,994 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:44:26,994 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:44:26,994 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:44:26,994 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:44:26,994 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:48:58,229 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:48:58,229 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:48:58,229 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:48:58,229 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:48:58,229 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:48:58,229 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:48:58,229 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:48:58,229 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:48:58,229 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:49:01,484 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:01,484 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:01,484 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:01,484 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:01,484 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:01,484 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:01,484 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:01,484 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:01,484 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:08,971 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:08,971 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:08,971 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:08,971 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:08,971 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:08,971 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:08,971 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:08,971 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:49:08,971 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:50:04,213 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:50:05,775 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:50:07,666 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:51:21,068 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:51:21,068 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:51:23,554 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:51:23,554 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:51:27,491 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:51:27,491 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:51:28,854 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:51:28,854 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:51:31,401 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:51:31,401 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:51:31,401 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:51:33,303 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:51:33,303 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:51:33,303 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:51:48,886 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:51:48,886 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:51:48,886 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:51:50,105 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:51:50,105 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:51:50,105 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:54:24,145 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:54:24,145 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:54:24,145 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:54:24,145 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:54:27,237 - INFO - Successful login to MySQL database, username: adwawd
+2016-10-04 20:54:27,237 - INFO - Successful login to MySQL database, username: adwawd
+2016-10-04 20:54:27,237 - INFO - Successful login to MySQL database, username: adwawd
+2016-10-04 20:54:27,237 - INFO - Successful login to MySQL database, username: adwawd
+2016-10-04 20:54:41,429 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:54:41,429 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:54:41,429 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:54:41,429 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:54:41,429 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:54:43,982 - INFO - Successful login to MySQL database, username: ad
+2016-10-04 20:54:43,982 - INFO - Successful login to MySQL database, username: ad
+2016-10-04 20:54:43,982 - INFO - Successful login to MySQL database, username: ad
+2016-10-04 20:54:43,982 - INFO - Successful login to MySQL database, username: ad
+2016-10-04 20:54:43,982 - INFO - Successful login to MySQL database, username: ad
+2016-10-04 20:54:53,468 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:54:53,468 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:54:53,468 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:54:53,468 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:54:53,468 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:56:01,913 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:56:01,913 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:56:01,913 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:56:01,913 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:56:01,913 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:56:04,221 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:56:04,221 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:56:04,221 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:56:04,221 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:56:04,221 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:56:04,221 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:56:06,480 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:56:06,480 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:56:06,480 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:56:06,480 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:56:06,480 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:56:06,480 - INFO - Successful login to MySQL database, username: 
+2016-10-04 20:56:15,075 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:56:15,075 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:56:15,075 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:56:15,075 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:56:15,075 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:56:15,075 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-04 20:58:01,952 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:58:01,952 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:58:01,952 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:58:01,952 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:58:01,952 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:58:01,952 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 20:58:04,337 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:58:04,337 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:58:04,337 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:58:04,337 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:58:04,337 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:58:04,337 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:58:04,337 - INFO - ---------- Started logging TUI ----------
+2016-10-04 20:58:07,789 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 20:58:07,789 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 20:58:07,789 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 20:58:07,789 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 20:58:07,789 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 20:58:07,789 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 20:58:07,789 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 21:21:14,084 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:21:14,084 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:21:14,084 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:21:14,084 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:21:14,084 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:21:14,084 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:21:14,084 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:21:15,990 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:21:15,990 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:21:15,990 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:21:15,990 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:21:15,990 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:21:15,990 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:21:15,990 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:21:15,990 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:21:18,156 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:21:18,156 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:21:18,156 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:21:18,156 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:21:18,156 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:21:18,156 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:21:18,156 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:21:18,156 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:22:36,100 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:22:37,823 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:24:48,763 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:24:51,506 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:25:04,218 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:27:01,094 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:27:01,094 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:27:03,793 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:27:03,793 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:28:49,596 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:28:49,596 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:29:20,651 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:29:20,651 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:29:20,651 - INFO - ---------- Started logging TUI ----------
+2016-10-04 21:29:22,601 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:29:22,601 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:29:22,601 - INFO - Successful login to MySQL database, username: 
+2016-10-04 21:29:29,594 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:29:29,594 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 21:29:29,594 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:22:03,593 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:22:03,593 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:22:03,593 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:22:03,593 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:22:05,734 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:22:05,734 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:22:05,734 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:22:05,734 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:22:48,554 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:22:48,554 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:22:48,554 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:22:48,554 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:22:48,554 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:22:50,711 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:22:50,711 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:22:50,711 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:22:50,711 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:22:50,711 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:23:13,121 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:23:13,121 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:23:13,121 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:23:13,121 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:23:13,121 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:23:13,121 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:23:16,310 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 22:23:16,310 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 22:23:16,310 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 22:23:16,310 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 22:23:16,310 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 22:23:16,310 - INFO - Successful login to MySQL database, username: asd
+2016-10-04 22:23:29,827 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:23:29,827 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:23:29,827 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:23:29,827 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:23:29,827 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:23:29,827 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:24:05,531 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:24:05,531 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:24:05,531 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:24:05,531 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:24:05,531 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:24:05,531 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:24:05,531 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:24:07,437 - INFO - Successful login to MySQL database, username: awd
+2016-10-04 22:24:07,437 - INFO - Successful login to MySQL database, username: awd
+2016-10-04 22:24:07,437 - INFO - Successful login to MySQL database, username: awd
+2016-10-04 22:24:07,437 - INFO - Successful login to MySQL database, username: awd
+2016-10-04 22:24:07,437 - INFO - Successful login to MySQL database, username: awd
+2016-10-04 22:24:07,437 - INFO - Successful login to MySQL database, username: awd
+2016-10-04 22:24:07,437 - INFO - Successful login to MySQL database, username: awd
+2016-10-04 22:24:52,417 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:24:54,170 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:25:21,550 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:25:46,905 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:25:46,905 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:25:49,702 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:25:49,702 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:26:30,450 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:26:30,450 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:26:30,450 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:26:32,727 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:26:32,727 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:26:32,727 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:26:59,670 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:26:59,670 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:26:59,670 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:34:34,485 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:34:34,485 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:34:34,485 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:34:34,485 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:34:37,356 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:34:37,356 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:34:37,356 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:34:37,356 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:35:00,780 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:35:00,780 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:35:00,780 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:35:00,780 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:41:01,392 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:41:01,392 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:41:01,392 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:41:01,392 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:41:01,392 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:41:04,119 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:41:04,119 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:41:04,119 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:41:04,119 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:41:04,119 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:41:42,784 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:41:42,784 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:41:42,784 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:41:42,784 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:41:42,784 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:44:14,982 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:44:14,982 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:44:14,982 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:44:14,982 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:44:14,982 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:44:14,982 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:44:17,220 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:44:17,220 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:44:17,220 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:44:17,220 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:44:17,220 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:44:17,220 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:45:34,921 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:45:34,921 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:45:34,921 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:45:34,921 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:45:34,921 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:45:34,921 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:45:44,032 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:45:44,032 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:45:44,032 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:45:44,032 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:45:44,032 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:45:44,032 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:45:44,032 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:45:59,439 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:46:01,511 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:46:21,063 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:49:54,178 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:49:54,178 - INFO - ---------- Started logging TUI ----------
+2016-10-04 22:49:56,584 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:49:56,584 - INFO - Successful login to MySQL database, username: 
+2016-10-04 22:53:59,506 - INFO - ---------- Finished logging TUI -----------
+2016-10-04 22:53:59,506 - INFO - ---------- Finished logging TUI -----------

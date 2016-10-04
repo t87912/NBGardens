@@ -804,7 +804,7 @@ class AllUserStories (object):
                 # dates ratings product
                 print ("Plotting the data...")
                 plt.plot_date(dates, totals, "#993A54")
-                plt.legend(loc=1)
+                #plt.legend(loc=1)
                 plt.xlabel('Date (MMM-YYYY)')
                 plt.xticks(rotation=45)
                 plt.ylabel('Value of Sales (£)')
