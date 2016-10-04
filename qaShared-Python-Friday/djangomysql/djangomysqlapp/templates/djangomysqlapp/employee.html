@@ -15,6 +15,21 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/bootstrap.min.js"></script>
 	
+	<script type="text/javascript">
+	$( document ).ready(function() {
+ 
+		$( "#submit_query" ).click(function( event ) {
+	 
+			var datestart =  $('#id_datefrom').val();
+			var dateto =  $('#id_dateto').val();
+	 
+			window.location = '/djangomysqlapp/query/' + datestart + '/' + dateto;
+	 
+		});
+ 
+	});
+	</script>
+	
 </head>
 
 <body>
@@ -122,14 +137,15 @@
 				{{ form }}
 				<input type="submit" value="Submit">
 			</form>
+			<button id="submit_query">SubmitIt</button>
 		</div>
 		<div id="query2" class="tab-pane fade">
 		  <h3>Amount of sales made by a particular sales person over a period of time (GRAPH)</h3>
 			<form method="post" action="">
-				<p><label for="id_datefrom">Date From:</label>
-				<input id="id_datefrom" type="date" name="datefrom" maxlength="100" required /></p>
-				<p><label for="id_dateto">Date From:</label>
-				<input id="id_dateto" type="date" name="dateto" maxlength="100" required /></p>
+				<p><label for="id_datefrom_sales">Date From:</label>
+				<input id="id_datefrom_sales" type="date" name="datefrom" maxlength="100" required /></p>
+				<p><label for="id_dateto_sales">Date From:</label>
+				<input id="id_dateto_sales" type="date" name="dateto" maxlength="100" required /></p>
 				<p><label for="id_employeeid">Employee ID:</label>
 				<input id="id_employeeid" type="int" name="employeeid" maxlength="100" required /></p>
 				{% csrf_token %}
@@ -141,4 +157,5 @@
 	</div>	
 
 </body>
+
 </html>
