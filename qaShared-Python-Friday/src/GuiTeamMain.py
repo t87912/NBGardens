@@ -191,7 +191,7 @@ class MainApplication(tk.Frame):
         self.menu.add_command(label = "Logout", command = self.logout)
 
         #Output frame
-        self.outputFrame = tk.Frame(root,height=30,width = 90)
+        self.outputFrame = tk.Frame(root,height=100,width = 200)
         self.outputFrame.pack(side = tk.TOP)
 
         self.queryResultBox = tk.Text(self.outputFrame,width=95,height=20)
@@ -956,6 +956,6 @@ if __name__ == "__main__":
     autoGen = autoGenCode.getAutoGen()
     root = tk.Tk()
     MainApplication = MainApplication(root, autoGen)
-    root.geometry('800x600')
+    root.geometry('950x600')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()
