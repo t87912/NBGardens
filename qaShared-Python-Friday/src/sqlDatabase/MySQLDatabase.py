@@ -64,7 +64,7 @@ class MySQLDatabase(object):
         """ login: Try/Except to log the user in. """
         try:
             # Ask Tom for the ip/password
-            self.db = pymysql.connect("", "", "", "nbgardensds")            
+            self.db = pymysql.connect("213.171.200.88", "AlStock", "0N$Project", "nbgardensds")            
             print ("Connecting to MySQL database...")
             print ("Connection to MySQL database was successful.")
             self.logger.info('Successful login to MySQL database, username: %s' % (self.username))
