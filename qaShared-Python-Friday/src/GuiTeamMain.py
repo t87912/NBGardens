@@ -9,8 +9,7 @@ Created on Thu Sep  1 15:13:49 2016
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
-import csv
-import sys
+
 # Import other python class files:
 from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
@@ -37,11 +36,6 @@ from UserStories.userStory13 import userStory13
 from UserStories.userStory14 import userStory14
 from UserStories.userStory15 import userStory15
 from UserStories.userStory16 import userStory16
-
-# Tkinter fonts:
-LARGE_FONT= ("Verdana", 12)
-MED_FONT = ("Verdana", 10)
-
 
 
 class MainApplication(tk.Frame):
@@ -186,12 +180,13 @@ class MainApplication(tk.Frame):
 
         dataSub = tk.Menu(self.menu, tearoff = False)
         self.menu.add_cascade(label = "Data", menu = dataSub)
+        dataSub.add_command(label = "Export as .txt", command = self.callTXT)
         dataSub.add_command(label = "Export as .csv", command = self.callCSV)
 
         self.menu.add_command(label = "Logout", command = self.logout)
 
         #Output frame
-        self.outputFrame = tk.Frame(root,height=100,width = 200)
+        self.outputFrame = tk.Frame(root,height=200,width = 300)
         self.outputFrame.pack(side = tk.TOP)
 
         self.queryResultBox = tk.Text(self.outputFrame,width=95,height=20)
@@ -200,7 +195,7 @@ class MainApplication(tk.Frame):
 
 
         #input frame
-        self.inputFrame = tk.Frame(root,height=300,width = 600)
+        self.inputFrame = tk.Frame(root,height=150,width = 600)
         self.inputFrame.pack(fill = 'both')
 
 
@@ -525,7 +520,16 @@ class MainApplication(tk.Frame):
         """ onEntryClick: onFocus event will delete prompt text in entry box """
         stringToEval = "%s.delete(0, \"end\")" % (tkWidgetName)
         eval(stringToEval)
-
+    
+    def callTXT(self):
+        """ callTXT: This just calls the external method exportToTXT. There is
+            a bug preventing it being called directly from the button press,
+            so the press goes here before calling the external function. """
+        txtFile = open('TXT_Output.txt', 'w+')
+        for line in txtFile:
+            self.currentQueryResult.append(line.strip().split('\n'))
+            
+        
     def callCSV(self):
         """ callCSV: This just calls the external method exportToCSV. There is
             a bug preventing it being called directly from the button press,
