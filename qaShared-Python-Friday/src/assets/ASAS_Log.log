@@ -2737,3 +2737,103 @@
 2016-10-03 21:20:50,220 - INFO - Successful login to MySQL database, username: Benjamin.Kelley
 2016-10-03 21:20:50,220 - INFO - Successful login to MySQL database, username: Benjamin.Kelley
 2016-10-03 21:20:50,220 - INFO - Successful login to MySQL database, username: Benjamin.Kelley
+2016-10-04 16:10:45,844 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:10:45,898 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:15:37,218 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:15:37,218 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:15:37,267 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:15:37,267 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:17:09,547 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:17:09,547 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:17:09,547 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:17:09,603 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:17:09,603 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:17:09,603 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:17:58,707 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:17:58,772 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:19:37,954 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:19:37,954 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:19:38,002 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:19:38,002 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:21:04,739 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:21:04,739 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:21:04,739 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:21:04,795 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:21:04,795 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:21:04,795 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:21:29,340 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:21:29,391 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:23:05,219 - INFO - ---------- Started logging TUI ----------
+2016-10-04 16:23:05,219 - INFO - ---------- Started logging TUI ----------
+2016-10-04 16:23:07,373 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:23:07,373 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:23:24,213 - INFO - ---------- Finished logging -----------
+2016-10-04 16:23:24,213 - INFO - ---------- Finished logging -----------
+2016-10-04 16:26:28,906 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:26:28,906 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:26:28,906 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:26:28,956 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:26:28,956 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:26:28,956 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:26:52,211 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:26:52,266 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:28:06,788 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:28:06,840 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:30:25,732 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:30:25,818 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:32:26,699 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:32:26,751 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:33:39,714 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:33:39,767 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:35:51,443 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:35:51,495 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:40:10,787 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:40:10,838 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:41:54,551 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:41:54,551 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:41:55,526 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:41:55,526 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:42:34,386 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:42:34,386 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:42:34,386 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:42:34,436 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:42:34,436 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:42:34,436 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:44:47,397 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:44:47,448 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:45:24,050 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:45:24,050 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:45:24,148 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:45:24,148 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:46:23,091 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:46:23,141 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:46:41,612 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:46:41,612 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:46:42,602 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:46:42,602 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:49:17,443 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:49:17,443 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:49:17,443 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:49:17,499 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:49:17,499 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:49:17,499 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:49:43,003 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:49:43,003 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:49:43,003 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:49:43,003 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:49:43,059 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:49:43,059 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:49:43,059 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:49:43,059 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:51:04,115 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:51:04,115 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:51:04,115 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:51:04,115 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:51:04,115 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:51:04,174 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:51:04,174 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:51:04,174 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:51:04,174 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:51:04,174 - INFO - Successful login to MySQL database, username: 
+2016-10-04 16:56:30,147 - INFO - ---------- Started logging GUI ----------
+2016-10-04 16:56:30,200 - INFO - Successful login to MySQL database, username: 

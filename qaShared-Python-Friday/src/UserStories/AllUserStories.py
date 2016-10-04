@@ -604,7 +604,7 @@ class AllUserStories (object):
 
         # If GUI return the data
         if (GUI):
-            return [results]
+            return results
         else:
             exportToCSV(results)
 
@@ -740,12 +740,12 @@ class AllUserStories (object):
 
         # If GUI return the data
         if (GUI):
-            return [results]
+            return results
         else:
             exportToCSV(results)
 
 
-    def userStorySeries2(self, db, GUI, startDate, endDate, additional_attribute, query_number):
+    def userStorySeries2(self, db, GUI, startDate, endDate, amount_or_productid, query_number):
         """ useCase 3, 5, 14: Accepts parameter 'period' which is a period, 1-4 """
         """
         Called to run a method and retrieve appropriate user input if gui is false
@@ -815,6 +815,6 @@ class AllUserStories (object):
 
         # If GUI return the data
         if (GUI):
-            return [results]
+            return results
         else:
             exportToCSV(results)

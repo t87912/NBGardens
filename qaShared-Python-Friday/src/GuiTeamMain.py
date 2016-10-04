@@ -19,23 +19,25 @@ from Logger import Logger
 
 from AutoGenCode import AutoGenCode
 
+from UserStories import AllUserStories
+
 # Import user stories:
-from UserStories.userStory1 import userStory1
-from UserStories.userStory2 import userStory2
-from UserStories.userStory3 import userStory3
-from UserStories.userStory4 import userStory4
-from UserStories.userStory5 import userStory5
-from UserStories.userStory6 import userStory6
-from UserStories.userStory7 import userStory7
-from UserStories.userStory8 import userStory8
-from UserStories.userStory9 import userStory9
-from UserStories.userStory10 import userStory10
-from UserStories.userStory11 import userStory11
-from UserStories.userStory12 import userStory12
-from UserStories.userStory13 import userStory13
-from UserStories.userStory14 import userStory14
-from UserStories.userStory15 import userStory15
-from UserStories.userStory16 import userStory16
+#from UserStories.userStory1 import userStory1
+#from UserStories.userStory2 import userStory2
+#from UserStories.userStory3 import userStory3
+#from UserStories.userStory4 import userStory4
+#from UserStories.userStory5 import userStory5
+#from UserStories.userStory6 import userStory6
+#from UserStories.userStory7 import userStory7
+#from UserStories.userStory8 import userStory8
+#from UserStories.userStory9 import userStory9
+#from UserStories.userStory10 import userStory10
+#from UserStories.userStory11 import userStory11
+#from UserStories.userStory12 import userStory12
+#from UserStories.userStory13 import userStory13
+#from UserStories.userStory14 import userStory14
+#from UserStories.userStory15 import userStory15
+#from UserStories.userStory16 import userStory16
 
 
 class MainApplication(tk.Frame):
@@ -48,6 +50,10 @@ class MainApplication(tk.Frame):
     def __init__(self, master, *args, **kwargs):
         self.master = master
         self.autoGen = args[0]
+        self.run_query_obj = AllUserStories.AllUserStories()
+        # self.run_query_obj.userStorySeries2(self.db, False, 0, 0, 0, int(self.menuOption)) 3
+        # self.run_query_obj.userStorySeries1(self.db, False, 0, 0, int(self.menuOption)) 2
+        # self.run_query_obj.userStory12(self.db, False, 0)
 
         self.currentQueryResult = [] # Will hold current query for printing
         self.userStory = 0 # Holds userStory number from drop down menu
@@ -728,42 +734,50 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
-            toPrint = userStory2(self.dbConn, True, fromDate, toDate)
+            #toPrint = userStory2(self.dbConn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 2)
         elif (self.userStory == 2):
             self.queryResultBox.delete('1.0', tk.END)
             amount = self.customerQueryInputBox3.get()
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
-            toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
+            #toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
+            toPrint = self.run_query_obj.userStorySeries2(self.dbConn, True, fromDate, toDate, amount, 3)
         elif (self.userStory == 3):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
-            toPrint = userStory4(self.dbConn, True, fromDate, toDate)
+            #toPrint = userStory4(self.dbConn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 4)
         elif (self.userStory == 6): # MONGO - 7
             self.queryResultBox.delete('1.0', tk.END)
             customerID = self.customerQueryInputBox3.get()
-            toPrint = userStory7(self.dbConn, self.conn, True, customerID)
+            toPrint = self.run_query_obj.mongoStory1(self.dbConn, self.conn, True, customerID)
+            #toPrint = userStory7(self.dbConn, self.conn, True, customerID)
         elif (self.userStory == 7): # MONGO - 8
             self.queryResultBox.delete('1.0', tk.END)
             county = self.customerQueryInputBox3.get()
-            toPrint = userStory8(self.dbConn, self.conn, True, county)
+            #toPrint = userStory8(self.dbConn, self.conn, True, county)
+            toPrint = self.run_query_obj.mongoStory2(self.dbConn, self.conn, True, county)
         elif (self.userStory == 8): # MONGO - 9
             self.queryResultBox.delete('1.0', tk.END)
-            gender = self.customerQueryInputBox3.get()
-            agemin = self.customerQueryInputBox3.get()
+            gender = self.customerQueryInputBox1.get()
+            agemin = self.customerQueryInputBox2.get()
             agemax = self.customerQueryInputBox3.get()
-            toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
+            #toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
+            toPrint = self.run_query_obj.mongoStory3(self.dbConn, self.conn, True, gender, agemin, agemax)
         elif (self.userStory == 10): # MONGO - 11
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
-            toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
+            #toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.mongoStory5(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 14): # MONGO - 15
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
-            toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
+            #toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.mongoStory6(self.dbConn, self.conn, True, fromDate, toDate)
 
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint)
@@ -791,16 +805,19 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.orderQueryInputBox1.get()
             toDate = self.orderQueryInputBox2.get()
-            toPrint = userStory6(self.dbConn, True, fromDate, toDate)
+            #toPrint = userStory6(self.dbConn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 6)
         elif (self.userStory == 9): # MONGO - 10
             self.queryResultBox.delete('1.0', tk.END)
             productID = self.orderQueryInputBox3.get()
-            toPrint = userStory10(self.dbConn, self.conn, True, productID)
+            #toPrint = userStory10(self.dbConn, self.conn, True, productID)
+            toPrint = self.run_query_obj.mongoStory4(self.dbConn, self.conn, True, productID)
         elif (self.userStory == 10): # MONGO - 11
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.orderQueryInputBox1.get()
             toDate = self.orderQueryInputBox2.get()
-            toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
+            #toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.mongoStory5(self.dbConn, self.conn, True, fromDate, toDate)
 
 
         # Put query result in the GUI text box
@@ -830,35 +847,42 @@ class MainApplication(tk.Frame):
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
             productID = self.productQueryInputBox3.get()
-            toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
+            #toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
+            toPrint = self.run_query_obj.userStorySeries2(self.dbConn, True, fromDate, toDate, productID, 5)
         elif (self.userStory == 9): # MONGO - 10
             self.queryResultBox.delete('1.0', tk.END)
             productID = self.productQueryInputBox3.get()
-            toPrint = userStory10(self.dbConn, self.conn, True, productID)
+            #toPrint = userStory10(self.dbConn, self.conn, True, productID)
+            toPrint = self.run_query_obj.mongoStory4(self.dbConn, self.conn, True, productID)
         elif (self.userStory == 10): # MONGO - 11
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
-            toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
+            #toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.mongoStory5(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 11):
             self.queryResultBox.delete('1.0', tk.END)
             productID = self.productQueryInputBox3.get()
-            toPrint = userStory12(self.dbConn, True, productID)
+            #toPrint = userStory12(self.dbConn, True, productID)
+            toPrint = self.run_query_obj.userStory12(self.dbConn, True, productID)
         elif (self.userStory == 12):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
-            toPrint = userStory13(self.dbConn, True, fromDate, toDate)
+            #toPrint = userStory13(self.dbConn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 13)
         elif (self.userStory == 14): # MONGO - 15
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
-            toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
+            #toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.mongoStory6(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 15):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
-            toPrint = userStory16(self.dbConn, True, fromDate, toDate)
+            #toPrint = userStory16(self.dbConn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 16)
 
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint)
@@ -886,25 +910,28 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory1(self.dbConn, True, fromDate, toDate)
+            #toPrint = userStory1(self.dbConn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 1)
 
         elif (self.userStory == 10): # MONGO - 11
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
-
+            #toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.mongoStory5(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 13): # 14
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             employeeID = self.employeeQueryInputBox3.get()
-            toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
+            #toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
+            toPrint = self.run_query_obj.userStorySeries2(self.dbConn, True, fromDate, toDate, employeeID, 14)
         elif (self.userStory == 14): # MONGO - 15
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
-            toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
+            #toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
+            toPrint = self.run_query_obj.mongoStory6(self.dbConn, self.conn, True, fromDate, toDate)
 
 
         # Put query result in the GUI text box
