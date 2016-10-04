@@ -73,8 +73,8 @@ class MainApplication(tk.Frame):
                            "6.  (SQL) Average amont of time it takes to fulfill an order during a particular time period",
                            "10. (Mongo) Compare average rating given to a product through the website against customer order ratings with that same product included",
                            "11. (Mongo) Customer satisfaction in key areas of the business over a given time period",
-                          ]                          
-                          
+                          ]
+
         self.productOptions = [
                            "5.  (SQL) Total return on investment for particular product for given time period",
                            "10. (Mongo) Compare average rating given to a product through the website against customer order ratings with that same product included",
@@ -83,15 +83,15 @@ class MainApplication(tk.Frame):
                            "13. (SQL) Create a graph showing the amount of sales for a particular product over a period of time",
                            "15. (Mongo) Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
                            "16. (SQL) Create a graph of the number of stock available for a particular product with the number of sales for that particular product over a particular time period"
-                          ]     
-                          
+                          ]
+
         self.employeeOptions = [
                            "1.  (SQL) Top salesperson of a given period, based on total cost of their sales during that time",
                            "11. (Mongo) Customer satisfaction in key areas of the business over a given time period",
                            "14. (SQL) Create a graph showing the amount of sales made by a particular sales person over a period of time",
                            "15. (Mongo) Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
-                          ] 
-                          
+                          ]
+
         self.canLogin = False
         self.login()
         self.canLoginTest = self.getter()
@@ -106,10 +106,10 @@ class MainApplication(tk.Frame):
 #            self.conn = self.mongoDB.getConnection()
 #            print ("Working")
 #            self.createInitialGUI()
-        
+
     def login(self):
         top = tk.Toplevel()
-        top.title("About this application...")
+        top.title("Login")
         usernameLabel = tk.Label(top,text="Username")
         passwordLabel = tk.Label(top,text="Password")
         usernameEntry = tk.Entry(top)
@@ -122,11 +122,11 @@ class MainApplication(tk.Frame):
         passwordLabel.grid(row=1, sticky=tk.E)
         usernameEntry.grid(row=0, column=1)
         passwordEntry.grid(row=1, column=1)
-        
+
 
         logbtn = tk.Button(top, text="Login", command = lambda: test())
         logbtn.grid(row=2, column=1,columnspan=2)
-        
+
         def test():
             username = usernameEntry.get()
             password = passwordEntry.get()
@@ -134,7 +134,7 @@ class MainApplication(tk.Frame):
             print (password)
             self._login_btn_clickked(top, username, password)
         #msg.pack()
-        
+
     def _login_btn_clickked(self,top, username, password):
         loggerObject = Logger("GUI") # Init the logger object
         self.logger = loggerObject.getLogger() # Get the logger object
@@ -157,10 +157,10 @@ class MainApplication(tk.Frame):
             self.conn = self.mongoDB.getConnection()
             print ("Working")
             self.createInitialGUI()
-        
+
     def setter(self):
         self.canLogin = True
-        
+
     def getter(self):
         return self.canLogin
 
@@ -170,25 +170,25 @@ class MainApplication(tk.Frame):
             username/password entry boxes. """
 
         #GUI menu
-        menu = tk.Menu(root)
-        root.config(menu = menu)
+        self.menu = tk.Menu(root)
+        root.config(menu = self.menu)
 
         #GUI submenus
-        editSub = tk.Menu(menu, tearoff = False)
-        menu.add_cascade(label = "Edit", menu = editSub)
+        editSub = tk.Menu(self.menu, tearoff = False)
+        self.menu.add_cascade(label = "Edit", menu = editSub)
         editSub.add_command(label = "Copy", command = self.copy)
         editSub.add_command(label = "Paste", command = self.paste)
         editSub.add_command(label = "Select All")
 
-        viewSub = tk.Menu(menu, tearoff = False)
-        menu.add_cascade(label = "View", menu = viewSub)
+        viewSub = tk.Menu(self.menu, tearoff = False)
+        self.menu.add_cascade(label = "View", menu = viewSub)
         viewSub.add_command(label = "Toggle full screen")
 
-        dataSub = tk.Menu(menu, tearoff = False)
-        menu.add_cascade(label = "Data", menu = dataSub)
+        dataSub = tk.Menu(self.menu, tearoff = False)
+        self.menu.add_cascade(label = "Data", menu = dataSub)
         dataSub.add_command(label = "Export as .csv")
 
-        menu.add_command(label = "Logout", command = self.logout)
+        self.menu.add_command(label = "Logout", command = self.logout)
 
         #Output frame
         self.outputFrame = tk.Frame(root,height=30,width = 90)
@@ -198,13 +198,14 @@ class MainApplication(tk.Frame):
         self.queryResultBox.pack(side = tk.LEFT)
         #self.queryResultBox.config(state = DISABLED)
 
+
         #input frame
-        inputFrame = tk.Frame(root,height=300,width = 600)
-        inputFrame.pack(fill = 'both')
+        self.inputFrame = tk.Frame(root,height=300,width = 600)
+        self.inputFrame.pack(fill = 'both')
 
 
         #Tabs
-        tabControl = ttk.Notebook(inputFrame) #Tab control
+        tabControl = ttk.Notebook(self.inputFrame) #Tab control
 
         # ------------------------------------------------------------------------- TAB 1 -------------------------------------------------------------------------
 
@@ -263,7 +264,7 @@ class MainApplication(tk.Frame):
 
         tab3 = tk.Frame(tabControl)
         tabControl.add(tab3, text='Products')
-        
+
         #Dropdown list
         var = tk.StringVar()
         var.set(self.productOptions[0])
@@ -289,7 +290,7 @@ class MainApplication(tk.Frame):
 
         tab4 = tk.Frame(tabControl)
         tabControl.add(tab4, text='Employee')
-        
+
         #Dropdown list
         var = tk.StringVar()
         var.set(self.employeeOptions[0])
@@ -313,8 +314,8 @@ class MainApplication(tk.Frame):
 
 
         #Status bar
-        status = tk.Label(root, text = "ready", bd = 1, relief = "sunken", anchor = W)
-        status.pack(side = BOTTOM, fill = X)
+        self.status = tk.Label(root, text = "ready", bd = 1, relief = "sunken", anchor = W)
+        self.status.pack(side = BOTTOM, fill = X)
 
         #----------------------------------------------------------------------Customer--------------------------------------------------------
 
@@ -344,9 +345,9 @@ class MainApplication(tk.Frame):
         self.orderQueryInputBox1.configure(state="disabled")
         self.orderQueryInputBox2.configure(state="disabled")
         self.orderQueryInputBox3.configure(state="disabled")
-        
+
         #----------------------------------------------------------------------Order--------------------------------------------------------
-        
+
         # Set prompt text of order input boxes:
         self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
@@ -373,7 +374,7 @@ class MainApplication(tk.Frame):
         self.orderQueryInputBox1.configure(state="disabled")
         self.orderQueryInputBox2.configure(state="disabled")
         self.orderQueryInputBox3.configure(state="disabled")
-        
+
         #----------------------------------------------------------------------Products--------------------------------------------------------
 
         # Set prompt text of product input boxes:
@@ -402,8 +403,8 @@ class MainApplication(tk.Frame):
         self.orderQueryInputBox1.configure(state="disabled")
         self.orderQueryInputBox2.configure(state="disabled")
         self.orderQueryInputBox3.configure(state="disabled")
-        
-        
+
+
         #----------------------------------------------------------------------employee--------------------------------------------------------
 
         # Set prompt text of employee input boxes:
@@ -530,11 +531,6 @@ class MainApplication(tk.Frame):
             a bug preventing it being called directly from the button press,
             so the press goes here before calling the external function. """
 
-    def showGraph(self):
-        """ showGraph: This method will open a new top level window and display
-            a graph image. It simply shows the image file called graph.png
-            which is stored in /assets. This will be the most recent graph
-            that has been created. """
 
     def customerDropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
@@ -623,8 +619,8 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             self.orderQueryInputBox1.config(state='normal')
             self.orderQueryInputBox2.config(state='normal')
-        
-            
+
+
     def productDropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
             menu option from the drop down menu. It deletes the contents of the
@@ -675,7 +671,7 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
-            
+
     def employeeDropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
             menu option from the drop down menu. It deletes the contents of the
@@ -763,7 +759,7 @@ class MainApplication(tk.Frame):
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
             toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
-       
+
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint)
 
@@ -776,7 +772,7 @@ class MainApplication(tk.Frame):
         self.customerQueryInputBox1.config(state='disabled')
         self.customerQueryInputBox2.config(state='disabled')
         self.customerQueryInputBox3.config(state='disabled')
-        
+
     def orderSubmitUserStory(self):
         """ submitUserStory: This method is called when the submit button is
             pressed. It uses self.userStory (number of drop down menu that
@@ -785,7 +781,7 @@ class MainApplication(tk.Frame):
             of the user stories. The connection to MySQL or MongoDB is passed
             in as the first parameter. The results are assigned to toPrint,
             which is passed in to the self.outputQueryResult method. """
-        
+
         if (self.userStory == 5):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.orderQueryInputBox1.get()
@@ -800,7 +796,7 @@ class MainApplication(tk.Frame):
             fromDate = self.orderQueryInputBox1.get()
             toDate = self.orderQueryInputBox2.get()
             toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
-        
+
 
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint)
@@ -813,8 +809,8 @@ class MainApplication(tk.Frame):
         # Disable the inputs
         self.orderQueryInputBox1.config(state='disabled')
         self.orderQueryInputBox2.config(state='disabled')
-        self.orderQueryInputBox3.config(state='disabled')        
-        
+        self.orderQueryInputBox3.config(state='disabled')
+
     def productSubmitUserStory(self):
         """ submitUserStory: This method is called when the submit button is
             pressed. It uses self.userStory (number of drop down menu that
@@ -823,7 +819,7 @@ class MainApplication(tk.Frame):
             of the user stories. The connection to MySQL or MongoDB is passed
             in as the first parameter. The results are assigned to toPrint,
             which is passed in to the self.outputQueryResult method. """
-       
+
         if (self.userStory == 4):
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
@@ -871,7 +867,7 @@ class MainApplication(tk.Frame):
         self.productQueryInputBox1.config(state='disabled')
         self.productQueryInputBox2.config(state='disabled')
         self.productQueryInputBox3.config(state='disabled')
-        
+
     def employeeSubmitUserStory(self):
         """ submitUserStory: This method is called when the submit button is
             pressed. It uses self.userStory (number of drop down menu that
@@ -886,13 +882,13 @@ class MainApplication(tk.Frame):
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             toPrint = userStory1(self.dbConn, True, fromDate, toDate)
-        
+
         elif (self.userStory == 10): # MONGO - 11
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
-        
+
         elif (self.userStory == 13): # 14
             self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
@@ -904,7 +900,7 @@ class MainApplication(tk.Frame):
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
-       
+
 
         # Put query result in the GUI text box
         self.outputQueryResult(toPrint)
@@ -918,11 +914,17 @@ class MainApplication(tk.Frame):
         self.employeeQueryInputBox1.config(state='disabled')
         self.employeeQueryInputBox2.config(state='disabled')
         self.employeeQueryInputBox3.config(state='disabled')
-        
+
     def logout(self):
         """ logout: Destroys GUI features on logout, changes loginStatus label
             text and enable login button and user/password inputs. Also closes
             the connections to Mongo and MySQL. """
+        self.canLogin = False
+        self.login()
+        self.menu.destroy()
+        self.outputFrame.destroy()
+        self.inputFrame.destroy()
+        self.status.destroy()
 
 
     def customSQL(self):
