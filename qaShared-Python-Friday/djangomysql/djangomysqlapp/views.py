@@ -59,12 +59,19 @@ def customer(request):
 def query(request, datestart, dateend):
 	cursor = connection.cursor()
 	order_list = Employee.objects.raw('''SELECT e.idEmployee, e.firstName, e.lastName, round(SUM(p.salePrice * op.quantity),2) as 'TotalSales' From nbgardensds.Purchase as o Join nbgardensds.PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join nbgardensds.Product as p On op.Pro_idProduct = p.idProduct Join nbgardensds.Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between %(select_cond)s and %(where_cond)s group by e.idEmployee order by 'TotalSales' desc limit 20''', params={'select_cond': datestart, 'where_cond': dateend})
-	template = loader.get_template('djangomysqlapp/resultsnew.html')
+	template = loader.get_template('djangomysqlapp/queryone.html')
 	context = {
 	'order_list': order_list,
 	}
 	return HttpResponse(template.render(context, request))
-	
+def queryfourteen(request, datestart, dateend, employeeid):
+	cursor = connection.cursor()
+	order_list = Employee.objects.raw('''SELECT e.idEmployee, o.createDate, round(SUM(p.salePrice*op.quantity),2) as 'Sales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct Join Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between %(date_start)s and %(date_end)s AND e.idEmployee = %(employee_id)s group by e.idEmployee DESC''', params={'date_start': datestart, 'date_end': dateend, 'employee_id': employeeid})
+	template = loader.get_template('djangomysqlapp/queryfourteen.html')
+	context = {
+	'order_list': order_list,
+	}
+	return HttpResponse(template.render(context, request))	
 def get_year(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
