@@ -14,9 +14,46 @@
     <script src="/static/js/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/bootstrap.min.js"></script>
-	
 	<script type="text/javascript">
 	$( document ).ready(function() {
+ 
+ $('#post-form').on('submit', function(event){
+    event.preventDefault();
+    console.log("form submitted!")  // sanity check
+    create_post();
+});
+
+$.ajaxSetup({
+  data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+});
+
+function create_post() {
+	var datestart =  $('#id_datefrom').val();
+	var dateto =  $('#id_dateto').val();
+    console.log("create post is working!") // sanity check
+    console.log($('#post-text').val())
+	    $.ajax({
+        url : "/djangomysqlapp/query/" + datestart +"/"+dateto, // the endpoint
+        type : "POST", // http method
+        data : { the_post : $('#post-text').val() }, // data sent with the post request
+		
+        // handle a successful response
+        success : function(json) {
+            $('#post-text').val(''); // remove the value from the input
+            console.log(json); // log the returned json to the console
+            console.log("success"); // another sanity check
+        },
+
+        // handle a non-successful response
+        error : function(xhr,errmsg,err) {
+            $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+        }
+    });
+	
+};
+
  
 		$( "#submit_query" ).click(function( event ) {
 	 
@@ -126,14 +163,14 @@
 		<div id="query1" class="tab-pane fade">
 		<br>
 		<h3>Determine the top salesperson of a given period based on the total cost of their sales during that time</h3>
-			<form method="post" action="">
+			<form method="POST" id="post-form">
+				{% csrf_token %}
 				<p><label for="id_datefrom">Date From:</label>
 				<input id="id_datefrom" type="date" name="datefrom" maxlength="100" required /></p>
 				<p><label for="id_dateto">Date From:</label>
 				<input id="id_dateto" type="date" name="dateto" maxlength="100" required /></p>
 				<p><label for="id_employeeid">Employee ID:</label>
 				<input id="id_employeeid" type="int" name="employeeid" maxlength="100" required /></p>
-				{% csrf_token %}
 				{{ form }}
 				<input type="submit" value="Submit">
 			</form>

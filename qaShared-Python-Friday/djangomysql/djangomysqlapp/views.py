@@ -59,7 +59,7 @@ def customer(request):
 def query(request, datestart, dateend):
 	cursor = connection.cursor()
 	order_list = Employee.objects.raw('''SELECT e.idEmployee, e.firstName, e.lastName, round(SUM(p.salePrice * op.quantity),2) as 'TotalSales' From nbgardensds.Purchase as o Join nbgardensds.PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join nbgardensds.Product as p On op.Pro_idProduct = p.idProduct Join nbgardensds.Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between %(select_cond)s and %(where_cond)s group by e.idEmployee order by 'TotalSales' desc limit 20''', params={'select_cond': datestart, 'where_cond': dateend})
-	template = loader.get_template('djangomysqlapp/orders.html')
+	template = loader.get_template('djangomysqlapp/results.html')
 	context = {
 	'order_list': order_list,
 	}
@@ -111,3 +111,10 @@ def get_contact(request):
         form = ContactForm()
 
     return render(request, 'home.html', {'form': form})
+	
+def jqueryserver(request):
+    print "in jqueryserver"
+    response_string="hello"
+    if request.method == 'GET':
+        if request.is_ajax()== True:
+            return HttpResponse(response_string,mimetype='text/plain')

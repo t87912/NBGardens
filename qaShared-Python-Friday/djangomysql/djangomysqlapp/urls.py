@@ -15,4 +15,5 @@ urlpatterns = [
     # ex: /polls/5/vote/
     url(r'^(?P<idproduct>[0-9]+)/vote/$', views.vote, name='vote'),
 	url(r'^query/(?P<datestart>[\w\-]+)/(?P<dateend>[\w\-]+)$', views.query, name='query'),
+	url(r'^jqueryserver/$',views.jqueryserver),
 ]
