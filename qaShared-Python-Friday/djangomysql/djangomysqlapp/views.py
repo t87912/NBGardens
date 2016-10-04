@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
@@ -75,7 +76,7 @@ def queryfourteen(request, datestart, dateend, employeeid):
 	
 def querytwo(request, datestart, dateend):
 	cursor = connection.cursor()
-	order_list = Customer.objects.raw('''SELECT c.idCustomer, c.firstName, c.lastName, round(SUM(p.salePrice*op.quantity),2) as 'Total Sales' From nbgardensds.Purchase as o Join nbgardensds.PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join nbgardensds.Product as p On op.Pro_idProduct = p.idProduct Join nbgardensds.Customer as c On o.cust_idCustomer = c.idCustomer where o.createDate between %(date_start)s and %(date_end)s group by c.idCustomer order by round(SUM(p.salePrice*op.quantity),2) desc limit 20​''', params={'date_start': datestart, 'date_end': dateend})
+	order_list = Customer.objects.raw('''SELECT c.idCustomer, c.firstName, c.lastName, round(SUM(p.salePrice*op.quantity),2) as 'TotalSales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct Join Customer as c On o.cust_idCustomer = c.idCustomer where o.createDate between %(date_start)s and %(date_end)s group by c.idCustomer order by round(SUM(p.salePrice*op.quantity),2) desc limit 20''', params={'date_start': datestart, 'date_end': dateend})
 	template = loader.get_template('djangomysqlapp/querytwo.html')
 	context = {
 	'order_list': order_list,
