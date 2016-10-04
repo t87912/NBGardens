@@ -49,23 +49,19 @@
 	  </div>
 	</nav>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="table-responsive col-md-12">
+		<div class="container">
+	  <h2>Dynamic Tabs</h2>
+	  <ul class="nav nav-tabs">
+		<li class="active"><a data-toggle="tab" href="currentsales"></a>Current Sales</li>
+		<li><a data-toggle="tab"  href="query1"></a>Top Salesperson</li>
+		<li><a data-toggle="tab" href="#query2">Amount of Sales made</a></li>
+		<li><a data-toggle="tab" href="#query3">Compare Ratinga</a></li>
+	  </ul>
+
+	  <div class="tab-content">
+	    <div id="currentsales" class="tab-pane fade in active">
+		<br>
+			<div class="table-responsive col-md-12">
 		<div class="panel panel-default">
 			<!-- Default panel contents -->
 			<div class="panel-heading">Orders</div>
@@ -113,5 +109,21 @@
 			</table>
 		</div>
 	</div>
+		</div>
+		<div id="query1" class="tab-pane fade">
+		<br>
+		<h3>Determine the top salesperson of a given period based on the total cost of their sales during that time</h3>
+		</div>
+		<div id="query2" class="tab-pane fade">
+		  <h3>Amount of sales made by a particular sales person over a period of time (GRAPH)</h3>
+
+		</div>
+		<div id="query3" class="tab-pane fade">
+		  <h3>Compare the average rating given to a product </h3>
+		  
+		</div>
+	  </div>
+	</div>	
+
 </body>
 </html>

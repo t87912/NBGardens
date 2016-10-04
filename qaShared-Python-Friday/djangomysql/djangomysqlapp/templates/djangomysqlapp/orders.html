@@ -62,54 +62,54 @@
 		<div id="orderlist" class="tab-pane fade in active">
 		<br>
 		  <div class="table-responsive col-md-12">
-		<div class="panel panel-default">
-			<!-- Default panel contents -->
-			<div class="panel-heading">Orders</div>
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">Orders</div>
 
-			<!-- Table -->
-			<table class="table table-striped">
-				<thead>
-				<tr>
-					<th>Order ID</th>
-					<th>Order Status</th>
-					<th>Employee ID</th>
-					<th>Customer ID</th>
-					<th>Address ID</th>
-					<th>Payment ID</th>
-					<th>Date Created</th>
-					<th>GDZ Date</th>
-					<th>Date Dispatched</th>
-					<th>Date Delivered</th>
-					<th>Date Cancelled</th>
-					<th>Date Returned</th>
-				</tr>
-				</thead>
-				{% if order_list %}
-				<tbody>
-				{% for order in order_list %}
+				<!-- Table -->
+				<table class="table table-striped">
+					<thead>
 					<tr>
-						<td><a href="/djangomysqlapp/order/{{ order.idpurchase }}/">{{ order.idpurchase }}</a></td>
-						<td>{{ order.purchasestatus }}</td>
-						<td>{{ order.emp_idemployee}}</td>
-						<td>{{ order.cust_idcustomer}}</td>
-						<td>{{ order.add_idaddress}}</td>
-						<td>{{ order.pay_idpayment}}</td>
-						<td>{{ order.createdate }}</td>
-						<td>{{ order.gdzdate}}</td>
-						<td>{{ order.dispatcheddate}}</td>
-						<td>{{ order.delivereddate}}</td>
-						<td>{{ order.cancelleddate}}</td>
-						<td>{{ order.returneddate}}</td>
-						 {% endfor %}
+						<th>Order ID</th>
+						<th>Order Status</th>
+						<th>Employee ID</th>
+						<th>Customer ID</th>
+						<th>Address ID</th>
+						<th>Payment ID</th>
+						<th>Date Created</th>
+						<th>GDZ Date</th>
+						<th>Date Dispatched</th>
+						<th>Date Delivered</th>
+						<th>Date Cancelled</th>
+						<th>Date Returned</th>
 					</tr>
-					
-					{% else %}
-				<p>No Products are available.</p>
-				{% endif %}
-				</tbody>
-			</table>
+					</thead>
+					{% if order_list %}
+					<tbody>
+					{% for order in order_list %}
+						<tr>
+							<td><a href="/djangomysqlapp/order/{{ order.idpurchase }}/">{{ order.idpurchase }}</a></td>
+							<td>{{ order.purchasestatus }}</td>
+							<td>{{ order.emp_idemployee}}</td>
+							<td>{{ order.cust_idcustomer}}</td>
+							<td>{{ order.add_idaddress}}</td>
+							<td>{{ order.pay_idpayment}}</td>
+							<td>{{ order.createdate }}</td>
+							<td>{{ order.gdzdate}}</td>
+							<td>{{ order.dispatcheddate}}</td>
+							<td>{{ order.delivereddate}}</td>
+							<td>{{ order.cancelleddate}}</td>
+							<td>{{ order.returneddate}}</td>
+							 {% endfor %}
+						</tr>
+						
+						{% else %}
+					<p>No Products are available.</p>
+					{% endif %}
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
 		</div>
 		<div id="query1" class="tab-pane fade">
 		  <h3>Total spend versus total cost for a given time period</h3>
