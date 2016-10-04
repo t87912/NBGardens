@@ -46,19 +46,14 @@ def get_year(request):
         # check whether it's valid:
         if form.is_valid():
             year = form.cleaned_data['year']
-
-			
-			
-			
-			
-			
-			
+	
             return HttpResponseRedirect('/thanks/')
     # if a GET (or any other method) we'll create a blank form
     else:
         form = YearForm()
     return render(request, 'product.html', {'form': form})
 	
+
 
 def get_contact(request):
     # if this is a POST request we need to process the form data
