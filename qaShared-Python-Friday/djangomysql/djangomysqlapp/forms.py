@@ -13,12 +13,19 @@ class ContactForm(forms.Form):
     sender = forms.EmailField()
     cc_myself = forms.BooleanField(required=False)
 	
-class IDForm(forms.Form)
-	employee_id= forms.IntegerField(min_value=0)
-	Dateto= forms.DateField(label='Date To', max_length=100)
-	Datefrom= forms.DateField(label='Date From', max_length=100)
-
+class SalesForm(forms.Form)
+	employeeid= forms.IntegerField(min_value=0)
 	
 class CustomerForm(forms.Form)
 	amount= forms.IntegerField(min_value=0)
 	customer_id= forms.IntegerField(min_value=0)
+	productid= forms.IntegerField(min_value=0)
+
+class DateForm(forms.Form)
+	datefrom=forms.DateField(['%Y/%m/%d'])
+	dateto=forms.DateField(['%Y/%m/%d'])
+
+class ratingForm(forms.Form)
+	county = forms.BooleanField(required=False)
+	age = forms.BooleanField(required=False)
+	gender = forms.BooleanField(required=False)

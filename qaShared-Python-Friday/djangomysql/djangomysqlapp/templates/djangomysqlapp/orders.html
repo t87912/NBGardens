@@ -113,11 +113,27 @@
 		</div>
 		<div id="query1" class="tab-pane fade">
 		  <h3>Total spend versus total cost for a given time period</h3>
-
+			<form method="post" action="">
+				<p><label for="id_datefrom">Date From:</label>
+				<input id="id_datefrom" type="date" name="datefrom" maxlength="100" required /></p>
+				<p><label for="id_dateto">Date From:</label>
+				<input id="id_dateto" type="date" name="dateto" maxlength="100" required /></p>
+				{% csrf_token %}
+				{{ form }}
+				<input type="submit" value="Submit">
+			</form>
 		</div>
 		<div id="query2" class="tab-pane fade">
 		  <h3>Average amount of time it takes to fulfil an order during a particular time period</h3>
-		  
+			<form method="post" action="">
+				<p><label for="id_datefrom">Date From:</label>
+				<input id="id_datefrom" type="date" name="datefrom" maxlength="100" required /></p>
+				<p><label for="id_dateto">Date From:</label>
+				<input id="id_dateto" type="date" name="dateto" maxlength="100" required /></p>
+				{% csrf_token %}
+				{{ form }}
+				<input type="submit" value="Submit">
+			</form>
 		</div>
 	  </div>
 	</div>
