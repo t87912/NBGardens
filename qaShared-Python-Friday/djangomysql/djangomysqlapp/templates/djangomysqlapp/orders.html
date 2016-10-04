@@ -59,6 +59,37 @@
 	  </ul>
 
 	  <div class="tab-content">
+	  
+	  		<div id="orderlist" class="tab-pane fade in active">
+		<br>
+		  <div class="table-responsive col-md-12">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">Employees</div>
+
+				<!-- Table -->
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th>Employee ID</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Total Sales</th>
+					</tr>
+					</thead>
+								{% for order in order_list %}
+								<tr>
+									<td>{{ order.idemployee }}</td>
+									<td>{{ order.firstname}}</td>
+									<td>{{ order.lastname}}</td>
+									<td>£{{ order.TotalSales}}</td>
+									 {% endfor %}
+								</tr>
+
+				</table>
+			</div>
+		</div>
+	  
 		<div id="orderlist" class="tab-pane fade in active">
 		<br>
 		  <div class="table-responsive col-md-12">
@@ -84,56 +115,30 @@
 						<th>Date Returned</th>
 					</tr>
 					</thead>
-					{% if order_list %}
-					<tbody>
-					{% for order in order_list %}
-						<tr>
-							<td><a href="/djangomysqlapp/order/{{ order.idpurchase }}/">{{ order.idpurchase }}</a></td>
-							<td>{{ order.purchasestatus }}</td>
-							<td>{{ order.emp_idemployee}}</td>
-							<td>{{ order.cust_idcustomer}}</td>
-							<td>{{ order.add_idaddress}}</td>
-							<td>{{ order.pay_idpayment}}</td>
-							<td>{{ order.createdate }}</td>
-							<td>{{ order.gdzdate}}</td>
-							<td>{{ order.dispatcheddate}}</td>
-							<td>{{ order.delivereddate}}</td>
-							<td>{{ order.cancelleddate}}</td>
-							<td>{{ order.returneddate}}</td>
-							 {% endfor %}
-						</tr>
-						
-						{% else %}
-					<p>No Products are available.</p>
-					{% endif %}
-					</tbody>
+					<p> {{order_list}} </p>
+					<p>Employee ID: {{ order_list.idemployee }}</p>
+					<p>First Name: {{ order_list.firstName }}</p>
+					<p>Last Name: {{ order_list.lastName }}</p>
+								{% for order in order_list %}
+								<tr>
+									<td>id{{ order.idemployee }}</td>
+									<td>fn{{ order.firstname}}</td>
+									<td>ln{{ order.lastname}}</td>
+									<td>ln{{ order.TotalSales}}</td>
+									 {% endfor %}
+								</tr>
+
 				</table>
 			</div>
 		</div>
 		</div>
 		<div id="query1" class="tab-pane fade">
 		  <h3>Total spend versus total cost for a given time period</h3>
-			<form method="post" action="">
-				<p><label for="id_datefrom">Date From:</label>
-				<input id="id_datefrom" type="date" name="datefrom" maxlength="100" required /></p>
-				<p><label for="id_dateto">Date From:</label>
-				<input id="id_dateto" type="date" name="dateto" maxlength="100" required /></p>
-				{% csrf_token %}
-				{{ form }}
-				<input type="submit" value="Submit">
-			</form>
+
 		</div>
 		<div id="query2" class="tab-pane fade">
 		  <h3>Average amount of time it takes to fulfil an order during a particular time period</h3>
-			<form method="post" action="">
-				<p><label for="id_datefrom">Date From:</label>
-				<input id="id_datefrom" type="date" name="datefrom" maxlength="100" required /></p>
-				<p><label for="id_dateto">Date From:</label>
-				<input id="id_dateto" type="date" name="dateto" maxlength="100" required /></p>
-				{% csrf_token %}
-				{{ form }}
-				<input type="submit" value="Submit">
-			</form>
+		  
 		</div>
 	  </div>
 	</div>

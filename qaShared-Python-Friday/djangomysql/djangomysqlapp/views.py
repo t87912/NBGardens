@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import Product, Purchase
+from .models import Product, Purchase, Employee
 from .forms import YearForm, LoginForm, ContactForm
 from django.core.mail import send_mail
+from django.db import connection
 
 # Create your views here.
 def index(request):
@@ -23,7 +24,10 @@ def products(request):
 def product(request, idproduct):
     return HttpResponse("You're looking at Product %s." % idproduct)
 def orders(request):
-	order_list = Purchase.objects.raw('''SELECT e.idEmployee, e.firstName, e.lastName, round(SUM(p.salePrice * op.quantity),2) as 'Total Sales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct Join Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between '2014-01-30' and '2016-01-30' group by e.idEmployee order by 'Total Sales' desc limit 20''')
+	cursor = connection.cursor()
+	#cursor.execute('''SELECT e.idEmployee, e.firstName, e.lastName, round(SUM(p.salePrice * op.quantity),2) as 'Total Sales' From nbgardensds.Purchase as o Join nbgardensds.PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join nbgardensds.Product as p On op.Pro_idProduct = p.idProduct Join nbgardensds.Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between '2015-01-30' and '2016-01-30' group by e.idEmployee order by 'Total Sales' desc limit 20''')
+	order_list = Employee.objects.raw('''SELECT e.idEmployee, e.firstName, e.lastName, round(SUM(p.salePrice * op.quantity),2) as 'TotalSales' From nbgardensds.Purchase as o Join nbgardensds.PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join nbgardensds.Product as p On op.Pro_idProduct = p.idProduct Join nbgardensds.Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between '2015-01-30' and '2016-01-30' group by e.idEmployee order by 'Total Sales' desc limit 20''')
+	#order_list = cursor.fetchall()
 	template = loader.get_template('djangomysqlapp/orders.html')
 	context = {
 	'order_list': order_list,
