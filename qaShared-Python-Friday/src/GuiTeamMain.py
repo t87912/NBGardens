@@ -16,6 +16,7 @@ from mongoDatabase.MongoDatabase import MongoDatabase
 from mongoDatabase import MongoQueries
 from exportToCSV import exportToCSV
 from assets.JsonWriterTool import TheWriterClass
+from assets.TxtWriterTool import writeToTXT
 from Logger import Logger
 
 from AutoGenCode import AutoGenCode
@@ -60,37 +61,37 @@ class MainApplication(tk.Frame):
         self.userStory = 0 # Holds userStory number from drop down menu
 
         self.customerOptions = [
-                           "Which customer has highest spending in given period",
-                           "3.  (SQL) Which customer has spent more than 'x' amount during a given period",
-                           "4.  (SQL) Total spend vs total cost for given time period",
-                           "7.  (Mongo) Average rating a particular customer has given NB Gardens",
-                           "8.  (Mongo) Average rating a group of customers from particular county has given NB Gardens",
-                           "9.  (Mongo) Average rating a group of customers from particular demographic (age, gender etc.) has given NB Gardens",
-                           "11. (Mongo) Customer satisfaction in key areas of the business over a given time period",
-                           "15. (Mongo) Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
+                           "Highest spending Customer in a given period",
+                           "Which customers have spent more than 'x' amount during a given period",
+                           "Total spend vs total cost for given time period",
+                           "Average rating a Customer has given NB Gardens",
+                           "Average rating Customers from a particular county have given NB Gardens",
+                           "Average rating a demographic has given NB Gardens",
+                           "Customer satisfaction in key areas of the business over a given time period",
+                           "Show the customer satisfaction in a range of areas over a period of time (Graph)",
                           ]
 
         self.orderOptions = [
-                           "6.  (SQL) Average amont of time it takes to fulfill an order during a particular time period",
-                           "10. (Mongo) Compare average rating given to a product through the website against customer order ratings with that same product included",
-                           "11. (Mongo) Customer satisfaction in key areas of the business over a given time period",
+                           "Average time taken to fulfill orders during a particular time period",
+                           "Compare ratings given to a product through the website and by phone",
+                           "Customer satisfaction in key areas of the business over a given time period",
                           ]
 
         self.productOptions = [
-                           "5.  (SQL) Total return on investment for particular product for given time period",
-                           "10. (Mongo) Compare average rating given to a product through the website against customer order ratings with that same product included",
-                           "11. (Mongo) Customer satisfaction in key areas of the business over a given time period",
-                           "12. (SQL) Check website details for particular product match that is stored in the physical inventory",
-                           "13. (SQL) Create a graph showing the amount of sales for a particular product over a period of time",
-                           "15. (Mongo) Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
-                           "16. (SQL) Create a graph of the number of stock available for a particular product with the number of sales for that particular product over a particular time period"
+                           "Return on investment for a product over a given time period",
+                           "Compare ratings given to a product through the website and by phone",
+                           "Customer satisfaction in key areas of the business over a given time period",
+                           "Get website details for a product that is stored in the physical inventory",
+                           "Get the amount of sales for a product over a period of time (Graph)",
+                           "Get customer satisfaction in a range of areas over a period of time (Graph)",
+                           "Show the stock available for a product and the number of sales over a particular time period (Graph)"
                           ]
 
         self.employeeOptions = [
-                           "1.  (SQL) Top salesperson of a given period, based on total cost of their sales during that time",
-                           "11. (Mongo) Customer satisfaction in key areas of the business over a given time period",
-                           "14. (SQL) Create a graph showing the amount of sales made by a particular sales person over a period of time",
-                           "15. (Mongo) Create a graph showing the levels of customer satisfaction in a range of areas over a period of time",
+                           "Top salesperson of a given period, based on total value of their sales",
+                           "Customer satisfaction in key areas of the business over a given time period",
+                           "Show the amount of sales made by a particular sales person over a period of time (Graph)",
+                           "Show customer satisfaction in a range of areas over a period of time (Graph)",
                           ]
 
         self.canLogin = False
@@ -190,14 +191,16 @@ class MainApplication(tk.Frame):
         dataSub.add_command(label = "Export as .txt", command = self.callTXT)
         dataSub.add_command(label = "Export as .csv", command = self.callCSV)
         dataSub.add_command(label = "Export as .json", command = self.callJSON)
+        
+        self.menu.add_command(label = "Help")
 
         self.menu.add_command(label = "Logout", command = self.logout)
 
         #Output frame
-        self.outputFrame = tk.Frame(root,height=200,width = 300)
+        self.outputFrame = tk.Frame(root,height=100,width = 100)
         self.outputFrame.pack(side = tk.TOP)
 
-        self.queryResultBox = tk.Text(self.outputFrame,width=95,height=20)
+        self.queryResultBox = tk.Text(self.outputFrame,width=79,height=25)
         self.queryResultBox.pack(side = tk.LEFT)
         #self.queryResultBox.config(state = DISABLED)
 
@@ -533,9 +536,8 @@ class MainApplication(tk.Frame):
         """ callTXT: This just calls the external method exportToTXT. There is
             a bug preventing it being called directly from the button press,
             so the press goes here before calling the external function. """
-        txtFile = open('TXT_Output.txt', 'w+')
-        for line in txtFile:
-            self.currentQueryResult.append(line.strip().split('\n'))
+        #writeToTXT().writeToFile(self.currentQueryResult)
+        writeToTXT(self.currentQueryResult)
             
         
     def callCSV(self):
@@ -994,6 +996,6 @@ if __name__ == "__main__":
     autoGen = autoGenCode.getAutoGen()
     root = tk.Tk()
     MainApplication = MainApplication(root, autoGen)
-    root.geometry('950x600')
+    root.geometry('650x580')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()
