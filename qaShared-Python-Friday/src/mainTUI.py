@@ -5,50 +5,14 @@ Created on Wed Aug 31 11:11:07 2016
 @author: Administrator
 """
 
-# TODO
-# 2. finish off mongo queries that use SQL
-# 8. on github readme, have proper dependencies eg. need pysql/pymongo
-
 # Import modules:
 from AutoGenCode import AutoGenCode
 from UserStories import AllUserStories
-
 import sys
-
-# Import other python class files:
 from Login import Login
 from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
 from Logger import Logger
-
-'''
-Customer
-    2 SQL
-    3 SQL
-    7 Mongo
-    8 Mongo
-    9 Mongo
-    11 Mongo
-    15 Mongo
-
-Order
-    6 SQL
-    10 Mongo
-
-
-Product
-    5 SQL
-    12 SQL
-    13 SQL
-    16 SQL
-
-Employee
-    1 SQL
-    14 SQL
-
-NBGardens
-    4 SQL
-'''
 
 class MainLogic(object):
     """ MainLogic: Holds the logic for running the program in the prompt.  """
@@ -84,32 +48,6 @@ class MainLogic(object):
         self.fh = loggerObject.getFileHandler() # Get the logger filehandler      
         self.initialLogin = True # used to not display gnome after first login
         self.runProgram()
-
-#    def runProgram(self):  
-#        """ runProgram: Holds logic for the menu choices. """
-#        valid = False
-#        while (not valid):
-#            print ("Welcome to the NB Gardens Databse Query System!")
-#            self.printGnome()
-#            self.printMenu()
-#            valid = self.getMenuInput()
-#            if (valid):
-#                if (self.menuOption == 1):
-#                    validLogin = False
-#                    while (not validLogin):
-#                        userLogin = Login()
-#                        userLoginDetails = userLogin.getLoginDetails()
-#                        db = MySQLDatabase(userLoginDetails)
-#                        validLogin = db.login()
-#                    db.mainLogic()
-#                    valid = False
-#                elif (self.menuOption == 2):
-#                    mongoDB = MongoDatabase()
-#                    mongoDB.run()
-#                    valid = False
-#                elif (self.menuOption == 9):
-#                    print ("Exiting the program...")
-#                    sys.exit(0)
 
     def runProgram(self):  
         """ runProgram: Holds logic for the menu choices. """
@@ -354,11 +292,7 @@ class MainLogic(object):
             self.menuOption = userChoice
             return True
             
-    
-
-        
 if __name__ == "__main__":
-    #app = MainLogic()
     autoGenCode = AutoGenCode()
     autoGen = autoGenCode.getAutoGen()
     mainTUI = MainLogic(autoGen)
