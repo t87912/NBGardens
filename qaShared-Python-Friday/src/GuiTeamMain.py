@@ -185,6 +185,7 @@ class MainApplication(tk.Frame):
         viewSub = tk.Menu(self.menu, tearoff = False)
         self.menu.add_cascade(label = "View", menu = viewSub)
         viewSub.add_command(label = "Toggle full screen")
+        viewSub.add_command(label = "Bring the Gnome back", command = self.printGnome)
 
         dataSub = tk.Menu(self.menu, tearoff = False)
         self.menu.add_cascade(label = "Data", menu = dataSub)
@@ -209,18 +210,7 @@ class MainApplication(tk.Frame):
         self.inputFrame = tk.Frame(root,height=150,width = 600)
         self.inputFrame.pack(fill = 'both')
 
-        gnome = [["    /  \        "],
-                 ["   /   <\|      "],
-                 ["  /      \      "],
-                 ["  |_.- o-o      "],
-                 ["  / C  -._)\\    "],
-                 [" / ,        |   "],
-                 ["|   `-,_,__,    "],
-                 ["(,,)====[_]=|   "],
-                 ["   .   ____/    "],
-                 ["   | -|-|_      "],
-                 ["   |____)_)     "]]
-        self.outputQueryResult(gnome)
+        self.printGnome()
         
         #Tabs
         tabControl = ttk.Notebook(self.inputFrame) #Tab control
@@ -455,7 +445,23 @@ class MainApplication(tk.Frame):
         self.orderQueryInputBox1.configure(state="disabled")
         self.orderQueryInputBox2.configure(state="disabled")
         self.orderQueryInputBox3.configure(state="disabled")
-    
+        
+        
+    def printGnome(self):
+        gnome = [["    /  \        "],
+                 ["   /   <\|      "],
+                 ["  /      \      "],
+                 ["  |_.- o-o      "],
+                 ["  / C  -._)\\    "],
+                 [" / ,        |   "],
+                 ["|   `-,_,__,    "],
+                 ["(,,)====[_]=|   "],
+                 ["   .   ____/    "],
+                 ["   | -|-|_      "],
+                 ["   |____)_)     "]]
+                 
+        self.outputQueryResult(gnome)
+        
     def copy(self):
         content = self.outputFrame.selection_get()
         root.clipboard_clear()
