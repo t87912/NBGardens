@@ -124,6 +124,14 @@ def querysix(request, datestart, dateend):
 	'order_list': dictfetchall(cursor),
 	}
 	return HttpResponse(template.render(context, request))
+def querythirteen(request, datestart, dateend, productid):
+	cursor = connection.cursor()
+	cursor.execute('''SELECT op.Pro_idProduct, Sum(op.quantity) as "SumSales" From Purchase as o Join PurchaseLines as op On o.idPurchase = op.pur_idPurchase where o.createDate between %(date_start)s and %(date_end)s group by op.Pro_idProduct''', params={'date_start': datestart, 'date_end': dateend, 'employee_id': productid})
+	template = loader.get_template('djangomysqlapp/querythirteen.html')
+	context = {
+	'order_list': dictfetchall(cursor),
+	}
+	return HttpResponse(template.render(context, request))	
 def queryfourteen(request, datestart, dateend, employeeid):
 	cursor = connection.cursor()
 	order_list = Employee.objects.raw('''SELECT e.idEmployee, o.createDate, round(SUM(p.salePrice*op.quantity),2) as 'Sales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct Join Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between %(date_start)s and %(date_end)s AND e.idEmployee = %(employee_id)s group by e.idEmployee DESC''', params={'date_start': datestart, 'date_end': dateend, 'employee_id': employeeid})

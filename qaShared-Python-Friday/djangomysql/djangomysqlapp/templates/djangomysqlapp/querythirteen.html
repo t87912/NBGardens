@@ -1,0 +1,12 @@
+<thead>
+<tr>
+	<th>Product ID</th>
+	<th>Total Sales</th>
+</tr>
+</thead>
+{% for order in order_list %}
+<tr>
+	<td>{{ order.Pro_idProduct }}</td>
+	<td>{{ order.SumSales}}</td>
+	 {% endfor %}
+</tr>

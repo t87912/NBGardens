@@ -27,6 +27,6 @@ urlpatterns = [
 	
 	
 	
-	
+	url(r'^querythirteen/(?P<datestart>[\w\-]+)/(?P<dateend>[\w\-]+)/(?P<productid>[\w\-]+)$', views.querythirteen, name='querythirteen'),
 	url(r'^queryfourteen/(?P<datestart>[\w\-]+)/(?P<dateend>[\w\-]+)/(?P<employeeid>[\w\-]+)$', views.queryfourteen, name='queryfourteen'),
 ]
