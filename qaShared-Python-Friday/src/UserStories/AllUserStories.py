@@ -26,12 +26,18 @@ import sys
 from time import sleep
 
 class AllUserStories (object):
-    """ AllUserStories: Explain """
+    """ AllUserStories: This class holds all the user stories for the mongo and
+        mySQL queries including the validation methods that validate dates,
+        ids, amounts (floats), counties (uses external counties.py) and genders.
+        The connections to mongo and mySQL are passed in via parameters. """
     def __init__(self):
         empty = 0
         empty += 1
         
     def writeToFiles(self, data):
+        """ writeToFiles: This method accepts a list of lists and will write
+            it to csv/json/txt files in /Files using external functions to
+            write the data. """
         TheWriterClass().writeToFile(data)
         writeToTXT(data)
         exportToCSV(data)
@@ -59,8 +65,10 @@ class AllUserStories (object):
         sys.stdout.flush()
         
     def newUserStory(self, db, GUI, autoGen, query_number):
+        """ newUserStory: This method will insert user input into an SQL query
+            based upon the values in an array inside autoGen that is passed in.
+            The SQL query is then executed and the results are printed. """
         userStories = autoGen[3]
-        
         sqlQuery = userStories[query_number][1]
         queryInputs = userStories[query_number][2]
         needInputs = False
@@ -160,6 +168,9 @@ class AllUserStories (object):
         return validAmount
         
     def validateCountyInput(self, county):
+        """ validateCountyInput: This method accepts a county (e.g. London) 
+            and validates it using an external file called counties.py.
+            True/false is returned. """
         if (county in counties):
             validCounty = True
         else:
@@ -168,6 +179,8 @@ class AllUserStories (object):
         return validCounty
         
     def validateGenderInput(self, gender):
+        """ validateGenderInput: This method accepts a gender (e.g. Male/Female) 
+            and validates it. True/false is returned. """
         if (gender in ["Male","Female"]):
             validGender = True
         else:
@@ -176,7 +189,7 @@ class AllUserStories (object):
         return validGender
 
     def mongoStory1(self, sqlConn, conn, GUI, custID): # mongo 7
-        """ userStory7(Boolean for GUI, customer id): This method does xyz """
+        """ userStory7: """
         if (not GUI):
             validCustID = False
             while (not validCustID):
@@ -382,19 +395,17 @@ class AllUserStories (object):
                            [finalProductScore, finalDeliveryScore, finalServiceScore]]
     
         if (not GUI):
-            #print (scoresFromCounty)
             for u in range(0, len(scoresFromDemos)):
                 print (scoresFromDemos[u]) 
             self.writeToFiles(scoresFromDemos)
         else:
             result = scoresFromDemos
-            return result  # result = [[finalProductScore, finalDeliveryScore, finalServiceScore]]
+            return result
 
 
 
     def mongoStory4(self, sqlConn, conn, GUI, prodID): # mongo 10
         """ useCase10 """
-        
         if(not GUI):
             validProdID = False
             while (not validProdID):
@@ -435,8 +446,6 @@ class AllUserStories (object):
             
     def mongoStory5(self, sqlConn, conn, GUI, dateFrom, dateTo): # mongo 11
         if (not GUI):
-            #dateFrom = input("From which date do you want to get review scores?: ")
-            #dateTo = input("Until which date?: ")
             validStartDate = False
             validEndDate = False
             while (not validStartDate):
@@ -455,8 +464,6 @@ class AllUserStories (object):
         except:
             sqlConn.rollback()
         orderIDs = cursor.fetchall()
-        
-        #print(orderIDs)
         totalProductScore = 0
         totalDeliveryScore = 0
         totalServiceScore = 0
@@ -464,7 +471,6 @@ class AllUserStories (object):
         
         l = len(orderIDs)    
         i = 0
-        
         self.printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
         for orderID in orderIDs:
             orderID = orderID[0]
@@ -511,7 +517,7 @@ class AllUserStories (object):
             self.writeToFiles(result)
     
         if (GUI):
-            return result #[[finalProductScore, finalDeliveryScore, finalServiceScore]]
+            return result
             
     def mongoStory6(self, sqlConn, conn, GUI, dateFrom, dateTo): # mongo 15
         """ useCase15 """
@@ -534,8 +540,6 @@ class AllUserStories (object):
         l = 20
         i = 0
         self.printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)        
-        
-        
         while(dateUntil < dateTo and whileCount < 20):
             sleep(0.1)
             i+=1
