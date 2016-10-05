@@ -14,6 +14,7 @@
     <script src="/static/js/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/canvasjs.min.js"></script>
 	<script type="text/javascript">
 	$( document ).ready(function() {
 		
@@ -222,14 +223,7 @@
 			<input type="submit" value="Submit">
 			</form>
 			<h2>Graph</h2>
-			<div class="table-responsive col-md-12">
-				<div class="panel panel-default">
-					<!-- Default panel contents -->
-					<div class="panel-heading">Products</div>
-					<!-- Table -->
-					<table id="results_sales_over_time" class="table table-striped"></table>
-				</div>
-			</div>
+			<div id="results_sales_over_time" class="table table-striped"></div>
 		</div>
 		<div id="query5" class="tab-pane fade">
 		  <h3>Number of stock available for product VS the number of sales (GRAPH)</h3>
