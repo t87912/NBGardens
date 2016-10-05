@@ -10,23 +10,7 @@ import csv
 import sys
 from pprint import pprint
 from pymongo import MongoClient
-from mongoDatabase import MongoQueries
-
-from UserStories import AllUserStories
-#from UserStories.userStory7 import userStory7
-#from UserStories.userStory8 import userStory8
-#from UserStories.userStory9 import userStory9
-#from UserStories.userStory10 import userStory10
-#from UserStories.userStory11 import userStory11
-#from UserStories.userStory15 import userStory15
-# TODO:
-# bug: running validLogin twice, once in init, once in run(), why? GUI related?
-
-#import MySQLDatabase
-
-#MONGODB_URI = 'mongodb://master:pa$$w0rd@ds019766.mlab.com:19766/nbgardens'
-#conn = MongoClient(MONGODB_URI)
-#db = conn.get_default_database() 
+from UserStories import AllUserStories 
 
 class MongoDatabase(object):
     """ Database: Holds the database object used for querying. Prints the menu
@@ -66,10 +50,9 @@ class MongoDatabase(object):
         self.sqlDB = db
     
     def methodFinder(self):
-        two_param_cases = [5,6] #[1,2,4];
-        one_param_cases = [1,2,4] #[3,5,6];
-        three_param_cases = [3]
-        
+        two_param_cases = [5,6] # [5,6];
+        one_param_cases = [1,2,4] # [1,2,4];
+        three_param_cases = [3] # [3]
         
         if (int(self.menuOption) == 7):
             self.customQuery(False, 0)
@@ -95,9 +78,6 @@ class MongoDatabase(object):
                 #return find_method(MongoQueries, False)
                 return find_method(self.sqlDB, self.conn, False, 0, 0, 0)
             
-                
-        
-        
     def run(self):
         """ run: Tries to login, if successful, run main logic, otherwise
             return to previous menu. """
@@ -159,61 +139,10 @@ class MongoDatabase(object):
                     valid = True
                 else:
                     valid = False                   
-                
-                
-                
-#                if (self.menuOption == 1):
-#                    self.customQuery(False, 0)
-#                    valid = False
-#                elif (self.menuOption == 2):
-#                    self.userStory7(False, 0)
-#                    valid = False
-#                elif (self.menuOption == 3):
-#                    self.userStory8(False, 0)
-#                    valid = False
-#                elif (self.menuOption == 4):
-#                    self.userStory9(False)
-#                    valid = False
-#                elif (self.menuOption == 5):
-#                    self.userStory10(False, 0)
-#                    valid = False
-#                elif (self.menuOption == 6):
-#                    self.userStory11(False)
-#                    valid = False
-#                elif (self.menuOption == 7):
-#                    self.userStory15(False)
-#                    valid = False
-#                elif (self.menuOption == 8):
-#                    print ("Going back to the main menu...")
-#                elif (self.menuOption == 9):
-#                    print ("Exiting the program...")
-#                    sys.exit(0)
-    
-    
+                    
     def exitProgram(self):
         print ("Exiting the program...")
-        sys.exit(0)
-        
-        
-    def andrewExampleSQL(self):
-        """ andrewExampleSQL: """
-        print ("Testing SQL commands from MongoDB")
-        query = "SELECT * FROM Product"
-        cursor = self.sqlDB.cursor() # Creating the cursor to query the database
-        # Executing the query:
-        try:
-            cursor.execute(query)
-            self.sqlDB.commit()
-        except:
-            self.sqlDB.rollback()
-
-        results = cursor.fetchall()
-        for row in results:
-            toPrint = []
-            for i in range(0, len(row)):
-                toPrint.append([row[i]])
-            print (toPrint)
-        
+        sys.exit(0)   
         
     def customQuery(self, GUI, userInput):
         """ customQuery: Allows the user to execute a custom query by running
@@ -227,7 +156,6 @@ class MongoDatabase(object):
         for document in cursor:
             pprint (document)
             results.append(document)
-            
         if (GUI):
             return results;
         
@@ -238,55 +166,8 @@ class MongoDatabase(object):
             forCSV.append([dates[i],ratings[i]])
         
         print ("Writing dates and ratings to CSV file: /CSV Files/ratingsOverTime.csv...")
-        with open("C:\\Users\\Administrator\\Desktop\\Week 5 - Python\\py files\\CSV Files\\ratingsOverTimeMongoDB.csv", "w") as f:
+        with open("assets/outputcsv.csv", "w") as f:
             # Last 2 parameters below to remove empty line between each line            
             writer = csv.writer(f, sys.stdout, lineterminator='\n')
             for z in range(0, len(forCSV)):
                 writer.writerow(forCSV[z])
-
-#    def userStory2(self, GUI, customerID):
-#        """ userStory7:  """
-#        #print ("Doing things")
-#        #from MySQLDatabase import MySQLDatabase
-#        #query = "SELECT * FROM Product"
-#        #toPrint = MySQLDatabase.customQuery(True, query)
-#        #print (toPrint)
-#        if (GUI):
-#            return userStory7(MongoQueries, True, customerID)
-#        else:
-#            return userStory7(MongoQueries, False, customerID)
-#        
-#    def userStory3(self, GUI, gender):
-#        """ useCase8:  """
-#        if (GUI):
-#            return userStory8(MongoQueries, True, gender)
-#        else:
-#            return userStory8(MongoQueries, False, gender)
-#        
-#    def userStory4(self, GUI):  
-#        """ useCase9: """
-#        if (GUI):
-#            return userStory9(MongoQueries, True)
-#        else:
-#            return userStory9(MongoQueries, False)
-#            
-#    def userStory5(self, GUI, productID):  
-#        """ useCase10: """
-#        if (GUI):
-#            return userStory10(MongoQueries, True, productID)
-#        else:
-#            return userStory10(MongoQueries, False, productID)
-#            
-#    def userStory6(self, GUI):  
-#        """ useCase11: """
-#        if (GUI):
-#            return userStory11(MongoQueries, True)
-#        else:
-#            return userStory11(MongoQueries, False)
-#            
-#    def userStory7(self, GUI):  
-#        """ useCase10: """
-#        if (GUI):
-#            return userStory15(MongoQueries, True)
-#        else:
-#            return userStory15(MongoQueries, False)
