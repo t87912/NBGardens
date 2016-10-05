@@ -14,61 +14,22 @@ from sqlDatabase.SQLQueries import queriesForMongo
 from assets.counties import counties
 
 # Other imports:
-from assets.exportToCSV import exportToCSV
-from assets.JsonWriterTool import TheWriterClass
-from assets.TxtWriterTool import writeToTXT
+from exportToCSV import exportToCSV
 import matplotlib.pyplot as plt
 import time
 import numpy as np
 from datetime import datetime  
 from datetime import timedelta
-import sys
-from time import sleep
 
 class AllUserStories (object):
-    """ AllUserStories: This class holds all the user stories for the mongo and
-        mySQL queries including the validation methods that validate dates,
-        ids, amounts (floats), counties (uses external counties.py) and genders.
-        The connections to mongo and mySQL are passed in via parameters. """
+    """ AllUserStories: Explain """
     def __init__(self):
         empty = 0
         empty += 1
         
-    def writeToFiles(self, data):
-        """ writeToFiles: This method accepts a list of lists and will write
-            it to csv/json/txt files in /Files using external functions to
-            write the data. """
-        TheWriterClass().writeToFile(data)
-        writeToTXT(data)
-        exportToCSV(data)
-        
-    def printProgress (self, iteration, total, prefix = '', suffix = '', decimals = 1, barLength = 100):
-        """
-        Source: http://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
-        
-        Call in a loop to create terminal progress bar
-        @params:
-            iteration   - Required  : current iteration (Int)
-            total       - Required  : total iterations (Int)
-            prefix      - Optional  : prefix string (Str)
-            suffix      - Optional  : suffix string (Str)
-            decimals    - Optional  : positive number of decimals in percent complete (Int)
-            barLength   - Optional  : character length of bar (Int)
-        """
-        formatStr       = "{0:." + str(decimals) + "f}"
-        percents        = formatStr.format(100 * (iteration / float(total)))
-        filledLength    = int(round(barLength * iteration / float(total)))
-        bar             = '█' * filledLength + '-' * (barLength - filledLength)
-        sys.stdout.write('\r%s |%s| %s%s %s' % (prefix, bar, percents, '%', suffix)),
-        if iteration == total:
-            sys.stdout.write('\n')
-        sys.stdout.flush()
-        
     def newUserStory(self, db, GUI, autoGen, query_number):
-        """ newUserStory: This method will insert user input into an SQL query
-            based upon the values in an array inside autoGen that is passed in.
-            The SQL query is then executed and the results are printed. """
         userStories = autoGen[3]
+        
         sqlQuery = userStories[query_number][1]
         queryInputs = userStories[query_number][2]
         needInputs = False
@@ -168,9 +129,6 @@ class AllUserStories (object):
         return validAmount
         
     def validateCountyInput(self, county):
-        """ validateCountyInput: This method accepts a county (e.g. London) 
-            and validates it using an external file called counties.py.
-            True/false is returned. """
         if (county in counties):
             validCounty = True
         else:
@@ -179,8 +137,6 @@ class AllUserStories (object):
         return validCounty
         
     def validateGenderInput(self, gender):
-        """ validateGenderInput: This method accepts a gender (e.g. Male/Female) 
-            and validates it. True/false is returned. """
         if (gender in ["Male","Female"]):
             validGender = True
         else:
@@ -189,7 +145,7 @@ class AllUserStories (object):
         return validGender
 
     def mongoStory1(self, sqlConn, conn, GUI, custID): # mongo 7
-        """ userStory7: """
+        """ userStory7(Boolean for GUI, customer id): This method does xyz """
         if (not GUI):
             validCustID = False
             while (not validCustID):
@@ -224,8 +180,7 @@ class AllUserStories (object):
     
         if (not GUI):
             for u in range(0, len(customerReviewScores)):
-                print (customerReviewScores[u]) 
-            self.writeToFiles(customerReviewScores)
+                print (customerReviewScores[u])    
         if (GUI):
             return customerReviewScores
 
@@ -293,7 +248,6 @@ class AllUserStories (object):
                 print (scoresFromCounty[u])    
             #print("For customers in " + county + " average review scores are:\n Products: " + finalProductScore + \
              #     "\n Delivery: " + finalDeliveryScore + "\n Service: " + finalServiceScore)
-            self.writeToFiles(scoresFromCounty)
         else:
             result = [scoresFromCounty]
             return result  # result = [[finalProductScore, finalDeliveryScore, finalServiceScore]]
@@ -395,17 +349,18 @@ class AllUserStories (object):
                            [finalProductScore, finalDeliveryScore, finalServiceScore]]
     
         if (not GUI):
+            #print (scoresFromCounty)
             for u in range(0, len(scoresFromDemos)):
                 print (scoresFromDemos[u]) 
-            self.writeToFiles(scoresFromDemos)
         else:
             result = scoresFromDemos
-            return result
+            return result  # result = [[finalProductScore, finalDeliveryScore, finalServiceScore]]
 
 
 
     def mongoStory4(self, sqlConn, conn, GUI, prodID): # mongo 10
         """ useCase10 """
+        
         if(not GUI):
             validProdID = False
             while (not validProdID):
@@ -437,8 +392,7 @@ class AllUserStories (object):
             
         if(not GUI):
             for u in range(0, len(reviewScores)):
-                print (reviewScores[u])  
-            self.writeToFiles(reviewScores)
+                print (reviewScores[u])            
             
         if(GUI):
             result = reviewScores
@@ -446,6 +400,8 @@ class AllUserStories (object):
             
     def mongoStory5(self, sqlConn, conn, GUI, dateFrom, dateTo): # mongo 11
         if (not GUI):
+            #dateFrom = input("From which date do you want to get review scores?: ")
+            #dateTo = input("Until which date?: ")
             validStartDate = False
             validEndDate = False
             while (not validStartDate):
@@ -464,14 +420,12 @@ class AllUserStories (object):
         except:
             sqlConn.rollback()
         orderIDs = cursor.fetchall()
+        
+        #print(orderIDs)
         totalProductScore = 0
         totalDeliveryScore = 0
         totalServiceScore = 0
         reviewsCount = 0
-        
-        l = len(orderIDs)    
-        i = 0
-        self.printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
         for orderID in orderIDs:
             orderID = orderID[0]
             prodScores = CustomerOrderReviews(conn).getProductScoresfOrder(orderID)
@@ -495,12 +449,6 @@ class AllUserStories (object):
             totalProductScore += avProdScore
             totalDeliveryScore += serviceScore
             totalServiceScore += deliveryScore
-                        
-            # Do stuff...
-            sleep(0.1)
-            i+=1
-            # Update Progress Bar
-            self.printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
             
         if(reviewsCount == 0):
             reviewsCount = 1
@@ -514,10 +462,9 @@ class AllUserStories (object):
         if (not GUI):
             for u in range(0, len(result)):
                 print (result[u]) 
-            self.writeToFiles(result)
     
         if (GUI):
-            return result
+            return result #[[finalProductScore, finalDeliveryScore, finalServiceScore]]
             
     def mongoStory6(self, sqlConn, conn, GUI, dateFrom, dateTo): # mongo 15
         """ useCase15 """
@@ -536,15 +483,7 @@ class AllUserStories (object):
         dateUntil = dateFrom + timedelta(days=30)
         graphData = []
         whileCount = 0
-        
-        l = 20
-        i = 0
-        self.printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)        
         while(dateUntil < dateTo and whileCount < 20):
-            sleep(0.1)
-            i+=1
-            # Update Progress Bar
-            self.printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
             totalProductScore = 0
             totalDeliveryScore = 0
             totalServiceScore = 0
@@ -639,8 +578,7 @@ class AllUserStories (object):
 
         if (not GUI):
             for u in range(0, len(graphData)):
-                print (graphData[u])   
-            self.writeToFiles(graphData)
+                print (graphData[u])       
         
         if (GUI):
             return graphData
@@ -662,7 +600,7 @@ class AllUserStories (object):
         if (GUI):
             return results
         else:
-            self.writeToFiles(results)
+            exportToCSV(results)
 
 
     def userStorySeries1(self, db, GUI, startDate, endDate, query_number):
@@ -762,7 +700,7 @@ class AllUserStories (object):
         if (GUI):
             return results
         else:
-            self.writeToFiles(results)
+            exportToCSV(results)
 
     def userStorySeries2(self, db, GUI, startDate, endDate, amount_or_productid, query_number):
         """ useCase 3, 5, 14: Accepts parameter 'period' which is a period, 1-4 """
@@ -836,4 +774,4 @@ class AllUserStories (object):
         if (GUI):
             return results
         else:
-            self.writeToFiles(results)
+            exportToCSV(results)
