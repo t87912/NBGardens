@@ -7,6 +7,7 @@ from .forms import YearForm, LoginForm, ContactForm
 from django.core.mail import send_mail
 from django.db import connection
 from collections import namedtuple
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def index(request):
@@ -14,6 +15,21 @@ def index(request):
     context = {
     }
     return HttpResponse(template.render(context, request))
+def login(request, username, password):
+	username= request.POST['username']
+	password=request.POST['password']
+	user=authenticate(username=username, password=password)
+	if user is not None:
+		login(request, user)
+		template = loader.get_template('djangomysqlapp/orders.html')
+		context = {
+		}
+		return HttpResponse(template.render(context, request))
+	else:
+        # Bad login details were provided. So we can't log the user in.
+        print "Invalid login details: {0}, {1}".format(username, password)
+        return HttpResponse("Invalid login details supplied.")
+
 def products(request):
 	product_list = Product.objects.order_by('idproduct')
 	template = loader.get_template('djangomysqlapp/products.html')

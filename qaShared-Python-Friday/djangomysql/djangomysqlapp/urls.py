@@ -28,4 +28,5 @@ urlpatterns = [
 	
 	
 	url(r'^queryfourteen/(?P<datestart>[\w\-]+)/(?P<dateend>[\w\-]+)/(?P<employeeid>[\w\-]+)$', views.queryfourteen, name='queryfourteen'),
+	url(r'^failedlogin/$', views.failedlogin, name='failedlogin'),
 ]

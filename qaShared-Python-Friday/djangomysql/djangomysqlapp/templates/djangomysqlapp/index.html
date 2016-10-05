@@ -14,8 +14,7 @@
     <script src="/static/https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/bootstrap.min.js"></script>
-	
-	
+
 </head>
 <body>
 	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;height:200px;">
@@ -46,18 +45,29 @@
 	  </div>
 	</nav>
 	
-	<div class="form-group">
-	{ if login=false}
-		<form method="post" action="simpleform.asp">
-			Username: <input type="text" name="username"><br>
-			Password: <input type="text" name="password"><br><br>
-			<input type="submit" value="Submit">
-		</form>
-	
-	{ else }
-	
-	{ endif }
-	
+	<form id="login_form" method="post" action="/djangomysqlapp/login/">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            Password: <input type="password" name="password" value="" size="50" />
+            <br />
 
+            <input type="submit" value="submit" />
+       </form>
+	<!--
+	<div class="container" style="width:30%;">
+      <form method="POST" id="form_signin" class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+			<p><label for="id_username_signin" class="sr-only">Username:</label></p>
+			<input type="user" id="id_username_signin" name="username" class="form-control" required autofocus>
+			<br />
+			<p><label for="id_password_signin" class="sr-only">Password:</label></p>
+			<input type="password" id="id_password_signin" name="password" class="form-control" required autofocus>
+			{{ form }}
+			<input type="submit" value="Submit">
+      </form>
+	</div> -->
+	
+	
 </body>
 </html>
