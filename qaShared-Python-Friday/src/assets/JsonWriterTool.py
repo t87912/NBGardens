@@ -9,5 +9,5 @@ import json
 
 class TheWriterClass:    
     def writeToFile(self, data): 
-        with open('assets/data.json', 'w') as outfile:
+        with open('assets/Files/data.json', 'w') as outfile:
             json.dump(data, outfile, sort_keys=True, indent=4)

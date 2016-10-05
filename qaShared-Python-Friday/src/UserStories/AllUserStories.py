@@ -14,7 +14,9 @@ from sqlDatabase.SQLQueries import queriesForMongo
 from assets.counties import counties
 
 # Other imports:
-from exportToCSV import exportToCSV
+from assets.exportToCSV import exportToCSV
+from assets.JsonWriterTool import TheWriterClass
+from assets.TxtWriterTool import writeToTXT
 import matplotlib.pyplot as plt
 import time
 import numpy as np
@@ -28,6 +30,11 @@ class AllUserStories (object):
     def __init__(self):
         empty = 0
         empty += 1
+        
+    def writeToFiles(self, data):
+        TheWriterClass().writeToFile(data)
+        writeToTXT(data)
+        exportToCSV(data)
         
     def printProgress (self, iteration, total, prefix = '', suffix = '', decimals = 1, barLength = 100):
         """
@@ -204,7 +211,8 @@ class AllUserStories (object):
     
         if (not GUI):
             for u in range(0, len(customerReviewScores)):
-                print (customerReviewScores[u])    
+                print (customerReviewScores[u]) 
+            self.writeToFiles(customerReviewScores)
         if (GUI):
             return customerReviewScores
 
@@ -272,6 +280,7 @@ class AllUserStories (object):
                 print (scoresFromCounty[u])    
             #print("For customers in " + county + " average review scores are:\n Products: " + finalProductScore + \
              #     "\n Delivery: " + finalDeliveryScore + "\n Service: " + finalServiceScore)
+            self.writeToFiles(scoresFromCounty)
         else:
             result = [scoresFromCounty]
             return result  # result = [[finalProductScore, finalDeliveryScore, finalServiceScore]]
@@ -376,6 +385,7 @@ class AllUserStories (object):
             #print (scoresFromCounty)
             for u in range(0, len(scoresFromDemos)):
                 print (scoresFromDemos[u]) 
+            self.writeToFiles(scoresFromDemos)
         else:
             result = scoresFromDemos
             return result  # result = [[finalProductScore, finalDeliveryScore, finalServiceScore]]
@@ -416,7 +426,8 @@ class AllUserStories (object):
             
         if(not GUI):
             for u in range(0, len(reviewScores)):
-                print (reviewScores[u])            
+                print (reviewScores[u])  
+            self.writeToFiles(reviewScores)
             
         if(GUI):
             result = reviewScores
@@ -497,6 +508,7 @@ class AllUserStories (object):
         if (not GUI):
             for u in range(0, len(result)):
                 print (result[u]) 
+            self.writeToFiles(result)
     
         if (GUI):
             return result #[[finalProductScore, finalDeliveryScore, finalServiceScore]]
@@ -623,7 +635,8 @@ class AllUserStories (object):
 
         if (not GUI):
             for u in range(0, len(graphData)):
-                print (graphData[u])       
+                print (graphData[u])   
+            self.writeToFiles(graphData)
         
         if (GUI):
             return graphData
@@ -645,7 +658,7 @@ class AllUserStories (object):
         if (GUI):
             return results
         else:
-            exportToCSV(results)
+            self.writeToFiles(results)
 
 
     def userStorySeries1(self, db, GUI, startDate, endDate, query_number):
@@ -745,7 +758,7 @@ class AllUserStories (object):
         if (GUI):
             return results
         else:
-            exportToCSV(results)
+            self.writeToFiles(results)
 
     def userStorySeries2(self, db, GUI, startDate, endDate, amount_or_productid, query_number):
         """ useCase 3, 5, 14: Accepts parameter 'period' which is a period, 1-4 """
@@ -819,4 +832,4 @@ class AllUserStories (object):
         if (GUI):
             return results
         else:
-            exportToCSV(results)
+            self.writeToFiles(results)
