@@ -15,20 +15,22 @@ def index(request):
     context = {
     }
     return HttpResponse(template.render(context, request))
-def login(request, username, password):
-	username= request.POST['username']
-	password=request.POST['password']
-	user=authenticate(username=username, password=password)
+def login(request, uname, pword):
+	user=authenticate(username=uname, password=pword)
 	if user is not None:
-		login(request, user)
+		#how to we reload the sign in bit so once you've login, you dont see that anymore till you logout
 		template = loader.get_template('djangomysqlapp/login.html')
 		context = {
 		}
 		return HttpResponse(template.render(context, request))
 	else:
 		# Bad login details were provided. So we can't log the user in.
-		print "Invalid login details: {0}, {1}".format(username, password)
-		return HttpResponse("Invalid login details supplied.")
+		template = loader.get_template('djangomysqlapp/loginfailed.html')
+		context = {
+		}
+		return HttpResponse(template.render(context, request))
+		#print "Invalid login details: {0}, {1}".format(uname, pword)
+		#return HttpResponse("Invalid login details supplied.")
 
 def products(request):
 	product_list = Product.objects.order_by('idproduct')
