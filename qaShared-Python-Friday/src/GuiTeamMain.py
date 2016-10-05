@@ -232,7 +232,8 @@ class MainApplication(tk.Frame):
         tk.Label(tab1, text="Date to:").grid(row = 4, column = 0)
         self.customerQueryInputBox2 = tk.Entry(tab1)
         self.customerQueryInputBox2.grid(row=4,column=1)
-        tk.Label(tab1, text="ID:").grid(row = 5, column = 0)
+        self.labelTab1 = tk.Label(tab1, text="ID:")
+        self.labelTab1.grid(row = 5, column = 0)
         self.customerQueryInputBox3 = tk.Entry(tab1)
         self.customerQueryInputBox3.grid(row=5,column=1)
 
@@ -258,7 +259,8 @@ class MainApplication(tk.Frame):
         tk.Label(tab2, text="Date to:").grid(row = 4, column = 0)
         self.orderQueryInputBox2 = tk.Entry(tab2)
         self.orderQueryInputBox2.grid(row=4,column=1)
-        tk.Label(tab2, text="ID:").grid(row = 5, column = 0)
+        self.labelTab2 = tk.Label(tab2, text="ID:")
+        self.labelTab2.grid(row = 5, column = 0)
         self.orderQueryInputBox3 = tk.Entry(tab2)
         self.orderQueryInputBox3.grid(row=5,column=1)
 
@@ -284,7 +286,8 @@ class MainApplication(tk.Frame):
         tk.Label(tab3, text="Date to:").grid(row = 4, column = 0)
         self.productQueryInputBox2 = tk.Entry(tab3)
         self.productQueryInputBox2.grid(row=4,column=1)
-        tk.Label(tab3, text="ID:").grid(row = 5, column = 0)
+        self.labelTab3 = tk.Label(tab3, text="ID:")
+        self.labelTab3.grid(row = 5, column = 0)
         self.productQueryInputBox3 = tk.Entry(tab3)
         self.productQueryInputBox3.grid(row=5,column=1)
 
@@ -310,7 +313,8 @@ class MainApplication(tk.Frame):
         tk.Label(tab4, text="Date to:").grid(row = 4, column = 0)
         self.employeeQueryInputBox2 = tk.Entry(tab4)
         self.employeeQueryInputBox2.grid(row=4,column=1)
-        tk.Label(tab4, text="ID:").grid(row = 5, column = 0)
+        self.labelTab4 = tk.Label(tab4, text="ID:")
+        self.labelTab4.grid(row = 5, column = 0)
         self.employeeQueryInputBox3 = tk.Entry(tab4)
         self.employeeQueryInputBox3.grid(row=5,column=1)
 
@@ -578,6 +582,7 @@ class MainApplication(tk.Frame):
             self.customerQueryInputBox1.config(state='normal')
             self.customerQueryInputBox2.config(state='normal')
             self.customerQueryInputBox3.config(state='normal')
+            self.labelTab1.config(text='Value:')
         elif (value == self.customerOptions[2]):
             self.userStory = 3
             self.queryResultBox.delete('1.0', tk.END)
@@ -587,16 +592,19 @@ class MainApplication(tk.Frame):
             self.userStory = 6
             self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox3.config(state='normal')
+            self.labelTab1.config(text='Customer ID:')
         elif (value == self.customerOptions[4]): # MONGO - 8
             self.userStory = 7
             self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox3.config(state='normal')
+            self.labelTab1.config(text='Country:')
         elif (value == self.customerOptions[5]): # MONGO - 9
             self.userStory = 8
             self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox1.config(state='normal')
             self.customerQueryInputBox2.config(state='normal')
             self.customerQueryInputBox3.config(state='normal')
+            self.labelTab1.config(text='Demographic:')
         elif (value == self.customerOptions[6]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
@@ -633,6 +641,7 @@ class MainApplication(tk.Frame):
             self.userStory = 9
             self.queryResultBox.delete('1.0', tk.END)
             self.orderQueryInputBox3.config(state='normal')
+            self.labelTab2.config(text='Product ID:')
         elif (value == self.orderOptions[2]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
@@ -662,10 +671,12 @@ class MainApplication(tk.Frame):
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
             self.productQueryInputBox3.config(state='normal')
+            self.labelTab3.config(text='Product ID:')
         elif (value == self.productOptions[1]): # MONGO - 10
             self.userStory = 9
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox3.config(state='normal')
+            self.labelTab3.config(text='Product ID:')
         elif (value == self.productOptions[2]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
@@ -675,6 +686,7 @@ class MainApplication(tk.Frame):
             self.userStory = 11
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox3.config(state='normal')
+            self.labelTab3.config(text='Product ID:')
         elif (value == self.productOptions[4]):
             self.userStory = 12
             self.queryResultBox.delete('1.0', tk.END)
@@ -723,6 +735,7 @@ class MainApplication(tk.Frame):
             self.employeeQueryInputBox1.config(state='normal')
             self.employeeQueryInputBox2.config(state='normal')
             self.employeeQueryInputBox3.config(state='normal')
+            self.labelTab4.config(text='Employee ID:')
         elif (value == self.employeeOptions[3]):
             self.userStory = 14
             self.queryResultBox.delete('1.0', tk.END)
