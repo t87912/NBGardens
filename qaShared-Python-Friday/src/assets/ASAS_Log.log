@@ -3384,3 +3384,6 @@
 2016-10-05 10:29:20,818 - INFO - Successful login to MySQL database, username: 
 2016-10-05 10:29:50,129 - INFO - ---------- Finished logging TUI -----------
 2016-10-05 10:29:50,129 - INFO - ---------- Finished logging TUI -----------
+2016-10-05 16:08:47,523 - INFO - ---------- Started logging TUI ----------
+2016-10-05 16:08:51,668 - INFO - Successful login to MySQL database, username: adasd
+2016-10-05 16:09:11,419 - INFO - ---------- Finished logging TUI -----------

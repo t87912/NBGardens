@@ -20,36 +20,12 @@ import time
 import numpy as np
 from datetime import datetime  
 from datetime import timedelta
-import sys
-from time import sleep
 
 class AllUserStories (object):
     """ AllUserStories: Explain """
     def __init__(self):
         empty = 0
         empty += 1
-        
-    def printProgress (self, iteration, total, prefix = '', suffix = '', decimals = 1, barLength = 100):
-        """
-        Source: http://stackoverflow.com/questions/3173320/text-progress-bar-in-the-console
-        
-        Call in a loop to create terminal progress bar
-        @params:
-            iteration   - Required  : current iteration (Int)
-            total       - Required  : total iterations (Int)
-            prefix      - Optional  : prefix string (Str)
-            suffix      - Optional  : suffix string (Str)
-            decimals    - Optional  : positive number of decimals in percent complete (Int)
-            barLength   - Optional  : character length of bar (Int)
-        """
-        formatStr       = "{0:." + str(decimals) + "f}"
-        percents        = formatStr.format(100 * (iteration / float(total)))
-        filledLength    = int(round(barLength * iteration / float(total)))
-        bar             = '█' * filledLength + '-' * (barLength - filledLength)
-        sys.stdout.write('\r%s |%s| %s%s %s' % (prefix, bar, percents, '%', suffix)),
-        if iteration == total:
-            sys.stdout.write('\n')
-        sys.stdout.flush()
         
     def newUserStory(self, db, GUI, autoGen, query_number):
         userStories = autoGen[3]
@@ -450,11 +426,6 @@ class AllUserStories (object):
         totalDeliveryScore = 0
         totalServiceScore = 0
         reviewsCount = 0
-        
-        l = len(orderIDs)    
-        i = 0
-        
-        self.printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
         for orderID in orderIDs:
             orderID = orderID[0]
             prodScores = CustomerOrderReviews(conn).getProductScoresfOrder(orderID)
@@ -478,12 +449,6 @@ class AllUserStories (object):
             totalProductScore += avProdScore
             totalDeliveryScore += serviceScore
             totalServiceScore += deliveryScore
-                        
-            # Do stuff...
-            sleep(0.1)
-            i+=1
-            # Update Progress Bar
-            self.printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
             
         if(reviewsCount == 0):
             reviewsCount = 1
@@ -518,17 +483,7 @@ class AllUserStories (object):
         dateUntil = dateFrom + timedelta(days=30)
         graphData = []
         whileCount = 0
-        
-        l = 20
-        i = 0
-        self.printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)        
-        
-        
         while(dateUntil < dateTo and whileCount < 20):
-            sleep(0.1)
-            i+=1
-            # Update Progress Bar
-            self.printProgress(i, l, prefix = 'Progress:', suffix = 'Complete', barLength = 50)
             totalProductScore = 0
             totalDeliveryScore = 0
             totalServiceScore = 0
