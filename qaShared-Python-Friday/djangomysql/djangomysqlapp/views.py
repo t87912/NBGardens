@@ -6,6 +6,7 @@ from .models import Product, Purchase, Employee, Customer
 from .forms import YearForm, LoginForm, ContactForm
 from django.core.mail import send_mail
 from django.db import connection
+from collections import namedtuple
 
 # Create your views here.
 def index(request):
@@ -82,8 +83,22 @@ def querytwo(request, datestart, dateend):
 	'order_list': order_list,
 	}
 	return HttpResponse(template.render(context, request))
-	
-	
+def queryfour(request, datestart, dateend):
+	cursor = connection.cursor()
+	cursor.execute('''SELECT round(sum(p.salePrice*op.quantity),2) as 'TotalSales', round(sum(p.buyPrice*op.quantity),2) as 'TotalCost' From Purchase as o Join PurchaseLines as op On o.idPurchase = op.pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct where o.createDate between %(date_start)s and %(date_end)s''', params={'date_start': datestart, 'date_end': dateend})
+	template = loader.get_template('djangomysqlapp/queryfour.html')
+	context = {
+	'order_list': namedtuplefetchall(cursor),
+	}
+	return HttpResponse(template.render(context, request))	
+def querysix(request, datestart, dateend):
+	cursor = connection.cursor()
+	cursor.execute('''SELECT AVG(DATEDIFF(deliveredDate, createDate)) as 'AverageDate' FROM Purchase WHERE createDate BETWEEN %(date_start)s and %(date_end)s''', params={'date_start': datestart, 'date_end': dateend})
+	template = loader.get_template('djangomysqlapp/querysix.html')
+	context = {
+	'order_list': dictfetchall(cursor),
+	}
+	return HttpResponse(template.render(context, request))		
 def get_year(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -137,3 +152,16 @@ def jqueryserver(request):
     if request.method == 'GET':
         if request.is_ajax()== True:
             return HttpResponse(response_string,mimetype='text/plain')
+			
+def namedtuplefetchall(cursor):
+    "Return all rows from a cursor as a namedtuple"
+    desc = cursor.description
+    nt_result = namedtuple('Result', [col[0] for col in desc])
+    return [nt_result(*row) for row in cursor.fetchall()]
+def dictfetchall(cursor):
+    "Return all rows from a cursor as a dict"
+    columns = [col[0] for col in cursor.description]
+    return [
+        dict(zip(columns, row))
+        for row in cursor.fetchall()
+    ]
