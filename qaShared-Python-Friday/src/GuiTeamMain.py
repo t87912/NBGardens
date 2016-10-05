@@ -16,6 +16,7 @@ from mongoDatabase.MongoDatabase import MongoDatabase
 from mongoDatabase import MongoQueries
 from exportToCSV import exportToCSV
 from assets.JsonWriterTool import TheWriterClass
+from assets.TxtWriterTool import writeToTXT
 from Logger import Logger
 
 from AutoGenCode import AutoGenCode
@@ -533,9 +534,8 @@ class MainApplication(tk.Frame):
         """ callTXT: This just calls the external method exportToTXT. There is
             a bug preventing it being called directly from the button press,
             so the press goes here before calling the external function. """
-        txtFile = open('TXT_Output.txt', 'w+')
-        for line in txtFile:
-            self.currentQueryResult.append(line.strip().split('\n'))
+        #writeToTXT().writeToFile(self.currentQueryResult)
+        writeToTXT(self.currentQueryResult)
             
         
     def callCSV(self):
