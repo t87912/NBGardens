@@ -195,7 +195,10 @@ class MainApplication(tk.Frame):
         dataSub.add_command(label = "Export as .csv", command = self.callCSV)
         dataSub.add_command(label = "Export as .json", command = self.callJSON)
         
-        self.menu.add_command(label = "Help", command = self.helpWindow)
+        helpSub = tk.Menu(self.menu, tearoff = False)
+        self.menu.add_cascade(label = "Help", menu = helpSub)
+        helpSub.add_command(label = "Main Window", command = self.helpMainWindow)
+        helpSub.add_command(label = "Graph Window", command = self.helpGraphWindow)
 
         self.menu.add_command(label = "Logout", command = self.logout)
 
@@ -473,17 +476,25 @@ class MainApplication(tk.Frame):
         content = root.clipboard_get()
         print(content)
         
-    def helpWindow(self):
+    def helpMainWindow(self):
         top = tk.Toplevel()
-        top.title("Help")
+        top.title("Help Main")
         
-        photo = PhotoImage(file="assets/help/GnomeHelp1.gif")
+        photo = PhotoImage(file="assets/help/GnomeHelpMain.gif")
         
         label = Label(top,image=photo)
         label.image = photo
         label.pack()
         
+    def helpGraphWindow(self):
+        top = tk.Toplevel()
+        top.title("Help Graph")
         
+        photo = PhotoImage(file="assets/help/GnomeHelpGraph.gif")
+        
+        label = Label(top,image=photo)
+        label.image = photo
+        label.pack()
 
 
     def getEmployeeQueryID(self,tab,CB):
