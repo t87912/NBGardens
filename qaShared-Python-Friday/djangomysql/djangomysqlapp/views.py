@@ -24,14 +24,11 @@ def products(request):
 def product(request, idproduct):
     return HttpResponse("You're looking at Product %s." % idproduct)
 def orders(request):
-	cursor = connection.cursor()
-	#cursor.execute('''SELECT e.idEmployee, e.firstName, e.lastName, round(SUM(p.salePrice * op.quantity),2) as 'Total Sales' From nbgardensds.Purchase as o Join nbgardensds.PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join nbgardensds.Product as p On op.Pro_idProduct = p.idProduct Join nbgardensds.Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between '2015-01-30' and '2016-01-30' group by e.idEmployee order by 'Total Sales' desc limit 20''')
-	order_list = Employee.objects.raw('''SELECT e.idEmployee, e.firstName, e.lastName, round(SUM(p.salePrice * op.quantity),2) as 'TotalSales' From nbgardensds.Purchase as o Join nbgardensds.PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join nbgardensds.Product as p On op.Pro_idProduct = p.idProduct Join nbgardensds.Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between '2015-01-30' and '2016-01-30' group by e.idEmployee order by 'Total Sales' desc limit 20''')
-	#order_list = cursor.fetchall()
+	order_list = Purchase.objects.order_by('idpurchase')[:10]
 	template = loader.get_template('djangomysqlapp/orders.html')
 	context = {
 	'order_list': order_list,
-	}
+	}	
 	return HttpResponse(template.render(context, request))
 	
 def order(request, idpurchase):
