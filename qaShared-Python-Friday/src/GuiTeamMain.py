@@ -10,6 +10,7 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 
+
 # Import other python class files:
 from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
@@ -181,6 +182,7 @@ class MainApplication(tk.Frame):
         editSub.add_command(label = "Copy", command = self.copy)
         editSub.add_command(label = "Paste", command = self.paste)
         editSub.add_command(label = "Select All")
+        editSub.add_command(label = "Clear", command = lambda:self.queryResultBox.delete('1.0', tk.END))
 
         viewSub = tk.Menu(self.menu, tearoff = False)
         self.menu.add_cascade(label = "View", menu = viewSub)
@@ -193,7 +195,7 @@ class MainApplication(tk.Frame):
         dataSub.add_command(label = "Export as .csv", command = self.callCSV)
         dataSub.add_command(label = "Export as .json", command = self.callJSON)
         
-        self.menu.add_command(label = "Help")
+        self.menu.add_command(label = "Help", command = self.helpWindow)
 
         self.menu.add_command(label = "Logout", command = self.logout)
 
@@ -470,6 +472,19 @@ class MainApplication(tk.Frame):
     def paste(self):
         content = root.clipboard_get()
         print(content)
+        
+    def helpWindow(self):
+        top = tk.Toplevel()
+        top.title("Help")
+        
+        photo = PhotoImage(file="assets/help/GnomeHelp1.gif")
+        
+        label = Label(top,image=photo)
+        label.image = photo
+        label.pack()
+        
+        
+
 
     def getEmployeeQueryID(self,tab,CB):
         if(CB.current()==0):
