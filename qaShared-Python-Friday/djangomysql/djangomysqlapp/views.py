@@ -66,18 +66,18 @@ def query(request, datestart, dateend):
 	'order_list': order_list,
 	}
 	return HttpResponse(template.render(context, request))
-def queryfourteen(request, datestart, dateend, employeeid):
-	cursor = connection.cursor()
-	order_list = Employee.objects.raw('''SELECT e.idEmployee, o.createDate, round(SUM(p.salePrice*op.quantity),2) as 'Sales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct Join Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between %(date_start)s and %(date_end)s AND e.idEmployee = %(employee_id)s group by e.idEmployee DESC''', params={'date_start': datestart, 'date_end': dateend, 'employee_id': employeeid})
-	template = loader.get_template('djangomysqlapp/queryfourteen.html')
-	context = {
-	'order_list': order_list,
-	}
-	return HttpResponse(template.render(context, request))
 	
 def querytwo(request, datestart, dateend):
 	cursor = connection.cursor()
 	order_list = Customer.objects.raw('''SELECT c.idCustomer, c.firstName, c.lastName, round(SUM(p.salePrice*op.quantity),2) as 'TotalSales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct Join Customer as c On o.cust_idCustomer = c.idCustomer where o.createDate between %(date_start)s and %(date_end)s group by c.idCustomer order by round(SUM(p.salePrice*op.quantity),2) desc limit 20''', params={'date_start': datestart, 'date_end': dateend})
+	template = loader.get_template('djangomysqlapp/querytwo.html')
+	context = {
+	'order_list': order_list,
+	}
+	return HttpResponse(template.render(context, request))	
+def querythree(request, datestart, dateend, amountmin):
+	cursor = connection.cursor()
+	order_list = Customer.objects.raw('''SELECT c.idCustomer, c.firstName, c.lastName, round(SUM(p.salePrice*op.quantity),2) as 'TotalSales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op.pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct Join Customer as c On o.cust_idCustomer = c.idCustomer where o.createDate between %(date_start)s and %(date_end)s group by c.idCustomer having round(SUM(p.salePrice*op.quantity),2) > %(amountmin)s order by round(SUM(p.salePrice*op.quantity),2) desc''', params={'date_start': datestart, 'date_end': dateend, 'amountmin': amountmin})
 	template = loader.get_template('djangomysqlapp/querytwo.html')
 	context = {
 	'order_list': order_list,
@@ -91,6 +91,14 @@ def queryfour(request, datestart, dateend):
 	'order_list': namedtuplefetchall(cursor),
 	}
 	return HttpResponse(template.render(context, request))	
+def queryfive(request, datestart, dateend, productid):
+	cursor = connection.cursor()
+	order_list = Customer.objects.raw('''SELECT p.idProduct, round((sum(p.salePrice*op.Quantity) - sum(p.buyPrice*op.Quantity)),2) as 'ReturnonInvestment' From Purchase as o Join PurchaseLines as op On o.idPurchase = op.pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct where o.createDate between %(date_start)s and %(date_end)s and p.idProduct = %(productid)s group by p.idProduct''', params={'date_start': datestart, 'date_end': dateend, 'productid': productid})
+	template = loader.get_template('djangomysqlapp/queryfive.html')
+	context = {
+	'order_list': order_list,
+	}
+	return HttpResponse(template.render(context, request))
 def querysix(request, datestart, dateend):
 	cursor = connection.cursor()
 	cursor.execute('''SELECT AVG(DATEDIFF(deliveredDate, createDate)) as 'AverageDate' FROM Purchase WHERE createDate BETWEEN %(date_start)s and %(date_end)s''', params={'date_start': datestart, 'date_end': dateend})
@@ -98,29 +106,15 @@ def querysix(request, datestart, dateend):
 	context = {
 	'order_list': dictfetchall(cursor),
 	}
-	return HttpResponse(template.render(context, request))		
-def get_year(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = YearForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            year = form.cleaned_data['year']
-
-			
-			
-			
-			
-			
-			
-            return HttpResponseRedirect('/thanks/')
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = YearForm()
-    return render(request, 'product.html', {'form': form})
-	
-
+	return HttpResponse(template.render(context, request))
+def queryfourteen(request, datestart, dateend, employeeid):
+	cursor = connection.cursor()
+	order_list = Employee.objects.raw('''SELECT e.idEmployee, o.createDate, round(SUM(p.salePrice*op.quantity),2) as 'Sales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op. pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct Join Employee as e On o.emp_idEmployee = e.idEmployee where o.createDate between %(date_start)s and %(date_end)s AND e.idEmployee = %(employee_id)s group by e.idEmployee DESC''', params={'date_start': datestart, 'date_end': dateend, 'employee_id': employeeid})
+	template = loader.get_template('djangomysqlapp/queryfourteen.html')
+	context = {
+	'order_list': order_list,
+	}
+	return HttpResponse(template.render(context, request))
 def get_contact(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -144,15 +138,7 @@ def get_contact(request):
     else:
         form = ContactForm()
 
-    return render(request, 'home.html', {'form': form})
-	
-def jqueryserver(request):
-    print "in jqueryserver"
-    response_string="hello"
-    if request.method == 'GET':
-        if request.is_ajax()== True:
-            return HttpResponse(response_string,mimetype='text/plain')
-			
+    return render(request, 'home.html', {'form': form})			
 def namedtuplefetchall(cursor):
     "Return all rows from a cursor as a namedtuple"
     desc = cursor.description
