@@ -14,7 +14,7 @@ import tkinter as tk
 from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
 from mongoDatabase import MongoQueries
-from exportToCSV import exportToCSV
+from assets.exportToCSV import exportToCSV
 from assets.JsonWriterTool import TheWriterClass
 from assets.TxtWriterTool import writeToTXT
 from Logger import Logger
