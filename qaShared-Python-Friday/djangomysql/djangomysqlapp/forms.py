@@ -17,7 +17,7 @@ class SalesForm(forms.Form):
 	employeeid= forms.IntegerField(min_value=0)
 	
 class CustomerForm(forms.Form):
-	amount= forms.IntegerField(min_value=0)
+	amountmin= forms.IntegerField(min_value=0)
 	customer_id= forms.IntegerField(min_value=0)
 	productid= forms.IntegerField(min_value=0)
 

@@ -16,6 +16,8 @@ urlpatterns = [
     url(r'^(?P<idproduct>[0-9]+)/vote/$', views.vote, name='vote'),
 	url(r'^query/(?P<datestart>[\w\-]+)/(?P<dateend>[\w\-]+)$', views.query, name='query'),
 	url(r'^querytwo/(?P<datestart>[\w\-]+)/(?P<dateend>[\w\-]+)$', views.querytwo, name='querytwo'),
+	url(r'^querythree/(?P<datestart>[\w\-]+)/(?P<dateend>[\w\-]+)/(?P<amountmin>[\w\-]+)$', views.querythree, name='querythree'),
+	url(r'^queryfive/(?P<datestart>[\w\-]+)/(?P<dateend>[\w\-]+)/(?P<productid>[\w\-]+)$', views.queryfive, name='queryfive'),
 	url(r'^queryfourteen/(?P<datestart>[\w\-]+)/(?P<dateend>[\w\-]+)/(?P<employeeid>[\w\-]+)$', views.queryfourteen, name='queryfourteen'),
 	url(r'^jqueryserver/$',views.jqueryserver),
 ]
