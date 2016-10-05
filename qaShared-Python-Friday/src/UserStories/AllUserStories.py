@@ -26,7 +26,6 @@ class AllUserStories (object):
     def __init__(self):
         empty = 0
         empty += 1
-        # some instructions
         
     def newUserStory(self, db, GUI, autoGen, query_number):
         userStories = autoGen[3]
@@ -82,7 +81,6 @@ class AllUserStories (object):
             query(db, sqlParse)
         else:
             query(db, sqlQuery)
-        
 
     def validateDateInput(self, date):
         """ validateDateInput: This method accepts a date as a parameter and
@@ -146,7 +144,6 @@ class AllUserStories (object):
             validGender = False
         return validGender
 
-    #def mongoStory1(self, MongoQueries, GUI, custIDi): # + GUI (bool) + startDate + endDate etc
     def mongoStory1(self, sqlConn, conn, GUI, custID): # mongo 7
         """ userStory7(Boolean for GUI, customer id): This method does xyz """
         if (not GUI):
@@ -187,7 +184,7 @@ class AllUserStories (object):
         if (GUI):
             return customerReviewScores
 
-    def mongoStory2(self, sqlConn, conn, GUI, county):
+    def mongoStory2(self, sqlConn, conn, GUI, county): # mongo 8
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
         if (not GUI):
             validCounty = False
@@ -255,9 +252,7 @@ class AllUserStories (object):
             result = [scoresFromCounty]
             return result  # result = [[finalProductScore, finalDeliveryScore, finalServiceScore]]
 
-
-
-    def mongoStory3(self, sqlConn, conn, GUI, gender, agemin, agemax):
+    def mongoStory3(self, sqlConn, conn, GUI, gender, agemin, agemax): # mongo 9
         """ useCase9: """
         if (not GUI):
             validGender = False
@@ -363,7 +358,7 @@ class AllUserStories (object):
 
 
 
-    def mongoStory4(self, sqlConn, conn, GUI, prodID):
+    def mongoStory4(self, sqlConn, conn, GUI, prodID): # mongo 10
         """ useCase10 """
         
         if(not GUI):
@@ -403,7 +398,7 @@ class AllUserStories (object):
             result = reviewScores
             return result
             
-    def mongoStory5(self, sqlConn, conn, GUI, dateFrom, dateTo):
+    def mongoStory5(self, sqlConn, conn, GUI, dateFrom, dateTo): # mongo 11
         if (not GUI):
             #dateFrom = input("From which date do you want to get review scores?: ")
             #dateTo = input("Until which date?: ")
@@ -471,7 +466,7 @@ class AllUserStories (object):
         if (GUI):
             return result #[[finalProductScore, finalDeliveryScore, finalServiceScore]]
             
-    def mongoStory6(self, sqlConn, conn, GUI, dateFrom, dateTo):
+    def mongoStory6(self, sqlConn, conn, GUI, dateFrom, dateTo): # mongo 15
         """ useCase15 """
         if (not GUI):
             validStartDate = False
@@ -588,7 +583,6 @@ class AllUserStories (object):
         if (GUI):
             return graphData
 
-
     def userStory12(self, db, GUI, productID):
         """ useCase1: Accepts parameter 'period' which is a period, 1-4 """
 
@@ -640,21 +634,6 @@ class AllUserStories (object):
         results = query(db, sql)
 
         if (query_number == 13):
-#            products = []
-#            totals = []
-#            for r in range(1, len(results)):
-#                products.append(results[r][0])
-#                totals.append(results[r][1])
-#
-#            print ("Plotting the data...")
-#            plt.plot(products, totals, "#993A54")
-#            plt.xlabel('Product ID')
-#            plt.ylabel('Amount of sales')
-#            plt.title('Amount of sales for a particular product over a period of time')
-#            plt.grid(True)
-#            plt.savefig("graph.png")
-#            plt.show()
-        
             products = []
             totals = []
             for r in range(1, len(results)):
@@ -683,28 +662,7 @@ class AllUserStories (object):
                 plt.grid(True)
                 plt.savefig("assets\\graph.png")
                 plt.show()
-
         elif (query_number == 16):
-#            ids = []
-#            totals = []
-#            amounts = []
-#            for r in range(1, len(results)):
-#                ids.append(results[r][0])
-#                totals.append(results[r][1])
-#                amounts.append(results[r][2])
-#
-#            # dates ratings product
-#            print ("Plotting the data...")
-#            plt.plot(ids, totals, amounts, "#993A54")
-#            plt.legend(loc=1)
-#            plt.xlabel('Date (YYYY-MM-DD)')
-#            plt.xticks(rotation=45)
-#            plt.ylabel('Number of Sales')
-#            plt.title('Amount of sales made by a particular salesperson over a period of time')
-#            plt.grid(True)
-#            plt.savefig("graph.png")
-#            plt.show()
-        
             ids = []
             totals = [] 
             amounts = []
@@ -743,7 +701,6 @@ class AllUserStories (object):
             return results
         else:
             exportToCSV(results)
-
 
     def userStorySeries2(self, db, GUI, startDate, endDate, amount_or_productid, query_number):
         """ useCase 3, 5, 14: Accepts parameter 'period' which is a period, 1-4 """
