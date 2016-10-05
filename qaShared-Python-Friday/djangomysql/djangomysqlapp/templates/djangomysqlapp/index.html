@@ -14,6 +14,49 @@
     <script src="/static/https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		
+		$('#form_signin').on('submit', function(event){
+			event.preventDefault();
+			console.log("form submitted!")  // sanity check
+			query_signin();
+		});
+		
+		$.ajaxSetup({
+			data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+		});
+		
+ 		function query_signin() {
+			var username =  $('#id_username_signin').val();
+			var password =  $('#id_password_signin').val();
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/login/" + username + "/" + password, // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#results_signin").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+			
+		};
+	});
+	</script>
 
 </head>
 <body>
@@ -45,16 +88,8 @@
 	  </div>
 	</nav>
 	
-	<form id="login_form" method="post" action="/djangomysqlapp/login/">
-            {% csrf_token %}
-            Username: <input type="text" name="username" value="" size="50" />
-            <br />
-            Password: <input type="password" name="password" value="" size="50" />
-            <br />
 
-            <input type="submit" value="submit" />
-       </form>
-	<!--
+
 	<div class="container" style="width:30%;">
       <form method="POST" id="form_signin" class="form-signin">
         <h2 class="form-signin-heading">Please sign in</h2>
@@ -66,7 +101,8 @@
 			{{ form }}
 			<input type="submit" value="Submit">
       </form>
-	</div> -->
+	</div>
+
 	
 	
 </body>

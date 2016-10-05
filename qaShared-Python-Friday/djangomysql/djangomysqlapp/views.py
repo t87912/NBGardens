@@ -21,7 +21,7 @@ def login(request, username, password):
 	user=authenticate(username=username, password=password)
 	if user is not None:
 		login(request, user)
-		template = loader.get_template('djangomysqlapp/orders.html')
+		template = loader.get_template('djangomysqlapp/login.html')
 		context = {
 		}
 		return HttpResponse(template.render(context, request))
