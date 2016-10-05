@@ -1,9 +1,63 @@
-{% if latest_question_list %}
-    <ul>
-    {% for product in latest_question_list %}
-        <li><a href="/polls/{{ product.idproduct }}/">{{ product.productname }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Bootstrap 101 Template</title>
+	<link rel='stylesheet' type='text/css' href='css.css'>
+
+	<!-- Bootstrap -->
+	<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/static/https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.min.js"></script>
+	
+	
+</head>
+<body>
+	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;height:200px;">
+
+		<h1 align="center">NB Gardens</h1>
+		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
+	</div>
+
+	<nav class="navbar navbar-inverse"  data-spy="affix" data-offset-top="197">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+				<li><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
+				<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
+				<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
+				<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
+				<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+			</ul>
+		</div>
+	  </div>
+	</nav>
+	
+	<div class="form-group">
+	{ if login=false}
+		<form method="post" action="simpleform.asp">
+			Username: <input type="text" name="username"><br>
+			Password: <input type="text" name="password"><br><br>
+			<input type="submit" value="Submit">
+		</form>
+	
+	{ else }
+	
+	{ endif }
+	
+
+</body>
+</html>

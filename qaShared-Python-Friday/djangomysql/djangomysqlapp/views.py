@@ -10,10 +10,8 @@ from collections import namedtuple
 
 # Create your views here.
 def index(request):
-    latest_question_list = Product.objects.order_by('idproduct')[:5]
     template = loader.get_template('djangomysqlapp/index.html')
     context = {
-        'latest_question_list': latest_question_list,
     }
     return HttpResponse(template.render(context, request))
 def products(request):
@@ -56,12 +54,6 @@ def customer(request):
 	context = {
 	'product_list': product_list,
 	}	
-	return HttpResponse(template.render(context, request))
-
-def home(request):
-	template = loader.get_template('djangomysqlapp/home.html')
-	context = {
-	}
 	return HttpResponse(template.render(context, request))
 def help(request):
 	template = loader.get_template('djangomysqlapp/help.html')
