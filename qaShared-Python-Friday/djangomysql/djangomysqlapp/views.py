@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import Product, Purchase, Employee, Customer
-from .forms import YearForm, LoginForm, ContactForm
+from .forms import YearForm, ContactForm
 from django.core.mail import send_mail
 from django.db import connection
 from collections import namedtuple
@@ -26,9 +26,9 @@ def login(request, username, password):
 		}
 		return HttpResponse(template.render(context, request))
 	else:
-        # Bad login details were provided. So we can't log the user in.
-        print "Invalid login details: {0}, {1}".format(username, password)
-        return HttpResponse("Invalid login details supplied.")
+		# Bad login details were provided. So we can't log the user in.
+		print "Invalid login details: {0}, {1}".format(username, password)
+		return HttpResponse("Invalid login details supplied.")
 
 def products(request):
 	product_list = Product.objects.order_by('idproduct')

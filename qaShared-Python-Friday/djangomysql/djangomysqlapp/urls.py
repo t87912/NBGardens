@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^product/(?P<idproduct>[0-9]+)/$', views.product, name='product'),
 	url(r'^help/$', views.help, name='help'),
 	url(r'^orders/$', views.orders, name='orders'),
+	url(r'^login/$', views.login, name='login'),
     url(r'^order/(?P<idpurchase>[0-9]+)/$', views.order, name='order'),	
 	url(r'^employee/$', views.employee, name='employee'),
 	url(r'^customer/$', views.customer, name='customer'),
@@ -28,5 +29,4 @@ urlpatterns = [
 	
 	
 	url(r'^queryfourteen/(?P<datestart>[\w\-]+)/(?P<dateend>[\w\-]+)/(?P<employeeid>[\w\-]+)$', views.queryfourteen, name='queryfourteen'),
-	url(r'^failedlogin/$', views.failedlogin, name='failedlogin'),
 ]
