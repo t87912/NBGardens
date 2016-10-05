@@ -6,7 +6,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<link rel='stylesheet' type='text/css' href='stylesheet.css'>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 
@@ -16,15 +15,15 @@
     <script src="/static/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	$( document ).ready(function() {
-
-		$.ajaxSetup({
-			data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
-		});
 		
 		$('#form_spentmost').on('submit', function(event){
 			event.preventDefault();
 			console.log("form submitted!")  // sanity check
 			query_spentmost();
+		});
+		
+		$.ajaxSetup({
+			data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
 		});
 		
  		function query_spentmost() {
@@ -54,7 +53,9 @@
 				}
 			});
 			
-			$('#form_spentmost').on('submit', function(event){
+		};
+
+		$('#form_spentxamount').on('submit', function(event){
 			event.preventDefault();
 			console.log("form submitted!")  // sanity check
 			query_spentxamount();
@@ -68,7 +69,7 @@
 			console.log($('#post-text').val())
 			
 			$.ajax({
-				url : "/djangomysqlapp/querythree/" + datestart + "/" + dateto, // the endpoint
+				url : "/djangomysqlapp/querythree/" + datestart + "/" + dateto + "/" + amount, // the endpoint
 				type : "POST", // http method
 				data : { the_post : $('#post-text').val() }, // data sent with the post request
 
@@ -87,8 +88,6 @@
 					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
 				}
 			});
-
-		};
 
 		};
  
@@ -184,7 +183,7 @@
 						<!-- Default panel contents -->
 						<div class="panel-heading">Customers</div>
 						<!-- Table -->
-						<table id="results_spentmost" class="table table-striped"></table>
+						<table id="results_spentxamount" class="table table-striped"></table>
 					</div>
 				</div>
 		</div>
