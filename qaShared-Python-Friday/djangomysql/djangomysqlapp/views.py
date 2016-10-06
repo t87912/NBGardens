@@ -42,6 +42,10 @@ def products(request):
 def product(request, idproduct):
     return HttpResponse("You're looking at Product %s." % idproduct)
 def orders(request):
+	
+	cursor = connection.cursor()
+	order_list = Employee.objects.raw('''SELECT * FROM nbgardensds.Purchase limit %(limit_start)s,10''', params={'limit_start': limitstart})
+
 	order_list = Purchase.objects.order_by('idpurchase')[:10]
 	template = loader.get_template('djangomysqlapp/orders.html')
 	context = {
