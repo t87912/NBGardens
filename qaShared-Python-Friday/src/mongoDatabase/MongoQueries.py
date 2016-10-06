@@ -1,11 +1,14 @@
 class OnlineReviews(object):
-    ##### accesses OnlineReviews Collection #####
+    """ OnlineReviews: This class accesses the collection of online reviews,
+        allowing access to reviews and their scores. The class must be
+        initiated with the mongo connection as a parameter. """
     def __init__(self, conn):
         self.conn = conn
         self.db = self.conn.get_default_database()
 
     def getOnlineReviews(self, i):
-        ##### returns array with all reviews for product with id = i #####
+        """ getOnlineReviews: returns array with all reviews for product with 
+            id = i. """
         reviews = self.db.ProductReviews.find({"product_id" : i})
         reviewArray = []
         for doc in reviews:
@@ -15,7 +18,8 @@ class OnlineReviews(object):
         return reviewArray
         
     def getOnlineReviewScores(self, i):
-        ##### returns array with all scores for a product with id = i #####
+        """ getOnlineReviewScores: returns array with all scores for a 
+            product with id = i. """
         reviews = self.db.ProductReviews.find({"product_id" : i})
         reviewArray = []
         for doc in reviews:
@@ -25,30 +29,32 @@ class OnlineReviews(object):
         
 
 class ProductDetails:
-    ##### accesses ProductDetails Collection #####
+    """ ProductDetails: This class accesses the collection of products. """
     def getProductDetails(i):
-        ##### returns a document with all product details contained #####
+        """ getProductDetails: returns a document with all product details 
+            contained """
         product = db.ProductDetails.find({"_id" : i})
         for prod in product:
             det = prod
         return det
             
     def getProductName(i):
-        ##### returns the products name from product id #####
+        """ getProductName: returns the products name from product id """
         product = db.ProductDetails.find({"_id" : i})
         for prod in product:
             name = prod["name"]
         return name
         
     def getProductDescription(i):
-        ##### returns the products description from product id #####
+        """ getProductDescription: returns the products description from 
+            product id """
         product = db.ProductDetails.find({"_id" : i})
         for prod in product:
             desc = prod["description"]
         return desc
         
 class CustomerOrderReviews(object):
-    ##### accesses CustomerOrderReviews Collection #####
+    """ CustomerOrderReviews: This class accesses the collection of reviews. """
     def __init__(self, conn):
         self.conn = conn
         self.db = self.conn.get_default_database() 
