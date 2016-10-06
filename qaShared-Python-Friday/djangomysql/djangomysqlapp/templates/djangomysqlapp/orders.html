@@ -90,6 +90,73 @@
 			});
 
 		};
+		
+		var limitstart = 0;
+		
+		$('.pagination').on('click', function(event){
+			event.preventDefault();
+			limitstart =  $(event.target).text();
+			limitstart = (limitstart*10)-10
+			console.log("Limit Value: " + limitstart) // sanity check
+			console.log("form submitted!")  // sanity check
+			
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/orders_paginate/" + limitstart + "/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#paginate_table").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+			
+		});
+ 
+ 		$('#pagination_next').on('click', function(event){
+			event.preventDefault();
+			limitstart = limitstart+10
+			console.log("Limit Value: " + limitstart) // sanity check
+			console.log("form submitted!")  // sanity check
+			
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/orders_paginate/" + limitstart + "/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#paginate_table").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+			
+		});
  
 	});
 	</script>
@@ -140,17 +207,22 @@
 	  	<div id="orderlist" class="tab-pane fade in active">
 		<nav aria-label="Page navigation">
 			<ul class="pagination">
-				<li>
+				<li id="pagination_previous">
 					<a href="#" aria-label="Previous">
 					<span aria-hidden="true">&laquo;</span>
 					</a>
 				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li>
+				<li class="pagination"><a href="#">1</a></li>
+				<li class="pagination"><a href="#">2</a></li>
+				<li class="pagination"><a href="#">3</a></li>
+				<li class="pagination"><a href="#">4</a></li>
+				<li class="pagination"><a href="#">5</a></li>
+				<li class="pagination"><a href="#">6</a></li>
+				<li class="pagination"><a href="#">7</a></li>
+				<li class="pagination"><a href="#">8</a></li>
+				<li class="pagination"><a href="#">9</a></li>
+				<li class="pagination"><a href="#">10</a></li>
+				<li id="pagination_next">
 				<a href="#" aria-label="Next">
 				<span aria-hidden="true">&raquo;</span>
 				</a>
@@ -165,7 +237,7 @@
 				<div class="panel-heading">Employees</div>
 
 				<!-- Table -->
-				<table class="table table-striped">
+				<table id="paginate_table" class="table table-striped">
 					<thead>
 					<tr>
 						<th>Order ID</th>
@@ -182,23 +254,22 @@
 						<th>Date Returned</th>
 					</tr>
 					</thead>
-								{% for order in order_list %}
-								<tr>
-									<td>{{ order.idpurchase }}</td>
-									<td>{{ order.purchasestatus}}</td>
-									<td>{{ order.emp_idemployee.idemployee}}</td>
-									<td>{{ order.cust_idcustomer.idcustomer}}</td>
-									<td>{{ order.add_idaddress.idaddress }}</td>
-									<td>{{ order.pay_idpayment.idpayment}}</td>
-									<td>{{ order.createdate}}</td>
-									<td>{{ order.gdzdate}}</td>
-									<td>{{ order.dispatcheddate }}</td>
-									<td>{{ order.delivereddate}}</td>
-									<td>{{ order.cancelleddate}}</td>
-									<td>{{ order.returneddate}}</td>
-									 {% endfor %}
-								</tr>
-
+						{% for order in order_list %}
+						<tr>
+							<td>{{ order.idpurchase }}</td>
+							<td>{{ order.purchasestatus}}</td>
+							<td>{{ order.emp_idemployee.idemployee}}</td>
+							<td>{{ order.cust_idcustomer.idcustomer}}</td>
+							<td>{{ order.add_idaddress.idaddress }}</td>
+							<td>{{ order.pay_idpayment.idpayment}}</td>
+							<td>{{ order.createdate}}</td>
+							<td>{{ order.gdzdate}}</td>
+							<td>{{ order.dispatcheddate }}</td>
+							<td>{{ order.delivereddate}}</td>
+							<td>{{ order.cancelleddate}}</td>
+							<td>{{ order.returneddate}}</td>
+							 {% endfor %}
+						</tr>
 				</table>
 			</div>
 		</div>

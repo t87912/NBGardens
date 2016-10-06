@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^product/(?P<idproduct>[0-9]+)/$', views.product, name='product'),
 	url(r'^help/$', views.help, name='help'),
 	url(r'^orders/$', views.orders, name='orders'),
+	url(r'^orders_paginate/(?P<limitstart>[0-9]+)/$', views.orders_paginate, name='orders_paginate'),
 	url(r'^login/(?P<uname>[\w\-]+)/(?P<pword>[\w\-]+)$', views.login, name='login'),
     url(r'^order/(?P<idpurchase>[0-9]+)/$', views.order, name='order'),	
 	url(r'^employee/$', views.employee, name='employee'),
