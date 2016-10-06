@@ -14,6 +14,10 @@ from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
 from Logger import Logger
 
+import csv
+import sys
+import pickle
+
 class MainLogic(object):
     """ MainLogic: Holds the logic for running the program in the prompt.  """
     def __init__(self, autoGen):
@@ -34,12 +38,14 @@ class MainLogic(object):
                           "    6. Custom MySQL query",
                           "    7. Custom MongoDB query",
                           "Generate a user story:",
-                          "    8. Create a user story",
-                          "Execute generated user stories:",
-                          "    No generated user stories",
+                          "    8. See all generated user stories",
+                          "    9. Create a user story",
+                          "    10. Delete a user story",
+                          #"Execute generated user stories:",
+                          #"    No generated user stories",
                           "Other options:",
-                          "    9. Logout",
-                          "    10. Quit"]
+                          "    11. Logout",
+                          "    12. Quit"]
         self.autoGen = autoGen
         self.allUserStories = AllUserStories.AllUserStories()
         self.loggedIn = False
@@ -47,6 +53,7 @@ class MainLogic(object):
         self.logger = loggerObject.getLogger() # Get the logger object
         self.fh = loggerObject.getFileHandler() # Get the logger filehandler      
         self.initialLogin = True # used to not display gnome after first login
+        self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
         self.runProgram()
 
     def runProgram(self):  
@@ -105,22 +112,62 @@ class MainLogic(object):
                         self.customMongo()
                         valid = False
                         self.initialLogin = False
+                    elif (self.menuOption == 8):
+                        self.seeUserStories()
+                        valid = False
+                        self.initialLogin = False
                     elif (self.menuOption == 9):
+                        self.generateNewUserStory()
+                        valid = False
+                        self.initialLogin = False
+                    elif (self.menuOption == 10):
+                        self.deleteUserStory()
+                        valid = False
+                        self.initialLogin = False
+                    elif (self.menuOption == 11):
                         self.loggedIn = False
                         valid = False
-                    elif (self.menuOption == 10):
+                    elif (self.menuOption == 12):
                         print ("Exiting the program...")
                         self.logger.info('---------- Finished logging TUI -----------')
                         self.fh.close()
                         sys.exit(0)
                         
     def customSQL(self):
-        self.db.customQuery(False, 0)
+        try:
+            self.db.customQuery(False, 0)
+        except:
+            print ("Query returns an error.")
         self.waitForEnter()
         
     def customMongo(self):
-        self.mongoDB.customQuery(False, 0)
+        try:
+            self.mongoDB.customQuery(False, 0)
+        except:
+            print ("Query returns an error.")
         self.waitForEnter()
+        
+    def seeUserStories(self):
+        print ("See user stories")
+        self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
+        print (self.addedUserStories)
+        
+    def generateNewUserStory(self):
+        print ("Generate a new user story")        
+        #data = ["Description","SQL Query","Inputs in list"]
+        print ("Description of user story:")
+        print ("E.g. Show a list of all products.")
+        description = input("Description: ")
+        sqlQuery = input("SQL query: ")
+        inputs = input("Inputs: ")  
+        dataToDump = self.addedUserStories.append([description, sqlQuery, inputs])
+        pickle.dump(dataToDump, open( "UserStories/GeneratedStories/userStories.p","wb"))
+        
+    def deleteUserStory(self):
+        print ("All user stories: ")
+        for x in range(0, len(self.addedUserStories)):
+            print ("Index " + str(x) + " UserStory: " + str(self.addedUserStories[x]))
+        toDelete = input("Index of story to delete: ")
         
     def customerInfo(self):
         menu = ["1. Customer with highest spending in given period", # userStory2 SQL
@@ -263,7 +310,7 @@ class MainLogic(object):
     def getMenuInput(self):
         """ getMenuInput: Gets user input for the menu, returns True/False. """
         userChoice = input("Input option number: ")
-        validMenuInput = list(range(1,8)) + [9,10]
+        validMenuInput = list(range(1,13))
         try:
             userChoice = int(userChoice)
         except:
