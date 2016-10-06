@@ -22,7 +22,7 @@ def login(request, uname, pword):
 	if user is not None:
 		request.session['islogin'] = True
 		#how to we reload the sign in bit so once you've login, you dont see that anymore till you logout
-		template = loader.get_template('djangomysqlapp/login.html')
+		template = loader.get_template('djangomysqlapp/index.html')
 		context = {
 		}
 
@@ -30,7 +30,7 @@ def login(request, uname, pword):
 	else:
 		request.session['islogin'] = False
 		# Bad login details were provided. So we can't log the user in.
-		template = loader.get_template('djangomysqlapp/loginfailed.html')
+		template = loader.get_template('djangomysqlapp/index.html')
 		context = {
 			'islogin': request.session.get('islogin', False),
 		}
