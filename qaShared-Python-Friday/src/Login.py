@@ -5,6 +5,8 @@ Created on Wed Aug 31 11:05:13 2016
 @author: Administrator
 """
 
+import getpass
+
 class Login(object):
     """ Login: Gets user login details and returns them in a string """
     def __init__(self):
@@ -25,7 +27,8 @@ class Login(object):
         """ getPassword: Get userinput for the password, getpass module 
             should be used to print '*'s as the user types in password,
             this doesn't work in Spyder IDE though. """
-        password = input("Password: ")
+        #password = input("Password: ")
+        password = getpass.getpass('Password:')
         print ("") # For formatting
         return password
         

@@ -149,7 +149,7 @@ class MongoDatabase(object):
             eval() on the user input. Need validation for drop table etc. """
         db = self.conn.get_default_database() 
         if (not GUI):
-            print ("Example: db.CustomerReviews.find({})")
+            print ("Example: db.OrderFeedback.find({})")
             userInput = input("Enter the MongoDB command: ")
         cursor = eval(userInput)
         results = []

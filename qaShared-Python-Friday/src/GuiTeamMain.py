@@ -146,9 +146,6 @@ class MainApplication(tk.Frame):
         self.db = MySQLDatabase([username,password], self.logger, self.fh, self.autoGen)
         # Attempt to login, returns true/false if valid/invalid
         self.loginWindowBool = self.db.login()
-        print ("Hello")
-        print (username)
-        print (password)
         if (self.loginWindowBool):
             self.setter()
             top.destroy()
@@ -204,11 +201,18 @@ class MainApplication(tk.Frame):
         self.menu.add_command(label = "Logout", command = self.logout)
 
         #Output frame
-        self.outputFrame = tk.Frame(root,height=100,width = 100)
-        self.outputFrame.pack(side = tk.TOP)
+        #self.outputFrame = tk.Frame(root,height=100,width = 100)
+        #self.outputFrame.pack(side = tk.TOP)
+        
+        self.outputFrame2 = tk.Frame(root)
+        self.outputFrame2.pack(side = tk.TOP)
 
-        self.queryResultBox = tk.Text(self.outputFrame,width=79,height=25)
-        self.queryResultBox.pack(side = tk.LEFT)
+        #self.queryResultBox = tk.Text(self.outputFrame,width=79,height=25)
+        #self.queryResultBox.pack(side = tk.LEFT)
+        
+        #self.queryResultBox1 = tk.Text(self.outputFrame2,width=79,height=25)
+        #self.queryResultBox1.pack(side = tk.LEFT)
+        
         #self.queryResultBox.config(state = DISABLED)
 
 
@@ -466,7 +470,7 @@ class MainApplication(tk.Frame):
                  ["   | -|-|_      "],
                  ["   |____)_)     "]]
                  
-        self.outputQueryResult(gnome)
+        #self.outputQueryResult(gnome)
         
     def copy(self):
         content = self.outputFrame.selection_get()
@@ -618,12 +622,12 @@ class MainApplication(tk.Frame):
 
         if (value == self.customerOptions[0]):
             self.userStory = 1
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox1.config(state='normal')
             self.customerQueryInputBox2.config(state='normal')
         elif (value == self.customerOptions[1]):
             self.userStory = 2
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox1.config(state='normal')
             self.customerQueryInputBox2.config(state='normal')
             self.customerQueryInputBox3.config(state='normal')
@@ -631,24 +635,24 @@ class MainApplication(tk.Frame):
             self.customerQueryInputBox3.insert(0, 'Value')
         elif (value == self.customerOptions[2]):
             self.userStory = 3
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox1.config(state='normal')
             self.customerQueryInputBox2.config(state='normal')
         elif (value == self.customerOptions[3]): # MONGO - 7
             self.userStory = 6
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox3.config(state='normal')
             self.labelTab1.config(text='Customer ID:')
             self.customerQueryInputBox3.insert(0, 'Customer ID')
         elif (value == self.customerOptions[4]): # MONGO - 8
             self.userStory = 7
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox3.config(state='normal')
             self.labelTab1.config(text='Country:')
             self.customerQueryInputBox3.insert(0, 'Country')
         elif (value == self.customerOptions[5]): # MONGO - 9
             self.userStory = 8
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox1.config(state='normal')
             self.customerQueryInputBox2.config(state='normal')
             self.customerQueryInputBox3.config(state='normal')
@@ -656,14 +660,16 @@ class MainApplication(tk.Frame):
             self.customerQueryInputBox3.insert(0, 'Demographic')
         elif (value == self.customerOptions[6]): # MONGO - 11
             self.userStory = 10
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox1.config(state='normal')
             self.customerQueryInputBox2.config(state='normal')
         elif (value == self.customerOptions[7]):
             self.userStory = 14
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox1.config(state='normal')
             self.customerQueryInputBox2.config(state='normal')
+            
+        self.outputFrame2.destroy()
 
     def orderDropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
@@ -683,20 +689,22 @@ class MainApplication(tk.Frame):
 
         if (value == self.orderOptions[0]):
             self.userStory = 5
-            self.queryResultBox.delete('1.0', tk.END)
+           #self.queryResultBox.delete('1.0', tk.END)
             self.orderQueryInputBox1.config(state='normal')
             self.orderQueryInputBox2.config(state='normal')
         elif (value == self.orderOptions[1]): # MONGO - 10
             self.userStory = 9
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.orderQueryInputBox3.config(state='normal')
             self.labelTab2.config(text='Product ID:')
             self.orderQueryInputBox3.insert(0, 'Product ID')
         elif (value == self.orderOptions[2]): # MONGO - 11
             self.userStory = 10
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.orderQueryInputBox1.config(state='normal')
             self.orderQueryInputBox2.config(state='normal')
+            
+        self.outputFrame2.destroy()
 
 
     def productDropDownInput(self, value):
@@ -717,7 +725,7 @@ class MainApplication(tk.Frame):
 
         if (value == self.productOptions[0]):
             self.userStory = 4
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
             self.productQueryInputBox3.config(state='normal')
@@ -725,36 +733,38 @@ class MainApplication(tk.Frame):
             self.productQueryInputBox3.insert(0, 'Product ID')
         elif (value == self.productOptions[1]): # MONGO - 10
             self.userStory = 9
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox3.config(state='normal')
             self.labelTab3.config(text='Product ID:')
             self.productQueryInputBox3.insert(0, 'Product ID')
         elif (value == self.productOptions[2]): # MONGO - 11
             self.userStory = 10
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
         elif (value == self.productOptions[3]):
             self.userStory = 11
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox3.config(state='normal')
             self.labelTab3.config(text='Product ID:')
             self.productQueryInputBox3.insert(0, 'Product ID')
         elif (value == self.productOptions[4]):
             self.userStory = 12
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
         elif (value == self.productOptions[5]):
             self.userStory = 14
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
         elif (value == self.productOptions[6]):
             self.userStory = 15
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
+            
+        self.outputFrame2.destroy()
 
     def employeeDropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
@@ -774,17 +784,17 @@ class MainApplication(tk.Frame):
 
         if (value == self.employeeOptions[0]):
             self.userStory = 0
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.employeeQueryInputBox1.config(state='normal')
             self.employeeQueryInputBox2.config(state='normal')
         elif (value == self.employeeOptions[1]): # MONGO - 11
             self.userStory = 10
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.employeeQueryInputBox1.config(state='normal')
             self.employeeQueryInputBox2.config(state='normal')
         elif (value == self.employeeOptions[2]):
             self.userStory = 13
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.employeeQueryInputBox1.config(state='normal')
             self.employeeQueryInputBox2.config(state='normal')
             self.employeeQueryInputBox3.config(state='normal')
@@ -792,9 +802,11 @@ class MainApplication(tk.Frame):
             self.employeeQueryInputBox3.insert(0, 'Employee ID')
         elif (value == self.employeeOptions[3]):
             self.userStory = 14
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             self.employeeQueryInputBox1.config(state='normal')
             self.employeeQueryInputBox2.config(state='normal')
+            
+        self.outputFrame2.destroy()
 
 
     def customerSubmitUserStory(self):
@@ -806,56 +818,57 @@ class MainApplication(tk.Frame):
             in as the first parameter. The results are assigned to toPrint,
             which is passed in to the self.outputQueryResult method. """
         if (self.userStory == 1):
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
             #toPrint = userStory2(self.dbConn, True, fromDate, toDate)
             toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 2)
         elif (self.userStory == 2):
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             amount = self.customerQueryInputBox3.get()
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
             #toPrint = userStory3(self.dbConn, True, amount, fromDate, toDate)
             toPrint = self.run_query_obj.userStorySeries2(self.dbConn, True, fromDate, toDate, amount, 3)
         elif (self.userStory == 3):
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
             #toPrint = userStory4(self.dbConn, True, fromDate, toDate)
             toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 4)
         elif (self.userStory == 6): # MONGO - 7
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             customerID = self.customerQueryInputBox3.get()
             toPrint = self.run_query_obj.mongoStory1(self.dbConn, self.conn, True, customerID)
             #toPrint = userStory7(self.dbConn, self.conn, True, customerID)
         elif (self.userStory == 7): # MONGO - 8
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             county = self.customerQueryInputBox3.get()
             #toPrint = userStory8(self.dbConn, self.conn, True, county)
             toPrint = self.run_query_obj.mongoStory2(self.dbConn, self.conn, True, county)
         elif (self.userStory == 8): # MONGO - 9
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             gender = self.customerQueryInputBox1.get()
             agemin = self.customerQueryInputBox2.get()
             agemax = self.customerQueryInputBox3.get()
             #toPrint = userStory9(self.dbConn, self.conn, True, gender, agemin, agemax)
             toPrint = self.run_query_obj.mongoStory3(self.dbConn, self.conn, True, gender, agemin, agemax)
         elif (self.userStory == 10): # MONGO - 11
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
             #toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
             toPrint = self.run_query_obj.mongoStory5(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 14): # MONGO - 15
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.customerQueryInputBox1.get()
             toDate = self.customerQueryInputBox2.get()
             #toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
             toPrint = self.run_query_obj.mongoStory6(self.dbConn, self.conn, True, fromDate, toDate)
 
         # Put query result in the GUI text box
-        self.outputQueryResult(toPrint)
+        #self.outputQueryResult(toPrint)
+        self.printToGrid(toPrint)
 
         # Insert default prompt values back into inputs
         self.customerQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
@@ -877,18 +890,18 @@ class MainApplication(tk.Frame):
             which is passed in to the self.outputQueryResult method. """
 
         if (self.userStory == 5):
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.orderQueryInputBox1.get()
             toDate = self.orderQueryInputBox2.get()
             #toPrint = userStory6(self.dbConn, True, fromDate, toDate)
             toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 6)
         elif (self.userStory == 9): # MONGO - 10
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             productID = self.orderQueryInputBox3.get()
             #toPrint = userStory10(self.dbConn, self.conn, True, productID)
             toPrint = self.run_query_obj.mongoStory4(self.dbConn, self.conn, True, productID)
         elif (self.userStory == 10): # MONGO - 11
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.orderQueryInputBox1.get()
             toDate = self.orderQueryInputBox2.get()
             #toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
@@ -896,7 +909,8 @@ class MainApplication(tk.Frame):
 
 
         # Put query result in the GUI text box
-        self.outputQueryResult(toPrint)
+        #self.outputQueryResult(toPrint)
+        self.printToGrid(toPrint)
 
         # Insert default prompt values back into inputs
         self.orderInputBox1.insert(0, 'from: YYYY-MM-DD')
@@ -918,49 +932,50 @@ class MainApplication(tk.Frame):
             which is passed in to the self.outputQueryResult method. """
 
         if (self.userStory == 4):
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
             productID = self.productQueryInputBox3.get()
             #toPrint = userStory5(self.dbConn, True, fromDate, toDate, productID)
             toPrint = self.run_query_obj.userStorySeries2(self.dbConn, True, fromDate, toDate, productID, 5)
         elif (self.userStory == 9): # MONGO - 10
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             productID = self.productQueryInputBox3.get()
             #toPrint = userStory10(self.dbConn, self.conn, True, productID)
             toPrint = self.run_query_obj.mongoStory4(self.dbConn, self.conn, True, productID)
         elif (self.userStory == 10): # MONGO - 11
-            self.queryResultBox.delete('1.0', tk.END)
+            ##self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
             #toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
             toPrint = self.run_query_obj.mongoStory5(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 11):
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             productID = self.productQueryInputBox3.get()
             #toPrint = userStory12(self.dbConn, True, productID)
             toPrint = self.run_query_obj.userStory12(self.dbConn, True, productID)
         elif (self.userStory == 12):
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
             #toPrint = userStory13(self.dbConn, True, fromDate, toDate)
             toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 13)
         elif (self.userStory == 14): # MONGO - 15
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
             #toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
             toPrint = self.run_query_obj.mongoStory6(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 15):
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.productQueryInputBox1.get()
             toDate = self.productQueryInputBox2.get()
             #toPrint = userStory16(self.dbConn, True, fromDate, toDate)
             toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 16)
 
         # Put query result in the GUI text box
-        self.outputQueryResult(toPrint)
+        #self.outputQueryResult(toPrint)
+        self.printToGrid(toPrint)
 
         # Insert default prompt values back into inputs
         self.productQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
@@ -982,27 +997,27 @@ class MainApplication(tk.Frame):
             which is passed in to the self.outputQueryResult method. """
         # 1, 11, 14, 15
         if (self.userStory == 0): # sql 1
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             #toPrint = userStory1(self.dbConn, True, fromDate, toDate)
             toPrint = self.run_query_obj.userStorySeries1(self.dbConn, True, fromDate, toDate, 1)
 
         elif (self.userStory == 10): # MONGO - 11
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             #toPrint = userStory11(self.dbConn, self.conn, True, fromDate, toDate)
             toPrint = self.run_query_obj.mongoStory5(self.dbConn, self.conn, True, fromDate, toDate)
         elif (self.userStory == 13): # 14
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             employeeID = self.employeeQueryInputBox3.get()
             #toPrint = userStory14(self.dbConn, True, fromDate, toDate, employeeID)
             toPrint = self.run_query_obj.userStorySeries2(self.dbConn, True, fromDate, toDate, employeeID, 14)
         elif (self.userStory == 14): # MONGO - 15
-            self.queryResultBox.delete('1.0', tk.END)
+            #self.queryResultBox.delete('1.0', tk.END)
             fromDate = self.employeeQueryInputBox1.get()
             toDate = self.employeeQueryInputBox2.get()
             #toPrint = userStory15(self.dbConn, self.conn, True, fromDate, toDate)
@@ -1010,7 +1025,9 @@ class MainApplication(tk.Frame):
 
 
         # Put query result in the GUI text box
-        self.outputQueryResult(toPrint)
+        #self.outputQueryResult(toPrint)
+
+        self.printToGrid(toPrint)
 
         # Insert default prompt values back into inputs
         self.employeeQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
@@ -1028,14 +1045,14 @@ class MainApplication(tk.Frame):
             the connections to Mongo and MySQL. """
             
         if messagebox.askokcancel("Logout", "Wanna leave?"):
-            if messagebox.askokcancel("Logout", "Are you sure?"):
-                if messagebox.askokcancel("Logout", "Really?"):
-                    self.canLogin = False
-                    self.login()
-                    self.menu.destroy()
-                    self.outputFrame.destroy()
-                    self.inputFrame.destroy()
-                    self.status.destroy()
+            #if messagebox.askokcancel("Logout", "Are you sure?"):
+                #if messagebox.askokcancel("Logout", "Really?"):
+            self.canLogin = False
+            self.login()
+            self.menu.destroy()
+            self.outputFrame.destroy()
+            self.inputFrame.destroy()
+            self.status.destroy()
 
 
     def customSQL(self):
@@ -1061,12 +1078,48 @@ class MainApplication(tk.Frame):
         for i in range(0, len(toPrint)):
             textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
             eval(textToEval)
+            
+    def printToGrid(self, data):
+        
+        #if (len(data) < 10):
+          #  self.outputFrame2 = tk.Frame(root,height=100,width = 100)
+         #   self.outputFrame2.pack(side = tk.TOP)
+        #else:
+        self.outputFrame2 = tk.Frame(root,height=100,width = 100)
+        self.outputFrame2.pack(side = tk.TOP)
+        
+        canvas=tk.Canvas(self.outputFrame2)
+        frame=tk.Frame(canvas)
+        myscrollbar=tk.Scrollbar(self.outputFrame2,orient="vertical",command=canvas.yview)
+        canvas.configure(yscrollcommand=myscrollbar.set)
+        
+        def myfunction(event):
+            canvas.configure(scrollregion=canvas.bbox("all"),width=500,height=500)
+        
+        myscrollbar.grid(row=0,column=1, sticky='NES')# side="right",fill="y")
+        canvas.grid(row=0,column=1)
+        canvas.create_window((0,0),window=frame,anchor='nw')
+        self.outputFrame2.bind("<Configure>",myfunction)
+        
+        if (len(data) < 14):
+            myscrollbar.destroy()
+    
+        height = len(data)
+        width = len(data[0])
+        for i in range(height): # Rows
+            for j in range(width): # Columns
+                if (i == 0):    
+                    self.b = tk.Text(frame, width=20, height=2, font=("Arial", "11", "bold"))  #text=data[i][j])
+                else:
+                    self.b = tk.Text(frame, width=20, height=2)
+                self.b.insert("1.0",data[i][j])
+                self.b.grid(row=i, column=j)
 
 if __name__ == "__main__":
     autoGenCode = AutoGenCode()
     autoGen = autoGenCode.getAutoGen()
     root = tk.Tk()
     MainApplication = MainApplication(root, autoGen)
-    root.geometry('650x580')
+    root.geometry('650x700')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()

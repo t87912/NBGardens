@@ -1,10 +1,12 @@
 [
     [
-        "avCustomerScore",
-        "avOnlineScore"
+        "finalProductScore",
+        "finalDeliveryScore",
+        "finalServiceScore"
     ],
     [
-        "N/A",
-        "N/A"
+        6.35,
+        5.6,
+        5.6
     ]
 ]
