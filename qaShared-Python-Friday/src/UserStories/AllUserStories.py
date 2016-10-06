@@ -762,7 +762,12 @@ class AllUserStories (object):
         if (GUI):
             return results
         else:
-            self.writeToFiles(results)
+            if (query_number == 6):
+                # problem writing to json as result is "Decimal(10)" etc
+                results[1] = str(results[1])
+                self.writeToFiles(results)
+            else:
+                self.writeToFiles(results)
 
     def userStorySeries2(self, db, GUI, startDate, endDate, amount_or_productid, query_number):
         """ useCase 3, 5, 14: Accepts parameter 'period' which is a period, 1-4 """
