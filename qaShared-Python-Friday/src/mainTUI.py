@@ -151,16 +151,25 @@ class MainLogic(object):
         print ("See user stories")
         self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
         print (self.addedUserStories)
+        self.waitForEnter()
         
     def generateNewUserStory(self):
+        self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
         print ("Generate a new user story")        
         #data = ["Description","SQL Query","Inputs in list"]
         print ("Description of user story:")
         print ("E.g. Show a list of all products.")
         description = input("Description: ")
         sqlQuery = input("SQL query: ")
-        inputs = input("Inputs: ")  
-        dataToDump = self.addedUserStories.append([description, sqlQuery, inputs])
+        inputs = input("Inputs: ")
+        try:
+            print ("Try")
+            print (self.addedUserStories)
+            dataToDump = self.addedUserStories + [[description, sqlQuery, inputs]]
+            print (dataToDump)
+        except:
+            print ("Except")
+            dataToDump = [[description, sqlQuery, inputs]]
         pickle.dump(dataToDump, open( "UserStories/GeneratedStories/userStories.p","wb"))
         
     def deleteUserStory(self):
