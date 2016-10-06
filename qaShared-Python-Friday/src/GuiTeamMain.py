@@ -202,20 +202,9 @@ class MainApplication(tk.Frame):
         self.menu.add_command(label = "Logout", command = self.logout)
 
         #Output frame
-        #self.outputFrame = tk.Frame(root,height=100,width = 100)
-        #self.outputFrame.pack(side = tk.TOP)
-        
-        self.outputFrame2 = tk.Frame(root)
-        self.outputFrame2.pack(side = tk.TOP)
-
-        #self.queryResultBox = tk.Text(self.outputFrame,width=79,height=25)
-        #self.queryResultBox.pack(side = tk.LEFT)
-        
-        #self.queryResultBox1 = tk.Text(self.outputFrame2,width=79,height=25)
-        #self.queryResultBox1.pack(side = tk.LEFT)
-        
-        #self.queryResultBox.config(state = DISABLED)
-
+             
+        self.outputFrame = tk.Frame(root)
+        self.outputFrame.pack(side = tk.TOP)
 
         #input frame
         self.inputFrame = tk.Frame(root,height=150,width = 600)
@@ -670,7 +659,7 @@ class MainApplication(tk.Frame):
             self.customerQueryInputBox1.config(state='normal')
             self.customerQueryInputBox2.config(state='normal')
             
-        self.outputFrame2.destroy()
+        self.outputFrame.destroy()
 
     def orderDropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
@@ -705,7 +694,7 @@ class MainApplication(tk.Frame):
             self.orderQueryInputBox1.config(state='normal')
             self.orderQueryInputBox2.config(state='normal')
             
-        self.outputFrame2.destroy()
+        self.outputFrame.destroy()
 
 
     def productDropDownInput(self, value):
@@ -765,7 +754,7 @@ class MainApplication(tk.Frame):
             self.productQueryInputBox1.config(state='normal')
             self.productQueryInputBox2.config(state='normal')
             
-        self.outputFrame2.destroy()
+        self.outputFrame.destroy()
 
     def employeeDropDownInput(self, value):
         """ dropDownInput: This method is called whenever the user selects a
@@ -807,7 +796,7 @@ class MainApplication(tk.Frame):
             self.employeeQueryInputBox1.config(state='normal')
             self.employeeQueryInputBox2.config(state='normal')
             
-        self.outputFrame2.destroy()
+        self.outputFrame.destroy()
 
 
     def customerSubmitUserStory(self):
@@ -1048,9 +1037,7 @@ class MainApplication(tk.Frame):
             text and enable login button and user/password inputs. Also closes
             the connections to Mongo and MySQL. """
             
-        if messagebox.askokcancel("Logout", "Wanna leave?"):
-            #if messagebox.askokcancel("Logout", "Are you sure?"):
-                #if messagebox.askokcancel("Logout", "Really?"):
+        if messagebox.askokcancel("Logout", "Are you sure you want to logout?"):
             self.canLogin = False
             self.login()
             self.menu.destroy()
@@ -1086,16 +1073,16 @@ class MainApplication(tk.Frame):
     def printToGrid(self, data):
         
         #if (len(data) < 10):
-          #  self.outputFrame2 = tk.Frame(root,height=100,width = 100)
-         #   self.outputFrame2.pack(side = tk.TOP)
+          #  self.outputFrame = tk.Frame(root,height=100,width = 100)
+         #   self.outputFrame.pack(side = tk.TOP)
         #else:
-        self.outputFrame2 = tk.Frame(root,height=100,width = 150)
-        self.outputFrame2.pack(side = tk.TOP)
+        self.outputFrame = tk.Frame(root,height=100,width = 150)
+        self.outputFrame.pack(side = tk.TOP)
         
-        canvas=tk.Canvas(self.outputFrame2)
+        canvas=tk.Canvas(self.outputFrame)
         frame=tk.Frame(canvas)
-        myscrollbar=tk.Scrollbar(self.outputFrame2,orient="vertical",command=canvas.yview)
-        myscrollbar1=tk.Scrollbar(self.outputFrame2,orient="horizontal",command=canvas.xview)
+        myscrollbar=tk.Scrollbar(self.outputFrame,orient="vertical",command=canvas.yview)
+        myscrollbar1=tk.Scrollbar(self.outputFrame,orient="horizontal",command=canvas.xview)
         canvas.configure(yscrollcommand=myscrollbar.set)
         canvas.configure(xscrollcommand=myscrollbar1.set)
         
@@ -1106,7 +1093,7 @@ class MainApplication(tk.Frame):
         myscrollbar1.grid(row=0,column=1, sticky='WSE')# side="right",fill="y")
         canvas.grid(row=0,column=1)
         canvas.create_window((0,0),window=frame,anchor='nw')
-        self.outputFrame2.bind("<Configure>",myfunction)
+        self.outputFrame.bind("<Configure>",myfunction)
         
         if (len(data) < 14):
             myscrollbar.destroy()

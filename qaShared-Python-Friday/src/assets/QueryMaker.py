@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Thu Oct  6 16:52:01 2016
+
+@author: Administrator
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Mon Sep 26 15:20:00 2016
 @author: Administrator
 """
@@ -158,12 +165,12 @@ class QueryMaker:
                             # print ((self.matrix_keys[(table_in_x[0])[0], y]),(self.matrix_keys[(table_in_x[1])[0], x]) )
                             #
                             if (((self.matrix_keys[(table_in_x[0])[0], y]) == (self.matrix_keys[(table_in_x[1])[0], x])) and ((self.matrix_keys[(table_in_x[1])[0], x]) != '')):
-                                self.concatenateAliases(self.matrix_keys[(table_in_x[0])[0], 0], self.matrix_keys[(table_in_x[1])[0])
+                                found_1, found_2 = self.concatenateAliases(self.matrix_keys[(table_in_x[0])[0], 0], self.matrix_keys[(table_in_x[1]),0])
                                 break
 
                             if ('_' in (self.matrix_keys[(table_in_x[0])[0], y])):
                                 if ((((self.matrix_keys[(table_in_x[0])[0], y]).split('_'))[1]) == (self.matrix_keys[(table_in_x[1])[0], x])):
-                                    self.concatenateAliases(self.matrix_keys[(table_in_x[0])[0], 0], self.matrix_keys[(table_in_x[1])[0])
+                                    found_1, found_2 = self.concatenateAliases(self.matrix_keys[(table_in_x[0])[0], 0], self.matrix_keys[(table_in_x[1]),0])
                                     break
 
                     tables_sorted.append(element)
@@ -183,6 +190,7 @@ class QueryMaker:
         alias_2 = self.createTableAlias(matching_attribute_2, 0])
         found_1.append(alias_1 + '.' +  (matching_attribute_1, y]))
         found_2.append(alias_2 + '.' +  (matching_attribute_2, x]))
+        return found_1, found_2
 
 
     def runTest(self, query):
@@ -198,14 +206,11 @@ class QueryMaker:
 - bug fix - with validation make a sort of try catch where if try fails do recursion to itself
 - fix it so that the '_' can be the other way round 'dfdfd' == '_' // '_' == 'dfhjf'
 - allow for multiple joins
-
-
     ====== PRESENTATION =======
 - partials
 - matrix
 - numpy
 - system itself
-
 '''
 
 #################################
