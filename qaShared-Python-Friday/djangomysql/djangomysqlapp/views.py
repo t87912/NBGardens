@@ -10,8 +10,7 @@ from collections import namedtuple
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
-@login_required(redirect_field_name='my_redirect_field')
-# Create your views here.
+@login_required(redirect_field_name='/djangomysqlapp/')
 def index(request):
     template = loader.get_template('djangomysqlapp/index.html')
     context = {
@@ -20,6 +19,7 @@ def index(request):
 def login(request, uname, pword):
 	user=authenticate(username=uname, password=pword)
 	if user is not None:
+		login(request, uname, pword)
 		#how to we reload the sign in bit so once you've login, you dont see that anymore till you logout
 		template = loader.get_template('djangomysqlapp/login.html')
 		context = {
