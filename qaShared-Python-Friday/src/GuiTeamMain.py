@@ -130,6 +130,7 @@ class MainApplication(tk.Frame):
 
         logbtn = tk.Button(top, text="Login", command = lambda: test())
         logbtn.grid(row=2, column=1,columnspan=2)
+        top.lift()
 
         def test():
             username = usernameEntry.get()
