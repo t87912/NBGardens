@@ -3416,3 +3416,14 @@
 2016-10-05 16:39:52,956 - INFO - Successful login to MySQL database, username: 
 2016-10-05 16:39:52,956 - INFO - Successful login to MySQL database, username: 
 2016-10-05 16:39:52,956 - INFO - Successful login to MySQL database, username: 
+2016-10-06 09:08:56,748 - INFO - ---------- Started logging TUI ----------
+2016-10-06 09:08:59,622 - INFO - Successful login to MySQL database, username: 
+2016-10-06 09:12:21,051 - INFO - ---------- Started logging TUI ----------
+2016-10-06 09:12:22,396 - INFO - Successful login to MySQL database, username: 
+2016-10-06 09:12:43,911 - INFO - ---------- Finished logging TUI -----------
+2016-10-06 09:13:20,980 - INFO - ---------- Started logging TUI ----------
+2016-10-06 09:13:22,196 - INFO - Successful login to MySQL database, username: 
+2016-10-06 09:13:33,398 - INFO - ---------- Finished logging TUI -----------
+2016-10-06 09:13:58,758 - INFO - ---------- Started logging TUI ----------
+2016-10-06 09:13:59,838 - INFO - Successful login to MySQL database, username: 
+2016-10-06 09:14:10,343 - INFO - ---------- Finished logging TUI -----------
