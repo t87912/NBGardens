@@ -28,7 +28,7 @@ class Login(object):
             should be used to print '*'s as the user types in password,
             this doesn't work in Spyder IDE though. """
         #password = input("Password: ")
-        password = getpass.getpass('Password:')
+        password = getpass.getpass('Password: ')
         print ("") # For formatting
         return password
         
