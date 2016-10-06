@@ -23,7 +23,7 @@ class QueryMaker:
         all_table_aliases, all_table_names, all_aliases = self.findTable(table_in_x, self.matrix_keys)
         select_statement = self.addAliasToElements(all_selects, all_aliases)
 #        print (select_statement)
-        self.generateQuery(select_statement, all_table_aliases, all_table_names)
+        self.generateQuery(select_statement, all_table_aliases, all_table_names, table_in_x)
 
 
     def matrixSetup(self):
@@ -108,11 +108,11 @@ class QueryMaker:
 
     def addAliasToElements(self, user_selects, all_aliases):
         select_statement = ''
+        i = 0
         for word in user_selects.split():
-            for alias in all_aliases: 
-                temp_select_statement =  alias + '.' + word
-            # concatenated all select elements
-            select_statement += temp_select_statement + ', '
+            print (word)
+            select_statement +=  all_aliases[i] + '.' + word + ', '
+            i += 1
         return select_statement[:-1]
 
 
@@ -124,8 +124,6 @@ class QueryMaker:
             element_table = (self.matrix_keys[element, 0])[0]
 #            print (element_table[0])
             alias = self.createTableAlias(element_table)
-            if (alias == 'as'):
-                alias = 'ads'
             table_with_alias =  element_table + ' as ' + alias
 #            print ('table_tag' + str(table_with_alias))
             all_aliases.append(alias)
@@ -138,28 +136,77 @@ class QueryMaker:
         
     def createTableAlias(self, element_table):
         alias = ''
-        alias = (element_table[0] + element_table[-1]).lower() 
+        alias = (element_table[0] + element_table[-1]).lower()
+        if (alias == 'as'):
+                alias = 'ads'
 #        print(alias)
         return alias
         
 
-    def generateQuery(self, select_statement, all_table_aliases, all_table_names):
+    def generateQuery(self, select_statement, all_table_aliases, all_table_names, table_in_x):
         tables_sorted = []
         join = ''
         select = 'SELECT ' + select_statement[:-1] + ' '
         from_part = 'FROM '+ all_table_aliases[0] + ' '
         tables_sorted.append(all_table_aliases[0])
         i = 0
+        found_1 = []
+        found_2 = []
         for element in all_table_aliases:
             if (i > 0):
                 if (element not in tables_sorted):
                     join = 'JOIN '+ element
+                    j = 1
+                    print('x 1 is the followiung ===')
+                    print (table_in_x[1] )
+                    found = ''
+                    for y in range (13):
+                        for x in range (13):
+                            print ((self.matrix_keys[(table_in_x[0])[0], y]),(self.matrix_keys[(table_in_x[1])[0], x]) )
+##                            print(((self.matrix_keys[(table_in_x[1])[0], x]).split('_'))[1])
+                            if (((self.matrix_keys[(table_in_x[0])[0], y]) == (self.matrix_keys[(table_in_x[1])[0], x])) and ((self.matrix_keys[(table_in_x[1])[0], x]) != '')):
+                                print('fhjdhfdhj')                                
+                                print(self.matrix_keys[(table_in_x[0])[0], 0])
+                                found_1.append(alias_1 + '.' +  (self.matrix_keys[(table_in_x[0])[0], y]))
+                                found_2.append(alias_2 + '.' +  (self.matrix_keys[(table_in_x[1])[0], x]))
+#                                print(found_1)
+#                                print(found_2)
+#                                print('found')
+                                break
+#                            print ((self.matrix_keys[(table_in_x[0])[0], y]),(self.matrix_keys[(table_in_x[1])[0], x]) )
+#
+                            if ('_' in (self.matrix_keys[(table_in_x[0])[0], y])):
+                                
+#                                print ('hellloooooo')
+                                if ((((self.matrix_keys[(table_in_x[0])[0], y]).split('_'))[1]) == (self.matrix_keys[(table_in_x[1])[0], x])):
+                                    print('fhjdhfdhj')                                
+                                    alias_1 = self.createTableAlias(self.matrix_keys[(table_in_x[0])[0], 0])
+                                    alias_2 = self.createTableAlias(self.matrix_keys[(table_in_x[1])[0], 0])
+                                    found_1.append(alias_1 + '.' +  (self.matrix_keys[(table_in_x[0])[0], y]))
+                                    found_2.append(alias_2 + '.' +  (self.matrix_keys[(table_in_x[1])[0], x]))
+#                                    print('hhigfdsjghjjfdghjdfh')
+                                    print(found_1)
+                                    print('45546565665')
+                                    print(found_2)
+                                    break
+#                        print ('FOUND')
+#                        print(found)
+
                     tables_sorted.append(element)
             i += 1
+        print(found_1)
+        print('45546565665')
+        print(found_2)
+        on = ''
+        for k in range (len(found_1) ):
+            
+            on = ' ON ' + found_2[k] + ' = ' + found_1[k]
+#        On c.idCustomer = f.Customer_idCustomer
         print(all_table_aliases)
         print(select_statement)
-        query = select + from_part + join
+        query = select + from_part + join + on
         print(query)
+        self.runTest(query)
 #        for table in all_table_aliases:
 #            
 #        query = "SELECT " + select_statement + "FROM " + all_table_names
