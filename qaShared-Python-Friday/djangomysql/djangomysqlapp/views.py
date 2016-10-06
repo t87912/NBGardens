@@ -22,23 +22,33 @@ def login(request, uname, pword):
 		template = loader.get_template('djangomysqlapp/login.html')
 		context = {
 		}
+
 		return HttpResponse(template.render(context, request))
 	else:
 		# Bad login details were provided. So we can't log the user in.
 		template = loader.get_template('djangomysqlapp/loginfailed.html')
 		context = {
 		}
+
 		return HttpResponse(template.render(context, request))
 		#print "Invalid login details: {0}, {1}".format(uname, pword)
 		#return HttpResponse("Invalid login details supplied.")
 
 def products(request):
-	product_list = Product.objects.order_by('idproduct')
-	template = loader.get_template('djangomysqlapp/products.html')
-	context = {
-	'product_list': product_list,
-	}
-	return HttpResponse(template.render(context, request))
+	if request.user.is_authenticated:
+		product_list = Product.objects.order_by('idproduct')
+		template = loader.get_template('djangomysqlapp/products.html')
+		context = {
+		'product_list': product_list,
+		}
+		return HttpResponse(template.render(context, request))
+	else:
+		template = loader.get_template('djangomysqlapp/loginfailed.html')
+		context = {
+		}
+		return HttpResponse("Sorry, you are not login", template.render(context, request))
+		
+		
 def product(request, idproduct):
     return HttpResponse("You're looking at Product %s." % idproduct)
 def orders(request):

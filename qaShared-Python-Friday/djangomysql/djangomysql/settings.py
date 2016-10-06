@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -82,6 +83,7 @@ DATABASES = {
         'HOST': '213.171.200.88',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
+
 }
 
 # Password validation
