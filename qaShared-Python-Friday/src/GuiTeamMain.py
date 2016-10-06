@@ -869,6 +869,7 @@ class MainApplication(tk.Frame):
         # Put query result in the GUI text box
         #self.outputQueryResult(toPrint)
         self.printToGrid(toPrint)
+        self.currentQueryResult = toPrint
 
         # Insert default prompt values back into inputs
         self.customerQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
@@ -911,6 +912,7 @@ class MainApplication(tk.Frame):
         # Put query result in the GUI text box
         #self.outputQueryResult(toPrint)
         self.printToGrid(toPrint)
+        self.currentQueryResult = toPrint
 
         # Insert default prompt values back into inputs
         self.orderInputBox1.insert(0, 'from: YYYY-MM-DD')
@@ -976,7 +978,7 @@ class MainApplication(tk.Frame):
         # Put query result in the GUI text box
         #self.outputQueryResult(toPrint)
         self.printToGrid(toPrint)
-
+        self.currentQueryResult = toPrint
         # Insert default prompt values back into inputs
         self.productQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.productQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
@@ -1028,6 +1030,7 @@ class MainApplication(tk.Frame):
         #self.outputQueryResult(toPrint)
 
         self.printToGrid(toPrint)
+        self.currentQueryResult = toPrint
 
         # Insert default prompt values back into inputs
         self.employeeQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
