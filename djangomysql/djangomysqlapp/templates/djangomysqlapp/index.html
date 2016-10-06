@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>NB Gardens ASAS</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.min.js"></script>
+	<link rel="icon" href="/static/images/favicon.ico">
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		
+		$('#form_signin').on('submit', function(event){
+			event.preventDefault();
+			console.log("form submitted!")  // sanity check
+			query_signin();
+		});
+		
+		$.ajaxSetup({
+			data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+		});
+		
+ 		function query_signin() {
+			var uname =  $('#id_username_signin').val();
+			var pword =  $('#id_password_signin').val();
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/login/" + uname + "/" + pword, // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#results_signin").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+			
+		};
+	});
+	</script>
+
+</head>
+<body>
+	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;height:200px;">
+
+		<h1 align="center">NB Gardens</h1>
+		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
+	</div>
+
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+				<li><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
+				<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
+				<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
+				<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
+				<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+			</ul>
+		</div>
+	  </div>
+	</nav>
+	
+
+
+	<div class="container" style="width:30%;">
+		<div id="results_signin">
+		  <form method="POST" id="form_signin" class="form-signin">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<div class="form-group">
+				<label for="id_username_signin">Username:</label>
+				<input type="text" id="id_username_signin" name="username" class="form-control" required autofocus>
+			</div>
+			<div class="form-group">
+				<label for="id_password_signin">Password:</label>
+				<input type="password" id="id_password_signin" name="password" class="form-control" required autofocus>
+			</div>
+			{{ form }}
+			<button type="submit" class="btn btn-default">Sign In</button>
+		  </form>
+		</div>
+	</div>
+
+	
+	
+</body>
+</html>

@@ -1,0 +1,12 @@
+<thead>
+<tr>
+	<th>Total Sales</th>
+	<th>Total Cost</th>
+</tr>
+</thead>
+{% for order in order_list %}
+<tr>
+	<td>£{{ order.TotalSales }}</td>
+	<td>£{{ order.TotalCost }}</td>
+	 {% endfor %}
+</tr>

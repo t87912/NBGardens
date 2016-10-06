@@ -1,0 +1,16 @@
+<thead>
+<tr>
+	<th>Employee ID</th>
+	<th>First Name</th>
+	<th>Last Name</th>
+	<th>Total Sales</th>
+</tr>
+</thead>
+			{% for order in order_list %}
+			<tr>
+				<td>{{ order.idemployee }}</td>
+				<td>{{ order.firstname}}</td>
+				<td>{{ order.lastname}}</td>
+				<td>£{{ order.TotalSales}}</td>
+				 {% endfor %}
+			</tr>

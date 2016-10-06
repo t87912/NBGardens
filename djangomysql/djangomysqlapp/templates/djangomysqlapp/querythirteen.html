@@ -1,0 +1,21 @@
+	<script src="/static/js/canvasjs.min.js"></script>
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			var chart = new CanvasJS.Chart("chartContainer", {
+				title:{
+					text: "Total Product Sales"              
+				},
+				data: [{
+					type: "column",
+					dataPoints: [
+							{% for order in order_list %}
+								{ label: {{ order.Pro_idProduct }}, y: {{ order.SumSales}}},
+							{% endfor %}
+					]
+				}]
+	});
+	chart.render();
+			
+		});
+	</script>
+		<div id="chartContainer" style="height: 400px; width: 100%;"></div>

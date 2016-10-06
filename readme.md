@@ -120,4 +120,3 @@ More details on installation are provided in additional doxygen documentation. <
 
 ## Support
 This project is a part of QAC learning projects. The project will be continued in the near future under QAC.
-# frontEndTest

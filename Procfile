@@ -1,1 +1,1 @@
-web: python manage.py migrate && waitress-serve djangomysql.wsgi:application
+web: waitress-serve --port=$PORT nbgardensdjango.wsgi:application
