@@ -11,18 +11,19 @@ class QueryMaker:
 
 
     def __init__(self):
-        conn = pymysql.connect("213.171.200.88", "AlStock", "0N$Project", "nbgardensds")
-        self.cursor = conn.cursor()
-        self.cursor2 = conn.cursor()
+        self.conn = pymysql.connect("213.171.200.88", "AlStock", "0N$Project", "nbgardensds")
+        self.cursor = self.conn.cursor()
+        self.cursor2 = self.conn.cursor()
 
 
     def main(self):
         self.matrixSetup()
         self.addTableNamesToMat()
         table_in_x, all_selects = self.addAttributesToMat()
-        concat_selects = self.findTable(table_in_x, self.matrix_keys)
-        print (concat_selects)
-        self.generateQuery(all_selects, concat_selects)
+        all_table_aliases, all_table_names, all_aliases = self.findTable(table_in_x, self.matrix_keys)
+        select_statement = self.addAliasToElements(all_selects, all_aliases)
+#        print (select_statement)
+        self.generateQuery(select_statement, all_table_aliases, all_table_names)
 
 
     def matrixSetup(self):
@@ -101,24 +102,77 @@ class QueryMaker:
                 print(coordinate_x)
             else:
                 print ('NOT FOUND')
+        print('user typesd' + all_selects)
         return coordinate_x, all_selects
 
 
+    def addAliasToElements(self, user_selects, all_aliases):
+        select_statement = ''
+        for word in user_selects.split():
+            for alias in all_aliases: 
+                temp_select_statement =  alias + '.' + word
+            # concatenated all select elements
+            select_statement += temp_select_statement + ', '
+        return select_statement[:-1]
+
+
     def findTable(self, table_in_x, matrix_keys):
-        concat_selects = ''
+        all_table_aliases = []
+        all_table_names = []
+        all_aliases = []
         for element in table_in_x:
-            element_table = self.matrix_keys[element, 0]
+            element_table = (self.matrix_keys[element, 0])[0]
 #            print (element_table[0])
-            concat_selects +=  element_table[0] + ' '
-#            all_table_names.append(element_table[0])
-        return (concat_selects)
+            alias = self.createTableAlias(element_table)
+            if (alias == 'as'):
+                alias = 'ads'
+            table_with_alias =  element_table + ' as ' + alias
+#            print ('table_tag' + str(table_with_alias))
+            all_aliases.append(alias)
+            all_table_aliases.append(table_with_alias)
+            all_table_names.append(element_table)
+#        print (all_table_aliases)
+#        print (all_table_names)
+        return all_table_aliases, all_table_names, all_aliases
+        
+        
+    def createTableAlias(self, element_table):
+        alias = ''
+        alias = (element_table[0] + element_table[-1]).lower() 
+#        print(alias)
+        return alias
+        
+
+    def generateQuery(self, select_statement, all_table_aliases, all_table_names):
+        tables_sorted = []
+        join = ''
+        select = 'SELECT ' + select_statement[:-1] + ' '
+        from_part = 'FROM '+ all_table_aliases[0] + ' '
+        tables_sorted.append(all_table_aliases[0])
+        i = 0
+        for element in all_table_aliases:
+            if (i > 0):
+                if (element not in tables_sorted):
+                    join = 'JOIN '+ element
+                    tables_sorted.append(element)
+            i += 1
+        print(all_table_aliases)
+        print(select_statement)
+        query = select + from_part + join
+        print(query)
+#        for table in all_table_aliases:
+#            
+#        query = "SELECT " + select_statement + "FROM " + all_table_names
+#        print (query)
+#        self.runTest(query)        
 
 
-    def generateQuery(self, all_selects, all_table_names):
-        select_command = "SELECT " + all_selects + "FROM " + all_table_names "as "
-        print (select_command)
-
-
+    def runTest(self, query):
+        cursor= self.conn.cursor()
+        cursor.execute(query)
+        tables = cursor.fetchall()
+        print (tables)
+        
 
 
 
@@ -131,8 +185,6 @@ and use it as the alias for that table... do this for each
 - check the two values and see if they are in different tables
 - if they are see if they share a common key
 - create a key share path
-
-
 Select c.idCustomer as ‘Customer ID’, c.FirstName as ‘First Name’, c.LastName as ‘Surname’, f.DatePublished as ‘Date Published’ , round(f.rating,2) as ‘Average Product Rating’
 From Customer as c
 Join Feedback as f
@@ -140,9 +192,6 @@ On c.idCustomer = f.Customer_idCustomer
 WHERE f.Products_idProducts = ‘” + product_number + “’
 AND f.DatePublished BETWEEN ‘” + start_date + “’ AND ‘” + end_date+ “’
 GROUP BY f.DatePublished;”
-
-
-
 '''
 
 
@@ -153,5 +202,5 @@ GROUP BY f.DatePublished;”
 
 
 #################################
-maker_obj = QueryMaker()
-maker_obj.main()
+query_maker_obj = QueryMaker()
+query_maker_obj.main()
