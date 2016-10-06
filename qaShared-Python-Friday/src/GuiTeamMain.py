@@ -202,7 +202,6 @@ class MainApplication(tk.Frame):
         self.menu.add_command(label = "Logout", command = self.logout)
 
         #Output frame
-             
         self.outputFrame = tk.Frame(root)
         self.outputFrame.pack(side = tk.TOP)
 
@@ -460,7 +459,15 @@ class MainApplication(tk.Frame):
                  ["   | -|-|_      "],
                  ["   |____)_)     "]]
                  
-        #self.outputQueryResult(gnome)
+        
+        self.outputFrame.destroy()
+        self.outputFrame = tk.Frame(root,height=100,width = 250)
+        self.outputFrame.pack(side = tk.TOP)
+        self.gnomeBox = tk.Text(self.outputFrame,width=79,height=25)
+        self.gnomeBox.pack(side = tk.LEFT)
+        self.outputQueryResult(gnome)
+        
+        
         
     def copy(self):
         content = self.outputFrame.selection_get()
@@ -1067,7 +1074,7 @@ class MainApplication(tk.Frame):
         self.currentQueryResult = toPrint # For use when writing to CSV
         # queryResultBox
         for i in range(0, len(toPrint)):
-            textToEval = "self.queryResultBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
+            textToEval = "self.gnomeBox.insert('%d.0', \"%s\\n\")" % (i+1, toPrint[i])
             eval(textToEval)
             
     def printToGrid(self, data):
@@ -1076,7 +1083,8 @@ class MainApplication(tk.Frame):
           #  self.outputFrame = tk.Frame(root,height=100,width = 100)
          #   self.outputFrame.pack(side = tk.TOP)
         #else:
-        self.outputFrame = tk.Frame(root,height=100,width = 150)
+        
+        self.outputFrame = tk.Frame(root,height=100,width = 250)
         self.outputFrame.pack(side = tk.TOP)
         
         canvas=tk.Canvas(self.outputFrame)
@@ -1087,7 +1095,7 @@ class MainApplication(tk.Frame):
         canvas.configure(xscrollcommand=myscrollbar1.set)
         
         def myfunction(event):
-            canvas.configure(scrollregion=canvas.bbox("all"),width=600,height=500)
+            canvas.configure(scrollregion=canvas.bbox("all"),width=700,height=500)
         
         myscrollbar.grid(row=0,column=1, sticky='NES')# side="right",fill="y")
         myscrollbar1.grid(row=0,column=1, sticky='WSE')# side="right",fill="y")
@@ -1115,6 +1123,6 @@ if __name__ == "__main__":
     autoGen = autoGenCode.getAutoGen()
     root = tk.Tk()
     MainApplication = MainApplication(root, autoGen)
-    root.geometry('650x700')
+    root.geometry('720x750')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()
