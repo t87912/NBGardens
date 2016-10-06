@@ -8,7 +8,9 @@ from django.core.mail import send_mail
 from django.db import connection
 from collections import namedtuple
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 
+@login_required(redirect_field_name='my_redirect_field')
 # Create your views here.
 def index(request):
     template = loader.get_template('djangomysqlapp/index.html')
@@ -44,7 +46,13 @@ def products(request):
 		'product_list': product_list,
 		}
 		return HttpResponse(template.render(context, request))
-
+	product_list = Product.objects.order_by('idproduct')
+	template = loader.get_template('djangomysqlapp/products.html')
+	context = {
+	'product_list': product_list,
+	'user' : user,
+	}
+	return HttpResponse(template.render(context, request))
 		
 def product(request, idproduct):
     return HttpResponse("You're looking at Product %s." % idproduct)
