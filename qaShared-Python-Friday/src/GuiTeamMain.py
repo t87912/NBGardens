@@ -1019,14 +1019,14 @@ class MainApplication(tk.Frame):
             the connections to Mongo and MySQL. """
             
         if messagebox.askokcancel("Logout", "Wanna leave?"):
-            if messagebox.askokcancel("Logout", "Are you sure?"):
-                if messagebox.askokcancel("Logout", "Really?"):
-                    self.canLogin = False
-                    self.login()
-                    self.menu.destroy()
-                    self.outputFrame.destroy()
-                    self.inputFrame.destroy()
-                    self.status.destroy()
+            #if messagebox.askokcancel("Logout", "Are you sure?"):
+                #if messagebox.askokcancel("Logout", "Really?"):
+            self.canLogin = False
+            self.login()
+            self.menu.destroy()
+            self.outputFrame.destroy()
+            self.inputFrame.destroy()
+            self.status.destroy()
 
 
     def customSQL(self):
