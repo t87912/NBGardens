@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Thu Oct  6 16:52:01 2016
+
+@author: Administrator
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Mon Sep 26 15:20:00 2016
 @author: Administrator
 """
@@ -134,7 +141,6 @@ class QueryMaker:
 #        print(alias)
         return alias
 
-
     def generateQuery(self, select_statement, all_table_aliases, all_table_names, table_in_x):
         tables_sorted = []
         join = ''
@@ -156,14 +162,22 @@ class QueryMaker:
 
                         for x in range (13):
                             # print ((self.matrix_keys[(table_in_x[0])[0], y]),(self.matrix_keys[(table_in_x[1])[0], x]) )
-                            #
                             if (((self.matrix_keys[(table_in_x[0])[0], y]) == (self.matrix_keys[(table_in_x[1])[0], x])) and ((self.matrix_keys[(table_in_x[1])[0], x]) != '')):
-                                self.concatenateAliases(self.matrix_keys[(table_in_x[0])[0], 0], self.matrix_keys[(table_in_x[1])[0])
+                                self.concatenateAliases(found_1, found_2, table_in_x, y, x)
+#                                alias_1 = self.createTableAlias(self.matrix_keys[(table_in_x[0])[0], 0])
+#                                alias_2 = self.createTableAlias(self.matrix_keys[(table_in_x[1])[0], 0])
+#                                found_1.append(alias_1 + '.' +  (self.matrix_keys[(table_in_x[0])[0], y]))
+#                                found_2.append(alias_2 + '.' +  (self.matrix_keys[(table_in_x[1])[0], x]))
                                 break
 
                             if ('_' in (self.matrix_keys[(table_in_x[0])[0], y])):
                                 if ((((self.matrix_keys[(table_in_x[0])[0], y]).split('_'))[1]) == (self.matrix_keys[(table_in_x[1])[0], x])):
-                                    self.concatenateAliases(self.matrix_keys[(table_in_x[0])[0], 0], self.matrix_keys[(table_in_x[1])[0])
+                                    self.concatenateAliases(found_1, found_2, table_in_x, y, x)
+                                           
+#                                    alias_1 = self.createTableAlias(self.matrix_keys[(table_in_x[0])[0], 0])
+#                                    alias_2 = self.createTableAlias(self.matrix_keys[(table_in_x[1])[0], 0])
+#                                    found_1.append(alias_1 + '.' +  (self.matrix_keys[(table_in_x[0])[0], y]))
+#                                    found_2.append(alias_2 + '.' +  (self.matrix_keys[(table_in_x[1])[0], x]))
                                     break
 
                     tables_sorted.append(element)
@@ -178,11 +192,12 @@ class QueryMaker:
         self.runTest(query)
 
 
-    def concatenateAliases(matching_attribute_1, matching_attribute_2):
-        alias_1 = self.createTableAlias(matching_attribute_1, 0])
-        alias_2 = self.createTableAlias(matching_attribute_2, 0])
-        found_1.append(alias_1 + '.' +  (matching_attribute_1, y]))
-        found_2.append(alias_2 + '.' +  (matching_attribute_2, x]))
+    def concatenateAliases(self, found_1, found_2, table_in_x, y, x):
+        alias_1 = self.createTableAlias(self.matrix_keys[(table_in_x[0])[0], 0])
+        alias_2 = self.createTableAlias(self.matrix_keys[(table_in_x[1])[0], 0])
+        found_1.append(alias_1 + '.' +  (self.matrix_keys[(table_in_x[0])[0], y]))
+        found_2.append(alias_2 + '.' +  (self.matrix_keys[(table_in_x[1])[0], x]))
+
 
 
     def runTest(self, query):
@@ -198,14 +213,11 @@ class QueryMaker:
 - bug fix - with validation make a sort of try catch where if try fails do recursion to itself
 - fix it so that the '_' can be the other way round 'dfdfd' == '_' // '_' == 'dfhjf'
 - allow for multiple joins
-
-
     ====== PRESENTATION =======
 - partials
 - matrix
 - numpy
 - system itself
-
 '''
 
 #################################
