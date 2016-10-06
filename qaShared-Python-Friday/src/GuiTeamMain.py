@@ -1091,6 +1091,9 @@ class MainApplication(tk.Frame):
         canvas.grid(row=0,column=1)
         canvas.create_window((0,0),window=frame,anchor='nw')
         self.outputFrame2.bind("<Configure>",myfunction)
+        
+        if (len(data) < 14):
+            myscrollbar.destroy()
     
         height = len(data)
         width = len(data[0])
