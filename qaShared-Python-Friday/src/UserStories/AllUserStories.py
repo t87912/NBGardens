@@ -769,8 +769,12 @@ class AllUserStories (object):
             elif (query_number == 13):
                 # problem writing to json as result is "Decimal(10)" etc
                 for x in range(1, len(results)):
-                    print (results[x][1])
                     results[x] = [x, str(results[x][1])]
+                self.writeToFiles(results)
+            elif (query_number == 16):
+                # problem writing to json as result is "Decimal(10)" etc
+                for x in range(1, len(results)):
+                    results[x] = [x, str(results[x][1]), results[x][2]]
                 self.writeToFiles(results)
             else:
                 self.writeToFiles(results)
@@ -846,5 +850,12 @@ class AllUserStories (object):
         # If GUI return the data
         if (GUI):
             return results
+        
+        if (query_number == 14):
+                # problem writing to json as result is "Decimal(10)" etc
+            for x in range(1, len(results)):
+                results[x] = [x, str(results[x][1]), results[x][2]]
+            self.writeToFiles(results)
         else:
             self.writeToFiles(results)
+            
