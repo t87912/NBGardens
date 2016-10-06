@@ -35,14 +35,13 @@ def login(request, uname, pword):
 		#return HttpResponse("Invalid login details supplied.")
 
 def products(request):
-	if not request.user.is_authenticated:
-        return render(request, 'djangomysqlapp/loginfailed.html')
+	if not request.user.is_authenticated():
+		return render(request, 'djangomysqlapp/loginfailed.html')
 	else:
 		product_list = Product.objects.order_by('idproduct')
 		template = loader.get_template('djangomysqlapp/products.html')
 		context = {
 		'product_list': product_list,
-		'user' : user,
 		}
 		return HttpResponse(template.render(context, request))
 
