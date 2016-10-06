@@ -1,0 +1,5 @@
+---
+applications:
+- name: NBGardensApp
+  memory: 1024M
+  buildpack: python_buildpack
