@@ -103,9 +103,9 @@
 	<!--navigation-->
 	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;height:200px;">
 		<h1 align="center">NB Gardens</h1>
-		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
+		<h3 align="center">Accounts Sales Analytical System (ASAS) {{ request.session.islogin }}</h3>
 	</div>
-	{% if user.is_authenticated %}
+	{% if request.session.islogin == True %}
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 			<div class="navbar-header">

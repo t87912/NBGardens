@@ -10,7 +10,8 @@ from collections import namedtuple
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
-@login_required(redirect_field_name='/djangomysqlapp/')
+islogin = False
+
 def index(request):
     template = loader.get_template('djangomysqlapp/index.html')
     context = {
@@ -19,7 +20,7 @@ def index(request):
 def login(request, uname, pword):
 	user=authenticate(username=uname, password=pword)
 	if user is not None:
-		login(request, uname, pword)
+		request.session['islogin'] = True
 		#how to we reload the sign in bit so once you've login, you dont see that anymore till you logout
 		template = loader.get_template('djangomysqlapp/login.html')
 		context = {
@@ -27,9 +28,11 @@ def login(request, uname, pword):
 
 		return HttpResponse(template.render(context, request))
 	else:
+		request.session['islogin'] = False
 		# Bad login details were provided. So we can't log the user in.
 		template = loader.get_template('djangomysqlapp/loginfailed.html')
 		context = {
+			'islogin': request.session.get('islogin', False),
 		}
 
 		return HttpResponse(template.render(context, request))
@@ -37,20 +40,11 @@ def login(request, uname, pword):
 		#return HttpResponse("Invalid login details supplied.")
 
 def products(request):
-	if not request.user.is_authenticated():
-		return render(request, 'djangomysqlapp/loginfailed.html')
-	else:
-		product_list = Product.objects.order_by('idproduct')
-		template = loader.get_template('djangomysqlapp/products.html')
-		context = {
-		'product_list': product_list,
-		}
-		return HttpResponse(template.render(context, request))
 	product_list = Product.objects.order_by('idproduct')
 	template = loader.get_template('djangomysqlapp/products.html')
 	context = {
 	'product_list': product_list,
-	'user' : user,
+	'islogin': islogin,
 	}
 	return HttpResponse(template.render(context, request))
 		
