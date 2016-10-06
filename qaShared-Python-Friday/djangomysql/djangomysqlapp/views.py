@@ -38,7 +38,13 @@ def login(request, uname, pword):
 		return HttpResponse(template.render(context, request))
 		#print "Invalid login details: {0}, {1}".format(uname, pword)
 		#return HttpResponse("Invalid login details supplied.")
-
+def logout(request):
+	request.session['islogin'] = False
+	template = loader.get_template('djangomysqlapp/index.html')
+	context = {
+	}
+	return HttpResponse(template.render(context, request))
+		
 def products(request):
 	product_list = Product.objects.order_by('idproduct')
 	template = loader.get_template('djangomysqlapp/products.html')

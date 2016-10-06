@@ -6,7 +6,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<link rel='stylesheet' type='text/css' href='stylesheet.css'>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 
@@ -93,6 +92,39 @@
 			});
 		};
  
+ 		$('#logout_button').on('click', function(event){
+			event.preventDefault();
+			console.log("logout submitted!")  // sanity check
+			log_out();
+		});
+		
+		function log_out() {
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/logout/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					window.location.replace("/djangomysqlapp")
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};
+ 
+ 
 	});
 	</script>
 	
@@ -103,7 +135,7 @@
 	<!--navigation-->
 	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;height:200px;">
 		<h1 align="center">NB Gardens</h1>
-		<h3 align="center">Accounts Sales Analytical System (ASAS) {{ request.session.islogin }}</h3>
+		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
 	</div>
 	{% if request.session.islogin == True %}
 		<nav class="navbar navbar-inverse">
@@ -124,6 +156,7 @@
 					<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
 					<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
 					<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+					<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">LogOut</a></li>
 				</ul>
 			</div>
 		  </div>
