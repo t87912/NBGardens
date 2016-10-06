@@ -9,38 +9,43 @@ import numpy as np
 
 class QueryMaker:
 
+
     def __init__(self):
         conn = pymysql.connect("213.171.200.88", "AlStock", "0N$Project", "nbgardensds")
         self.cursor = conn.cursor()
         self.cursor2 = conn.cursor()
 
+
     def main(self):
         self.matrixSetup()
-        x, all_selects = self.run()
-        concat_selects = self.findTable(x, self.matrix_keys)
+        self.addTableNamesToMat()
+        table_in_x, all_selects = self.addAttributesToMat()
+        concat_selects = self.findTable(table_in_x, self.matrix_keys)
         print (concat_selects)
         self.generateQuery(all_selects, concat_selects)
 
+
     def matrixSetup(self):
-        # ============ SETUP MATRIX
         number_of_tables = 20
         max_number_attributes = 13
 
         self.matrix_all_attributes = np.array(np.arange(number_of_tables * max_number_attributes), dtype=(str, 35)).reshape(number_of_tables, max_number_attributes)
         self.matrix_keys= np.array(np.arange(number_of_tables * max_number_attributes), dtype=(str, 35)).reshape(number_of_tables, max_number_attributes)
         self.matrix_keys[:]=  self.matrix_all_attributes[:] = ''
-        # ===================== END
 
-    def run(self):
+
+    def getTableData(self):
         #show columns -
         sqlQuery = "show tables"
         #choose date
-
         self.cursor.execute(sqlQuery)
         tables = self.cursor.fetchone()
+        return tables
+
+
+    def addTableNamesToMat(self):
+        tables = self.getTableData()
         tbl_name_counter = 0
-
-
         while tables is not None:
             attribute_column = 0
             table = (str (tables))
@@ -48,26 +53,26 @@ class QueryMaker:
             table_name= (str(unformatted_table_name))
             self.matrix_keys[tbl_name_counter, 0] =  self.matrix_all_attributes[tbl_name_counter, 0] =  table_name
         #        print (t)
-            att1 = self.cursor2.execute("describe "+str(table_name))
+            results = self.cursor2.execute("describe "+str(table_name))
 
-            att = str(att1)
-            attnum = att[0:1]
-            att = att[2:0]
+            attribute_list = str(results)
+            attnum = attribute_list[0:1]
+            attribute_list = attribute_list[2:0]
 
             # until element in list do
-            while att is not None:
-        #            print(type(att))
-        #            print (str(att))
-                for line in att:
+            while attribute_list is not None:
+        #            print(type(attribute_list))
+        #            print (str(attribute_list))
+                for line in attribute_list:
 
-                    self.matrix_all_attributes[tbl_name_counter, attribute_column] = att[0]
-        #                print(att[3])
+                    self.matrix_all_attributes[tbl_name_counter, attribute_column] = attribute_list[0]
+        #                print(attribute_list[3])
                     # check the attribute list for any attributes for primary or foreign keys
-                    if ((str(att[3]) =='PRI') or (str(att[3]) =='MUL')):
-        #                    print('key found at: ' + str(att))
-                        self.matrix_keys[tbl_name_counter, attribute_column] = att[0]
+                    if ((str(attribute_list[3]) =='PRI') or (str(attribute_list[3]) =='MUL')):
+        #                    print('key found at: ' + str(attribute_list))
+                        self.matrix_keys[tbl_name_counter, attribute_column] = attribute_list[0]
                 attribute_column +=1
-                att = self.cursor2.fetchone()
+                attribute_list = self.cursor2.fetchone()
 
         #        print ("\n\n")
             # END WHILE (INNER)
@@ -81,8 +86,9 @@ class QueryMaker:
         print (self.matrix_keys)
 
 
+    def addAttributesToMat(self):
         user_selects = input('Enter attribute you wish to query using space delimination for multiples ')
-        x = []
+        coordinate_x = []
         all_selects = ''
         for word in user_selects.split():
             print (word)
@@ -91,17 +97,16 @@ class QueryMaker:
         #        print (arr_index)
 
                 temp_x, y = np.where(self.matrix_all_attributes == word)
-                x.append(temp_x)
-                print(x)
+                coordinate_x.append(temp_x)
+                print(coordinate_x)
             else:
                 print ('NOT FOUND')
-        return x, all_selects
+        return coordinate_x, all_selects
 
 
-
-    def findTable(self, x, matrix_keys):
+    def findTable(self, table_in_x, matrix_keys):
         concat_selects = ''
-        for element in x:
+        for element in table_in_x:
             element_table = self.matrix_keys[element, 0]
 #            print (element_table[0])
             concat_selects +=  element_table[0] + ' '
@@ -110,8 +115,41 @@ class QueryMaker:
 
 
     def generateQuery(self, all_selects, all_table_names):
-        select_command = "SELECT " + all_selects + "FROM " + all_table_names
+        select_command = "SELECT " + all_selects + "FROM " + all_table_names "as "
         print (select_command)
+
+
+
+
+
+
+'''
+    ====== TO DO ========
+- in findTable() add an extract where based on teh table name you add the first and last character as the alias than store that alias as string
+and use it as the alias for that table... do this for each
+- if you have multiples then
+- check the two values and see if they are in different tables
+- if they are see if they share a common key
+- create a key share path
+
+
+Select c.idCustomer as ‘Customer ID’, c.FirstName as ‘First Name’, c.LastName as ‘Surname’, f.DatePublished as ‘Date Published’ , round(f.rating,2) as ‘Average Product Rating’
+From Customer as c
+Join Feedback as f
+On c.idCustomer = f.Customer_idCustomer
+WHERE f.Products_idProducts = ‘” + product_number + “’
+AND f.DatePublished BETWEEN ‘” + start_date + “’ AND ‘” + end_date+ “’
+GROUP BY f.DatePublished;”
+
+
+
+'''
+
+
+
+
+
+
 
 
 #################################
