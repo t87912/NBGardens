@@ -198,3 +198,9 @@ def dictfetchall(cursor):
         dict(zip(columns, row))
         for row in cursor.fetchall()
     ]
+def create_product(cursor, productnamenew, descriptionnew, buypricenew, salepricenew, quantitynew):
+	idproductnew = Product.objects.count() + 1
+
+	b = Product(idproduct=idproductnew, productname=productnamenew, description=descriptionnew, buyprice=buypricenew, saleprice=salepricenew, amount=quantitynew)
+	b.save()
+	

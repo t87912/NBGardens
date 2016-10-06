@@ -123,7 +123,43 @@
 				}
 			});
 		};
- 
+
+		$('#form_create_product').on('submit', function(event){
+			event.preventDefault();
+			console.log("form submitted!")  // sanity check
+			create_product();
+		});
+		
+		function create_product() {
+			var product_name =  $('#product_name_create_product').val();
+			var product_description =  $('#product_description_create_product').val();
+			var product_buy_price =  $('#product_buy_price_create_product').val();
+			var product_sale_price =  $('#product_sale_price_create_product').val();
+			var product_quantity =  $('#product_quantity_create_product').val();
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/create_product/" + product_name + "/" + product_description + "/" + product_buy_price + "/" + product_sale_price + "/" + product_quantity, // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#results_sales_over_time").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};		
  
 	});
 	</script>
@@ -171,6 +207,7 @@
 				<li><a data-toggle="tab" href="#query3">Check detials of Product</a></li>
 				<li><a data-toggle="tab" href="#query4">Amount of Sales of Product</a></li>
 				<li><a data-toggle="tab" href="#query5">Stock against Sales</a></li>
+				<li><a data-toggle="tab" href="#query6">Create Product</a></li>
 			  </ul>
 
 			  <div class="tab-content">
@@ -262,6 +299,36 @@
 				<div id="query5" class="tab-pane fade">
 				  <h3>Number of stock available for product VS the number of sales (GRAPH)</h3>
 				
+				</div>
+				<div id="query6" class="tab-pane fade">
+					<form method="POST" id="form_create_product" class="form-signin">
+						<h2 class="form-signin-heading">Create new Product</h2>
+						<div class="form-group">
+							<label for="product_name_create_product">Product Name:</label>
+							<input type="text" id="product_name_create_product" name="product_name_create_product" class="form-control" required autofocus>
+						</div>
+						<div class="form-group">
+							<label for="product_description_create_product">Product Description:</label>
+							<textarea type="password" id="product_description_create_product" name="product_description_create_product" class="form-control"></textarea>
+						</div>
+						<div class="row">
+							<div class="col-xs-4">
+								<label for="product_buy_price_create_product">Buy Price:</label>
+								<input type="number" id="product_buy_price_create_product" name="product_buy_price_create_product" class="form-control" required autofocus>
+							</div>
+							<div class="col-xs-4">
+								<label for="product_sale_price_create_product">Sale Price:</label>
+								<input type="number" id="product_sale_price_create_product" name="product_sale_price_create_product" class="form-control" required autofocus>
+							</div>
+							<div class="col-xs-4">
+								<label for="product_quantity_create_product">Quantity:</label>
+								<input type="number" id="product_quantity_create_product" name="product_quantity_create_product" class="form-control" required autofocus>
+							</div>
+						</div>
+						{{ form }}
+						<br>
+						<button type="submit" class="btn btn-default">Create Product</button>
+					</form>
 				</div>
 			  </div>
 			</div>
