@@ -203,4 +203,7 @@ def create_product(cursor, productnamenew, descriptionnew, buypricenew, salepric
 
 	b = Product(idproduct=idproductnew, productname=productnamenew, description=descriptionnew, buyprice=buypricenew, saleprice=salepricenew, amount=quantitynew)
 	b.save()
-	
+def delete_product(productid):
+	b = Product.objects.get(pk=productid)
+	# This will delete the Blog and all of its Entry objects.
+	b.delete()
