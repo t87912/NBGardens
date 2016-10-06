@@ -77,22 +77,6 @@ class MainLogic(object):
                     while (not valid):
                         self.printMenu()
                         valid = self.getMenuInput()
-#                    if (self.menuOption == 1):
-#                        db.mainLogic()
-#                        valid = False
-#                        self.initialLogin = False
-#                    elif (self.menuOption == 2):
-#                        mongoDB.run()
-#                        valid = False
-#                        self.initialLogin = False
-#                    elif (self.menuOption == 8):
-#                        self.loggedIn = False
-#                        valid = False
-#                    elif (self.menuOption == 9):
-#                        print ("Exiting the program...")
-#                        self.logger.info('---------- Finished logging TUI -----------')
-#                        self.fh.close()
-#                        sys.exit(0)
                     if (self.menuOption == 1):
                         self.customerInfo()
                         valid = False
