@@ -766,6 +766,12 @@ class AllUserStories (object):
                 # problem writing to json as result is "Decimal(10)" etc
                 results[1] = str(results[1])
                 self.writeToFiles(results)
+            elif (query_number == 13):
+                # problem writing to json as result is "Decimal(10)" etc
+                for x in range(1, len(results)):
+                    print (results[x][1])
+                    results[x] = [x, str(results[x][1])]
+                self.writeToFiles(results)
             else:
                 self.writeToFiles(results)
 

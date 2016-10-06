@@ -1,2 +1,11 @@
-['AVG(DATEDIFF(deliveredDate, createDate))']
-"(Decimal('8.7303'),)"
+['Pro_idProduct', 'Sum(op.quantity)']
+[1, '32']
+[2, '42']
+[3, '33']
+[4, '28']
+[5, '30']
+[6, '19']
+[7, '37']
+[8, '41']
+[9, '29']
+[10, '32']
