@@ -9,6 +9,7 @@ Created on Thu Sep  1 15:13:49 2016
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
+from tkinter import messagebox
 
 
 # Import other python class files:
@@ -502,8 +503,8 @@ class MainApplication(tk.Frame):
             self.us1(tab,0)
         elif(CB.current()==1):
             self.us14(tab,0)
-
-
+        
+                
     def submitReq(self,u,fd,td,id,tab):
         self.queryResultBox.delete(1.0,END)
         if(u == 0):
@@ -1016,12 +1017,16 @@ class MainApplication(tk.Frame):
         """ logout: Destroys GUI features on logout, changes loginStatus label
             text and enable login button and user/password inputs. Also closes
             the connections to Mongo and MySQL. """
-        self.canLogin = False
-        self.login()
-        self.menu.destroy()
-        self.outputFrame.destroy()
-        self.inputFrame.destroy()
-        self.status.destroy()
+            
+        if messagebox.askokcancel("Logout", "Wanna leave?"):
+            if messagebox.askokcancel("Logout", "Are you sure?"):
+                if messagebox.askokcancel("Logout", "Really?"):
+                    self.canLogin = False
+                    self.login()
+                    self.menu.destroy()
+                    self.outputFrame.destroy()
+                    self.inputFrame.destroy()
+                    self.status.destroy()
 
 
     def customSQL(self):
