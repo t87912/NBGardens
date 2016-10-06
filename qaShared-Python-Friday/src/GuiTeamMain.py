@@ -340,11 +340,11 @@ class MainApplication(tk.Frame):
         # Set prompt text of Customer input boxes:
         self.customerQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.customerQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.customerQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.customerQueryInputBox3.insert(0, '')
 
         self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.orderQueryInputBox3.insert(0, '')
 
         # Bind the input boxes, so on focus remove prompt text:
         self.customerQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.customerQueryInputBox1"))
@@ -369,11 +369,11 @@ class MainApplication(tk.Frame):
         # Set prompt text of order input boxes:
         self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.orderQueryInputBox3.insert(0, '')
 
         self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.orderQueryInputBox3.insert(0, '')
 
         # Bind the input boxes, so on focus remove prompt text:
         self.orderQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.orderQueryInputBox1"))
@@ -398,11 +398,11 @@ class MainApplication(tk.Frame):
         # Set prompt text of product input boxes:
         self.productQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.productQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.productQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.productQueryInputBox3.insert(0, '')
 
         self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.orderQueryInputBox3.insert(0, '')
 
         # Bind the input boxes, so on focus remove prompt text:
         self.productQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.productQueryInputBox1"))
@@ -428,11 +428,11 @@ class MainApplication(tk.Frame):
         # Set prompt text of employee input boxes:
         self.employeeQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.employeeQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.employeeQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.employeeQueryInputBox3.insert(0, '')
 
         self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.orderQueryInputBox3.insert(0, '')
 
         # Bind the input boxes, so on focus remove prompt text:
         self.employeeQueryInputBox1.bind('<FocusIn>', lambda event: self.onEntryClick(event, "self.employeeQueryInputBox1"))
@@ -611,7 +611,7 @@ class MainApplication(tk.Frame):
         self.customerQueryInputBox3.delete(0, "end")
         self.customerQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.customerQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.customerQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.customerQueryInputBox3.insert(0, '')
         self.customerQueryInputBox1.config(state='disabled')
         self.customerQueryInputBox2.config(state='disabled')
         self.customerQueryInputBox3.config(state='disabled')
@@ -628,6 +628,7 @@ class MainApplication(tk.Frame):
             self.customerQueryInputBox2.config(state='normal')
             self.customerQueryInputBox3.config(state='normal')
             self.labelTab1.config(text='Value:')
+            self.customerQueryInputBox3.insert(0, 'Value')
         elif (value == self.customerOptions[2]):
             self.userStory = 3
             self.queryResultBox.delete('1.0', tk.END)
@@ -638,11 +639,13 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox3.config(state='normal')
             self.labelTab1.config(text='Customer ID:')
+            self.customerQueryInputBox3.insert(0, 'Customer ID')
         elif (value == self.customerOptions[4]): # MONGO - 8
             self.userStory = 7
             self.queryResultBox.delete('1.0', tk.END)
             self.customerQueryInputBox3.config(state='normal')
             self.labelTab1.config(text='Country:')
+            self.customerQueryInputBox3.insert(0, 'Country')
         elif (value == self.customerOptions[5]): # MONGO - 9
             self.userStory = 8
             self.queryResultBox.delete('1.0', tk.END)
@@ -650,6 +653,7 @@ class MainApplication(tk.Frame):
             self.customerQueryInputBox2.config(state='normal')
             self.customerQueryInputBox3.config(state='normal')
             self.labelTab1.config(text='Demographic:')
+            self.customerQueryInputBox3.insert(0, 'Demographic')
         elif (value == self.customerOptions[6]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
@@ -672,7 +676,7 @@ class MainApplication(tk.Frame):
         self.orderQueryInputBox3.delete(0, "end")
         self.orderQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.orderQueryInputBox3.insert(0, '')
         self.orderQueryInputBox1.config(state='disabled')
         self.orderQueryInputBox2.config(state='disabled')
         self.orderQueryInputBox3.config(state='disabled')
@@ -687,6 +691,7 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             self.orderQueryInputBox3.config(state='normal')
             self.labelTab2.config(text='Product ID:')
+            self.orderQueryInputBox3.insert(0, 'Product ID')
         elif (value == self.orderOptions[2]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
@@ -705,7 +710,7 @@ class MainApplication(tk.Frame):
         self.productQueryInputBox3.delete(0, "end")
         self.productQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.productQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.productQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.productQueryInputBox3.insert(0, '')
         self.productQueryInputBox1.config(state='disabled')
         self.productQueryInputBox2.config(state='disabled')
         self.productQueryInputBox3.config(state='disabled')
@@ -717,11 +722,13 @@ class MainApplication(tk.Frame):
             self.productQueryInputBox2.config(state='normal')
             self.productQueryInputBox3.config(state='normal')
             self.labelTab3.config(text='Product ID:')
+            self.productQueryInputBox3.insert(0, 'Product ID')
         elif (value == self.productOptions[1]): # MONGO - 10
             self.userStory = 9
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox3.config(state='normal')
             self.labelTab3.config(text='Product ID:')
+            self.productQueryInputBox3.insert(0, 'Product ID')
         elif (value == self.productOptions[2]): # MONGO - 11
             self.userStory = 10
             self.queryResultBox.delete('1.0', tk.END)
@@ -732,6 +739,7 @@ class MainApplication(tk.Frame):
             self.queryResultBox.delete('1.0', tk.END)
             self.productQueryInputBox3.config(state='normal')
             self.labelTab3.config(text='Product ID:')
+            self.productQueryInputBox3.insert(0, 'Product ID')
         elif (value == self.productOptions[4]):
             self.userStory = 12
             self.queryResultBox.delete('1.0', tk.END)
@@ -759,7 +767,7 @@ class MainApplication(tk.Frame):
         self.employeeQueryInputBox3.delete(0, "end")
         self.employeeQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.employeeQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.employeeQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.employeeQueryInputBox3.insert(0, '')
         self.employeeQueryInputBox1.config(state='disabled')
         self.employeeQueryInputBox2.config(state='disabled')
         self.employeeQueryInputBox3.config(state='disabled')
@@ -781,6 +789,7 @@ class MainApplication(tk.Frame):
             self.employeeQueryInputBox2.config(state='normal')
             self.employeeQueryInputBox3.config(state='normal')
             self.labelTab4.config(text='Employee ID:')
+            self.employeeQueryInputBox3.insert(0, 'Employee ID')
         elif (value == self.employeeOptions[3]):
             self.userStory = 14
             self.queryResultBox.delete('1.0', tk.END)
@@ -851,7 +860,7 @@ class MainApplication(tk.Frame):
         # Insert default prompt values back into inputs
         self.customerQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.customerQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.customerQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.customerQueryInputBox3.insert(0, '')
 
         # Disable the inputs
         self.customerQueryInputBox1.config(state='disabled')
@@ -892,7 +901,7 @@ class MainApplication(tk.Frame):
         # Insert default prompt values back into inputs
         self.orderInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.orderQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.orderQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.orderQueryInputBox3.insert(0, '')
 
         # Disable the inputs
         self.orderQueryInputBox1.config(state='disabled')
@@ -956,7 +965,7 @@ class MainApplication(tk.Frame):
         # Insert default prompt values back into inputs
         self.productQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.productQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.productQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.productQueryInputBox3.insert(0, '')
 
         # Disable the inputs
         self.productQueryInputBox1.config(state='disabled')
@@ -1006,7 +1015,7 @@ class MainApplication(tk.Frame):
         # Insert default prompt values back into inputs
         self.employeeQueryInputBox1.insert(0, 'from: YYYY-MM-DD')
         self.employeeQueryInputBox2.insert(0, 'to: YYYY-MM-DD')
-        self.employeeQueryInputBox3.insert(0, 'prodID/EmployeeID/Amount')
+        self.employeeQueryInputBox3.insert(0, '')
 
         # Disable the inputs
         self.employeeQueryInputBox1.config(state='disabled')
