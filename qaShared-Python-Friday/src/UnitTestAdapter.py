@@ -25,19 +25,9 @@ class UnitTestAdapter(unittest.TestCase):
         self.mongoDB.setDatabase(self.db) # Pass MySQL db into Mongo
         self.conn = self.mongoDB.getConnection()
 
-    def test_upper(self):
-        self.assertEqual('foo'.upper(), 'FOO')
-
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
-
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
+    def test_date(self):
+        valid = self.run_query_obj.validateDateInput("2000-01-01")
+        self.assertEqual(True, valid)
             
     def test_userStory7(self):
         self.setupEnvironment()
