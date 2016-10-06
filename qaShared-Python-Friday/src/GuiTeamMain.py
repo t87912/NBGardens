@@ -1085,24 +1085,28 @@ class MainApplication(tk.Frame):
           #  self.outputFrame2 = tk.Frame(root,height=100,width = 100)
          #   self.outputFrame2.pack(side = tk.TOP)
         #else:
-        self.outputFrame2 = tk.Frame(root,height=100,width = 100)
+        self.outputFrame2 = tk.Frame(root,height=100,width = 150)
         self.outputFrame2.pack(side = tk.TOP)
         
         canvas=tk.Canvas(self.outputFrame2)
         frame=tk.Frame(canvas)
         myscrollbar=tk.Scrollbar(self.outputFrame2,orient="vertical",command=canvas.yview)
+        myscrollbar1=tk.Scrollbar(self.outputFrame2,orient="horizontal",command=canvas.xview)
         canvas.configure(yscrollcommand=myscrollbar.set)
+        canvas.configure(xscrollcommand=myscrollbar1.set)
         
         def myfunction(event):
-            canvas.configure(scrollregion=canvas.bbox("all"),width=500,height=500)
+            canvas.configure(scrollregion=canvas.bbox("all"),width=600,height=500)
         
         myscrollbar.grid(row=0,column=1, sticky='NES')# side="right",fill="y")
+        myscrollbar1.grid(row=0,column=1, sticky='WSE')# side="right",fill="y")
         canvas.grid(row=0,column=1)
         canvas.create_window((0,0),window=frame,anchor='nw')
         self.outputFrame2.bind("<Configure>",myfunction)
         
         if (len(data) < 14):
             myscrollbar.destroy()
+            myscrollbar1.destroy()
     
         height = len(data)
         width = len(data[0])
