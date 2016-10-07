@@ -1,0 +1,23 @@
+		  <div class="table-responsive col-md-12">
+		  
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">Latest Orders</div>
+
+				<!-- Table -->
+				<table id="paginate_table" class="table table-striped">
+					<thead>
+					<tr>
+						<th>Date Created</th>
+						<th>Order ID</th>
+					</tr>
+					</thead>
+						{% for order in order_list %}
+						<tr>
+							<td>{{ order.createdate}}</td>
+							<td><a href="/djangomysqlapp/order/{{ order.idpurchase }}/">{{ order.idpurchase }}</a></td>
+							 {% endfor %}
+						</tr>
+				</table>
+			</div>
+		</div>
