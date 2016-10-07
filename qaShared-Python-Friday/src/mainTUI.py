@@ -174,7 +174,8 @@ class MainLogic(object):
         inputs = input("Inputs: ")
         try:
             print (self.addedUserStories)
-            dataToDump = self.addedUserStories + [[description, sqlQuery, inputs]]
+            indexNo = str(len(self.addedUserStories))
+            dataToDump = self.addedUserStories + [[indexNo + ". " + description, sqlQuery, inputs]]
             print (dataToDump)
         except:
             dataToDump = [[description, sqlQuery, inputs]]
@@ -182,9 +183,16 @@ class MainLogic(object):
         
     def deleteUserStory(self):
         print ("All user stories: ")
+        valid = []
         for x in range(0, len(self.addedUserStories)):
-            print ("Index " + str(x) + " UserStory: " + str(self.addedUserStories[x]))
-        toDelete = input("Index of story to delete: ")
+            print (str(x) + " UserStory: " + str(self.addedUserStories[x]))
+            valid.append(x)
+        toDelete = int(input("Index of story to delete: "))
+        if (toDelete not in valid):
+            print ("Error, not a valid index.")
+        else:
+            del self.addedUserStories[toDelete]
+        pickle.dump(self.addedUserStories, open( "UserStories/GeneratedStories/userStories.p","wb"))
         
     def customerInfo(self):
         menu = ["1. Customer with highest spending in given period", # userStory2 SQL
