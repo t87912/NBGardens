@@ -181,7 +181,7 @@ class MainApplication(tk.Frame):
         editSub.add_command(label = "Copy", command = self.copy)
         editSub.add_command(label = "Paste", command = self.paste)
         editSub.add_command(label = "Select All")
-        editSub.add_command(label = "Clear", command = lambda:self.queryResultBox.delete('1.0', tk.END))
+        editSub.add_command(label = "Clear", command = lambda:self.outputFrame.destroy())
 
         viewSub = tk.Menu(self.menu, tearoff = False)
         self.menu.add_cascade(label = "View", menu = viewSub)
