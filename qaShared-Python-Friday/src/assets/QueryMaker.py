@@ -11,7 +11,7 @@ class QueryMaker:
 
 
     def __init__(self):
-        self.conn = pymysql.connect("213.171.200.88", "AlStock", "0N$Project", "nbgardensds")
+        self.conn = pymysql.connect("", "", "", "nbgardensds")
         self.cursor = self.conn.cursor()
         self.cursor2 = self.conn.cursor()
 
