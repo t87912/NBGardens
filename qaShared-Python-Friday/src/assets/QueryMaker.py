@@ -10,8 +10,9 @@ import numpy as np
 class QueryMaker:
 
 
-    def __init__(self):
-        self.conn = pymysql.connect("", "", "", "nbgardensds")
+    def __init__(self, conn):
+        #self.conn = pymysql.connect("", "", "", "nbgardensds")
+        self.conn = conn
         self.cursor = self.conn.cursor()
         self.cursor2 = self.conn.cursor()
 

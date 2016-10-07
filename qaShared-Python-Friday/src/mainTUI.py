@@ -53,7 +53,7 @@ class MainLogic(object):
         self.logger = loggerObject.getLogger() # Get the logger object
         self.fh = loggerObject.getFileHandler() # Get the logger filehandler      
         self.initialLogin = True # used to not display gnome after first login
-        self.make_query_obj = QueryMaker()
+#        self.make_query_obj = QueryMaker()
         try:
             self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
         except:
@@ -76,6 +76,7 @@ class MainLogic(object):
                     if (validLogin):
                         sqlDBForMongo = self.db.getDB()# Get MySQL db object to pass to MongoDB
                         self.dbConn = self.db.getDB()
+                        self.make_query_obj = QueryMaker(self.dbConn)
                         self.mongoDB = MongoDatabase() # Init Mongo db
                         self.mongoDB.setDatabase(sqlDBForMongo) # Pass MySQL db into Mongo
                         self.conn = self.mongoDB.getConnection()
