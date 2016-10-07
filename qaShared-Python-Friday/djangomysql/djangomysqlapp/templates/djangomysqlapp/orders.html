@@ -235,40 +235,36 @@
 		  
 			<div class="panel panel-default">
 				<!-- Default panel contents -->
-				<div class="panel-heading">Employees</div>
+				<div class="panel-heading">Orders</div>
 
 				<!-- Table -->
 				<table id="paginate_table" class="table table-striped">
 					<thead>
 					<tr>
-						<th>Order ID</th>
-						<th>Order Status</th>
-						<th>Employee ID</th>
-						<th>Customer ID</th>
-						<th>Address ID</th>
-						<th>Payment ID</th>
-						<th>Date Created</th>
+						<th>ID</th>
+						<th>Status</th>
+						<th>Area</th>
 						<th>GDZ Date</th>
-						<th>Date Dispatched</th>
-						<th>Date Delivered</th>
-						<th>Date Cancelled</th>
-						<th>Date Returned</th>
+						<th>Dispatched</th>
+						<th>Delivered</th>
+						<th>Cancelled</th>
+						<th>Returned</th>
+						<th>Created</th>
+						<th>Created by:</th>
 					</tr>
 					</thead>
 						{% for order in order_list %}
 						<tr>
 							<td>{{ order.idpurchase }}</td>
 							<td>{{ order.purchasestatus}}</td>
-							<td>{{ order.emp_idemployee.idemployee}}</td>
-							<td>{{ order.cust_idcustomer.idcustomer}}</td>
-							<td>{{ order.add_idaddress.idaddress }}</td>
-							<td>{{ order.pay_idpayment.idpayment}}</td>
-							<td>{{ order.createdate}}</td>
+							<td>{{ order.add_idaddress.county }}</td>
 							<td>{{ order.gdzdate}}</td>
 							<td>{{ order.dispatcheddate }}</td>
 							<td>{{ order.delivereddate}}</td>
 							<td>{{ order.cancelleddate}}</td>
 							<td>{{ order.returneddate}}</td>
+							<td>{{ order.createdate}}</td>
+							<td>{{ order.emp_idemployee.firstname}} {{ order.emp_idemployee.lastname}}</td>
 							 {% endfor %}
 						</tr>
 				</table>
