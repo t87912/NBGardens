@@ -198,6 +198,29 @@ def dictfetchall(cursor):
         dict(zip(columns, row))
         for row in cursor.fetchall()
     ]
+	
+def dashboard_total_orders(request):
+	totalOrders = Purchase.objects.count()
+	template = loader.get_template('djangomysqlapp/dashboard_total_orders.html')
+	context = {
+	'totalOrders': totalOrders,
+	}
+	return HttpResponse(template.render(context, request))
+def dashboard_total_customers(request):
+	totalCustomers = Customer.objects.count()
+	template = loader.get_template('djangomysqlapp/dashboard_total_customers.html')
+	context = {
+	'totalCustomers': totalCustomers,
+	}
+	return HttpResponse(template.render(context, request))
+def dashboard_most_popular_product(request):
+	cursor = connection.cursor()
+	cursor.execute('''SELECT op.Pro_idProduct, Sum(op.quantity) as "SumSales" From Purchase as o Join PurchaseLines as op On o.idPurchase = op.pur_idPurchase where o.createDate between '2014-01-01' and '2018-01-01' group by op.Pro_idProduct limit 0,1''')
+	template = loader.get_template('djangomysqlapp/dashboard_most_popular_product.html')
+	context = {
+	'order_list': dictfetchall(cursor),
+	}	
+	return HttpResponse(template.render(context, request))
 def create_product(cursor, productnamenew, descriptionnew, buypricenew, salepricenew, quantitynew):
 	idproductnew = Product.objects.count() + 1
 
