@@ -86,10 +86,10 @@ def employee(request):
 	}
 	return HttpResponse(template.render(context, request))
 def customer(request):
-	product_list = Customer.objects.order_by('idCustomer')
+	customer_list = Customer.objects.order_by('idcustomer')
 	template = loader.get_template('djangomysqlapp/customer.html')
 	context = {
-	'product_list': product_list,
+	'customer_list': customer_list,
 	}	
 	return HttpResponse(template.render(context, request))
 def help(request):
