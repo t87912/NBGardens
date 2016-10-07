@@ -222,7 +222,7 @@ def dashboard_most_popular_product(request):
 	}	
 	return HttpResponse(template.render(context, request))
 def dashboard_latest_orders(request):
-	query_string = "SELECT * FROM Purchase ORDER BY createdate DESC limit 0,10"
+	query_string = "SELECT * FROM Purchase ORDER BY createdate DESC limit 0,5"
 	order_list = Purchase.objects.raw(query_string)
 	template = loader.get_template('djangomysqlapp/dashboard_latest_orders.html')
 	context = {
