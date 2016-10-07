@@ -451,7 +451,7 @@ class MainApplication(tk.Frame):
                  ["   /   <\|      "],
                  ["  /      \      "],
                  ["  |_.- o-o      "],
-                 ["  / C  -._)\\   "],
+                 ["  / C  -._)\\    "],
                  [" / ,        |   "],
                  ["|   `-,_,__,    "],
                  ["(,,)====[_]=|   "],
@@ -463,7 +463,7 @@ class MainApplication(tk.Frame):
         self.outputFrame.destroy()
         self.outputFrame = tk.Frame(root,height=100,width = 250)
         self.outputFrame.pack(side = tk.TOP)
-        self.gnomeBox = tk.Text(self.outputFrame,width=79,height=25, font=("Arial", "30"))
+        self.gnomeBox = tk.Text(self.outputFrame,width=79,height=12)
         self.gnomeBox.pack(side = tk.LEFT)
         self.outputQueryResult(gnome)
         
@@ -1123,6 +1123,6 @@ if __name__ == "__main__":
     autoGen = autoGenCode.getAutoGen()
     root = tk.Tk()
     MainApplication = MainApplication(root, autoGen)
-    root.geometry('720x750')
+    root.geometry('720x700')
     root.wm_title("NB Gardens - ASAS")
     root.mainloop()
