@@ -17,7 +17,7 @@ class QueryMaker:
     between tables by deducing relatable keys.
     '''
 
-    def __init__(self):
+    def __init__(self, conn):
         '''
         Instantiating of this object executes the making of a query --> instance created
         Responsible for setting up key cursors - sporadically used and deals with SQL conenction 
@@ -158,8 +158,8 @@ class QueryMaker:
         all_selects is the copied input string to add alias to later
         '''
         # get user input on attributes their interessted in
-        user_selects = self.getUserInput('Enter attribute you wish to query using space delimination for multiples ')
-#        user_selects = input('Enter attribute you wish to query using space delimination for multiples ')
+        #user_selects = self.getUserInput('Enter attribute you wish to query using space delimination for multiples ')
+        user_selects = input('Enter attribute you wish to query using space delimination for multiples ')
         print (self.matrix_all_attributes)
         coordinate_x = []
         all_selects = ''
