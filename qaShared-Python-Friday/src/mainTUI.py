@@ -53,7 +53,10 @@ class MainLogic(object):
         self.logger = loggerObject.getLogger() # Get the logger object
         self.fh = loggerObject.getFileHandler() # Get the logger filehandler      
         self.initialLogin = True # used to not display gnome after first login
-        self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
+        try:
+            self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
+        except:
+            self.addedUserStories = []
         self.runProgram()
 
     def runProgram(self):  
@@ -149,13 +152,20 @@ class MainLogic(object):
         
     def seeUserStories(self):
         print ("See user stories")
-        self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
-        print (self.addedUserStories)
+        try:
+            self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
+            for x in range(0, len(self.addedUserStories)):
+                print (self.addedUserStories[x])
+        except:
+            print ("No user stories.")
         self.waitForEnter()
         
     def generateNewUserStory(self):
-        self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
-        print ("Generate a new user story")        
+        try:
+            self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
+        except:
+            self.addedUserStories = []
+        print ("Generate a new user story")  
         #data = ["Description","SQL Query","Inputs in list"]
         print ("Description of user story:")
         print ("E.g. Show a list of all products.")
@@ -163,12 +173,10 @@ class MainLogic(object):
         sqlQuery = input("SQL query: ")
         inputs = input("Inputs: ")
         try:
-            print ("Try")
             print (self.addedUserStories)
             dataToDump = self.addedUserStories + [[description, sqlQuery, inputs]]
             print (dataToDump)
         except:
-            print ("Except")
             dataToDump = [[description, sqlQuery, inputs]]
         pickle.dump(dataToDump, open( "UserStories/GeneratedStories/userStories.p","wb"))
         
