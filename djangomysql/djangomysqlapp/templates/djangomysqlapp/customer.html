@@ -101,12 +101,12 @@
 <body>
 	
 	<!--navigation-->
-	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;height:200px;">
+	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;">
 		<h1 align="center">NB Gardens</h1>
 		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
 	</div>
 
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -124,6 +124,7 @@
 				<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
 				<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
 				<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Log Out</a></li>
 			</ul>
 		</div>
 	  </div>
@@ -142,7 +143,42 @@
 	  <div class="tab-content">
 		<div id="customerlist" class="tab-pane fade in active">
 		<br>
-		
+						  <div class="table-responsive col-md-12">
+							<div class="panel panel-default">
+								<!-- Default panel contents -->
+								<div class="panel-heading">Products</div>
+
+								<!-- Table -->
+								<table class="table table-striped">
+									<thead>
+									<tr>
+										<th>Customer ID</th>
+										<th>First Name</th>
+										<th>Surname</th>
+										<th>Blacklisted?</th>
+										<th>Email Address</th>
+										<th>Contact Number</th>
+									</tr>
+									</thead>
+									{% if customer_list %}
+									<tbody>
+									{% for customer in customer_list %}
+										<tr>
+											<td>{{ customer.idcustomer}}</td>
+											<td>{{ customer.firstname }}</td>
+											<td>{{ customer.lastname }}</td>
+											<td>{{ customer.blacklist}}</td>
+											<td>{{ customer.emailaddress}}</td>
+											<td>{{ customer.contactnumber}}</td>
+											 {% endfor %}
+										</tr>
+									{% else %}
+									<p>No Customers are available.</p>
+									{% endif %}
+									</tbody>
+								</table>
+							</div>
+						</div>
 		</div>
 		<div id="query1" class="tab-pane fade">
 		  <h3>To see which customers have spent the most with us in any given period</h3>

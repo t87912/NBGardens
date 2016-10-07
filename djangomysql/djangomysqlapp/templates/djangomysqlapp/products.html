@@ -6,7 +6,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<link rel='stylesheet' type='text/css' href='stylesheet.css'>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
 
@@ -93,145 +92,266 @@
 			});
 		};
  
+ 		$('#logout_button').on('click', function(event){
+			event.preventDefault();
+			console.log("logout submitted!")  // sanity check
+			log_out();
+		});
+		
+		function log_out() {
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/logout/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					window.location.replace("/djangomysqlapp")
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};
+
+		$('#form_create_product').on('submit', function(event){
+			event.preventDefault();
+			console.log("form submitted!")  // sanity check
+			create_product();
+		});
+		
+		function create_product() {
+			var product_name =  $('#product_name_create_product').val();
+			var product_description =  $('#product_description_create_product').val();
+			var product_buy_price =  $('#product_buy_price_create_product').val();
+			var product_sale_price =  $('#product_sale_price_create_product').val();
+			var product_quantity =  $('#product_quantity_create_product').val();
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/create_product/" + product_name + "/" + product_description + "/" + product_buy_price + "/" + product_sale_price + "/" + product_quantity, // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#results_sales_over_time").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};		
+ 
 	});
 	</script>
 	
 </head>
 
 <body>
-	
+
 	<!--navigation-->
-	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;height:200px;">
+	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;">
 		<h1 align="center">NB Gardens</h1>
 		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
 	</div>
+	{% if request.session.islogin == True %}
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+				</button>
+				
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+					<li class="active"><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
+					<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
+					<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
+					<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
+					<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+					<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Log Out</a></li>
+				</ul>
+			</div>
+		  </div>
+		</nav>
 
-	<nav class="navbar navbar-inverse">
-	  <div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span> 
-			</button>
-			
-		</div>
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
-				<li class="active"><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
-				<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
-				<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
-				<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
-				<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
-			</ul>
-		</div>
-	  </div>
-	</nav>
-	
-	<div class="container">
-	  <h2>Product Descriptions and statistics</h2>
-	  <ul class="nav nav-tabs">
-		<li class="active"><a data-toggle="tab" href="#productlist">Product List</a></li>
-		<li><a data-toggle="tab" href="#query1">Total Return on product</a></li>
-		<li><a data-toggle="tab" href="#query2">Compare Ratinga</a></li>
-		<li><a data-toggle="tab" href="#query3">Check detials of Product</a></li>
-		<li><a data-toggle="tab" href="#query4">Amount of Sales of Product</a></li>
-		<li><a data-toggle="tab" href="#query5">Stock against Sales</a></li>
-	  </ul>
+			<div class="container">
+			  <h2>Product Descriptions and statistics</h2>
+			  <ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#productlist">Product List</a></li>
+				<li><a data-toggle="tab" href="#query1">Total Return on product</a></li>
+				<li><a data-toggle="tab" href="#query2">Compare Ratinga</a></li>
+				<li><a data-toggle="tab" href="#query3">Check detials of Product</a></li>
+				<li><a data-toggle="tab" href="#query4">Amount of Sales of Product</a></li>
+				<li><a data-toggle="tab" href="#query5">Stock against Sales</a></li>
+				<li><a data-toggle="tab" href="#query6">Create Product</a></li>
+			  </ul>
 
-	  <div class="tab-content">
-		<div id="productlist" class="tab-pane fade in active">
-		<br>
-		  <div class="table-responsive col-md-12">
-					<div class="panel panel-default">
-						<!-- Default panel contents -->
-						<div class="panel-heading">Products</div>
+			  <div class="tab-content">
+				<div id="productlist" class="tab-pane fade in active">
+				<br>
+				  <div class="table-responsive col-md-12">
+							<div class="panel panel-default">
+								<!-- Default panel contents -->
+								<div class="panel-heading">Products</div>
 
-						<!-- Table -->
-						<table class="table table-striped">
-							<thead>
-							<tr>
-								<th>Product ID</th>
-								<th>Product Name</th>
-								<th>Quantity</th>
-								<th>Buy Price</th>
-								<th>Sale Price</th>
-								<th>Description</th>
-							</tr>
-							</thead>
-							{% if product_list %}
-							<tbody>
-							{% for product in product_list %}
-								<tr>
-									<td>{{ product.idproduct}}</td>
-									<td><a href="/djangomysqlapp/product/{{ product.idproduct }}/">{{ product.productname }}</a></td>
-									<td>{{ product.amount}}</td>
-									<td>{{ product.buyprice}}</td>
-									<td>{{ product.saleprice}}</td>
-									<td>{{ product.description}}</td>
-									 {% endfor %}
-								</tr>
-							{% else %}
-							<p>No Products are available.</p>
-							{% endif %}
-							</tbody>
-						</table>
-					</div>
+								<!-- Table -->
+								<table class="table table-striped">
+									<thead>
+									<tr>
+										<th>Product ID</th>
+										<th>Product Name</th>
+										<th>Quantity</th>
+										<th>Buy Price</th>
+										<th>Sale Price</th>
+										<th>Description</th>
+									</tr>
+									</thead>
+									{% if product_list %}
+									<tbody>
+									{% for product in product_list %}
+										<tr>
+											<td>{{ product.idproduct}}</td>
+											<td><a href="/djangomysqlapp/product/{{ product.idproduct }}/">{{ product.productname }}</a></td>
+											<td>{{ product.amount}}</td>
+											<td>{{ product.buyprice}}</td>
+											<td>{{ product.saleprice}}</td>
+											<td>{{ product.description}}</td>
+											 {% endfor %}
+										</tr>
+									{% else %}
+									<p>No Products are available.</p>
+									{% endif %}
+									</tbody>
+								</table>
+							</div>
+						</div>
 				</div>
-		</div>
-		<div id="query1" class="tab-pane fade">
-		  <h3>Total Return on Investment for a particular product for a given time period</h3>
-		   <form method="POST" id="form_invest">
-					<p><label for="id_productid_invest">Product ID:</label>
-					<input id="id_productid_invest" type="int" name="productid" required /></p>
-					<p><label for="id_datefrom_invest">Date From:</label>
-					<input id="id_datefrom_invest" type="date" name="datefrom" maxlength="100" required /></p>
-					<p><label for="id_dateto_invest">Date To:</label>
-					<input id="id_dateto_invest" type="date" name="dateto" maxlength="100" required /></p>
+				<div id="query1" class="tab-pane fade">
+				  <h3>Total Return on Investment for a particular product for a given time period</h3>
+				   <form method="POST" id="form_invest">
+							<p><label for="id_productid_invest">Product ID:</label>
+							<input id="id_productid_invest" type="int" name="productid" required /></p>
+							<p><label for="id_datefrom_invest">Date From:</label>
+							<input id="id_datefrom_invest" type="date" name="datefrom" maxlength="100" required /></p>
+							<p><label for="id_dateto_invest">Date To:</label>
+							<input id="id_dateto_invest" type="date" name="dateto" maxlength="100" required /></p>
+							{{ form }}
+							<input type="submit" value="Submit">
+						</form>
+						<h2>Results</h2>
+
+						<div class="table-responsive col-md-12">
+							<div class="panel panel-default">
+								<!-- Default panel contents -->
+								<div class="panel-heading">Products</div>
+								<!-- Table -->
+								<table id="results_spentmost" class="table table-striped"></table>
+							</div>
+						</div>
+				</div>
+				<div id="query2" class="tab-pane fade">
+				  <h3>Compare the average rating given to a product </h3>
+				  
+				</div>
+				<div id="query3" class="tab-pane fade">
+				  <h3>Check detials of a particular product</h3>
+				  
+				</div>
+				<div id="query4" class="tab-pane fade">
+					<h3>Amount of sales for a particular product over time (graph)</h3>
+					<form method="POST" id="form_sales_over_time">
+					<p><label for="id_productid_sales_over_time">Product ID:</label>
+					<input id="id_productid_sales_over_time" type="int" name="id_productid_sales_over_time" required /></p>
+					<p><label for="id_datefrom_sales_over_time">Date From:</label>
+					<input id="id_datefrom_sales_over_time" type="date" name="id_datefrom_sales_over_time" maxlength="100" required /></p>
+					<p><label for="id_dateto_sales_over_time">Date To:</label>
+					<input id="id_dateto_sales_over_time" type="date" name="id_dateto_sales_over_time" maxlength="100" required /></p>
 					{{ form }}
 					<input type="submit" value="Submit">
-				</form>
-				<h2>Results</h2>
-
-				<div class="table-responsive col-md-12">
-					<div class="panel panel-default">
-						<!-- Default panel contents -->
-						<div class="panel-heading">Products</div>
-						<!-- Table -->
-						<table id="results_spentmost" class="table table-striped"></table>
-					</div>
+					</form>
+					<h2>Graph</h2>
+					<div id="results_sales_over_time" class="table table-striped"></div>
 				</div>
-		</div>
-		<div id="query2" class="tab-pane fade">
-		  <h3>Compare the average rating given to a product </h3>
-		  
-		</div>
-		<div id="query3" class="tab-pane fade">
-		  <h3>Check detials of a particular product</h3>
-		  
-		</div>
-		<div id="query4" class="tab-pane fade">
-			<h3>Amount of sales for a particular product over time (graph)</h3>
-			<form method="POST" id="form_sales_over_time">
-			<p><label for="id_productid_sales_over_time">Product ID:</label>
-			<input id="id_productid_sales_over_time" type="int" name="id_productid_sales_over_time" required /></p>
-			<p><label for="id_datefrom_sales_over_time">Date From:</label>
-			<input id="id_datefrom_sales_over_time" type="date" name="id_datefrom_sales_over_time" maxlength="100" required /></p>
-			<p><label for="id_dateto_sales_over_time">Date To:</label>
-			<input id="id_dateto_sales_over_time" type="date" name="id_dateto_sales_over_time" maxlength="100" required /></p>
-			{{ form }}
-			<input type="submit" value="Submit">
-			</form>
-			<h2>Graph</h2>
-			<div id="results_sales_over_time" class="table table-striped"></div>
-		</div>
-		<div id="query5" class="tab-pane fade">
-		  <h3>Number of stock available for product VS the number of sales (GRAPH)</h3>
-		
-		</div>
-	  </div>
-	</div>	
+				<div id="query5" class="tab-pane fade">
+				  <h3>Number of stock available for product VS the number of sales (GRAPH)</h3>
+				
+				</div>
+				<div id="query6" class="tab-pane fade">
+					<form method="POST" id="form_create_product" class="form-signin">
+						<h2 class="form-signin-heading">Create new Product</h2>
+						<div class="form-group">
+							<label for="product_name_create_product">Product Name:</label>
+							<input type="text" id="product_name_create_product" name="product_name_create_product" class="form-control" required autofocus>
+						</div>
+						<div class="form-group">
+							<label for="product_description_create_product">Product Description:</label>
+							<textarea type="password" id="product_description_create_product" name="product_description_create_product" class="form-control"></textarea>
+						</div>
+						<div class="row">
+							<div class="col-xs-4">
+								<label for="product_buy_price_create_product">Buy Price:</label>
+								<input type="number" id="product_buy_price_create_product" name="product_buy_price_create_product" class="form-control" required autofocus>
+							</div>
+							<div class="col-xs-4">
+								<label for="product_sale_price_create_product">Sale Price:</label>
+								<input type="number" id="product_sale_price_create_product" name="product_sale_price_create_product" class="form-control" required autofocus>
+							</div>
+							<div class="col-xs-4">
+								<label for="product_quantity_create_product">Quantity:</label>
+								<input type="number" id="product_quantity_create_product" name="product_quantity_create_product" class="form-control" required autofocus>
+							</div>
+						</div>
+						{{ form }}
+						<br>
+						<button type="submit" class="btn btn-default">Create Product</button>
+					</form>
+				</div>
+			  </div>
+			</div>
+	{% else %}
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+				</button>
+				
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+					<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+				</ul>
+			</div>
+		  </div>
+		</nav>
+	{% endif %}
 	
 </body>
 </html>

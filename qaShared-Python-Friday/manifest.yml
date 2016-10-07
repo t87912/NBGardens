@@ -1,7 +1,0 @@
----
-applications:
-- name: NBGardensApp2
-  memory: 1024M
-  host: NBGardens2
-  instances: 1
-  path: .

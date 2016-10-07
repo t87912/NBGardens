@@ -19,12 +19,14 @@
 <body>
 	
 	<!--navigation-->
-	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;height:200px;">
+	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;">
 		<h1 align="center">NB Gardens</h1>
 		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
 	</div>
 
-	<nav class="navbar navbar-inverse">
+	
+	{% if request.session.islogin == True %}
+	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -42,11 +44,31 @@
 				<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
 				<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
 				<li class="active"><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Log Out</a></li>
 			</ul>
 		</div>
 	  </div>
 	</nav>
-
+	{% else %}
+		<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>
+			
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+				<li class="active"><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+			</ul>
+		</div>
+	  </div>
+	</nav>
+	{% endif %}
 	<div class="container">
 		<form>
 			<div class="form-group">
