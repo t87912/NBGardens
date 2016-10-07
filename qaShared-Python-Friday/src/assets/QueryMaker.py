@@ -17,7 +17,7 @@ class QueryMaker:
     between tables by deducing relatable keys.
     '''
 
-    def __init__(self, conn):
+    def __init__(self):
         '''
         Instantiating of this object executes the making of a query --> instance created
         Responsible for setting up key cursors - sporadically used and deals with SQL conenction 
@@ -130,7 +130,25 @@ class QueryMaker:
         print('\n\n======= MATRIX KEYS ONLY ======== \n')
         print (self.matrix_keys)
 
-
+    
+    def getUserInput(self, instruction):
+        '''
+        Attempt to get a valid input if its wrong then produces error message
+        and then repeeats method
+        
+        @param instruction:the stringto print to the user
+        @return: user_select is astring of valid attributes
+        '''
+        # ge
+        user_selects = input(instruction)
+        for word in user_selects.split():
+            if (np.where(self.matrix_all_attributes != word)):
+                print ('Invalid input. Please try again!')
+                self.getUserInput(instruction)
+        return user_selects
+        
+    
+    
     def processUserInput(self):
         '''
        Processes user input and extracts elements and discovers where the element is 
@@ -140,7 +158,9 @@ class QueryMaker:
         all_selects is the copied input string to add alias to later
         '''
         # get user input on attributes their interessted in
-        user_selects = input('Enter attribute you wish to query using space delimination for multiples ')
+        user_selects = self.getUserInput('Enter attribute you wish to query using space delimination for multiples ')
+#        user_selects = input('Enter attribute you wish to query using space delimination for multiples ')
+        print (self.matrix_all_attributes)
         coordinate_x = []
         all_selects = ''
         # identify and break into elements
