@@ -193,10 +193,40 @@
 			});
 		};
 		
+		function dashboard_sales_vs_cost() {
+			var datestart =  $('#id_datefrom_top_sales').val();
+			var dateto =  $('#id_dateto_top_sales').val();
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/dashboard_sales_vs_cost/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#dashboard_sales_vs_cost").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+
+		};
+		
 		dashboard_total_orders();
 		dashboard_total_customers();
 		dashboard_most_popular_product();
 		dashboard_latest_orders();
+		dashboard_sales_vs_cost();
 		
 	});
 	</script>
@@ -238,6 +268,7 @@
 				<p id="dashboard_total_orders"></p>
 				<p id="dashboard_total_customers"></p>
 				<p id="dashboard_most_popular_product"></p>
+				<p id="dashboard_sales_vs_cost"></p>
 				<p id="dashboard_latest_orders"></p>
 		</div>
 		</span>

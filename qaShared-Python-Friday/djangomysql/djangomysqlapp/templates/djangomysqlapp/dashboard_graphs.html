@@ -1,0 +1,53 @@
+<script type="text/javascript">
+$( document ).ready(function() {
+	var chart = new CanvasJS.Chart("dashboard_chart_sales_vs_cost", {
+		title:{
+			text: "Sales vs Cost"              
+		},
+		toolTip:{
+			enabled: false,       //disable here
+		},
+		data: [{
+			type: "doughnut",
+			showInLegend: true,
+			dataPoints: [
+					{% for order in order_list %}
+						{ y: {{ order.TotalSales }}, legendText: "Total Sales"},
+						{ y: {{ order.TotalCost }}, legendText: "Total Cost"}
+					{% endfor %}
+			]
+		}]
+	});
+	chart.render();
+	chart = {};
+		
+	var chart_statuses = new CanvasJS.Chart("dashboard_chart_statuses", {
+		title:{
+			text: "Purchase Statuses"              
+		},
+		toolTip:{
+			enabled: false,       //disable here
+		},
+		data: [{
+			type: "doughnut",
+			showInLegend: true,
+			dataPoints: [
+					{% for order in order_status_list %}
+						{ y: {{ order.purchase_status }}, legendText: "{{ order.purchasestatus }}"},
+					{% endfor %}
+			]
+		}]
+	});
+	chart_statuses.render();
+	chart_statuses = {};		
+		
+});
+</script>
+<div class="row">
+	<div class="col-lg-6">
+		<div id="dashboard_chart_sales_vs_cost" style="height: 400px; width: 100%;"></div>
+	</div>
+	<div class="col-lg-6">
+		<div id="dashboard_chart_statuses" style="height: 400px; width: 100%;"></div>
+	</div>
+</div>

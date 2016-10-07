@@ -38,4 +38,5 @@ urlpatterns = [
 	url(r'^dashboard_total_customers/$', views.dashboard_total_customers, name='dashboard_total_customers'),
 	url(r'^dashboard_most_popular_product/$', views.dashboard_most_popular_product, name='dashboard_most_popular_product'),
 	url(r'^dashboard_latest_orders/$', views.dashboard_latest_orders, name='dashboard_latest_orders'),
+	url(r'^dashboard_sales_vs_cost/$', views.dashboard_sales_vs_cost, name='dashboard_sales_vs_cost'),
 ]

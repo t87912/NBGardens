@@ -229,6 +229,17 @@ def dashboard_latest_orders(request):
 	'order_list': order_list,
 	}
 	return HttpResponse(template.render(context, request))	
+def dashboard_sales_vs_cost(request):
+	cursor = connection.cursor()
+	cursor.execute('''SELECT round(sum(p.salePrice*op.quantity),2) as 'TotalSales', round(sum(p.buyPrice*op.quantity),2) as 'TotalCost' From Purchase as o Join PurchaseLines as op On o.idPurchase = op.pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct where o.createDate between '2014-01-01' and '2016-01-01' ''')
+	cursor_statuses = connection.cursor()
+	cursor_statuses.execute('''SELECT purchasestatus, count(purchasestatus) as purchase_status FROM Purchase GROUP BY purchaseStatus''')
+	template = loader.get_template('djangomysqlapp/dashboard_graphs.html')
+	context = {
+	'order_list': namedtuplefetchall(cursor),
+	'order_status_list': namedtuplefetchall(cursor_statuses),
+	}
+	return HttpResponse(template.render(context, request))	
 def create_product(cursor, productnamenew, descriptionnew, buypricenew, salepricenew, quantitynew):
 	idproductnew = Product.objects.count() + 1
 
