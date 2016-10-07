@@ -13,7 +13,7 @@ from Login import Login
 from sqlDatabase.MySQLDatabase import MySQLDatabase
 from mongoDatabase.MongoDatabase import MongoDatabase
 from Logger import Logger
-
+from assets.QueryMaker import QueryMaker
 import csv
 import sys
 import pickle
@@ -53,6 +53,7 @@ class MainLogic(object):
         self.logger = loggerObject.getLogger() # Get the logger object
         self.fh = loggerObject.getFileHandler() # Get the logger filehandler      
         self.initialLogin = True # used to not display gnome after first login
+        self.make_query_obj = QueryMaker()
         try:
             self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
         except:
@@ -170,8 +171,10 @@ class MainLogic(object):
         print ("Description of user story:")
         print ("E.g. Show a list of all products.")
         description = input("Description: ")
-        sqlQuery = input("SQL query: ")
-        inputs = input("Inputs: ")
+        sqlQuery = self.make_query_obj.main()
+        print (sqlQuery)
+#        sqlQuery = input("SQL query: ")
+        inputs = [0] #input("Inputs: ")
         try:
             print (self.addedUserStories)
             indexNo = str(len(self.addedUserStories))

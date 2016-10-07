@@ -23,8 +23,9 @@ class QueryMaker:
         all_table_aliases, all_table_names, all_aliases = self.findTable(table_in_x, self.matrix_keys)
         select_statement = self.addAliasToElements(all_selects, all_aliases)
 #        print (select_statement)
-        self.generateQuery(select_statement, all_table_aliases, all_table_names, table_in_x)
-
+        query = self.generateQuery(select_statement, all_table_aliases, all_table_names, table_in_x)
+        output = self.runTest(query)
+        return query
 
     def matrixSetup(self):
         number_of_tables = 20
@@ -180,8 +181,8 @@ class QueryMaker:
             on = ' ON ' + found_2[k] + ' = ' + found_1[k]
 
         query = select + from_part + join + on
-        print(query)
-        self.runTest(query)
+        return query
+        
 
 
     def concatenateAliases(self, found_1, found_2, table_in_x, y, x):
@@ -195,8 +196,10 @@ class QueryMaker:
     def runTest(self, query):
         cursor= self.conn.cursor()
         cursor.execute(query)
-        tables = cursor.fetchall()
-        print (tables)
+        output = cursor.fetchall()
+        print (output)
+        return output
+
 
 
 
@@ -213,5 +216,5 @@ class QueryMaker:
 '''
 
 #################################
-query_maker_obj = QueryMaker()
-query_maker_obj.main()
+#query_maker_obj = QueryMaker()
+#query_maker_obj.main()
