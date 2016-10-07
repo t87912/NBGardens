@@ -5,116 +5,277 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<link rel='stylesheet' type='text/css' href='stylesheet.css'>
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="test.css" rel="stylesheet">
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		
+		$('#form_signin').on('submit', function(event){
+			event.preventDefault();
+			console.log("form submitted!")  // sanity check
+			query_signin();
+		});
+		
+		$.ajaxSetup({
+			data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+		});
+		
+ 		function query_signin() {
+			var uname =  $('#id_username_signin').val();
+			var pword =  $('#id_password_signin').val();
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/login/" + uname + "/" + pword, // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/static/https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/static/js/bootstrap.min.js"></script>
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#results_signin").html(json);
+				},
 
-	
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+			
+		};
+		
+		$('#logout_button').on('click', function(event){
+			event.preventDefault();
+			console.log("logout submitted!")  // sanity check
+			log_out();
+		});
+		
+		function log_out() {
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/logout/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					window.location.replace("/djangomysqlapp")
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};
+		
+		function dashboard_total_orders() {
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/dashboard_total_orders/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#dashboard_total_orders").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};
+		
+		function dashboard_total_customers() {
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/dashboard_total_customers/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#dashboard_total_customers").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};
+		
+		function dashboard_most_popular_product() {
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/dashboard_most_popular_product/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#dashboard_most_popular_product").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};
+		
+		function dashboard_latest_orders() {
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/dashboard_latest_orders/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					$("#dashboard_latest_orders").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};
+		
+		dashboard_total_orders();
+		dashboard_total_customers();
+		dashboard_most_popular_product();
+		dashboard_latest_orders();
+		
+	});
+	</script>
 </head>
 
 <body>
 	
 	<!--navigation-->
-	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;height:200px;">
-		<h1 align="center">NB Gardens</h1>
-		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
-	</div>
-
-	<nav class="navbar navbar-inverse"  data-spy="affix" data-offset-top="197">
-	  <div class="container-fluid">
-		<div class="navbar-header">
+	<nav class="navbar navbar no-margin">
+		<div class="container-fluid">
+		<div class="navbar-header fixed-brand">
+			<a class="navbar-brand" href="#">NB Gardens</a>
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span> 
 			</button>
-			
 		</div>
+		
 		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li><a href="home.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
-				<li><a href="products.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
-				<li class="active"><a href="orders.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
-				<li><a href="help.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Sales</a></li>
-				<li><a href="help.html" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Log Out</a></li>
+				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Profile</a></li>
 			</ul>
 		</div>
-	  </div>
+		</div>
 	</nav>
+	<ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+		<li class="active"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+		<li><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
+		<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
+		<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
+		<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
+		<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+	</ul>
 	
-	<form method="post" action="simpleform.asp">
-		Year: <input type="text" name="year"><br>
-		<input type="submit" value="Submit">
-	</form>
-	
-	<% 
-	response.write(request.form("year"))
-	%>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="table-responsive col-md-12">
-		<div class="panel panel-default">
-			<!-- Default panel contents -->
-			<div class="panel-heading">Orders</div>
-
-			<!-- Table -->
-			<table class="table table-striped">
-				<thead>
-				<tr>
-					<th>Order ID</th>
-					<th>Order Status</th>
-					<th>Employee ID</th>
-					<th>Customer ID</th>
-					<th>Address ID</th>
-					<th>Payment ID</th>
-					<th>Date Created</th>
-					<th>GDZ Date</th>
-					<th>Date Dispatched</th>
-					<th>Date Delivered</th>
-					<th>Date Cancelled</th>
-					<th>Date Returned</th>
-				</tr>
-				</thead>
-				{% if order_list %}
-				<tbody>
-				{% for order in order_list %}
-					<tr>
-						<td><a href="/djangomysqlapp/order/{{ order.idpurchase }}/">{{ order.idpurchase }}</a></td>
-						<td>{{ order.purchasestatus }}</td>
-						<td>{{ order.emp_idemployee}}</td>
-						<td>{{ order.cust_idcustomer}}</td>
-						<td>{{ order.add_idaddress}}</td>
-						<td>{{ order.pay_idpayment}}</td>
-						<td>{{ order.createdate }}</td>
-						<td>{{ order.gdzdate}}</td>
-						<td>{{ order.dispatcheddate}}</td>
-						<td>{{ order.delivereddate}}</td>
-						<td>{{ order.cancelleddate}}</td>
-						<td>{{ order.returneddate}}</td>
-						 {% endfor %}
-					</tr>
-					
-					{% else %}
-				<p>No Products are available.</p>
-				{% endif %}
-				</tbody>
-			</table>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-3">
+				<div class="well">
+					<h5>Total Orders</h5>
+					<p>93</p>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="well">
+					<h5>Total Customers</h5>
+					<p>25</p>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="well">
+					<h5>Most Popular Product</h5>
+					<p>32</p>
+				</div>
+			</div>
 		</div>
 	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-5">
+				<h1>hello</h1>
+			</div>
+			<div class="col-sm-5">
+				<h1>hello</h1>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">
+			</div>
+			<div class="col-sm-10">
+				<h1>hello, hello, hello, heloo, hello</h1>
+			</div>
+		</div>
+	</div>
+
+	
 	
 </body>
 </html>
