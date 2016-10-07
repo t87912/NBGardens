@@ -1,2 +1,11 @@
-Total Sales,Total Cost
-31871.31,17483.15
+Pro_idProduct,ROUND(Sum(op.quantity)),amount
+1,32,44
+2,42,73
+3,33,5
+4,28,96
+5,30,5
+6,19,9
+7,37,91
+8,41,60
+9,29,2
+10,32,59

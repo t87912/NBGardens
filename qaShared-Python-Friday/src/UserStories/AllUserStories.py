@@ -68,13 +68,18 @@ class AllUserStories (object):
         """ newUserStory: This method will insert user input into an SQL query
             based upon the values in an array inside autoGen that is passed in.
             The SQL query is then executed and the results are printed. """
-        userStories = autoGen[3]
-        sqlQuery = userStories[query_number][1]
-        queryInputs = userStories[query_number][2]
+        #userStories = autoGen[3]
+        #sqlQuery = userStories[query_number][1]
+        #queryInputs = userStories[query_number][2]
+        sqlQuery = autoGen[1]
+        queryInputs = autoGen[2]
+        print (autoGen)
+        
+        
         needInputs = False
         
-        for y in range(0, len(userStories[query_number][2])):
-            if (userStories[query_number][2][y] == 1):
+        for y in range(0, len(queryInputs)):
+            if (queryInputs[y] == 1):
                 needInputs = True
         
         if (needInputs):

@@ -153,14 +153,44 @@ class MainLogic(object):
         self.waitForEnter()
         
     def seeUserStories(self):
-        print ("See user stories")
-        try:
-            self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
-            for x in range(0, len(self.addedUserStories)):
-                print (self.addedUserStories[x])
-        except:
+        print ("Displaying all generated user stories.")
+        valid = False
+        #try:
+        self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
+        if (len(self.addedUserStories) != 0):
+            while (not valid):
+                for x in range(0, len(self.addedUserStories)):
+                    toPrint = self.addedUserStories[x][0] % (x+1)
+                    toPrint = "    " + toPrint
+                    print (toPrint)
+                backToMain = "    %s. Back to main menu" % (x+2)
+                print (backToMain)
+                menuOption = input("Input option number: ")
+                try:
+                    menuOption = int(menuOption)
+                    print (len(self.addedUserStories))
+                    if (menuOption in list(range(1, len(self.addedUserStories)+2))):
+                        valid = True
+                    else:
+                        valid = False
+                except:
+                    print ("Please input a valid menu option.")
+                    valid = False
+            
+            if (menuOption == len(self.addedUserStories)+1):
+                print ("Returning to the main menu...")
+            else:
+                self.allUserStories.newUserStory(self.dbConn, False, self.addedUserStories[menuOption-1], menuOption-1)
+                
+                
+        else:
             print ("No user stories.")
+        #except:
+            #print ("No user stories.")
         self.waitForEnter()
+        
+    #def checkMenuOption(self):
+        
         
     def generateNewUserStory(self):
         try:
@@ -178,25 +208,64 @@ class MainLogic(object):
         inputs = [0] #input("Inputs: ")
         try:
             print (self.addedUserStories)
-            indexNo = str(len(self.addedUserStories))
-            dataToDump = self.addedUserStories + [[indexNo + ". " + description, sqlQuery, inputs]]
+            #indexNo = str(len(self.addedUserStories))
+            dataToDump = self.addedUserStories + [["%s. " + description, sqlQuery, inputs]]
             print (dataToDump)
         except:
             dataToDump = [[description, sqlQuery, inputs]]
         pickle.dump(dataToDump, open( "UserStories/GeneratedStories/userStories.p","wb"))
+        self.waitForEnter()
+        
+    def customUserStoryMenu(self):
+        menu = ["1. Customer with highest spending in given period", # userStory2 SQL
+                "2. Customer who has spent more than 'x' in given period", # userStory3 SQL
+                "3. Average rating a particular customer has given NB Gardens", # userStory7 Mongo
+                "4. Average rating a group of customers from particular county have given NB Gardens", # userStory8 Mongo
+                "5. Average rating a group of customers from particular demographic (age, gender) have given NB Gardens", # userStory9 Mongo
+                "9. Back to main menu"]
+        validOptions = [1,2,3,4,5,9] # Valid menu options
+        
+        while (True):
+            userChoice = self.getUserMenuChoice(menu, validOptions)
+            if (userChoice == 1):
+                self.allUserStories.userStorySeries1(self.dbConn, False, 0, 0, 2)
+            elif (userChoice == 2):
+                self.allUserStories.userStorySeries2(self.dbConn, False, 0, 0, 0, 3)
+            elif (userChoice == 3):
+                self.allUserStories.mongoStory1(self.dbConn, self.conn, False, 0)
+            elif (userChoice == 4):
+                self.allUserStories.mongoStory2(self.dbConn, self.conn, False, 0)
+            elif (userChoice == 5):
+                self.allUserStories.mongoStory3(self.dbConn, self.conn, False, 0, 0, 0)
+            else:
+                print ("Returning to the main menu...")
+                break
+            self.waitForEnter()
         
     def deleteUserStory(self):
-        print ("All user stories: ")
-        valid = []
-        for x in range(0, len(self.addedUserStories)):
-            print (str(x) + " UserStory: " + str(self.addedUserStories[x]))
-            valid.append(x)
-        toDelete = int(input("Index of story to delete: "))
-        if (toDelete not in valid):
-            print ("Error, not a valid index.")
+        try:
+            self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
+        except:
+            self.addedUserStories = []
+        
+        if (len(self.addedUserStories) != 0):
+            print ("All user stories: ")
+            valid = []
+            for x in range(0, len(self.addedUserStories)):
+                print (str(x) + " UserStory: " + str(self.addedUserStories[x]))
+                valid.append(x)
+            toDelete = int(input("Index of story to delete: "))
+            if (toDelete not in valid):
+                print ("Error, not a valid index.")
+            else:
+                print ("Deleting user story at index: %s" % (str(toDelete)))
+                del self.addedUserStories[toDelete]
+            pickle.dump(self.addedUserStories, open( "UserStories/GeneratedStories/userStories.p","wb"))
+            print ("Returning to the main menu...")
         else:
-            del self.addedUserStories[toDelete]
-        pickle.dump(self.addedUserStories, open( "UserStories/GeneratedStories/userStories.p","wb"))
+            print ("No user stories to delete.")
+            print ("Returning to the main menu...")
+        self.waitForEnter()
         
     def customerInfo(self):
         menu = ["1. Customer with highest spending in given period", # userStory2 SQL
