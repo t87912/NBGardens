@@ -4390,3 +4390,64 @@
 2016-10-08 19:48:45,094 - INFO - Successful login to MySQL database, username: AlStock
 2016-10-08 19:49:17,441 - INFO - ---------- Finished logging TUI -----------
 2016-10-08 19:49:17,441 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 19:54:23,748 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:54:23,748 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:54:23,748 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:54:32,995 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 19:54:32,995 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 19:54:32,995 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 19:54:38,502 - INFO - Custom SQL query: asdsadsa
+2016-10-08 19:54:38,502 - INFO - Custom SQL query: asdsadsa
+2016-10-08 19:54:38,502 - INFO - Custom SQL query: asdsadsa
+2016-10-08 19:54:52,359 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 2
+2016-10-08 19:54:52,359 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 2
+2016-10-08 19:54:52,359 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 2
+2016-10-08 19:55:18,173 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 19:55:18,173 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 19:55:18,173 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 19:59:05,327 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:59:05,327 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:59:05,327 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:59:05,327 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:59:12,761 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 19:59:12,761 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 19:59:12,761 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 19:59:12,761 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 19:59:20,871 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-08 19:59:20,871 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-08 19:59:20,871 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-08 19:59:20,871 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-08 19:59:29,567 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 19:59:29,567 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 19:59:29,567 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 19:59:29,567 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 19:59:56,687 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:59:56,687 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:59:56,687 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:59:56,687 - INFO - ---------- Started logging TUI ----------
+2016-10-08 19:59:56,687 - INFO - ---------- Started logging TUI ----------
+2016-10-08 20:00:04,266 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 20:00:04,266 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 20:00:04,266 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 20:00:04,266 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 20:00:04,266 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-08 20:00:24,968 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-08 20:00:24,968 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-08 20:00:24,968 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-08 20:00:24,968 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-08 20:00:24,968 - INFO - Custom SQL query: SELECT * FROM Product
+2016-10-08 20:01:04,147 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 50
+2016-10-08 20:01:04,147 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 50
+2016-10-08 20:01:04,147 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 50
+2016-10-08 20:01:04,147 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 50
+2016-10-08 20:01:04,147 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 50
+2016-10-08 20:01:18,263 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 5
+2016-10-08 20:01:18,263 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 5
+2016-10-08 20:01:18,263 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 5
+2016-10-08 20:01:18,263 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 5
+2016-10-08 20:01:18,263 - INFO - Custom SQL query: SELECT * FROM Product LIMIT 5
+2016-10-08 20:01:23,498 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 20:01:23,498 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 20:01:23,498 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 20:01:23,498 - INFO - ---------- Finished logging TUI -----------
+2016-10-08 20:01:23,498 - INFO - ---------- Finished logging TUI -----------

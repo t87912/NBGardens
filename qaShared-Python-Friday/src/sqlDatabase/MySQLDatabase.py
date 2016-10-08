@@ -179,12 +179,26 @@ class MySQLDatabase(object):
             query = input("Input SQL query: ")
 
         self.logger.info('Custom SQL query: %s', query)
+        
+        cursorHeader = self.db.cursor() # Creating the cursor to query the database
+        try:
+            cursorHeader.execute(query)
+            self.db.commit()
+        except:
+            self.db.rollback()
+        header = []
+        # Add column names to header
+        for x in range(0, len(cursorHeader.description)):
+            header.append(cursorHeader.description[x][0])
+        cursorHeader.close()       
+        
         cursor = self.db.cursor() # Creating the cursor to query the database
         # Executing the query:
         try:
             cursor.execute(query)
             self.db.commit()
             results = cursor.fetchall()
+            print (header)
             for row in results:
                 toPrint = []
                 for i in range(0, len(row)):
