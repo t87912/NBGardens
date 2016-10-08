@@ -1,11 +1,21 @@
-['Pro_idProduct', 'ROUND(Sum(op.quantity))', 'amount']
-[1, '32', 44]
-[2, '42', 73]
-[3, '33', 5]
-[4, '28', 96]
-[5, '30', 5]
-[6, '19', 9]
-[7, '37', 91]
-[8, '41', 60]
-[9, '29', 2]
-[10, '32', 59]
+['idCustomer', 'firstName', 'lastName', 'Total Sales']
+(14, 'Jon', 'Snow', 5453.14)
+(1, 'Jennny', 'Meadows', 3693.75)
+(4, 'Jimmy', 'Russell', 3661.1)
+(22, 'Justin', 'Gordon', 2981.12)
+(12, 'George', 'Black', 1751.0)
+(2, 'Chris', 'Meadows', 1730.42)
+(24, 'Larry', 'Banks', 1636.37)
+(25, 'Joshua', 'Sanders', 1585.25)
+(9, 'Lola', 'Ward', 1471.09)
+(23, 'Kathleen', 'Schmidt', 1362.23)
+(5, 'Beatrice', 'Fields', 1145.54)
+(8, 'Jemma', 'Matthews', 1045.74)
+(6, 'Bert', 'People', 1004.8)
+(16, 'Russell', 'Jordan', 869.42)
+(21, 'Gloria', 'Martin', 643.8)
+(19, 'Philip', 'Edwards', 338.9)
+(15, 'Arya', 'Stark', 335.34)
+(17, 'Samuel', 'Flores', 248.87)
+(13, 'Daenerys', 'Targaryen', 214.6)
+(7, 'Billius', 'Kinglsley', 211.97)

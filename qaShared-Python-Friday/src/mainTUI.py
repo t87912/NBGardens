@@ -153,12 +153,13 @@ class MainLogic(object):
         self.waitForEnter()
         
     def seeUserStories(self):
-        print ("Displaying all generated user stories.")
+        #print ("Displaying all generated user stories.")
         valid = False
         #try:
         self.addedUserStories = pickle.load( open( "UserStories/GeneratedStories/userStories.p", "rb" ) )
         if (len(self.addedUserStories) != 0):
             while (not valid):
+                print ("Displaying all generated user stories.")
                 for x in range(0, len(self.addedUserStories)):
                     toPrint = self.addedUserStories[x][0] % (x+1)
                     toPrint = "    " + toPrint
@@ -168,7 +169,7 @@ class MainLogic(object):
                 menuOption = input("Input option number: ")
                 try:
                     menuOption = int(menuOption)
-                    print (len(self.addedUserStories))
+                    #print (len(self.addedUserStories))
                     if (menuOption in list(range(1, len(self.addedUserStories)+2))):
                         valid = True
                     else:
@@ -177,17 +178,20 @@ class MainLogic(object):
                     print ("Please input a valid menu option.")
                     valid = False
             
-            if (menuOption == len(self.addedUserStories)+1):
-                print ("Returning to the main menu...")
-            else:
-                self.allUserStories.newUserStory(self.dbConn, False, self.addedUserStories[menuOption-1], menuOption-1)
+                if (menuOption == len(self.addedUserStories)+1):
+                    print ("Returning to the main menu...")
+                    valid = True
+                else:
+                    self.allUserStories.newUserStory(self.dbConn, False, self.addedUserStories[menuOption-1], menuOption-1)
+                    self.waitForEnter()
+                    valid = False
                 
                 
         else:
             print ("No user stories.")
         #except:
             #print ("No user stories.")
-        self.waitForEnter()
+        #self.waitForEnter()
         
     #def checkMenuOption(self):
         
@@ -202,18 +206,17 @@ class MainLogic(object):
         print ("Description of user story:")
         print ("E.g. Show a list of all products.")
         description = input("Description: ")
-        sqlQuery = self.make_query_obj.main()
-        print (sqlQuery)
-#        sqlQuery = input("SQL query: ")
-        inputs = [0] #input("Inputs: ")
         try:
-            print (self.addedUserStories)
-            #indexNo = str(len(self.addedUserStories))
-            dataToDump = self.addedUserStories + [["%s. " + description, sqlQuery, inputs]]
-            print (dataToDump)
+            sqlQuery = self.make_query_obj.main()
+            inputs = [0] #input("Inputs: ")
+            try:
+                dataToDump = self.addedUserStories + [["%s. " + description, sqlQuery, inputs]]
+                print (dataToDump)
+            except:
+                dataToDump = [[description, sqlQuery, inputs]]
+            pickle.dump(dataToDump, open( "UserStories/GeneratedStories/userStories.p","wb"))
         except:
-            dataToDump = [[description, sqlQuery, inputs]]
-        pickle.dump(dataToDump, open( "UserStories/GeneratedStories/userStories.p","wb"))
+            print ("Error, incorrect attribute names.")
         self.waitForEnter()
         
     def customUserStoryMenu(self):
