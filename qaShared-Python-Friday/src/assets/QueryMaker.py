@@ -41,8 +41,8 @@ class QueryMaker:
         self.addTableNamesToMat()
         table_in_x, all_selects, query_type, input_where, input_and = self.processUserInput()
         all_table_aliases, all_table_names, all_aliases = self.findTable(table_in_x)
-        select_statement = self.addAliasToElements(all_selects, all_aliases)
-        query = self.generateQuery(select_statement, all_table_aliases, all_table_names, table_in_x, query_type, input_where, input_and)
+        select_statement, selects_list = self.addAliasToElements(all_selects, all_aliases)
+        query = self.generateQuery(select_statement, selects_list, all_table_aliases, all_table_names, table_in_x, query_type, input_where, input_and)
         output = self.runTest(query)
         print (output)
         return query
@@ -251,13 +251,15 @@ class QueryMaker:
         each attribute added
         '''
         select_statement = ''
+        selects_list = []
         i = 0
         for word in user_selects.split():
             print (word)
             select_statement +=  all_aliases[i] + '.' + word + ', '
+            selects_list.append(all_aliases[i] + '.' + word)
             i += 1
         # take last comma off
-        return select_statement[:-1]
+        return select_statement[:-1], selects_list
 
 
     def findTable(self, table_in_x):
@@ -314,7 +316,7 @@ class QueryMaker:
         return alias
 
 
-    def generateQuery(self, select_statement, all_table_aliases, all_table_names, table_in_x, query_type, input_where, input_and):
+    def generateQuery(self, select_statement, selects_list, all_table_aliases, all_table_names, table_in_x, query_type, input_where, input_and):
         '''
         The core part of this feature, its responsible of fidn a related key between
         the elemented specified as user input. After discoevry these they are added to
@@ -391,6 +393,7 @@ class QueryMaker:
             query = select + from_part + join + on + ' WHERE ' + input_where
         if input_and != '':
             query = select + from_part + join + on + ' WHERE ' + input_where + ' AND ' + input_and
+        query = query + ' GROUP BY ' + selects_list[0]
         return query
 
 
