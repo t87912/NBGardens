@@ -146,7 +146,7 @@ class AllUserStories (object):
             int(productID)
             validID = True
         except:
-            print ("Error: Please input a valid ID.")
+            print ("Error: Please input a valid number.")
             validID = False
         return validID
         
@@ -655,11 +655,16 @@ class AllUserStories (object):
 
         if (not GUI):
             validProductID = False
+            validLimit = False
             while (not validProductID):
                 productID = input("Please enter the productID: ")
                 validProductID = self.validateProductIDInput(productID)
+            while (not validLimit):
+                limit = input("Limit by: ")
+                validLimit = self.validateProductIDInput(limit)
 
         sqlParse = queries[12] % (productID)
+        sqlParse = sqlParse + " LIMIT " + str(limit)
         sql = sqlParse
         results = query(db, sql)
 
@@ -688,14 +693,19 @@ class AllUserStories (object):
         if (not GUI):
             validStartDate = False
             validEndDate = False
+            validLimit = False
             while (not validStartDate):
                 startDate = input("Please enter the start date (YYYY-MM-DD): ")
                 validStartDate = self.validateDateInput(startDate)
             while (not validEndDate):
                 endDate = input("Please enter the end date (YYYY-MM-DD): ")
                 validEndDate = self.validateDateInput(endDate)
+            while (not validLimit):
+                limit = input("Limit by: ")
+                validLimit = self.validateProductIDInput(limit)
 
         sqlParse = queries[query_number] % (startDate, endDate)
+        sqlParse = sqlParse + " LIMIT " + str(limit)
         sql = sqlParse
 
         results = query(db, sql)
@@ -822,8 +832,13 @@ class AllUserStories (object):
                     else:
                         amount_or_productid = input("Please enter the productID: ")
                     validProductID = self.validateProductIDInput(amount_or_productid)
+            validLimit = False
+            while (not validLimit):
+                limit = input("Limit by: ")
+                validLimit = self.validateProductIDInput(limit)
 
         sqlParse = queries[query_number] % (startDate, endDate, amount_or_productid)
+        sqlParse = sqlParse + " LIMIT " + str(limit)
         sql = sqlParse
         results = query(db, sql)
 

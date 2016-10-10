@@ -391,6 +391,7 @@ class QueryMaker:
             query = select + from_part + join + on + ' WHERE ' + input_where
         if input_and != '':
             query = select + from_part + join + on + ' WHERE ' + input_where + ' AND ' + input_and
+#        query = query + "GROUP BY" + 
         return query
 
 
