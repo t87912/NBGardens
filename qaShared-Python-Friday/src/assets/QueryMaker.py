@@ -106,7 +106,7 @@ class QueryMaker:
         tbl_name_counter = 0
         number_of_attributes = []
         while tables is not None:
-            print (tables)
+            #print (tables)
             table_name = str(str(tables)[2:-3])
             attributes_found = self.getAttributeList(str(table_name))
             number_of_attributes.append(attributes_found)
@@ -155,7 +155,7 @@ class QueryMaker:
             tables = self.cursor.fetchone()
             tbl_name_counter += 1
         # END WHILE (OUTER)
-        self.viewMatricies()
+        #self.viewMatricies()
 
 
     def viewMatricies(self):

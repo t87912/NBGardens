@@ -1,1 +1,1 @@
-idCustomer eMailAddress idPurchase emp_idEmployee
+idCustomer eMailAddress idPurchase emp_idEmployee where idCustomer equal to '1'
