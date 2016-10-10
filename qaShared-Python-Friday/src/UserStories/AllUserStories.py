@@ -664,7 +664,8 @@ class AllUserStories (object):
                 validLimit = self.validateProductIDInput(limit)
 
         sqlParse = queries[12] % (productID)
-        sqlParse = sqlParse + " LIMIT " + str(limit)
+        if (not GUI):
+            sqlParse = sqlParse + " LIMIT " + str(limit)
         sql = sqlParse
         results = query(db, sql)
 
@@ -705,7 +706,8 @@ class AllUserStories (object):
                 validLimit = self.validateProductIDInput(limit)
 
         sqlParse = queries[query_number] % (startDate, endDate)
-        sqlParse = sqlParse + " LIMIT " + str(limit)
+        if (not GUI):
+            sqlParse = sqlParse + " LIMIT " + str(limit)
         sql = sqlParse
 
         results = query(db, sql)
@@ -838,7 +840,8 @@ class AllUserStories (object):
                 validLimit = self.validateProductIDInput(limit)
 
         sqlParse = queries[query_number] % (startDate, endDate, amount_or_productid)
-        sqlParse = sqlParse + " LIMIT " + str(limit)
+        if (not GUI):
+            sqlParse = sqlParse + " LIMIT " + str(limit)
         sql = sqlParse
         results = query(db, sql)
 

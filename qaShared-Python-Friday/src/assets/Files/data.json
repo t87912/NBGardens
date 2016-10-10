@@ -1,7 +1,32 @@
 [
     [
-        "idEmployee",
-        "createDate",
-        "Sales"
+        "idCustomer",
+        "firstName",
+        "lastName",
+        "Total Sales"
+    ],
+    [
+        14,
+        "Jon",
+        "Snow",
+        5453.14
+    ],
+    [
+        1,
+        "Jennny",
+        "Meadows",
+        3693.75
+    ],
+    [
+        4,
+        "Jimmy",
+        "Russell",
+        3661.1
+    ],
+    [
+        22,
+        "Justin",
+        "Gordon",
+        2981.12
     ]
 ]
