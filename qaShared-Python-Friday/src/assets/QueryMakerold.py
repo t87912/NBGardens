@@ -393,7 +393,11 @@ class QueryMaker:
             query = select + from_part + join + on + ' WHERE ' + input_where
         if input_and != '':
             query = select + from_part + join + on + ' WHERE ' + input_where + ' AND ' + input_and
+<<<<<<< HEAD
+#        query = query + "GROUP BY" + 
+=======
         query = query + ' GROUP BY ' + selects_list[0]
+>>>>>>> 0ebd4e7acb7d61a90d92c8564a8241ef42546cc3
         return query
 
 
@@ -448,3 +452,4 @@ class QueryMaker:
 # <conn>
 # query_maker_obj = QueryMaker(conn)
 # query_maker_obj.main()
+
