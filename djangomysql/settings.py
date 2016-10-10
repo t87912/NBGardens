@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%@nn2qjqf37@j-5+)y!b3@n2fyrc9fl2l)1gk(89=ekx+3u*)1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
 	'djangomysqlapp.apps.DjangomysqlappConfig',
-	'djangomysqlapp.apps'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
