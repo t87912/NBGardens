@@ -100,7 +100,7 @@
 		
 		var limitstart = 0;
 		
-		$('.pagination').on('click', function(event){
+		$('.pagination_item').on('click', function(event){
 			event.preventDefault();
 			limitstart =  $(event.target).text();
 			limitstart = (limitstart*10)-10
@@ -135,7 +135,7 @@
  
  		$('#pagination_next').on('click', function(event){
 			event.preventDefault();
-			limitstart = limitstart+10
+			limitstart += 10
 			console.log("Limit Value: " + limitstart) // sanity check
 			console.log("form submitted!")  // sanity check
 			
@@ -150,7 +150,7 @@
 				// handle a successful response
 				success : function(json) {
 					$('#post-text').val(''); // remove the value from the input
-					console.log(json); // log the returned json to the console
+					//console.log(json); // log the returned json to the console
 					console.log("success"); // another sanity check
 					$("#paginate_table").html(json);
 				},
@@ -159,7 +159,7 @@
 				error : function(xhr,errmsg,err) {
 					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
 					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
-					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+					//console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
 				}
 			});
 			
@@ -254,16 +254,16 @@
 					<span aria-hidden="true">&laquo;</span>
 					</a>
 				</li>
-				<li class="pagination"><a href="#">1</a></li>
-				<li class="pagination"><a href="#">2</a></li>
-				<li class="pagination"><a href="#">3</a></li>
-				<li class="pagination"><a href="#">4</a></li>
-				<li class="pagination"><a href="#">5</a></li>
-				<li class="pagination"><a href="#">6</a></li>
-				<li class="pagination"><a href="#">7</a></li>
-				<li class="pagination"><a href="#">8</a></li>
-				<li class="pagination"><a href="#">9</a></li>
-				<li class="pagination"><a href="#">10</a></li>
+				<li><a href="#" class="pagination_item">1</a></li>
+				<li><a class="pagination_item" href="#">2</a></li>
+				<li><a class="pagination_item" href="#">3</a></li>
+				<li><a class="pagination_item" href="#">4</a></li>
+				<li><a class="pagination_item" href="#">5</a></li>
+				<li><a class="pagination_item" href="#">6</a></li>
+				<li><a class="pagination_item" href="#">7</a></li>
+				<li><a class="pagination_item" href="#">8</a></li>
+				<li><a class="pagination_item" href="#">9</a></li>
+				<li><a class="pagination_item" href="#">10</a></li>
 				<li id="pagination_next">
 					<a href="#" aria-label="Next">
 						<span aria-hidden="true">&raquo;</span>
