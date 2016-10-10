@@ -71,3 +71,8 @@ footer {
 .no-margin{
     margin:0;
 }
+
+.col-md-10 {
+	padding-right:32px;
+	padding-left:32px;
+}

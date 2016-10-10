@@ -235,7 +235,7 @@
 <body>
 	{% if request.session.islogin == True %}
 	<span id="results_signin">
-		<nav class="navbar navbar no-margin">
+	<nav class="navbar navbar no-margin">
 		<div class="container-fluid">
 		<div class="navbar-header fixed-brand">
 			<a class="navbar-brand" href="#">NB Gardens</a>
@@ -255,7 +255,9 @@
 		</div>
 		</div>
 	</nav>
-	<ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+	<div class="row">
+	<div class="col-md-2">
+	  <ul id="sidebar" class="nav nav-stacked nav-pills">
 		<li class="active"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
 		<li><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
 		<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
@@ -263,46 +265,38 @@
 		<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
 		<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
 	</ul>
-	<br>
-	<div class="container">
+	</div>
+	<div class="col-md-10">
+			<h2>Dashboard</h2>
 		<div class="row">
-			<div class="col-sm-3">
-			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 				<div class="well">
 					<p id="dashboard_total_orders"></p>
 				</div>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 				<div class="well">
 					<p id="dashboard_total_customers"></p>
 				</div>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 				<div class="well">
 					<p id="dashboard_most_popular_product"></p>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container">
 		<div class="row">
-			<div class="col-sm-2">
-			</div>
-			<div class="col-sm-10">
+			<div class="col-sm-12">
 				<p id="dashboard_sales_vs_cost"></p>
 			</div>
 
 		</div>
-	</div>
-	<div class="container">
 		<div class="row">
-			<div class="col-sm-2">
-			</div>
-			<div class="col-sm-10">
+			<div class="col-sm-12">
 				<p id="dashboard_latest_orders"></p>
 			</div>
 		</div>
+	</div>
 	</div>
 
 	{% else %}

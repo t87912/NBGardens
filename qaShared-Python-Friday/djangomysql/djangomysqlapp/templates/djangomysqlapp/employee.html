@@ -130,8 +130,6 @@
 </head>
 
 <body>
-	
-	
 
 	<nav class="navbar navbar no-margin">
 		<div class="container-fluid">
@@ -153,17 +151,20 @@
 		</div>
 		</div>
 	</nav>
-	<ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+	
+	<div class="row">
+		<div class="col-md-2">
+		  <ul id="sidebar" class="nav nav-stacked nav-pills">
 		<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
 		<li><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
 		<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
 		<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
 		<li class="active"><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
 		<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
-	</ul>
-	<br>
+		</ul>
+		</div>
 	
-	<div class="container">
+	<div class="col-md-10">
 		<h2>Employee Sales Statistics</h2>
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#query1">Top Salespeople</a></li>
@@ -219,7 +220,7 @@
 			</div>
 		</div>
 	</div>	
-
+	</div>
 </body>
 
 </html>

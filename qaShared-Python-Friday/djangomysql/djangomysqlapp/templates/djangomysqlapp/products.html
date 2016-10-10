@@ -168,9 +168,8 @@
 
 <body>
 
-	
 	{% if request.session.islogin == True %}
-		<nav class="navbar navbar no-margin">
+	<nav class="navbar navbar no-margin">
 		<div class="container-fluid">
 		<div class="navbar-header fixed-brand">
 			<a class="navbar-brand" href="#">NB Gardens</a>
@@ -190,16 +189,19 @@
 		</div>
 		</div>
 	</nav>
-	<ul class="sidebar-nav nav-pills nav-stacked" id="menu">
-		<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
-		<li class="active"><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
-		<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
-		<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
-		<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
-		<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
-	</ul>
-	<br>
-			<div class="container">
+	
+	<div class="row">
+	<div class="col-md-2">
+		<ul id="sidebar" class="nav nav-stacked nav-pills">
+			<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+			<li class="active"><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
+			<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
+			<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
+			<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
+			<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+		</ul>
+	</div>
+			<div class="col-md-10">
 			  <h2>Product Descriptions and Statistics</h2>
 			  <ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#productlist">Product List</a></li>
@@ -327,6 +329,7 @@
 					</form>
 				</div>
 			  </div>
+			</div>
 			</div>
 	{% else %}
 			<nav class="navbar navbar no-margin">
