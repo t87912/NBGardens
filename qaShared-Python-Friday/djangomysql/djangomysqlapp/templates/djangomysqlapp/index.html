@@ -321,13 +321,15 @@
 		</div>
 		</div>
 	</nav>
-	<ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+	<div class="row">
+	<div class="col-md-2">
+	  <ul id="sidebar" class="nav nav-stacked nav-pills">
 		<li class="active"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
 		<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
 	</ul>
-	<br>
+	</div>
 		
-		<div class="container" style="width:30%;">
+		<div class="col-md-10">
 			  <form method="POST" id="form_signin" class="form-signin">
 				<h2 class="form-signin-heading">Please sign in</h2>
 				<div class="form-group">
@@ -342,7 +344,8 @@
 				<button type="submit" class="btn btn-default">Sign In</button>
 			  </form>
 		</div>
-		</span>
+	</div>
+	</span>
 	{% endif %}
 	
 	
