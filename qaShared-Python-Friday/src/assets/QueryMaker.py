@@ -42,7 +42,6 @@ class QueryMaker:
         table_in_x, all_selects, query_type, input_where, input_and = self.processUserInput()
         all_table_aliases, all_table_names, all_aliases = self.findTable(table_in_x)
         select_statement = self.addAliasToElements(all_selects, all_aliases)
-#        print (select_statement)
         query = self.generateQuery(select_statement, all_table_aliases, all_table_names, table_in_x, query_type, input_where, input_and)
         output = self.runTest(query)
         print (output)
@@ -56,7 +55,6 @@ class QueryMaker:
         matrix is used for common key discovery.
 
         @attention: This is generic and does not require pre-set values.
-
         '''
         # AUTO ====================
         number_of_tables, max_number_attributes = self.getDBDetails()
@@ -434,17 +432,17 @@ class QueryMaker:
 
 '''
     ====== TO DO ========
-- bug fix - with validation make a sort of try catch where if try fails do recursion to itself
-- fix it so that the '_' can be the other way round 'dfdfd' == '_' // '_' == 'dfhjf'
-- allow for multiple joins
+- allow for multiple joins -> recursion...
+
     ====== PRESENTATION =======
 - partials
-- matrix
-- numpy
-- system itself
+- matrix COMPLETE
+- numpy COMPLETE
+- system itself COMPLETE
 '''
 
 #################################
+# <conn>
 # query_maker_obj = QueryMaker(conn)
 # query_maker_obj.main()
 
