@@ -92,6 +92,38 @@
 
 		};
  
+  		$('#logout_button').on('click', function(event){
+			event.preventDefault();
+			console.log("logout submitted!")  // sanity check
+			log_out();
+		});
+		
+		function log_out() {
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/logout/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					window.location.replace("/djangomysqlapp")
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};
+ 
 	});
 	</script>
 	

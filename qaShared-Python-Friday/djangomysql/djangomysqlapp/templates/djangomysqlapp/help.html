@@ -8,12 +8,54 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-<link href="/static/css/test.css" rel="stylesheet">
+	<link rel="stylesheet" href="/static/css/test.css">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/static/js/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/canvasjs.min.js"></script>
 	<link rel="icon" href="/static/images/favicon.ico">
+	<script type="text/javascript">
+	$( document ).ready(function() {
+
+			$('#logout_button').on('click', function(event){
+			event.preventDefault();
+			console.log("logout submitted!")  // sanity check
+			log_out();
+		});
+		
+		$.ajaxSetup({
+			data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+		});
+		
+		function log_out() {
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/logout/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					window.location.replace("/djangomysqlapp")
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+		};
+	
+	});
+	</script>
 </head>
 
 <body>
@@ -34,7 +76,7 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Log Out</a></li>
-				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Profile</a></li>
+				<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Profile</a></li>
 			</ul>
 		</div>
 		</div>
@@ -64,7 +106,7 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Log Out</a></li>
-				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Profile</a></li>
+				<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Profile</a></li>
 			</ul>
 		</div>
 		</div>
