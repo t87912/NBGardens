@@ -178,13 +178,14 @@ class MainLogic(object):
                     print ("Please input a valid menu option.")
                     valid = False
             
-                if (menuOption == len(self.addedUserStories)+1):
-                    print ("Returning to the main menu...")
-                    valid = True
-                else:
-                    self.allUserStories.newUserStory(self.dbConn, False, self.addedUserStories[menuOption-1], menuOption-1)
-                    self.waitForEnter()
-                    valid = False
+                if (valid):
+                    if (menuOption == len(self.addedUserStories)+1):
+                        print ("Returning to the main menu...")
+                        valid = True
+                    else:
+                        self.allUserStories.newUserStory(self.dbConn, False, self.addedUserStories[menuOption-1], menuOption-1)
+                        self.waitForEnter()
+                        valid = False
                 
                 
         else:
@@ -257,13 +258,23 @@ class MainLogic(object):
             for x in range(0, len(self.addedUserStories)):
                 print (str(x) + " UserStory: " + str(self.addedUserStories[x]))
                 valid.append(x)
-            toDelete = int(input("Index of story to delete: "))
-            if (toDelete not in valid):
+            toDelete = input("Index of story to delete: ")
+            validChoice = False
+            try:
+                toDelete = int(toDelete)
+                if (toDelete not in valid):
+                    print ("Error, not a valid index.")
+                    validChoice = False
+                else:
+                    validChoice = True
+            except:
                 print ("Error, not a valid index.")
-            else:
+                validChoice = False
+                
+            if (validChoice):
                 print ("Deleting user story at index: %s" % (str(toDelete)))
                 del self.addedUserStories[toDelete]
-            pickle.dump(self.addedUserStories, open( "UserStories/GeneratedStories/userStories.p","wb"))
+                pickle.dump(self.addedUserStories, open( "UserStories/GeneratedStories/userStories.p","wb"))
             print ("Returning to the main menu...")
         else:
             print ("No user stories to delete.")
