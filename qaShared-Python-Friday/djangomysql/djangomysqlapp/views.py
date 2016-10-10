@@ -148,7 +148,8 @@ def querysix(request, datestart, dateend):
 	return HttpResponse(template.render(context, request))
 def querythirteen(request, datestart, dateend, productid):
 	cursor = connection.cursor()
-	cursor.execute('''SELECT op.Pro_idProduct, Sum(op.quantity) as "SumSales" From Purchase as o Join PurchaseLines as op On o.idPurchase = op.pur_idPurchase where o.createDate between %(date_start)s and %(date_end)s group by op.Pro_idProduct''', params={'date_start': datestart, 'date_end': dateend, 'employee_id': productid})
+	cursor.execute('''SELECT op.Pro_idProduct, Sum(op.quantity) as 'SumSales' From Purchase as o Join PurchaseLines as op On o.idPurchase = op.pur_idPurchase where Pro_idProduct = %(product_id)s AND (o.createDate between %(date_start)s and %(date_end)s)''', params={'product_id': productid, 'date_start': datestart, 'date_end': dateend})
+
 	template = loader.get_template('djangomysqlapp/querythirteen.html')
 	context = {
 	'order_list': dictfetchall(cursor),
