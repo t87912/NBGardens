@@ -192,7 +192,8 @@ class MainLogic(object):
             print ("No user stories.")
         #except:
             #print ("No user stories.")
-        #self.waitForEnter()
+        #
+        self.waitForEnter()
         
     #def checkMenuOption(self):
         

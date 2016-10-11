@@ -4484,3 +4484,9 @@
 2016-10-10 12:53:03,418 - INFO - ---------- Finished logging TUI -----------
 2016-10-10 12:53:16,017 - INFO - ---------- Started logging GUI ----------
 2016-10-10 12:53:16,072 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-11 09:08:28,381 - INFO - ---------- Started logging TUI ----------
+2016-10-11 09:08:39,490 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-11 09:08:53,263 - INFO - ---------- Finished logging TUI -----------
+2016-10-11 09:10:33,212 - INFO - ---------- Started logging TUI ----------
+2016-10-11 09:10:39,067 - INFO - Successful login to MySQL database, username: AlStock
+2016-10-11 09:11:50,126 - INFO - ---------- Finished logging TUI -----------
