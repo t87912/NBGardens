@@ -2,7 +2,7 @@
 applications:
 - name: NBWeb
   memory: 512M
-  host: NBWeb
+  host: NBWeb2
   instances: 1
   path: .
   target: /djangomysql/djangomysqlapp/templates/djangomysqlapp/index.html
