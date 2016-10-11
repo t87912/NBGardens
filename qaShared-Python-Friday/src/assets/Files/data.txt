@@ -1,4 +1,11 @@
-['idCustomer', 'firstName', 'lastName', 'Total Sales']
-(14, 'Jon', 'Snow', 5453.14)
-(1, 'Jennny', 'Meadows', 3693.75)
-(4, 'Jimmy', 'Russell', 3661.1)
+['Pro_idProduct', 'ROUND(Sum(op.quantity))', 'amount']
+(1, Decimal('32'), 44)
+(2, Decimal('42'), 73)
+(3, Decimal('33'), 5)
+(4, Decimal('28'), 96)
+(5, Decimal('30'), 5)
+(6, Decimal('19'), 9)
+(7, Decimal('37'), 91)
+(8, Decimal('41'), 60)
+(9, Decimal('29'), 2)
+(10, Decimal('32'), 59)

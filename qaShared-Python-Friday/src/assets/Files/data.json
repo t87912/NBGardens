@@ -1,26 +1,9 @@
 [
     [
-        "idCustomer",
-        "firstName",
-        "lastName",
-        "Total Sales"
-    ],
-    [
-        14,
-        "Jon",
-        "Snow",
-        5453.14
+        "Pro_idProduct",
+        "ROUND(Sum(op.quantity))",
+        "amount"
     ],
     [
         1,
-        "Jennny",
-        "Meadows",
-        3693.75
-    ],
-    [
-        4,
-        "Jimmy",
-        "Russell",
-        3661.1
-    ]
-]
+        

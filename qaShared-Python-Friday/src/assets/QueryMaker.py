@@ -58,6 +58,8 @@ class QueryMaker:
         '''
         # AUTO ====================
         number_of_tables, max_number_attributes = self.getDBDetails()
+        self.matrixLength = max_number_attributes
+        
 
         # PREDEFINED ===============
         # number_of_tables = 20
@@ -155,21 +157,47 @@ class QueryMaker:
             tables = self.cursor.fetchone()
             tbl_name_counter += 1
         # END WHILE (OUTER)
-        #self.viewMatricies()
+        self.viewMatricies()
 
+
+#    def viewMatricies(self):
+#        '''
+#        Print all data stored in matricies - both
+#
+#        @attention: Not needed in actual execution
+#        '''
+#        print('======= MATRIX ALL ATTRIBUTES ======== \n')
+#        print (self.matrix_all_attributes)
+#        #listOfLists = self.matrix_all_attributes.tolist()
+#        #for x in range(0, len(listOfLists)):
+#            #print (x)
+#           # for y in range(0, len(listOfLists[x])):
+#          #      if (listOfLists[x][y] == ''):        
+#         #           del listOfLists[x][y]
+#        #print (listOfLists)
+#        #print('\n\n======= MATRIX KEYS ONLY ======== \n')
+#        #print (self.matrix_keys)
 
     def viewMatricies(self):
         '''
         Print all data stored in matricies - both
-
+        
         @attention: Not needed in actual execution
         '''
         print('======= MATRIX ALL ATTRIBUTES ======== \n')
-        print (self.matrix_all_attributes)
-        print('\n\n======= MATRIX KEYS ONLY ======== \n')
-        print (self.matrix_keys)
-
-
+        counter = 0
+        for x in np.nditer(self.matrix_all_attributes):
+            if (counter == self.matrixLength):
+                print ('==================== \n')
+                counter = 0
+            if (counter == 0):
+                print ('======= TABLE NAME: ' + str(x) + ' =======')
+            elif(x == ''):
+                counter = counter
+            else:
+                print (x)
+            counter += 1
+            
     def getUserInput(self, instruction):
         '''
         ** DEPRECATED METHOD **
@@ -281,12 +309,12 @@ class QueryMaker:
         # get table name
         for element in table_in_x:
             # validate the user input and see if it can be retrieved and stored
-            try:
-                element_table = (self.matrix_keys[element, 0])[0]
+            #try:
+            element_table = (self.matrix_keys[element, 0])[0]
             # if it cannot be found and out of bounds -> ask user for another input
-            except IndexError:
-                print("Invalid Input - Cannot be Found! Try again...")
-                self.main()
+            #except IndexError:
+             #   print("Invalid Input - Cannot be Found! Try again...")
+              #  self.main()
             alias = self.createTableAlias(element_table)
             table_with_alias =  element_table + ' as ' + alias
             all_aliases.append(alias)

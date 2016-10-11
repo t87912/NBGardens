@@ -11,6 +11,7 @@ def query(db, sql):
         the header (column names) on the first line. Results are printed
         and returned in the format of a list of lists. """            
     # Getting the header:
+    print ("=============== RESULTS ===============")
     cursorHeader = db.cursor() # Creating the cursor to query the database
     try:
         cursorHeader.execute(sql)
@@ -43,4 +44,5 @@ def query(db, sql):
         print (toPrint)
     # Putting the header at the start of the results
     queryResult.insert(0, header)
+    print ("=======================================")
     return queryResult # was queryResults
