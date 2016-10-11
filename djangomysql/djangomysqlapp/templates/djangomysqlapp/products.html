@@ -8,13 +8,14 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-
+	<link rel="stylesheet" href="/static/css/jquery-ui.min.css">
+	<link href="/static/css/test.css" rel="stylesheet">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/static/js/jquery-3.1.1.min.js"></script>
+	<script src="/static/js/jquery-ui.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/bootstrap.min.js"></script>
-	<script src="/static/js/canvasjs.min.js"></script>
-	<link rel="icon" href="/static/images/favicon.ico">
+		<link rel="icon" href="/static/images/favicon.ico">
 	<script type="text/javascript">
 	$( document ).ready(function() {
 		
@@ -27,6 +28,11 @@
 		$.ajaxSetup({
 			data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
 		});
+		
+		$( "#id_datefrom_invest" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+		$( "#id_dateto_invest" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+		$( "#id_datefrom_sales_over_time" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+		$( "#id_dateto_sales_over_time" ).datepicker({ dateFormat: 'yy-mm-dd'});
 		
  		function query_invest() {
 			var datestart =  $('#id_datefrom_invest').val();
@@ -168,44 +174,46 @@
 
 <body>
 
-	<!--navigation-->
-	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;">
-		<h1 align="center">NB Gardens</h1>
-		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
-	</div>
 	{% if request.session.islogin == True %}
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span> 
-				</button>
-				
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
-					<li class="active"><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
-					<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
-					<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
-					<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
-					<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
-					<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Log Out</a></li>
-				</ul>
-			</div>
-		  </div>
-		</nav>
-
-			<div class="container">
-			  <h2>Product Descriptions and statistics</h2>
+	<nav class="navbar navbar no-margin">
+		<div class="container-fluid">
+		<div class="navbar-header fixed-brand">
+			<a class="navbar-brand" href="#">NB Gardens</a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>
+		</div>
+		
+		<div class="collapse navbar-collapse" id="myNavbar">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Log Out</a></li>
+				<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Profile</a></li>
+			</ul>
+		</div>
+		</div>
+	</nav>
+	
+	<div class="row">
+	<div class="col-md-2">
+		<ul id="sidebar" class="nav nav-stacked nav-pills">
+			<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+			<li class="active"><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
+			<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
+			<li><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
+			<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
+			<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+		</ul>
+	</div>
+			<div class="col-md-10">
+			  <h2>Product Descriptions and Statistics</h2>
 			  <ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#productlist">Product List</a></li>
-				<li><a data-toggle="tab" href="#query1">Total Return on product</a></li>
-				<li><a data-toggle="tab" href="#query2">Compare Ratinga</a></li>
-				<li><a data-toggle="tab" href="#query3">Check detials of Product</a></li>
-				<li><a data-toggle="tab" href="#query4">Amount of Sales of Product</a></li>
+				<li><a data-toggle="tab" href="#query1">Total Return on Product</a></li>
+				<li><a data-toggle="tab" href="#query2">Compare Ratings</a></li>
+				<li><a data-toggle="tab" href="#query4">Product Sales Over Time</a></li>
 				<li><a data-toggle="tab" href="#query5">Stock against Sales</a></li>
 				<li><a data-toggle="tab" href="#query6">Create Product</a></li>
 			  </ul>
@@ -277,10 +285,6 @@
 				  <h3>Compare the average rating given to a product </h3>
 				  
 				</div>
-				<div id="query3" class="tab-pane fade">
-				  <h3>Check detials of a particular product</h3>
-				  
-				</div>
 				<div id="query4" class="tab-pane fade">
 					<h3>Amount of sales for a particular product over time (graph)</h3>
 					<form method="POST" id="form_sales_over_time">
@@ -332,25 +336,34 @@
 				</div>
 			  </div>
 			</div>
+			</div>
 	{% else %}
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span> 
-				</button>
-				
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
-					<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
-				</ul>
-			</div>
-		  </div>
-		</nav>
+			<nav class="navbar navbar no-margin">
+		<div class="container-fluid">
+		<div class="navbar-header fixed-brand">
+			<a class="navbar-brand" href="#">NB Gardens</a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>
+		</div>
+		
+		<div class="collapse navbar-collapse" id="myNavbar">
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Log Out</a></li>
+				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Profile</a></li>
+			</ul>
+		</div>
+		</div>
+	</nav>
+	<ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+		<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+		<li class="active"><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+	</ul>
+	<br>
+	<h1>You are not sign in, please sign in</h1>
 	{% endif %}
 	
 </body>

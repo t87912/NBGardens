@@ -8,12 +8,14 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-
+	<link rel="stylesheet" href="/static/css/jquery-ui.min.css">
+	<link href="/static/css/test.css" rel="stylesheet">
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/static/js/jquery-3.1.1.min.js"></script>
+	<script src="/static/js/jquery-ui.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/static/js/bootstrap.min.js"></script>
-	<link rel="icon" href="/static/images/favicon.ico">
+		<link rel="icon" href="/static/images/favicon.ico">
 		<script type="text/javascript">
 	$( document ).ready(function() {
  
@@ -27,6 +29,11 @@
 			data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
 		});
 
+		$( "#id_datefrom_order_time" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+		$( "#id_dateto_order_time" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+		$( "#id_datefrom_top_sales" ).datepicker({ dateFormat: 'yy-mm-dd'}); 
+		$( "#id_dateto_top_sales" ).datepicker({ dateFormat: 'yy-mm-dd'});
+		
 		function query_top_salespeople() {
 			var datestart =  $('#id_datefrom_top_sales').val();
 			var dateto =  $('#id_dateto_top_sales').val();
@@ -93,7 +100,7 @@
 		
 		var limitstart = 0;
 		
-		$('.pagination').on('click', function(event){
+		$('.pagination_item').on('click', function(event){
 			event.preventDefault();
 			limitstart =  $(event.target).text();
 			limitstart = (limitstart*10)-10
@@ -128,7 +135,7 @@
  
  		$('#pagination_next').on('click', function(event){
 			event.preventDefault();
-			limitstart = limitstart+10
+			limitstart += 10
 			console.log("Limit Value: " + limitstart) // sanity check
 			console.log("form submitted!")  // sanity check
 			
@@ -143,9 +150,42 @@
 				// handle a successful response
 				success : function(json) {
 					$('#post-text').val(''); // remove the value from the input
-					console.log(json); // log the returned json to the console
+					//console.log(json); // log the returned json to the console
 					console.log("success"); // another sanity check
 					$("#paginate_table").html(json);
+				},
+
+				// handle a non-successful response
+				error : function(xhr,errmsg,err) {
+					$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+					" <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+					//console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+				}
+			});
+			
+		});
+ 
+  		$('#logout_button').on('click', function(event){
+			event.preventDefault();
+			console.log("logout submitted!")  // sanity check
+			log_out();
+		});
+		
+		function log_out() {
+			console.log("create post is working!") // sanity check
+			console.log($('#post-text').val())
+			
+			$.ajax({
+				url : "/djangomysqlapp/logout/", // the endpoint
+				type : "POST", // http method
+				data : { the_post : $('#post-text').val() }, // data sent with the post request
+
+				// handle a successful response
+				success : function(json) {
+					$('#post-text').val(''); // remove the value from the input
+					console.log(json); // log the returned json to the console
+					console.log("success"); // another sanity check
+					window.location.replace("/djangomysqlapp")
 				},
 
 				// handle a non-successful response
@@ -155,8 +195,7 @@
 					console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
 				}
 			});
-			
-		});
+		};
  
 	});
 	</script>
@@ -164,39 +203,41 @@
 
 <body>
 	
-	<!--navigation-->
-	<div class="container-fluid" style="background-color:#5cb85c;color:#fff;">
-		<h1 align="center">NB Gardens</h1>
-		<h3 align="center">Accounts Sales Analytical System (ASAS)</h3>
-	</div>
-
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-		<div class="navbar-header">
+	<nav class="navbar navbar no-margin">
+		<div class="container-fluid">
+		<div class="navbar-header fixed-brand">
+			<a class="navbar-brand" href="#">NB Gardens</a>
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span> 
 			</button>
-			
 		</div>
+		
 		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
-				<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
-				<li><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
-				<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
-				<li class="active"><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
-				<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
-				<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
 				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Log Out</a></li>
+				<li id="logout_button"><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Profile</a></li>
 			</ul>
 		</div>
-	  </div>
+		</div>
 	</nav>
+	<div class="row">
+		<div class="col-md-2">
+		  <ul id="sidebar" class="nav nav-stacked nav-pills">
+		<li><a href="/djangomysqlapp" data-toggle="tooltip" data-placement="top" title="Please sign in">Home</a></li>
+		<li><a href="/djangomysqlapp/products" data-toggle="tooltip" data-placement="top" title="Please sign in">Products</a></li>
+		<li><a href="/djangomysqlapp/customer" data-toggle="tooltip" data-placement="top" title="Please sign in">Customers</a></li>
+		<li class="active"><a href="/djangomysqlapp/orders" data-toggle="tooltip" data-placement="top" title="Please sign in">Orders</a></li>
+		<li><a href="/djangomysqlapp/employee" data-toggle="tooltip" data-placement="top" title="Please sign in">Employee</a></li>
+		<li><a href="/djangomysqlapp/help" data-toggle="tooltip" data-placement="top" title="Please sign in">Help</a></li>
+	</ul>
+	</div>
 	
 	
-	<div class="container">
-	  <h2>Order views and statistics</h2>
+	<div class="col-md-10">
+	  <h2>Order Views and Statistics</h2>
 	  <ul class="nav nav-tabs">
 		<li class="active"><a data-toggle="tab" href="#orderlist">Order List</a></li>
 		<li><a data-toggle="tab" href="#query1">Spend VS Cost</a></li>
@@ -213,20 +254,20 @@
 					<span aria-hidden="true">&laquo;</span>
 					</a>
 				</li>
-				<li class="pagination"><a href="#">1</a></li>
-				<li class="pagination"><a href="#">2</a></li>
-				<li class="pagination"><a href="#">3</a></li>
-				<li class="pagination"><a href="#">4</a></li>
-				<li class="pagination"><a href="#">5</a></li>
-				<li class="pagination"><a href="#">6</a></li>
-				<li class="pagination"><a href="#">7</a></li>
-				<li class="pagination"><a href="#">8</a></li>
-				<li class="pagination"><a href="#">9</a></li>
-				<li class="pagination"><a href="#">10</a></li>
+				<li><a href="#" class="pagination_item">1</a></li>
+				<li><a class="pagination_item" href="#">2</a></li>
+				<li><a class="pagination_item" href="#">3</a></li>
+				<li><a class="pagination_item" href="#">4</a></li>
+				<li><a class="pagination_item" href="#">5</a></li>
+				<li><a class="pagination_item" href="#">6</a></li>
+				<li><a class="pagination_item" href="#">7</a></li>
+				<li><a class="pagination_item" href="#">8</a></li>
+				<li><a class="pagination_item" href="#">9</a></li>
+				<li><a class="pagination_item" href="#">10</a></li>
 				<li id="pagination_next">
-				<a href="#" aria-label="Next">
-				<span aria-hidden="true">&raquo;</span>
-				</a>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
 				</li>
 			</ul>
 		</nav>
@@ -235,40 +276,36 @@
 		  
 			<div class="panel panel-default">
 				<!-- Default panel contents -->
-				<div class="panel-heading">Employees</div>
+				<div class="panel-heading">Orders</div>
 
 				<!-- Table -->
 				<table id="paginate_table" class="table table-striped">
 					<thead>
 					<tr>
-						<th>Order ID</th>
-						<th>Order Status</th>
-						<th>Employee ID</th>
-						<th>Customer ID</th>
-						<th>Address ID</th>
-						<th>Payment ID</th>
-						<th>Date Created</th>
+						<th>ID</th>
+						<th>Status</th>
+						<th>Area</th>
 						<th>GDZ Date</th>
-						<th>Date Dispatched</th>
-						<th>Date Delivered</th>
-						<th>Date Cancelled</th>
-						<th>Date Returned</th>
+						<th>Dispatched</th>
+						<th>Delivered</th>
+						<th>Cancelled</th>
+						<th>Returned</th>
+						<th>Created</th>
+						<th>Created by:</th>
 					</tr>
 					</thead>
 						{% for order in order_list %}
 						<tr>
 							<td>{{ order.idpurchase }}</td>
 							<td>{{ order.purchasestatus}}</td>
-							<td>{{ order.emp_idemployee.idemployee}}</td>
-							<td>{{ order.cust_idcustomer.idcustomer}}</td>
-							<td>{{ order.add_idaddress.idaddress }}</td>
-							<td>{{ order.pay_idpayment.idpayment}}</td>
-							<td>{{ order.createdate}}</td>
+							<td>{{ order.add_idaddress.county }}</td>
 							<td>{{ order.gdzdate}}</td>
 							<td>{{ order.dispatcheddate }}</td>
 							<td>{{ order.delivereddate}}</td>
 							<td>{{ order.cancelleddate}}</td>
 							<td>{{ order.returneddate}}</td>
+							<td>{{ order.createdate}}</td>
+							<td>{{ order.emp_idemployee.firstname}} {{ order.emp_idemployee.lastname}}</td>
 							 {% endfor %}
 						</tr>
 				</table>
@@ -316,6 +353,6 @@
 		</div>
 	  </div>
 	</div>
-		
+	</div>
 </body>
 </html>

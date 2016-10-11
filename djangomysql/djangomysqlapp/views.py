@@ -86,7 +86,7 @@ def employee(request):
 	}
 	return HttpResponse(template.render(context, request))
 def customer(request):
-	customer_list = Customer.objects.order_by('idcustomer')
+	customer_list = Customer.objects.order_by('idcustomer')[:10]
 	template = loader.get_template('djangomysqlapp/customer.html')
 	context = {
 	'customer_list': customer_list,
@@ -198,6 +198,48 @@ def dictfetchall(cursor):
         dict(zip(columns, row))
         for row in cursor.fetchall()
     ]
+	
+def dashboard_total_orders(request):
+	totalOrders = Purchase.objects.count()
+	template = loader.get_template('djangomysqlapp/dashboard_total_orders.html')
+	context = {
+	'totalOrders': totalOrders,
+	}
+	return HttpResponse(template.render(context, request))
+def dashboard_total_customers(request):
+	totalCustomers = Customer.objects.count()
+	template = loader.get_template('djangomysqlapp/dashboard_total_customers.html')
+	context = {
+	'totalCustomers': totalCustomers,
+	}
+	return HttpResponse(template.render(context, request))
+def dashboard_most_popular_product(request):
+	cursor = connection.cursor()
+	cursor.execute('''SELECT op.Pro_idProduct, Sum(op.quantity) as "SumSales" From Purchase as o Join PurchaseLines as op On o.idPurchase = op.pur_idPurchase where o.createDate between '2014-01-01' and '2018-01-01' group by op.Pro_idProduct limit 0,1''')
+	template = loader.get_template('djangomysqlapp/dashboard_most_popular_product.html')
+	context = {
+	'order_list': dictfetchall(cursor),
+	}	
+	return HttpResponse(template.render(context, request))
+def dashboard_latest_orders(request):
+	query_string = "SELECT * FROM Purchase ORDER BY createdate DESC limit 0,5"
+	order_list = Purchase.objects.raw(query_string)
+	template = loader.get_template('djangomysqlapp/dashboard_latest_orders.html')
+	context = {
+	'order_list': order_list,
+	}
+	return HttpResponse(template.render(context, request))	
+def dashboard_sales_vs_cost(request):
+	cursor = connection.cursor()
+	cursor.execute('''SELECT round(sum(p.salePrice*op.quantity),2) as 'TotalSales', round(sum(p.buyPrice*op.quantity),2) as 'TotalCost' From Purchase as o Join PurchaseLines as op On o.idPurchase = op.pur_idPurchase Join Product as p On op.Pro_idProduct = p.idProduct where o.createDate between '2014-01-01' and '2016-01-01' ''')
+	cursor_statuses = connection.cursor()
+	cursor_statuses.execute('''SELECT purchasestatus, count(purchasestatus) as purchase_status FROM Purchase GROUP BY purchaseStatus''')
+	template = loader.get_template('djangomysqlapp/dashboard_graphs.html')
+	context = {
+	'order_list': namedtuplefetchall(cursor),
+	'order_status_list': namedtuplefetchall(cursor_statuses),
+	}
+	return HttpResponse(template.render(context, request))	
 def create_product(cursor, productnamenew, descriptionnew, buypricenew, salepricenew, quantitynew):
 	idproductnew = Product.objects.count() + 1
 

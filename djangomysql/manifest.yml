@@ -1,0 +1,8 @@
+---
+applications:
+- name: NBWeb
+  memory: 1024M
+  host: NBWeb
+  instances: 1
+  path: .
+  target: /djangomysql/djangomysqlapp/templates/djangomysqlapp/index.html
