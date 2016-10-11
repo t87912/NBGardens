@@ -1,8 +1,5 @@
 # NBGardens ASAS
 
-# NOTICE: "don't do anything to the master, work on the python/gui branch" - Tom.
-Refer to the instruction - developer section for more details on using branches.
-
 ## Brief Project Description
 This project is a shared project produced by a group of trainee consultants enrolled in August 2016 of QA Consulting. The project includes a python based program that serves as a customer purchasing system of gnomes and hot-tubs. The program makes use of the SQL language to query pre-stored data from a MySQL database as well as the use of Mongo queries to retrieved data from a developed distributed database. Both database tools are used as part of this program for different purpose. The MySQL database is predominant to manage the general functions of the company (e.g. logging of inventory) and recording an purchases by any customers. Whilst the distributed database, MongoDB, is used for the website providing a subset of tables available from the superset MySQL database. Several pre-structured queries are encapsulated into the system, allowing the user (a member of staff) to simply run the it as a feature while providing additional parameter to retrieve specific output data. -- TO BE CHANGED
 
